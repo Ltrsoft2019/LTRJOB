@@ -5,6 +5,13 @@ public class User_JobHistory_Class {
             company_email, company_phone, company_domain, company_hoaddress, company_hocity, company_hodistrict,
             company_hostate, company_hocountry,user_id;
 
+    public User_JobHistory_Class(String job_position, String job_description, String company_name, String company_logo,String created_at) {
+        this.job_position = job_position;
+        this.job_description = job_description;
+        this.company_name = company_name;
+        this.company_logo = company_logo;
+        this.created_at = created_at;
+    }
 
     public String getCreated_at() {
         return created_at;
