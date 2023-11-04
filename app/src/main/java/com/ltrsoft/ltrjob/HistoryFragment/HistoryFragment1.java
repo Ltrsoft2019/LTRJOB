@@ -25,39 +25,34 @@ public class HistoryFragment1 extends Fragment {
         ajobsbtn = view.findViewById(R.id.btnjob);
         course_btn = view.findViewById(R.id.btncourse);
 
+        getFragmentManager().beginTransaction().replace(R.id.jobslayout, new AppliedJobCardHistoryFragment()).addToBackStack(null).commit();
 
-        loadFragment(new AppliedJobCardHistoryFragment(),1);
-        int myColor = Color.argb(255,100,255,100);
-        int mycolor2 = Color.argb(255, 118, 118, 188);
+        int color1 = Color.parseColor("#00D084");
+        ajobsbtn.setTextColor(color1);
+        int color2 = Color.parseColor("#FF000000");
+        course_btn.setTextColor(color2);
         ajobsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new AppliedJobCardHistoryFragment(),0);
-
-                ajobsbtn.setBackgroundTintList(ColorStateList.valueOf(myColor));
-                course_btn.setBackgroundTintList(ColorStateList.valueOf(mycolor2));
+                int color1 = Color.parseColor("#00D084");
+                ajobsbtn.setTextColor(color1);
+                int color2 = Color.parseColor("#FF000000");
+                course_btn.setTextColor(color2);
+                getFragmentManager().beginTransaction().replace(R.id.jobslayout, new AppliedJobCardHistoryFragment()).addToBackStack(null).commit();
             }
         });
         course_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new AppliedCoursesCardHistroryFragment(),0);
-                course_btn.setBackgroundTintList(ColorStateList.valueOf(myColor));
-                ajobsbtn.setBackgroundTintList(ColorStateList.valueOf(mycolor2));
+                int color1 = Color.parseColor("#FF000000");
+                ajobsbtn.setTextColor(color1);
+                int color2 = Color.parseColor("#00D084");
+                course_btn.setTextColor(color2);
+                getFragmentManager().beginTransaction().replace(R.id.jobslayout, new AppliedCoursesCardHistroryFragment()).addToBackStack(null).commit();
             }
         });
         return view;
     }
 
-    private void loadFragment(Fragment fragment, int flag) {
-        FragmentManager fm = getChildFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        if (flag==1){
-            ft.add(R.id.jobslayout, fragment);
-        }
-        else if (flag==0){
-            ft.replace(R.id.jobslayout,fragment);
-        }
-        ft.commit();
-    }
+
 }

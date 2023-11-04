@@ -47,6 +47,9 @@ public class NavigationDrawerFragment extends Fragment {
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
+        DashboardFragment dashboardFragment = new DashboardFragment();
+        getFragmentManager().beginTransaction().add(R.id.container, dashboardFragment).commit();
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -57,27 +60,27 @@ public class NavigationDrawerFragment extends Fragment {
 
                 if (id == R.id.sidenav_home) {
                     DashboardFragment dashboardFragment = new DashboardFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_exam) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new ExamCardDispalyFragment()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_event) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new EventCardDispaFragment()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new EventCardDispaFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_certification) {
-//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).commit();
+//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_course) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new CourseCardDisplayFragment()).commit();
+//                    getFragmentManager().beginTransaction().replace(R.id.container, new CourseCardDisplayFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_history) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment1()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment1()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_plans) {
-//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).commit();
+//                    getFragmentManager().beginTransaction().replace(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_feedback) {
-//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).commit();
+//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.sidenav_setting) {
-//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).commit();
+//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.nav_logout) {

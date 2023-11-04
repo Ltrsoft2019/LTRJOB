@@ -7,28 +7,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HistoryFragment.HistoryFragment1">
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:background="@drawable/borderfile"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/borderfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944">
         <Button
             android:id="@+id/btnjob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Applied Jobs"
-            android:layout_marginLeft="50dp"
-            />
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:text="Applied Jobs" />
+        </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btncourse"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Courses"
-            android:layout_marginLeft="10dp"
-            />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/borderfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.944">
+
+            <Button
+                android:id="@+id/btncourse"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:text="Your Courses"
+                android:textColor="@color/black" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
     <FrameLayout
         android:id="@+id/jobslayout"
         android:layout_width="match_parent"
-        android:layout_height="656dp"
-        android:orientation="vertical" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"/>
 </LinearLayout>

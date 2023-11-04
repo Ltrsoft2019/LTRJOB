@@ -66,11 +66,11 @@ public class CourseCardDisplayFragment extends Fragment {
                                 arrayList.add(coursesDataClass);
 
                             }
-                           Course_Recycle_view_Adapter_class adapterclass=new Course_Recycle_view_Adapter_class(arrayList);
-                            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-                            recyclerView.setLayoutManager(linearLayoutManager);
-                            recyclerView.setAdapter(adapterclass);
-                            adapterclass.notifyDataSetChanged();
+//                           Course_Recycle_view_Adapter_class adapterclass=new Course_Recycle_view_Adapter_class(arrayList);
+//                            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+//                            recyclerView.setLayoutManager(linearLayoutManager);
+//                            recyclerView.setAdapter(adapterclass);
+//                            adapterclass.notifyDataSetChanged();
 
 
                         }
