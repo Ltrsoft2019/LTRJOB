@@ -3,6 +3,17 @@ package com.ltrsoft.ltrjob.Classes;
 public class Event_class {
      String event_name, event_description, event_guest, event_venue, event_date_time, event_duration, photo_path, event_type_name;
 
+    public Event_class(String event_name, String event_description, String event_guest, String event_venue, String event_date_time, String event_duration, String photo_path, String event_type_name) {
+        this.event_name = event_name;
+        this.event_description = event_description;
+        this.event_guest = event_guest;
+        this.event_venue = event_venue;
+        this.event_date_time = event_date_time;
+        this.event_duration = event_duration;
+        this.photo_path = photo_path;
+        this.event_type_name = event_type_name;
+    }
+
     public String getEvent_name() {
         return event_name;
     }
