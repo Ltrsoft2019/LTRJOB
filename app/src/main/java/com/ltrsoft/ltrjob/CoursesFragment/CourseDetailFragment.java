@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.ltrsoft.ltrjob.Classes.Course_Class;
 import com.ltrsoft.ltrjob.R;
 
 import org.json.JSONArray;
@@ -38,6 +39,7 @@ public class  CourseDetailFragment extends Fragment {
     ImageView imageView;
     ArrayList one_time_fees=new ArrayList<>();
     ArrayList course_description=new ArrayList<>();
+    Course_Class courseClass=new Course_Class();
     String URL1="http://job.ltr-soft.com/course_detail.php";
     @Nullable
     @Override
@@ -55,17 +57,17 @@ public class  CourseDetailFragment extends Fragment {
         mode=view.findViewById(R.id.mode);
         apply_now=view.findViewById(R.id.apply_now);
         imageView=view.findViewById(R.id.imageView);
+
         Bundle args = getArguments();
 
         String course_id= args.getString("course_id");
-        String course_type1= args.getString("course_type");
-        String course_name1= args.getString("course_name");
-        String course_duration1= args.getString("course_duration");
-        course_type.setText(course_type1);
-        course_name.setText(course_name1);
-        duration.setText(course_duration1);
+        courseClass.setCourse_id(course_id);
 
-        mode.setText("offline");
+
+        course_type.setText("full course");
+
+
+        mode.setText("Mode:offline");
         // Use the value as neede
 
         RequestQueue requestQueue= Volley.newRequestQueue(getActivity());
@@ -82,11 +84,14 @@ public class  CourseDetailFragment extends Fragment {
                                 JSONObject jsonObject1=  json.getJSONObject(i);
                                 String   course_description= jsonObject1.optString("course_description");
                                 String one_time_fees =jsonObject1.optString("one_time_fees");
-
-                                // System.out.println("system.out="+ course_id+   course_duration+   course_name);
+                               String course_name1=jsonObject1.optString("course_name");
+                              String  course_duration1= jsonObject1.optString("course_duration");
+                                 // System.out.println("system.out="+ course_id+   course_duration+   course_name);
                                 // Courses_data_class coursesDataClass=new Courses_data_class(course_id,course_name,course_type,course_duration);
-                                discryption.setText(course_description);
-                                fees.setText(one_time_fees);
+                                course_name.setText( courseClass.setCourse_name(course_name1));
+                                duration.setText( courseClass.setCourse_duration(course_duration1));
+                                discryption.setText(courseClass.setCourse_description(course_description));
+                                fees.setText(courseClass.setFees(one_time_fees));
 
                             }
 

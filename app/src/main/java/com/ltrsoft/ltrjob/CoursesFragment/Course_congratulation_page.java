@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ltrsoft.ltrjob.DashboardFragment;
 import com.ltrsoft.ltrjob.R;
 
 public class Course_congratulation_page extends Fragment {
@@ -32,7 +33,7 @@ public class Course_congratulation_page extends Fragment {
         public void onClick(View view) {
             FragmentManager fragmentManager=getParentFragmentManager();
             FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container,new CourseDetailFragment());
+            fragmentTransaction.replace(R.id.container,new CourseCardDisplayFragment());
             fragmentTransaction.commit();
             fragmentTransaction.addToBackStack(null);
         }
@@ -40,11 +41,11 @@ public class Course_congratulation_page extends Fragment {
         home_page.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//                FragmentManager fragmentManager=getParentFragmentManager();
-//                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.mainactivitylayout,new congratulations_fragment());
-//                fragmentTransaction.commit();
-//                fragmentTransaction.addToBackStack(null);
+               FragmentManager fragmentManager=getParentFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,new DashboardFragment());
+                fragmentTransaction.commit();
+                fragmentTransaction.addToBackStack(null);
             Toast.makeText(getContext(), "Welcome to the home page", Toast.LENGTH_SHORT).show();
         }
     });
