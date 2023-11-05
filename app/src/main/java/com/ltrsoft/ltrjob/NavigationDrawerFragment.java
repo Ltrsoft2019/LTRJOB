@@ -69,10 +69,8 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_course) {
-                    Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 //                    getFragmentManager().beginTransaction().replace(R.id.container, new CourseCardDisplayFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_history) {
-
                     getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment1()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_plans) {
 //                    getFragmentManager().beginTransaction().replace(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
