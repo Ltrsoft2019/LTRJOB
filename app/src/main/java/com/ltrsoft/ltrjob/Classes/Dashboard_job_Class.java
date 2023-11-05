@@ -1,8 +1,35 @@
 package com.ltrsoft.ltrjob.Classes;
 
-public class Dashboard_job_Class {
+import java.io.Serializable;
 
-            String job_id, job_website_to_apply,
+public class Dashboard_job_Class implements Serializable {
+
+
+    public Dashboard_job_Class(String job_id, String job_website_to_apply, String job_start_date_to_apply, String job_end_date_to_apply,
+                               String job_position, String job_salary, String job_description, String job_criteria_to_apply, String company_name,
+                               String company_logo, String company_email, String company_phone, String company_domain, String company_hoaddress,
+                               String company_hocity, String company_hodistrict, String company_hostate, String company_hocountry) {
+        this.job_id = job_id;
+        this.job_website_to_apply = job_website_to_apply;
+        this.job_start_date_to_apply = job_start_date_to_apply;
+        this.job_end_date_to_apply = job_end_date_to_apply;
+        this.job_position = job_position;
+        this.job_salary = job_salary;
+        this.job_description = job_description;
+        this.job_criteria_to_apply = job_criteria_to_apply;
+        this.company_name = company_name;
+        this.company_logo = company_logo;
+        this.company_email = company_email;
+        this.company_phone = company_phone;
+        this.company_domain = company_domain;
+        this.company_hoaddress = company_hoaddress;
+        this.company_hocity = company_hocity;
+        this.company_hodistrict = company_hodistrict;
+        this.company_hostate = company_hostate;
+        this.company_hocountry = company_hocountry;
+    }
+
+    String job_id, job_website_to_apply,
             job_start_date_to_apply,
             job_end_date_to_apply,
             job_position,
