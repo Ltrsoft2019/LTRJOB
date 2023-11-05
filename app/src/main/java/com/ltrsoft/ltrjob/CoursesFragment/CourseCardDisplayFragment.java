@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ltrsoft.ltrjob.Adapters.CourseCardAdapter;
+import com.ltrsoft.ltrjob.Classes.Course_Class;
 import com.ltrsoft.ltrjob.R;
 
 import org.json.JSONArray;
@@ -32,7 +34,8 @@ public class CourseCardDisplayFragment extends Fragment {
     String URL="https://job.ltr-soft.com/course_card.php";
     public RecyclerView recyclerView;
     public ImageView contextmenu;
-    ArrayList<Courses_data_class> arrayList=new ArrayList<>();
+    ArrayList<Course_Class> arrayList=new ArrayList<>();
+
     public CourseCardDisplayFragment(){}
     @Nullable
     @Override
@@ -40,7 +43,6 @@ public class CourseCardDisplayFragment extends Fragment {
         View v=inflater.inflate(R.layout.coursecarddisplayfragment,container,false);
         View view = inflater.inflate(R.layout.coursecarddisplayfragment, container, false);
         recyclerView=view.findViewById(R.id.fragment_recycler_courses);
-        contextmenu=view.findViewById(R.id.contextmenu);
 
         arrayList.clear();
 
@@ -62,15 +64,15 @@ public class CourseCardDisplayFragment extends Fragment {
                                 course_duration= jsonObject1.optString("course_duration");
                                 course_type="full course";
                                 // System.out.println("system.out="+ course_id+   course_duration+   course_name);
-                                Courses_data_class coursesDataClass=new Courses_data_class(course_id,course_name,course_type,course_duration);
+                                Course_Class coursesDataClass=new Course_Class(course_id,course_name,course_duration,null,null,null,null);
                                 arrayList.add(coursesDataClass);
 
                             }
-//                           Course_Recycle_view_Adapter_class adapterclass=new Course_Recycle_view_Adapter_class(arrayList);
-//                            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-//                            recyclerView.setLayoutManager(linearLayoutManager);
-//                            recyclerView.setAdapter(adapterclass);
-//                            adapterclass.notifyDataSetChanged();
+                           CourseCardAdapter adapterclass=new CourseCardAdapter(arrayList);
+                            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                            recyclerView.setLayoutManager(linearLayoutManager);
+                            recyclerView.setAdapter(adapterclass);
+                            adapterclass.notifyDataSetChanged();
 
 
                         }
