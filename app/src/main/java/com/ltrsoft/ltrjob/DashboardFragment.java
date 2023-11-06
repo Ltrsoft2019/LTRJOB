@@ -68,7 +68,7 @@ public class DashboardFragment extends Fragment {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, DASHBOARD_JOB_URL, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-            System.out.println("response = "+response.toString());
+          //  System.out.println("response = "+response.toString());
             for (int i = 0 ; i < response.length() ; i++){
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
@@ -122,16 +122,12 @@ public class DashboardFragment extends Fragment {
                         JSONObject jsonObject = response.getJSONObject(i);
                         String img_path = jsonObject.getString("notification_photo_path");
                         System.out.println("path = "+img_path);
-                        //listofimg.add(new DashboardImageClass(img_path));
+                        listofimg.add(new DashboardImageClass(img_path));
                     } catch (JSONException e) {
+                        Toast.makeText(getContext(), "error = "+e.toString(), Toast.LENGTH_SHORT).show();
                         throw new RuntimeException(e);
                     }
                 }
-                listofimg.add(new DashboardImageClass("https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg"));
-                listofimg.add(new DashboardImageClass("https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg"));
-                listofimg.add(new DashboardImageClass("https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg"));
-                listofimg.add(new DashboardImageClass("https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg"));
-                // added some images in recycler for testion
                 DashboardImageAdapter adapter = new DashboardImageAdapter(listofimg);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
                 dashboard_horizontal_recycler.setLayoutManager(layoutManager);
@@ -163,6 +159,8 @@ public class DashboardFragment extends Fragment {
             }
         });
         queue.add(jsonArrayRequest1);
+        /// Request for Dashboard Verticle Horizontal View
+
         return v;
     }
 }

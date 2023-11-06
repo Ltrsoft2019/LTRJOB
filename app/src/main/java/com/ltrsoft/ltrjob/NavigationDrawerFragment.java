@@ -23,6 +23,8 @@ import com.ltrsoft.ltrjob.CoursesFragment.CourseCardDisplayFragment;
 import com.ltrsoft.ltrjob.EventFragment.EventCardDispaFragment;
 import com.ltrsoft.ltrjob.ExamFragment.ExamCardDispalyFragment;
 import com.ltrsoft.ltrjob.HistoryFragment.HistoryFragment1;
+import com.ltrsoft.ltrjob.SettingFragment.SettingFragment;
+import com.ltrsoft.ltrjob.plans.PlanFragment;
 
 public class NavigationDrawerFragment extends Fragment {
     public DrawerLayout drawerLayout;
@@ -73,15 +75,15 @@ public class NavigationDrawerFragment extends Fragment {
                 } else if (id == R.id.sidenav_history) {
                     getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment1()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_plans) {
-//                    getFragmentManager().beginTransaction().replace(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
-                    Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new PlanFragment()).addToBackStack(null).commit();
+//                    Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_feedback) {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.sidenav_setting) {
-//                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
-                    Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
+                    getFragmentManager().beginTransaction().replace(R.id.constraint, new SettingFragment()).addToBackStack(null).commit();
+//                    Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.nav_logout) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
