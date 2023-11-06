@@ -40,7 +40,6 @@ public class PasswordChangeFragment extends Fragment {
         change=v.findViewById(R.id.change);
         Password=v.findViewById(R.id.Password);
         Com_Password=v.findViewById(R.id.Com_Password);
-
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
