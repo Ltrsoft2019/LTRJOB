@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="120dp"
-            android:text="Apply on 18 sept 2023"
+            android:text=""
             android:textColor="#000000"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"

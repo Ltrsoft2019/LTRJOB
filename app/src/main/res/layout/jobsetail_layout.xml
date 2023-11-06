@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/jobview_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jobview_desc"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Requirements"/>
+
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/txt2"
+        android:textSize="16dp"
+        android:text="Skill's:"/>
+
+    <TextView
+        android:id="@+id/requrements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/txt3"
+        android:textSize="13dp"
+        android:text="HTML,CSS,JAVASCRIPT,REACT"/>
+
+    <TextView
+        android:id="@+id/txt5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/requrements"
+        android:textSize="16dp"
+        android:text="Eligible:"/>
+
+    <TextView
+        android:id="@+id/jobview_criteria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/txt5"
+        android:textSize="13dp"
+        android:text="BSC(CS),BCA,MCA"/>
+
+    <TextView
+        android:id="@+id/txt7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/jobview_criteria"
+        android:textSize="16dp"
+        android:text="Location:"/>
+
+    <TextView
+        android:id="@+id/jobview_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/txt7"
+        android:textSize="14dp"
+        android:text="Mumbai,Hydrabad,channai"/>
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jobview_location"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#f45d2e"
+        android:text="Apply Now"
+        android:textColor="#fff"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

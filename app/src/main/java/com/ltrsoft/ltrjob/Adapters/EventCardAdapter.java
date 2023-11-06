@@ -112,7 +112,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
         TextView desc,time,date,duration;
         TextView link;
 
-        ConstraintLayout c;
+        CardView c;
         public ImageViewholder(@NonNull View itemV) {
             super(itemV);
             imageView=itemV.findViewById(R.id.AI);
@@ -122,7 +122,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
             vanue=itemV.findViewById(R.id.txt2);
 
             link=itemV.findViewById(R.id.txt3);
-            c=itemV.findViewById(R.id.parentlayout);
+            c=itemV.findViewById(R.id.parent_layout);
             date=itemV.findViewById(R.id.txt4);
             duration=itemV.findViewById(R.id.txt5);
 
