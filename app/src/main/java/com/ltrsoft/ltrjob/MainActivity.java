@@ -13,10 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        LoginFragment loginFragment=new LoginFragment();
-//        NavigationDrawerFragment loginFragment=new NavigationDrawerFragment();
-//        getSupportFragmentManager().beginTransaction().add(R.id.constraint,loginFragment).commit();
-
-        LoginFragment loginFragment=new LoginFragment();
+        NavigationDrawerFragment loginFragment=new NavigationDrawerFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.constraint, loginFragment).commit();
 
     }

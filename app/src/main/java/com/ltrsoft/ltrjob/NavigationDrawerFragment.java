@@ -48,7 +48,7 @@ public class NavigationDrawerFragment extends Fragment {
         toggle.syncState();
 
         DashboardFragment dashboardFragment = new DashboardFragment();
-        getFragmentManager().beginTransaction().add(R.id.container, dashboardFragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).commit();
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -69,7 +69,7 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_course) {
-//                    getFragmentManager().beginTransaction().replace(R.id.container, new CourseCardDisplayFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new CourseCardDisplayFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_history) {
                     getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment1()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_plans) {

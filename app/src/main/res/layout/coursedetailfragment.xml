@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#18613E"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:cardBackgroundColor="#117015">
+
 
         <ImageView
             android:id="@+id/imageView"
@@ -67,19 +64,18 @@
         </TextView>
 
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="50dp">
+        android:layout_marginTop="200dp"
+        android:background="@drawable/topcorner_round">
 
         <TextView
             android:id="@+id/about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_marginTop="45dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="45dp"
             android:textSize="25dp">
 
         </TextView>
@@ -89,9 +85,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="100dp"
-            android:layout_marginLeft="15dp">
+            android:textSize="15dp">
 
         </TextView>
 
@@ -99,9 +95,9 @@
             android:id="@+id/course_include"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_marginLeft="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="215dp"
-            android:textSize="25dp" >
+            android:textSize="25dp">
 
         </TextView>
 
@@ -110,9 +106,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:textSize="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="260dp"
-            android:layout_marginLeft="15dp" >
+            android:textSize="15dp">
 
         </TextView>
 
@@ -120,9 +116,9 @@
             android:id="@+id/mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-             android:layout_marginLeft="15dp"
-            android:layout_marginTop="330dp" >
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="330dp"
+            android:textSize="25dp">
 
         </TextView>
 
@@ -130,13 +126,15 @@
             android:id="@+id/apply_now"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:text="𝐀𝐩𝐩𝐥𝐲 𝐧𝐨𝐰"
-            android:paddingTop="1dp"
-            android:textSize="25dp"
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
             android:backgroundTint="#F45D2E"
-            android:layout_marginTop="200dp"/>
+            android:paddingTop="1dp"
 
-    </androidx.cardview.widget.CardView>
+            android:text="𝐀𝐩𝐩𝐥𝐲 𝐧𝐨𝐰"
+            android:textSize="25dp" />
 
-</LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

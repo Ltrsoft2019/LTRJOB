@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,11 +40,6 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(view.getContext(), "text"+model.getName(), Toast.LENGTH_SHORT).show();
-//                Intent i=new Intent(view.getContext(),second.class);
-//
-//                view.getContext().startActivity(i);
-//
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
                 CourseDetailFragment cd=new CourseDetailFragment();
                 Bundle args = new Bundle();
@@ -70,7 +66,7 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
     public class ViewHolderr extends RecyclerView.ViewHolder{
         TextView course_type,course_duration,course_name;
         ImageView imageView;
-        LinearLayout layout;
+        RelativeLayout layout;
         public ViewHolderr(@NonNull View itemView) {
 
             super(itemView);
@@ -78,7 +74,7 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
             course_name=itemView.findViewById(R.id.coursename);
             course_duration=itemView.findViewById(R.id.duration);
             course_type=itemView.findViewById(R.id.coursetype);
-            layout=itemView.findViewById(R.id.layout_CardView);
+            layout=itemView.findViewById(R.id.Relativelayout);
         }
 
     }
