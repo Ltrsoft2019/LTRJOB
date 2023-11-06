@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.Classes.Dashboard_job_Class;
 import com.ltrsoft.ltrjob.CompanyJobFragment.JobCardDisplayFragment;
+import com.ltrsoft.ltrjob.CompanyJobFragment.JobDeatilFragment;
 import com.ltrsoft.ltrjob.R;
 import com.squareup.picasso.Picasso;
 
@@ -39,7 +40,7 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
         holder.dash_company_name.setText(job_class.getCompany_name());
         holder.dash_job_desc.setText(job_class.getJob_description());
         holder.dash_job_position.setText(job_class.getJob_position());
-        holder.dash_post_date.setText(job_class.getJob_start_date_to_apply());
+       // holder.dash_post_date.setText(job_class.getJob_start_date_to_apply());
         String imgurl ="https://institute.ltr-soft.com/company_details/"+job_class.getCompany_logo();
         Picasso.get().load(imgurl).into(holder.dash_companylogo);
         holder.layout.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +61,14 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
                 bundle.putString("company_phone",job_class.getCompany_phone());
                 bundle.putString("company_domain",job_class.getCompany_domain());
                 bundle.putString("company_hoaddress",job_class.getCompany_hoaddress());
-
-                JobCardDisplayFragment jobCardDisplayFragment = new JobCardDisplayFragment();
+                bundle.putString("company_hostate",job_class.getCompany_hostate());
+                bundle.putString("company_hocountry",job_class.getCompany_hocountry());
+                bundle.putString("state_name",job_class.getCompany_hostate());
+                bundle.putString("city_name",job_class.getCompany_hocity());
+                JobDeatilFragment jobDeatilFragment = new JobDeatilFragment();
+                jobDeatilFragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container,jobCardDisplayFragment)
+                        .replace(R.id.container,jobDeatilFragment)
                         .addToBackStack(null)
                         .commit();
             }

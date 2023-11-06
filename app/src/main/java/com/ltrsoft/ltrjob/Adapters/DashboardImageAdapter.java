@@ -33,9 +33,8 @@ public class DashboardImageAdapter extends RecyclerView.Adapter<DashboardImageAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DashboardImageClass imageClass = listofdashimg.get(position);
         Log.d("url",imageClass.getImage());
-        //String imgurl = "https://institute.ltr-soft.com/notification_photo/"+imageClass.getImage();
-        String imgurl = "https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg";
-
+        //String imgurl = "https://institute.ltr-soft.com/company_details/inputfiles/img1.jpeg";
+        String imgurl = "https://institute.ltr-soft.com/notification_photos/"+imageClass.getImage();
        Picasso.get().load(imgurl).into(holder.dashimg);
     }
 
