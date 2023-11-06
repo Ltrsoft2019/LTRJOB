@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        LoginFragment loginFragment=new LoginFragment();
-        NavigationDrawerFragment loginFragment=new NavigationDrawerFragment();
+        LoginFragment loginFragment=new LoginFragment();
+//        NavigationDrawerFragment loginFragment=new NavigationDrawerFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.constraint, loginFragment).commit();
 
     }
