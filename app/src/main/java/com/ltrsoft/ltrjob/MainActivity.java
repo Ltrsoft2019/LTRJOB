@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.ltrsoft.ltrjob.Fragment.LoginFragment;
+import com.ltrsoft.ltrjob.fragments.LoginFragment;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.ltrsoft.ltrjob.DEOCLasses;
+package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,8 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ltrsoft.ltrjob.Classes.Userclass;
-import com.ltrsoft.ltrjob.Fragment.NavigationDrawerFragment;
+import com.ltrsoft.ltrjob.pojoclass.Userclass;
+import com.ltrsoft.ltrjob.fragments.NavigationDrawerFragment;
 import com.ltrsoft.ltrjob.R;
 
 import org.json.JSONException;
