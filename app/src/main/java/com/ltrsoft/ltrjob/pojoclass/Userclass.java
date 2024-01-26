@@ -1,4 +1,4 @@
-package com.ltrsoft.ltrjob.Classes;
+package com.ltrsoft.ltrjob.pojoclass;
 
 public class Userclass {
    String user_id;

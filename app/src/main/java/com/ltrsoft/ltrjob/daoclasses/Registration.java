@@ -1,7 +1,6 @@
-package com.ltrsoft.ltrjob.DEOCLasses;
+package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,7 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ltrsoft.ltrjob.Fragment.LoginFragment;
+import com.ltrsoft.ltrjob.fragments.LoginFragment;
 import com.ltrsoft.ltrjob.R;
 
 import java.util.HashMap;

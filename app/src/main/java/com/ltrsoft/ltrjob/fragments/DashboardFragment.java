@@ -1,4 +1,4 @@
-package com.ltrsoft.ltrjob.Fragment;
+package com.ltrsoft.ltrjob.fragments;
 
 import android.os.Bundle;
 
