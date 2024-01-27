@@ -1,10 +1,25 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
+import java.util.ArrayList;
+
 public class Exam {
     private int id,exam_id;
+
     private String exam_name,total_marks,exam_start_date,exam_time,exam_description,passing_marks;
 
-    public Exam(int id, int exam_id, String exam_name, String total_marks, String exam_start_date, String exam_time, String exam_description, String passing_marks) {
+//    public Exam(int id, int exam_id, String exam_name, String total_marks, String exam_start_date, String exam_time, String exam_description, String passing_marks) {
+//        this.id = id;
+//        this.exam_id = exam_id;
+//        this.exam_name = exam_name;
+//        this.total_marks = total_marks;
+//        this.exam_start_date = exam_start_date;
+//        this.exam_time = exam_time;
+//        this.exam_description = exam_description;
+//        this.passing_marks = passing_marks;
+//    }
+
+    public Exam(int id, int exam_id,String examName, String totalMarks, String examStartDate, String examTime, String examDescription, String passingMarks) {
+
         this.id = id;
         this.exam_id = exam_id;
         this.exam_name = exam_name;
@@ -13,7 +28,14 @@ public class Exam {
         this.exam_time = exam_time;
         this.exam_description = exam_description;
         this.passing_marks = passing_marks;
+
     }
+
+    public Exam(String totalMarks) {
+        this.total_marks = total_marks;
+
+    }
+
 
     public int getId() {
         return id;

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,7 +56,7 @@ public class LoginFragment extends Fragment {
                     login.login(email, password, getContext(), new UserCallBack() {
                         @Override
                         public void userSuccess(Object object) {
-                            getFragmentManager().beginTransaction().replace(R.id.constraint, new DashboardFragment()).addToBackStack(null).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.constraint, new NavigationDrawerFragment()).addToBackStack(null).commit();
                         }
 
                         @Override
@@ -99,6 +100,6 @@ public class LoginFragment extends Fragment {
 
 
         return v;
-    }
+}
 
 }
