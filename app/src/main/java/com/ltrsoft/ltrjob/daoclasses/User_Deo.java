@@ -241,6 +241,8 @@ public void updateUser(User user,String userid,Context context,UserCallBack call
 }
 
 public void deleteUser(User user,String userid,Context context,UserCallBack callBack){
+
+
         StringRequest stringRequest= new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override

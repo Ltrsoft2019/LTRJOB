@@ -1,10 +1,10 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class User {
-    private int id,user_id;
-    private String user_fname,user_mname,user_lname,user_email,user_smobile,user_pmobile,user_gender,user_DOB,user_photo,user_address,user_city,user_district,user_state,user_country,user_collegename,user_adhar,user_pan,user_linkedin_id,user_github_id,user_username,user_password,user_carier_objective,user_marital_status;
+    private int id;
+    private String user_id, user_fname,user_mname,user_lname,user_email,user_smobile,user_pmobile,user_gender,user_DOB,user_photo,user_address,user_city,user_district,user_state,user_country,user_collegename,user_adhar,user_pan,user_linkedin_id,user_github_id,user_username,user_password,user_carier_objective,user_marital_status;
 
-    public User(int id, int user_id, String user_fname, String user_mname, String user_lname, String user_email, String user_smobile, String user_pmobile, String user_gender, String user_DOB, String user_photo, String user_address, String user_city, String user_district, String user_state, String user_country, String user_collegename, String user_adhar, String user_pan, String user_linkedin_id, String user_github_id, String user_username, String user_password, String user_carier_objective, String user_marital_status) {
+    public User(int id, String user_id, String user_fname, String user_mname, String user_lname, String user_email, String user_smobile, String user_pmobile, String user_gender, String user_DOB, String user_photo, String user_address, String user_city, String user_district, String user_state, String user_country, String user_collegename, String user_adhar, String user_pan, String user_linkedin_id, String user_github_id, String user_username, String user_password, String user_carier_objective, String user_marital_status) {
         this.id = id;
         this.user_id = user_id;
         this.user_fname = user_fname;
@@ -44,7 +44,7 @@ public class User {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
