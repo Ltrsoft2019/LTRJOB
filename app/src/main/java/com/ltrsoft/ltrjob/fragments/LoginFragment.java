@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ltrsoft.ltrjob.daoclasses.Login;
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 
 
 public class LoginFragment extends Fragment {
@@ -51,7 +53,17 @@ public class LoginFragment extends Fragment {
                 String password = loginPassword.getText().toString();
                 if (!email.isEmpty() && !password.isEmpty()) {
                     Login login=new Login();
-                    login.loginuser(requireContext(), getParentFragmentManager(), loginEmail, loginPassword, loginButton, bar);
+                    login.login(email, password, getContext(), new UserCallBack() {
+                        @Override
+                        public void userSuccess(Object object) {
+                            getFragmentManager().beginTransaction().replace(R.id.constraint, new DashboardFragment()).addToBackStack(null).commit();
+                        }
+
+                        @Override
+                        public void userError(String error) {
+                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     loginButton.setVisibility(View.GONE);
                     bar.setVisibility(View.VISIBLE);
 
