@@ -13,6 +13,11 @@ public class Result {
         this.grade_percentage_cgpa = grade_percentage_cgpa;
     }
 
+    public Result(String obtainedMarks, String passFail, String gradePercentageCgpa, String examUserAllocationId) {
+
+
+    }
+
     public int getResult_id() {
         return result_id;
     }

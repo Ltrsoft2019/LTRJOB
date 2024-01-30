@@ -1,54 +1,44 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Course {
-    private int id,course_id;
-    private String course_name,course_duration,course_description;
+    private String id, courseId, courseName, courseDuration, courseDescription;
 
-    public Course(int id, int course_id, String course_name, String course_duration, String course_description) {
-        this.id = id;
-        this.course_id = course_id;
-        this.course_name = course_name;
-        this.course_duration = course_duration;
-        this.course_description = course_description;
+    public Course(String courseId, String courseName, String courseDuration, String courseDescription) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDuration = courseDuration;
+        this.courseDescription = courseDescription;
     }
 
-    public int getId() {
+    public Course(String courseId, String courseName, String courseDuration, Object courseDescription, Object o, Object o1, Object o2) {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
-    public String getCourse_name() {
-        return course_name;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-    public String getCourse_duration() {
-        return course_duration;
-    }
-
-    public void setCourse_duration(String course_duration) {
-        this.course_duration = course_duration;
-    }
-
-    public String getCourse_description() {
-        return course_description;
-    }
-
-    public void setCourse_description(String course_description) {
-        this.course_description = course_description;
+    public String getCourseDuration() {
+        return courseDuration;
     }
 }
+

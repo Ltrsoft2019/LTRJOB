@@ -13,6 +13,9 @@ public class Salary_Details {
         this.salary_amount = salary_amount;
     }
 
+    public Salary_Details(String salaryAmount) {
+    }
+
     public int getSalary_details_id() {
         return salary_details_id;
     }

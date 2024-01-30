@@ -8,10 +8,15 @@ public class Qualification {
         this.id = id;
         this.qualification_id = qualification_id;
         this.user_id = user_id;
-        this.qualification_level_id = qualification_level_id;
-        this.qualification_school_college = qualification_school_college;
-        this.qualification_passing_year = qualification_passing_year;
-        this.qualification_percentage_cgpa = qualification_percentage_cgpa;
+
+    }
+
+    public Qualification(int qualificationLevelId, String qualificationSchoolCollege, String qualificationPassingYear, String qualificationPercentageCgpa) {
+
+        this.qualification_level_id = qualificationLevelId;
+        this.qualification_school_college = qualificationSchoolCollege;
+        this.qualification_passing_year = qualificationPassingYear;
+        this.qualification_percentage_cgpa = qualificationPercentageCgpa;
     }
 
     public int getId() {

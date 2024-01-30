@@ -1,20 +1,33 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
-public class company_details {
+public class companyDashboard {
     private int id,company_id;
     private String company_name,company_logo,company_email,company_phone,company_domain,company_hocity,company_hodistrict,company_hocountry;
 
-    public company_details(int id, int company_id, String company_name, String company_logo, String company_email, String company_phone, String company_domain, String company_hocity, String company_hodistrict, String company_hocountry) {
-        this.id = id;
-        this.company_id = company_id;
-        this.company_name = company_name;
-        this.company_logo = company_logo;
-        this.company_email = company_email;
-        this.company_phone = company_phone;
-        this.company_domain = company_domain;
-        this.company_hocity = company_hocity;
-        this.company_hodistrict = company_hodistrict;
-        this.company_hocountry = company_hocountry;
+//    public companyDashboard(int id, int company_id, String company_name, String company_logo, String company_email, String company_phone, String company_domain, String company_hocity, String company_hodistrict, String company_hocountry) {
+//        this.id = id;
+//        this.company_id = company_id;
+//        this.company_name = company_name;
+//        this.company_logo = company_logo;
+//        this.company_email = company_email;
+//        this.company_phone = company_phone;
+//        this.company_domain = company_domain;
+//        this.company_hocity = company_hocity;
+//        this.company_hodistrict = company_hodistrict;
+//        this.company_hocountry = company_hocountry;
+//    }
+
+    public companyDashboard(String companyName, String companyLogo, String companyEmail, String companyPhone, String companyDomain, String companyHocity, String companyHodistrict, String companyHocountry) {
+  this.company_name=companyName;
+        this.company_logo = companyLogo;
+        this.company_email = companyEmail;
+        this.company_phone = companyPhone;
+        this.company_domain = companyDomain;
+        this.company_hocity = companyHocity;
+        this.company_hodistrict = companyHodistrict;
+        this.company_hocountry = companyHocountry;
+
+
     }
 
     public int getId() {

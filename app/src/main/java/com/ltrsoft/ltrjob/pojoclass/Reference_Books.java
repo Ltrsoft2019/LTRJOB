@@ -7,8 +7,14 @@ public class Reference_Books {
     public Reference_Books(int reference_book_id, int id, String reference_book_title, String reference_book_author) {
         this.reference_book_id = reference_book_id;
         this.id = id;
+
+
+    }
+
+    public Reference_Books(String referenceBookTitle, String referenceBookAuthor) {
         this.reference_book_title = reference_book_title;
         this.reference_book_author = reference_book_author;
+
     }
 
     public int getReference_book_id() {

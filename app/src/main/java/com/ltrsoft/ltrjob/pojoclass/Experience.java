@@ -9,13 +9,23 @@ public class Experience {
         this.experience_id = experience_id;
         this.user_id = user_id;
         this.experiance_type_id = experiance_type_id;
-        this.experience_company_name = experience_company_name;
-        this.experiance_start_date = experiance_start_date;
-        this.experiance_end_date = experiance_end_date;
-        this.experiance_payment = experiance_payment;
-        this.experiance_technology = experiance_technology;
-        this.experiance_project_name = experiance_project_name;
-        this.experiance_position = experiance_position;
+//        this.experience_company_name = experience_company_name;
+//        this.experiance_start_date = experiance_start_date;
+//        this.experiance_end_date = experiance_end_date;
+//        this.experiance_payment = experiance_payment;
+//        this.experiance_technology = experiance_technology;
+//        this.experiance_project_name = experiance_project_name;
+//        this.experiance_position = experiance_position;
+    }
+
+    public Experience(String experienceCompanyName, String experianceStartDate, String experianceEndDate, String experiancePayment, String experianceTechnology, String experianceProjectName, String experiancePosition) {
+        this.experience_company_name = experienceCompanyName;
+        this.experiance_start_date = experianceStartDate;
+        this.experiance_end_date = experianceEndDate;
+        this.experiance_payment = experiancePayment;
+        this.experiance_technology = experianceTechnology;
+        this.experiance_project_name = experianceProjectName;
+        this.experiance_position = experiancePosition;
     }
 
     public int getId() {

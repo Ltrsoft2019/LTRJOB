@@ -30,6 +30,12 @@ public class Research_Paper {
         this.research_paper_published_in_journal = research_paper_published_in_journal;
     }
 
+    public Research_Paper(String researchTopicName, String researchDisciplineId, String researchCitation, String researchAuthor1, String researchAuthor2, String sresearchAuthor3, String researchAuthor4, String researchAuthor5, String researchAuthor6, String publishedIn, String isbnNo, String location, String pagesStart, String pagesEnd, String volumeedition, String doi, String date, String researchPaperPublishedInJournal) {
+
+
+
+    }
+
     public int getResearch_paper_id() {
         return research_paper_id;
     }
