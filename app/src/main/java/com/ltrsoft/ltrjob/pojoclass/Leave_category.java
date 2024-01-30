@@ -1,12 +1,16 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Leave_category {
-    private int id,leave_category_id;
-    private String leave_category_name;
+    private int id;
+    private String leave_category_name,leave_category_id;
 
-    public Leave_category(int id, int leave_category_id, String leave_category_name) {
+    public Leave_category(int id, String leave_category_id, String leave_category_name) {
         this.id = id;
         this.leave_category_id = leave_category_id;
+        this.leave_category_name = leave_category_name;
+    }
+
+    public Leave_category(String leaveCategoryName) {
         this.leave_category_name = leave_category_name;
     }
 
@@ -18,11 +22,11 @@ public class Leave_category {
         this.id = id;
     }
 
-    public int getLeave_category_id() {
+    public String getLeave_category_id() {
         return leave_category_id;
     }
 
-    public void setLeave_category_id(int leave_category_id) {
+    public void setLeave_category_id(String leave_category_id) {
         this.leave_category_id = leave_category_id;
     }
 

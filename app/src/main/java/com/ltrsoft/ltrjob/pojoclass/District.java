@@ -1,13 +1,17 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class District {
-    private int id,district_id,state_id;
-    private String district_name;
+    private int id,state_id;
+    private String district_name,district_id;
 
-    public District(int id, int district_id, int state_id, String district_name) {
+    public District(int id, String district_id, int state_id, String district_name) {
         this.id = id;
         this.district_id = district_id;
         this.state_id = state_id;
+        this.district_name = district_name;
+    }
+
+    public District(String districtName) {
         this.district_name = district_name;
     }
 
@@ -19,11 +23,11 @@ public class District {
         this.id = id;
     }
 
-    public int getDistrict_id() {
+    public String getDistrict_id() {
         return district_id;
     }
 
-    public void setDistrict_id(int district_id) {
+    public void setDistrict_id(String district_id) {
         this.district_id = district_id;
     }
 

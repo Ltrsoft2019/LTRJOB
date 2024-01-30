@@ -1,13 +1,19 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Installement {
-    private int id,installment_id,fees_id;
-    private String installement_amount,installement_date,installement_time;
+    private int id,fees_id;
+    private String installement_amount,installement_date,installement_time,installment_id;
 
-    public Installement(int id, int installment_id, int fees_id, String installement_amount, String installement_date, String installement_time) {
+    public Installement(int id, String installment_id, int fees_id, String installement_amount, String installement_date, String installement_time) {
         this.id = id;
         this.installment_id = installment_id;
         this.fees_id = fees_id;
+        this.installement_amount = installement_amount;
+        this.installement_date = installement_date;
+        this.installement_time = installement_time;
+    }
+
+    public Installement(String installementAmount, String installementDate, String installementTime) {
         this.installement_amount = installement_amount;
         this.installement_date = installement_date;
         this.installement_time = installement_time;
@@ -21,11 +27,11 @@ public class Installement {
         this.id = id;
     }
 
-    public int getInstallment_id() {
+    public String getInstallment_id() {
         return installment_id;
     }
 
-    public void setInstallment_id(int installment_id) {
+    public void setInstallment_id(String installment_id) {
         this.installment_id = installment_id;
     }
 

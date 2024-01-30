@@ -1,13 +1,17 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class City {
-    private int id,city_id,distrct_id;
-    private String city_name;
+    private int id,distrct_id;
+    private String city_name,city_id;
 
-    public City(int id, int city_id, int distrct_id, String city_name) {
+    public City(int id, String city_id, int distrct_id, String city_name) {
         this.id = id;
         this.city_id = city_id;
         this.distrct_id = distrct_id;
+        this.city_name = city_name;
+    }
+
+    public City(String cityName) {
         this.city_name = city_name;
     }
 
@@ -19,11 +23,11 @@ public class City {
         this.id = id;
     }
 
-    public int getCity_id() {
+    public String getCity_id() {
         return city_id;
     }
 
-    public void setCity_id(int city_id) {
+    public void setCity_id(String city_id) {
         this.city_id = city_id;
     }
 

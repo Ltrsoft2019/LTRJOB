@@ -60,4 +60,5 @@ public class News {
     public void setNews_resource(String news_resource) {
         this.news_resource = news_resource;
     }
+
 }

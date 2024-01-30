@@ -1,16 +1,22 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Fees {
-    private int id,fees_id,enrollment_id;
-    private String paid_fees,remaining_fees;
+    private int id,enrollment_id;
+    private String paid_fees,remaining_fees,fees_id;
 
-    public Fees(int id, int fees_id, int enrollment_id, String paid_fees, String remaining_fees) {
+    public Fees(int id, String fees_id, int enrollment_id, String paid_fees, String remaining_fees) {
         this.id = id;
         this.fees_id = fees_id;
         this.enrollment_id = enrollment_id;
         this.paid_fees = paid_fees;
         this.remaining_fees = remaining_fees;
     }
+
+    public Fees(String paidFees, String remainingFees) {
+        this.paid_fees = paid_fees;
+        this.remaining_fees = remaining_fees;
+    }
+
 
     public int getId() {
         return id;
@@ -20,11 +26,11 @@ public class Fees {
         this.id = id;
     }
 
-    public int getFees_id() {
+    public String getFees_id() {
         return fees_id;
     }
 
-    public void setFees_id(int fees_id) {
+    public void setFees_id(String fees_id) {
         this.fees_id = fees_id;
     }
 

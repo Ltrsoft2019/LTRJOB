@@ -1,13 +1,18 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class AwardType {
-    private int id,award_type_id;
-    private String award_type_name;
+    private int id;
+    private String award_type_name,award_type_id;
 
-    public AwardType(int id, int award_type_id, String award_type_name) {
+    public AwardType(int id, String award_type_id, String award_type_name) {
         this.id = id;
         this.award_type_id = award_type_id;
         this.award_type_name = award_type_name;
+    }
+
+    public AwardType(String awardTypeName) {
+        this.award_type_name = award_type_name;
+
     }
 
     public int getId() {
@@ -18,11 +23,11 @@ public class AwardType {
         this.id = id;
     }
 
-    public int getAward_type_id() {
+    public String getAward_type_id() {
         return award_type_id;
     }
 
-    public void setAward_type_id(int award_type_id) {
+    public void setAward_type_id(String award_type_id) {
         this.award_type_id = award_type_id;
     }
 

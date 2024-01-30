@@ -2,13 +2,21 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class Award {
     private int id,award_level_id,award_category_id,award_type_id;
-    private String award_name,award_given_by,award_date_recieved,award_venue;
+    private String award_name,award_given_by,award_date_recieved,award_venue,user_id;
 
-    public Award(int id, int award_level_id, int award_category_id, int award_type_id, String award_name, String award_given_by, String award_date_recieved, String award_venue) {
+    public Award(int id,String user_id, int award_level_id, int award_category_id, int award_type_id, String award_name, String award_given_by, String award_date_recieved, String award_venue) {
         this.id = id;
+        this.user_id=user_id;
         this.award_level_id = award_level_id;
         this.award_category_id = award_category_id;
         this.award_type_id = award_type_id;
+        this.award_name = award_name;
+        this.award_given_by = award_given_by;
+        this.award_date_recieved = award_date_recieved;
+        this.award_venue = award_venue;
+    }
+
+    public Award(String awardName, String awardGivenBy, String awardDateRecieved, String awardVenue) {
         this.award_name = award_name;
         this.award_given_by = award_given_by;
         this.award_date_recieved = award_date_recieved;
@@ -69,6 +77,14 @@ public class Award {
 
     public void setAward_date_recieved(String award_date_recieved) {
         this.award_date_recieved = award_date_recieved;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getAward_venue() {

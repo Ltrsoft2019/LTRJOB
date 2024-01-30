@@ -1,12 +1,27 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Institute {
-    private int id,institute_id;
-    private String institute_name,institute_logo,institute_founded_in,institute_founder,institute_address,institute_contact,institute_website,institute_email,institute_description,instiyute_vission,institute_mission,institute_director_msg;
+    private int id;
+    private String institute_id,institute_name,institute_logo,institute_founded_in,institute_founder,institute_address,institute_contact,institute_website,institute_email,institute_description,instiyute_vission,institute_mission,institute_director_msg;
 
-    public Institute(int id, int institute_id, String institute_name, String institute_logo, String institute_founded_in, String institute_founder, String institute_address, String institute_contact, String institute_website, String institute_email, String institute_description, String instiyute_vission, String institute_mission, String institute_director_msg) {
+    public Institute(int id, String institute_id, String institute_name, String institute_logo, String institute_founded_in, String institute_founder, String institute_address, String institute_contact, String institute_website, String institute_email, String institute_description, String instiyute_vission, String institute_mission, String institute_director_msg) {
         this.id = id;
         this.institute_id = institute_id;
+        this.institute_name = institute_name;
+        this.institute_logo = institute_logo;
+        this.institute_founded_in = institute_founded_in;
+        this.institute_founder = institute_founder;
+        this.institute_address = institute_address;
+        this.institute_contact = institute_contact;
+        this.institute_website = institute_website;
+        this.institute_email = institute_email;
+        this.institute_description = institute_description;
+        this.instiyute_vission = instiyute_vission;
+        this.institute_mission = institute_mission;
+        this.institute_director_msg = institute_director_msg;
+    }
+
+    public Institute(String instituteName, String instituteLogo, String instituteFoundedIn, String instituteFounder, String instituteAddress, String instituteContact, String instituteWebsite, String instituteEmail, String instituteDescription, String instiyuteVission, String instituteMission, String instituteDirectorMsg) {
         this.institute_name = institute_name;
         this.institute_logo = institute_logo;
         this.institute_founded_in = institute_founded_in;
@@ -29,11 +44,11 @@ public class Institute {
         this.id = id;
     }
 
-    public int getInstitute_id() {
+    public String getInstitute_id() {
         return institute_id;
     }
 
-    public void setInstitute_id(int institute_id) {
+    public void setInstitute_id(String institute_id) {
         this.institute_id = institute_id;
     }
 

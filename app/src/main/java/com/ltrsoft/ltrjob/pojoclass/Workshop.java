@@ -1,14 +1,21 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Workshop {
-    private int id,workshop_id,workshop_type_id,user_id;
-    private String workshop_name,workshop_venue,workshop_level,workshop_date;
+    private int id,workshop_type_id,user_id;
+    private String workshop_name,workshop_venue,workshop_level,workshop_date,workshop_id;
 
-    public Workshop(int id, int workshop_id, int workshop_type_id, int user_id, String workshop_name, String workshop_venue, String workshop_level, String workshop_date) {
+    public Workshop(int id, String workshop_id, int workshop_type_id, int user_id, String workshop_name, String workshop_venue, String workshop_level, String workshop_date) {
         this.id = id;
         this.workshop_id = workshop_id;
         this.workshop_type_id = workshop_type_id;
         this.user_id = user_id;
+        this.workshop_name = workshop_name;
+        this.workshop_venue = workshop_venue;
+        this.workshop_level = workshop_level;
+        this.workshop_date = workshop_date;
+    }
+
+    public Workshop(String workshopName, String workshopVenue, String workshopLevel, String workshopDate) {
         this.workshop_name = workshop_name;
         this.workshop_venue = workshop_venue;
         this.workshop_level = workshop_level;
@@ -23,11 +30,11 @@ public class Workshop {
         this.id = id;
     }
 
-    public int getWorkshop_id() {
+    public String getWorkshop_id() {
         return workshop_id;
     }
 
-    public void setWorkshop_id(int workshop_id) {
+    public void setWorkshop_id(String workshop_id) {
         this.workshop_id = workshop_id;
     }
 

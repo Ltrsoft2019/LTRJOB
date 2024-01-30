@@ -1,7 +1,10 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Enrollment {
-    private int id,enrollment_id,user_id,batch_id;
+    private int id,enrollment_id,batch_id;
+    private String user_id;
+
+
 
     public int getId() {
         return id;
@@ -19,11 +22,11 @@ public class Enrollment {
         this.enrollment_id = enrollment_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -35,7 +38,7 @@ public class Enrollment {
         this.batch_id = batch_id;
     }
 
-    public Enrollment(int id, int enrollment_id, int user_id, int batch_id) {
+    public Enrollment(int id, int enrollment_id, String user_id, int batch_id) {
         this.id = id;
         this.enrollment_id = enrollment_id;
         this.user_id = user_id;

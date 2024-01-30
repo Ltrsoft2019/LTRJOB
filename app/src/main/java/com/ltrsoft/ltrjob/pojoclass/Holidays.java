@@ -1,11 +1,19 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Holidays {
-    private int id,holidays_id;
+    private int id;
+    private String holidays_title,holidays_description,holidays_start_date,holidays_end_date,holidays_id;
 
-    public Holidays(int id, int holidays_id, String holidays_title, String holidays_description, String holidays_start_date, String holidays_end_date) {
+    public Holidays(int id, String holidays_id, String holidays_title, String holidays_description, String holidays_start_date, String holidays_end_date) {
         this.id = id;
         this.holidays_id = holidays_id;
+        this.holidays_title = holidays_title;
+        this.holidays_description = holidays_description;
+        this.holidays_start_date = holidays_start_date;
+        this.holidays_end_date = holidays_end_date;
+    }
+
+    public Holidays(String holidaysTitle, String holidaysDescription, String holidaysStartDate, String holidaysEndDate) {
         this.holidays_title = holidays_title;
         this.holidays_description = holidays_description;
         this.holidays_start_date = holidays_start_date;
@@ -20,11 +28,11 @@ public class Holidays {
         this.id = id;
     }
 
-    public int getHolidays_id() {
+    public String getHolidays_id() {
         return holidays_id;
     }
 
-    public void setHolidays_id(int holidays_id) {
+    public void setHolidays_id(String holidays_id) {
         this.holidays_id = holidays_id;
     }
 
@@ -60,5 +68,4 @@ public class Holidays {
         this.holidays_end_date = holidays_end_date;
     }
 
-    private String holidays_title,holidays_description,holidays_start_date,holidays_end_date;
 }

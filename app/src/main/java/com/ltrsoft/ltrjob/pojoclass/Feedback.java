@@ -1,14 +1,22 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
-public class Feedback {
-    private int id,feedback_id,feedback_category_id,user_id;
-    private String feedback_description;
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 
-    public Feedback(int id, int feedback_id, int feedback_category_id, int user_id, String feedback_description) {
+public class Feedback {
+    private int id,feedback_id,feedback_category_id;
+    private String feedback_description,user_id;
+
+    public Feedback(int id, int feedback_id, int feedback_category_id, String user_id, String feedback_description) {
         this.id = id;
         this.feedback_id = feedback_id;
         this.feedback_category_id = feedback_category_id;
         this.user_id = user_id;
+        this.feedback_description = feedback_description;
+    }
+
+    public Feedback(String feedbackDescription) {
         this.feedback_description = feedback_description;
     }
 
@@ -36,11 +44,11 @@ public class Feedback {
         this.feedback_category_id = feedback_category_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -51,4 +59,6 @@ public class Feedback {
     public void setFeedback_description(String feedback_description) {
         this.feedback_description = feedback_description;
     }
+
+
 }

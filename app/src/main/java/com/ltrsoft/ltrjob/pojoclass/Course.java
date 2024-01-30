@@ -1,16 +1,23 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Course {
-    private int id,course_id;
-    private String course_name,course_duration,course_description;
+    private int id;
+    private String course_id, course_name,course_duration,course_description;
 
-    public Course(int id, int course_id, String course_name, String course_duration, String course_description) {
+    public Course(int id, String course_id, String course_name, String course_duration, String course_description) {
         this.id = id;
         this.course_id = course_id;
         this.course_name = course_name;
         this.course_duration = course_duration;
         this.course_description = course_description;
     }
+
+    public Course(String courseName, String courseDuration, String courseDescription) {
+        this.course_name = course_name;
+        this.course_duration = course_duration;
+        this.course_description = course_description;
+    }
+
 
     public int getId() {
         return id;
@@ -20,11 +27,11 @@ public class Course {
         this.id = id;
     }
 
-    public int getCourse_id() {
+    public String getCourse_id() {
         return course_id;
     }
 
-    public void setCourse_id(int course_id) {
+    public void setCourse_id(String course_id) {
         this.course_id = course_id;
     }
 

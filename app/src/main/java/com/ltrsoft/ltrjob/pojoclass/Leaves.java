@@ -1,15 +1,22 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Leaves {
-    private int id,leaves_id,user_role_id,leave_category_id,leave_status_id;
-    private String leaves_start_date,leaves_end_date,leaves_duration,leaves_reason;
+    private int id,user_role_id,leave_category_id,leave_status_id;
+    private String leaves_start_date,leaves_end_date,leaves_duration,leaves_reason,leaves_id;
 
-    public Leaves(int id, int leaves_id, int user_role_id, int leave_category_id, int leave_status_id, String leaves_start_date, String leaves_end_date, String leaves_duration, String leaves_reason) {
+    public Leaves(int id, String leaves_id, int user_role_id, int leave_category_id, int leave_status_id, String leaves_start_date, String leaves_end_date, String leaves_duration, String leaves_reason) {
         this.id = id;
         this.leaves_id = leaves_id;
         this.user_role_id = user_role_id;
         this.leave_category_id = leave_category_id;
         this.leave_status_id = leave_status_id;
+        this.leaves_start_date = leaves_start_date;
+        this.leaves_end_date = leaves_end_date;
+        this.leaves_duration = leaves_duration;
+        this.leaves_reason = leaves_reason;
+    }
+
+    public Leaves(String leavesStartDate, String leavesEndDate, String leavesDuration, String leavesReason) {
         this.leaves_start_date = leaves_start_date;
         this.leaves_end_date = leaves_end_date;
         this.leaves_duration = leaves_duration;
@@ -24,11 +31,11 @@ public class Leaves {
         this.id = id;
     }
 
-    public int getLeaves_id() {
+    public String getLeaves_id() {
         return leaves_id;
     }
 
-    public void setLeaves_id(int leaves_id) {
+    public void setLeaves_id(String leaves_id) {
         this.leaves_id = leaves_id;
     }
 

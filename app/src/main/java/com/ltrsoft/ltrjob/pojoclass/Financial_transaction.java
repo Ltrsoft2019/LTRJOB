@@ -1,10 +1,10 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Financial_transaction {
-    private int id,financial_transaction_id,transaction_mode_id,transaction_type_id,status_id,user_id,account_id,institute_id;
-    private String financial_transaction_name,amount,remark;
+    private int id,financial_transaction_id,transaction_mode_id,transaction_type_id,status_id,account_id,institute_id;
+    private String financial_transaction_name,amount,remark,user_id;
 
-    public Financial_transaction(int id, int financial_transaction_id, int transaction_mode_id, int transaction_type_id, int status_id, int user_id, int account_id, int institute_id, String financial_transaction_name, String amount, String remark) {
+    public Financial_transaction(int id, int financial_transaction_id, int transaction_mode_id, int transaction_type_id, int status_id, String user_id, int account_id, int institute_id, String financial_transaction_name, String amount, String remark) {
         this.id = id;
         this.financial_transaction_id = financial_transaction_id;
         this.transaction_mode_id = transaction_mode_id;
@@ -13,6 +13,12 @@ public class Financial_transaction {
         this.user_id = user_id;
         this.account_id = account_id;
         this.institute_id = institute_id;
+        this.financial_transaction_name = financial_transaction_name;
+        this.amount = amount;
+        this.remark = remark;
+    }
+
+    public Financial_transaction(String financialTransactionName, String amount, String remark) {
         this.financial_transaction_name = financial_transaction_name;
         this.amount = amount;
         this.remark = remark;
@@ -58,11 +64,11 @@ public class Financial_transaction {
         this.status_id = status_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
