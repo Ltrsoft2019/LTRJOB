@@ -5,7 +5,7 @@ public class Transaction_Mode {
     private int transaction_mode_id;
     private String transaction_mode_name;
 
-    public Transaction_Mode(int transaction_mode_id, String transaction_mode_name) {
+    public Transaction_Mode(String transaction_mode_name) {
         this.transaction_mode_id = transaction_mode_id;
         this.transaction_mode_name = transaction_mode_name;
     }

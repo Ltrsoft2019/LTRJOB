@@ -18,6 +18,15 @@ public class Mini_Project {
         this.mini_project_test_cases = mini_project_test_cases;
     }
 
+    public Mini_Project(String miniProjectTitle, String miniProjectStartDate, String miniProjectEndDate, String miniProjectTopic, String miniProjectTechnologiesUsed) {
+        this.mini_project_title = miniProjectTitle;
+        this.mini_project_start_date = miniProjectStartDate;
+        this.mini_project_end_date = miniProjectEndDate;
+        this.mini_project_topic = miniProjectTopic;
+        this.mini_project_technologies_used = miniProjectTechnologiesUsed;
+
+    }
+
     public int getMini_project_id() {
         return mini_project_id;
     }

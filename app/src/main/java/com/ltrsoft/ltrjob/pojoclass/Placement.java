@@ -10,11 +10,17 @@ public class Placement {
         this.user_id = user_id;
         this.job_id = job_id;
         this.id = id;
-        this.date_placed = date_placed;
-        this.placemet_role = placemet_role;
-        this.placement_package = placement_package;
-        this.placed_through_ltr = placed_through_ltr;
+
     }
+
+    public Placement(String datePlaced, String placemetRole, String placementPackage, String placedThroughLtr) {
+        this.date_placed = datePlaced;
+        this.placemet_role = placemetRole;
+        this.placement_package = placementPackage;
+        this.placed_through_ltr = placedThroughLtr;
+
+    }
+
 
     public int getPlacement_id() {
         return placement_id;

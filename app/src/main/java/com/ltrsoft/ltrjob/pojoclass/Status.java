@@ -5,7 +5,7 @@ public class Status {
     private String status_name;
 
 
-    public Status(int status_id, String status_name) {
+    public Status(String status_name) {
         this.status_id = status_id;
         this.status_name = status_name;
     }

@@ -6,7 +6,7 @@ public class Technical_Skill_Type {
     private String technical_skill_type_name;
 
 
-    public Technical_Skill_Type(int technical_skill_type_id, String technical_skill_type_name) {
+    public Technical_Skill_Type(String technical_skill_type_name) {
         this.technical_skill_type_id = technical_skill_type_id;
         this.technical_skill_type_name = technical_skill_type_name;
     }

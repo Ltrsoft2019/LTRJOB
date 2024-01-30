@@ -12,6 +12,9 @@ public class State {
         this.country_id = country_id;
     }
 
+    public State(String stateName) {
+    }
+
     public String getState_name() {
         return state_name;
     }

@@ -54,6 +54,7 @@ public class EventCardDispaFragment extends Fragment {
         eventCard.fetchEventData(requireContext(), recyclerView, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
+
                 ArrayList<Event_class> list = (ArrayList<Event_class>)object;
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -61,8 +62,6 @@ public class EventCardDispaFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
 
-//Event_class eventClass = (Event_class) object;
-//t.setText(eventClass.getEvent_name());
 
             }
 
