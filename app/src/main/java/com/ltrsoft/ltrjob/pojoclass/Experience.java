@@ -2,7 +2,7 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class Experience {
     private int id,experience_id,user_id,experiance_type_id;
-    private String experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position;
+    private String  companyloogo,experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position;
 
     public Experience(int id, int experience_id, int user_id, int experiance_type_id, String experience_company_name, String experiance_start_date, String experiance_end_date, String experiance_payment, String experiance_technology, String experiance_project_name, String experiance_position) {
         this.id = id;
@@ -26,6 +26,12 @@ public class Experience {
         this.experiance_technology = experianceTechnology;
         this.experiance_project_name = experianceProjectName;
         this.experiance_position = experiancePosition;
+
+    }
+
+    public Experience(String imageurl, String experienceCompanyName, String experianceStartDate, String experianceEndDate, String experiancePayment, String experianceTechnology, String experianceProjectName, String experiancePosition) {
+   this.companyloogo=imageurl;
+
     }
 
     public int getId() {

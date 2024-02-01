@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EventDetailFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/card"
+        app:cardBackgroundColor="#18613E">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                 />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="269dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/menu"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="0dp"
+
+                android:layout_marginTop="0dp"
+                android:text="Webinar on
+                AI"
+                android:textColor="#fff"
+                android:textSize="40dp" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="300dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                >
+
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="180dp"
+        app:cardCornerRadius="30dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">>
+            <TextView
+                android:layout_width="369dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="153dp"
+                android:layout_marginBottom="360dp"
+                android:text="Event Venue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/eventguest"
+                android:layout_width="368dp"
+                android:layout_height="46dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="234dp"
+                android:layout_marginBottom="271dp"
+                android:text="Event Guest:"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="450dp"
+                android:background="#FF9800"
+                android:text="Join" />
+
+            <TextView
+                android:id="@+id/eventdescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="90dp"
+                android:layout_marginBottom="406dp"
+                android:text="Conference on the latest technology trends
+                                        Online Webinar on Artificial Intelligence,Modern Technology"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <TextView
+
+            android:layout_width="363dp"
+            android:layout_height="26dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="473dp"
+            android:text="Event Discription"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/eventvenue"
+            android:layout_width="369dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="189dp"
+            android:layout_marginBottom="321dp"
+            android:text="Virtual Event,Seminar hall,
+                                         Latur-413512"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/eventtime"
+            android:layout_width="369dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginBottom="193dp"
+            android:text="Event Time : "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/eventdate"
+            android:layout_width="369dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="322dp"
+            android:layout_marginBottom="151dp"
+            android:text="Event Date :"
+            android:textSize="20dp" />
+
+        <TextView
+
+            android:layout_width="369dp"
+            android:id="@+id/eventduration"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="366dp"
+            android:layout_marginBottom="107dp"
+            android:text="Event Duration : "
+            android:textSize="20dp" />
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

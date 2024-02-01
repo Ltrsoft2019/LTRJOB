@@ -1,9 +1,9 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -56,15 +56,21 @@ public class EventCard {
                         String venue = jsonObject.getString("event_venue");
                         String date_time = jsonObject.getString("event_date_time");
                         String duration = jsonObject.getString("event_duration");
-                        String path = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + path;
+                        String photo_path = jsonObject.getString("photo_path");
+
+                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + photo_path;
+
+
+
 
                         String[] dateAndTime = date_time.split(" ");
                         String date = dateAndTime[0];
                         String time = dateAndTime[1];
 
-                        Event_class modelImage = new Event_class(description, name, imageurl, duration, guest, venue, date, time, description);
-                        imglist.add(modelImage);
+                        Event_class eventClass = new Event_class(name,"",description,guest,venue
+                        ,date_time,duration,imageurl,description,"");
+//
+                        imglist.add(eventClass);
                     }
 
                 } catch (JSONException e) {
@@ -117,7 +123,7 @@ public class EventCard {
                         String[] dateAndTime = date_time.split(" ");
                         String date = dateAndTime[0];
                         String time = dateAndTime[1];
-                        Event_class modelImage = new Event_class( id, name, imageurl, duration, guest, venue, date, time,description);
+                        Event_class modelImage = new Event_class( id, name, imageurl, duration, guest, venue, date, time,description, description);
                         imglist.add(modelImage);
                     }
 

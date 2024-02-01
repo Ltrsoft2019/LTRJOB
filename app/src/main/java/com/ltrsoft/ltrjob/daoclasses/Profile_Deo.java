@@ -1,7 +1,5 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
-import com.ltrsoft.ltrjob.pojoclass.Company_Details;
-
 import java.util.ArrayList;
 
 public class Profile_Deo {

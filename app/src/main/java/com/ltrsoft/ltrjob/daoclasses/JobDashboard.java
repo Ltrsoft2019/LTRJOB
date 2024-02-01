@@ -14,7 +14,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Experience;
-import com.ltrsoft.ltrjob.pojoclass.companyDashboard;
+import com.ltrsoft.ltrjob.pojoclass.job;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,18 +25,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class experience {
+import kotlinx.coroutines.Job;
+
+public class JobDashboard {
 
 
 
 
-    String url = "http://job.ltr-soft.com/Event/event_photo.php";
+    String url = "https://job.ltr-soft.com/job/read_job.php";
+
+
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
     String redid="https://job.ltr-soft.com/Event/read_by_id.php";
 
 
-    final ArrayList<Experience> experiences = new ArrayList<>();
+    final ArrayList<job> experiences = new ArrayList<>();
 
 
 
@@ -49,23 +54,29 @@ public class experience {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                        String experience_company_name = jsonObject.getString("event_description");
-                        String experiance_position = jsonObject.getString("event_venue");
-                        String experiance_start_date = jsonObject.getString("event_date_time");
-                        String experiance_end_date = jsonObject.getString("event_duration");
+                        String company_name = jsonObject.getString("company_name");
+                        String company_email = jsonObject.getString("company_email");
+                        String job_description = jsonObject.getString("job_description");
+                        String company_phone = jsonObject.getString("company_phone");
 
-                        String experiance_payment=jsonObject.getString("company_hocity");
-                        String experiance_technology=jsonObject.getString("company_hodistrict");
-                        String experiance_project_name=jsonObject.getString("company_hocountry");
+                        String company_hoaddress=jsonObject.getString("company_hoaddress");
+                        String job_category_name=jsonObject.getString("job_category_name");
+                        String job_salary=jsonObject.getString("job_salary");
+                        String job_position=jsonObject.getString("job_position");
+
+                        String company_id=jsonObject.getString("company_id");
 
 
-                        String company_logo = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + company_logo;
+
+                        String company_logo = jsonObject.getString("company_logo");
 
 
-                        Experience experience  = new Experience(experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
 
-                        experiences.add(experience);
+                      job j=new job(company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
+
+                      //  Job experience  = new Job(imageurl,experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
+
+                        experiences.add(j);
                     }
 
                 } catch (JSONException e) {
@@ -119,8 +130,8 @@ public class experience {
                         String imageurl = "https://institute.ltr-soft.com/event_photo/" + company_logo;
 
 
-                        Experience experience  = new Experience(experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
-experiences.add(experience);
+//                        job experience  = new job(experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
+//                         experiences.add(experience);
 
                     }
 

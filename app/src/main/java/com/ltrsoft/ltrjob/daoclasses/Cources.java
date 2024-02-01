@@ -16,9 +16,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.ltrsoft.ltrjob.Adpter.CourseCardAdapter;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Course;
-import com.ltrsoft.ltrjob.pojoclass.Event_class;
+
+import com.ltrsoft.ltrjob.pojoclass.Course_Class;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,14 +41,10 @@ public class Cources {
 
 
 
-    final ArrayList<Course> courcesArrayList = new ArrayList<>();
+    final ArrayList<Course_Class> courcesArrayList = new ArrayList<>();
 
 
-
-
-    public void fetchCources(final Context context , RecyclerView recyclerView, UserCallBack callBack) {
-
-
+    public void fetchCources(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -54,7 +52,6 @@ public class Cources {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Toast.makeText(getActivity(), "" + response, Toast.LENGTH_LONG).show();
                         String course_id, course_name, course_type, course_duration;
                         try {
                             JSONArray json = new JSONArray(response);
@@ -63,40 +60,39 @@ public class Cources {
                                 course_id = jsonObject1.getString("course_id");
                                 course_name = jsonObject1.getString("course_name");
                                 course_duration = jsonObject1.getString("course_duration");
-
-                                course_type = "full course";
-                                Course coursesDataClass = new Course(course_id, course_name, course_duration, null, null, null, null);
+                                Toast.makeText(context, "" + course_duration, Toast.LENGTH_SHORT).show();
+                              String  created_at=jsonObject1.getString("created_at");
+                              //  course_type = "full course";
+                                Course_Class coursesDataClass = new Course_Class(course_id, course_name, course_duration, null, null, null, null,created_at);
                                 courcesArrayList.add(coursesDataClass);
                             }
 
+                            // Set up RecyclerView here, after successfully fetching data
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+                            CourseCardAdapter adapter = new CourseCardAdapter(courcesArrayList);
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setAdapter(adapter);
 
                         } catch (Exception e) {
-                            // Toast.makeText(getActivity(), "here is a error", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
-
-
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         callBack.userError(error.toString());
                         Toast.makeText(context, "" + error, Toast.LENGTH_SHORT).show();
                     }
                 }
-
         );
 
         requestQueue.add(stringRequest);
-
-
     }
 
 
 
-        public  void  getcorces( Course corce, String userid,Context context, UserCallBack callBack) {
+        public  void  getcorces( Course_Class corce, String userid,Context context, UserCallBack callBack) {
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
@@ -109,7 +105,7 @@ public class Cources {
                         String  course_name = jsonObject.optString("course_name");
                         String  course_duration = jsonObject.optString("course_duration");
                         String course_description=jsonObject.getString("des");
-                Course course=new Course(course_id,course_name,course_duration,course_description);
+                    //    Course_Class course=new Course_Class(course_id,course_name,course_duration,course_description);
 
                     }
 
@@ -210,10 +206,11 @@ callBack.userError(error.toString());
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> hashMap=new HashMap<>();
 
-                Course firstCourse = courcesArrayList.get(0);
+                Course_Class firstCourse = courcesArrayList.get(0);
 
-                hashMap.put("course_name", firstCourse.getCourseName());
-                hashMap.put("course_duration", firstCourse.getCourseDuration());
+
+//                hashMap.put("course_name", firstCourse.getCourseName());
+//                hashMap.put("course_duration", firstCourse.getCourseDuration());
 
                 return hashMap;
             }

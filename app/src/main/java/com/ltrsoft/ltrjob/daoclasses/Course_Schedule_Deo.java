@@ -10,7 +10,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Course;
+import com.ltrsoft.ltrjob.pojoclass.Course_Class;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,9 +28,9 @@ public class Course_Schedule_Deo {
     private static String Update_URL="";
     private static String Delete_URL="";
     private static String ReadAll_URL="";
-    Course course;
+    Course_Class course;
 
-    ArrayList <Course> list=new ArrayList<>();
+    ArrayList <Course_Class> list=new ArrayList<>();
 
     public void getAllCourse(Context context,UserCallBack userCallBack){
 
@@ -47,7 +48,7 @@ public class Course_Schedule_Deo {
                         String course_duration = jsonObject.getString("course_duration");
                         String course_description = jsonObject.getString("course_description");
 
-                        course=new Course(course_name,course_duration,course_description);
+                        //course=new Course_Class(course_name,course_duration,course_description);
 
                     }
                 } catch (JSONException e) {
@@ -89,7 +90,7 @@ public class Course_Schedule_Deo {
                                 String course_duration = jsonObject.getString("course_duration");
                                 String course_description = jsonObject.getString("course_description");
 
-                                course=new Course(course_name,course_duration,course_description);
+                               // course=new Course_Class(course_name,course_duration,course_description);
 
                             }
                         } catch (JSONException e) {
@@ -115,7 +116,7 @@ public class Course_Schedule_Deo {
         };
     }
 
-    public void createCourse(Course course, String course_id, Context context, UserCallBack userCallBack){
+    public void createCourse(Course_Class course, String course_id, Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Create_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -145,7 +146,7 @@ public class Course_Schedule_Deo {
         };
     }
 
-    public void updateCourse(Course course,String course_id,Context context,UserCallBack userCallBack){
+    public void updateCourse(Course_Class course,String course_id,Context context,UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Update_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -175,7 +176,7 @@ public class Course_Schedule_Deo {
         };
     }
 
-    public void deleteCourse(Course course,String userid,Context context, UserCallBack userCallBack){
+    public void deleteCourse(Course_Class course,String userid,Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -203,7 +204,7 @@ public class Course_Schedule_Deo {
         };
     }
 
-    public void searchCourse(Course course,String userid,Context context, UserCallBack userCallBack){
+    public void searchCourse(Course_Class course,String userid,Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override

@@ -98,8 +98,7 @@ public class LoginFragment extends Fragment {
         });
 
 
-
         return v;
-}
+    }
 
 }

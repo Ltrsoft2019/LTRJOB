@@ -63,6 +63,7 @@ public class EventCardDispaFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
 
 
+
             }
 
             @Override

@@ -27,7 +27,8 @@ public class Certificationdeo {
     String certi = "http://job.ltr-soft.com/Certifications/certification_insert.php";
     String getall = "";
 
-    String redid = "http://job.ltr-soft.com/Certifications/certification_read.php";
+    String redid = "https://job.ltr-soft.com/Certifications/certification_read.php";
+
     String Deleteurl = "http://job.ltr-soft.com/Certifications/certification_update.php";
 
     String updateurl="http://job.ltr-soft.com/Certifications/certification_update.php";
@@ -135,7 +136,7 @@ params.put("user_id",userid.toString());
                         String imageurl = "https://institute.ltr-soft.com/event_photo/" + photo;
 
 
-                        Certification certification1 = new Certification( photo ,certification_id, certification_title, certification_year, certification_from, certification_number);
+                        Certification certification1 = new Certification( imageurl ,certification_id, certification_title, certification_year, certification_from, certification_number);
                         certifications.add(certification1);
                     }
 

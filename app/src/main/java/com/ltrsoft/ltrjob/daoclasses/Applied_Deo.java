@@ -11,7 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ltrsoft.ltrjob.pojoclass.Company_Details;
+
 import com.ltrsoft.ltrjob.pojoclass.User_Job_History;
 
 import org.json.JSONArray;
@@ -103,6 +103,7 @@ public class Applied_Deo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> map=new HashMap<>();
                 map.put("user_id",user_id);
+
                 return map;
             }
         };

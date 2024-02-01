@@ -3,7 +3,7 @@ package com.ltrsoft.ltrjob.pojoclass;
 public class Event_class {
      String  eventid,event_name, event_description, event_guest, event_venue, event_date_time, event_duration, photo_path, event_type_name;
 
-    public Event_class(String event_name, String eventid, String event_description, String event_guest, String event_venue, String event_date_time, String event_duration, String photo_path, String description) {
+    public Event_class(String event_name, String eventid, String event_description, String event_guest, String event_venue, String event_date_time, String event_duration, String photo_path, String description, String s) {
         this.event_name = event_name;
         this.event_description = event_description;
         this.event_guest = event_guest;
