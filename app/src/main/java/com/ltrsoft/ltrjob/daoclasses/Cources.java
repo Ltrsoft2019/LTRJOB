@@ -37,7 +37,7 @@ public class Cources {
     String url = "https://job.ltr-soft.com/course_card.php";
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
-    String redid="https://job.ltr-soft.com/Event/read_by_id.php";
+    String redid="https://job.ltr-soft.com/course_detail.php";
 
 
 
@@ -60,7 +60,6 @@ public class Cources {
                                 course_id = jsonObject1.getString("course_id");
                                 course_name = jsonObject1.getString("course_name");
                                 course_duration = jsonObject1.getString("course_duration");
-                                Toast.makeText(context, "" + course_duration, Toast.LENGTH_SHORT).show();
                               String  created_at=jsonObject1.getString("created_at");
                               //  course_type = "full course";
                                 Course_Class coursesDataClass = new Course_Class(course_id, course_name, course_duration, null, null, null, null,created_at);
@@ -92,7 +91,7 @@ public class Cources {
 
 
 
-        public  void  getcorces( Course_Class corce, String userid,Context context, UserCallBack callBack) {
+        public  void  getcorces( final Context context, RecyclerView recyclerView, UserCallBack callBack) {
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
@@ -101,12 +100,14 @@ public class Cources {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                      String  course_id = jsonObject.optString("course_id");
-                        String  course_name = jsonObject.optString("course_name");
-                        String  course_duration = jsonObject.optString("course_duration");
-                        String course_description=jsonObject.getString("des");
-                    //    Course_Class course=new Course_Class(course_id,course_name,course_duration,course_description);
+                        String course_id, course_name, course_type, course_duration;
 
+                        course_id = jsonObject.getString("course_id");
+                        course_name = jsonObject.getString("course_name");
+                        course_duration = jsonObject.getString("course_description");
+                        String  created_at=jsonObject.getString("course_duration");
+                        Course_Class coursesDataClass = new Course_Class(course_id, course_name, course_duration, null, null, null, null,created_at);
+                        courcesArrayList.add(coursesDataClass);
                     }
 
                 } catch (JSONException e) {
@@ -127,8 +128,7 @@ public class Cources {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                // Add parameters here, for example, if you want to fetch data for event ID 123
-                hashMap.put("event_id", userid.toString());
+                hashMap.put("course_id", "course-1");
 
                 return hashMap;
             }

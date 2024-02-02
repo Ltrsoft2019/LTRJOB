@@ -37,7 +37,8 @@ public class CourceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cource, container, false);
 
 
-        recyclerView = view.findViewById(R.id.recycleview);
+        recyclerView = view.findViewById(R.id.fragment_recycler_courses);
+
 
 
         Cources  eventCard = new Cources();

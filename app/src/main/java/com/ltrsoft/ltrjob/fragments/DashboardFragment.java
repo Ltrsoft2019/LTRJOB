@@ -46,8 +46,6 @@ recyclerView2=view.findViewById(R.id.dashboard_verticle_recycler);
 
         NewsPhotoDeo eventCard = new NewsPhotoDeo();
 
-//
-//
         eventCard.fatchphoto(requireContext(), recyclerView1, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
@@ -97,12 +95,10 @@ recyclerView2=view.findViewById(R.id.dashboard_verticle_recycler);
             @Override
             public void userSuccess(Object object1) {
                 ArrayList<job> list1 = (ArrayList<job>) object1;
-                Toast.makeText(getContext(), ""+list1.toString(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
                 DashboardJobCardAdapter adapter1 = new DashboardJobCardAdapter(list1);
                 recyclerView2.setLayoutManager(layoutManager1);
                 recyclerView2.setAdapter(adapter1);
-                Toast.makeText(getContext(), "hiiii", Toast.LENGTH_SHORT).show();
 
 
 
@@ -111,6 +107,7 @@ recyclerView2=view.findViewById(R.id.dashboard_verticle_recycler);
 //                transaction.replace(R.id.fragment_container, new AnotherFragment());
 //                transaction.addToBackStack(null);
 //                transaction.commit();
+
             }
 
             @Override

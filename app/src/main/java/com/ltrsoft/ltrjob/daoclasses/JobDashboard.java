@@ -1,6 +1,7 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
+import com.ltrsoft.ltrjob.pojoclass.Certification;
 import com.ltrsoft.ltrjob.pojoclass.Experience;
 import com.ltrsoft.ltrjob.pojoclass.job;
 
@@ -37,7 +39,10 @@ public class JobDashboard {
 
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
-    String redid="https://job.ltr-soft.com/Event/read_by_id.php";
+
+
+
+    String redid="https://job.ltr-soft.com/user_job_by_id.php";
 
 
     final ArrayList<job> experiences = new ArrayList<>();
@@ -107,39 +112,42 @@ public class JobDashboard {
 
 
 
-    public  void  getexprence(  String expid, Context context, UserCallBack callBack) {
+    public  void  geteuser(  Context context, RecyclerView recyclerView, UserCallBack callBack) {
+        final ArrayList<job> experiences1 = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray json = new JSONArray(response);
+
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                        String experience_company_name = jsonObject.getString("event_description");
-                        String experiance_position = jsonObject.getString("event_venue");
-                        String experiance_start_date = jsonObject.getString("event_date_time");
-                        String experiance_end_date = jsonObject.getString("event_duration");
+                        String company_name = jsonObject.getString("company_name");
+                        String company_email = jsonObject.getString("company_email");
+                        String job_description = jsonObject.getString("job_description");
+                        String company_phone = jsonObject.getString("company_phone");
 
-                        String experiance_payment=jsonObject.getString("company_hocity");
-                        String experiance_technology=jsonObject.getString("company_hodistrict");
-                        String experiance_project_name=jsonObject.getString("company_hocountry");
+                        String company_hoaddress=jsonObject.getString("company_hoaddress");
+                        String job_category_name="";
+                        String job_salary=jsonObject.getString("job_salary");
+                        String job_position=jsonObject.getString("job_position");
 
+                        String company_id=jsonObject.getString("company_id");
 
-                        String company_logo = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + company_logo;
+                        String company_logo = jsonObject.getString("company_logo");
 
+                        Toast.makeText(context, ""+company_name.toString(), Toast.LENGTH_SHORT).show();
 
-//                        job experience  = new job(experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
-//                         experiences.add(experience);
-
+                        job certification1 = new job(company_name,company_email, job_description, company_phone, job_position);
+                        experiences1.add(certification1);
                     }
 
                 } catch (JSONException e) {
                     callBack.userError(e.toString());
                     e.printStackTrace();
                 }
-                callBack.userSuccess(experiences);
+                callBack.userSuccess(experiences1);
 
             }
 
@@ -153,8 +161,7 @@ public class JobDashboard {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                // Add parameters here, for example, if you want to fetch data for event ID 123
-                hashMap.put("event_id", expid.toString());
+                hashMap.put("user_id", "user-17");
 
                 return hashMap;
             }
@@ -163,6 +170,7 @@ public class JobDashboard {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }
+
 
 
 
