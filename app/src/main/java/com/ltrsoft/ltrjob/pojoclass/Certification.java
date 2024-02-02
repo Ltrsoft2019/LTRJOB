@@ -2,31 +2,26 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class Certification {
 
-    private String certificationId,photo,certification_title,certification_year,certification_from,certification_number;
+    private String createdat,certification_title,certification_year,certification_from,certification_number;
 
-    public Certification(String certificationId, String photo, String certification_title, String certification_year, String certification_from, String certification_number) {
-        this.certificationId = certificationId;
-        this.photo = photo;
+    public Certification(String certificationId,  String certification_title, String certification_year, String certification_from, String certification_number) {
+        this.createdat = certificationId;
+
         this.certification_title = certification_title;
         this.certification_year = certification_year;
         this.certification_from = certification_from;
         this.certification_number = certification_number;
     }
 
-    public String getCertificationId() {
-        return certificationId;
+    public Certification(String imageurl) {
     }
 
-    public void setCertificationId(String certificationId) {
-        this.certificationId = certificationId;
+    public String getCreatedat() {
+        return createdat;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setCreatedat(String createdat) {
+        this.createdat = createdat;
     }
 
     public String getCertification_title() {

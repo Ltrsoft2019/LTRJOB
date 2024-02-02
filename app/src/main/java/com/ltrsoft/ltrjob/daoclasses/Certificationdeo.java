@@ -1,8 +1,10 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -87,10 +89,10 @@ params.put("user_id",userid.toString());
                         String certification_number = jsonObject.getString("event_guest");
 
                         String path = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + path;
+                        String imageurl = "https://job.ltr-soft.com/Certifications/" + path;
 
 
-                        Certification certification1 = new Certification(path ,certification_id, certification_title, certification_year, certification_from, certification_number);
+                        Certification certification1 = new Certification( certification_id, certification_title, certification_year, certification_from, certification_number);
                         certifications.add(certification1);
                     }
 
@@ -117,26 +119,24 @@ params.put("user_id",userid.toString());
 
 
 
-    public void getuser(Certification certification, Context context, UserCallBack callBack, String userid) {
+    public void getuser(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
 
+//      String  userid="user-17";
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray json = new JSONArray(response);
+
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                        String certification_id = jsonObject.getString("certification_id");
+                        String certification_id = jsonObject.getString("created_at");
                         String certification_title = jsonObject.getString("certification_title");
                         String certification_year = jsonObject.getString("certification_year");
                         String certification_from = jsonObject.getString("certification_from");
                         String certification_number = jsonObject.getString("certification_number");
-
-                        String photo = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + photo;
-
-
-                        Certification certification1 = new Certification( imageurl ,certification_id, certification_title, certification_year, certification_from, certification_number);
+                        Toast.makeText(context, ""+certification_title.toString(), Toast.LENGTH_SHORT).show();
+                        Certification certification1 = new Certification(certification_id, certification_title, certification_year, certification_from, certification_number);
                         certifications.add(certification1);
                     }
 
@@ -158,7 +158,7 @@ params.put("user_id",userid.toString());
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("user_id", userid.toString());
+                hashMap.put("user_id", "user-17");
 
                 return hashMap;
             }
@@ -190,7 +190,7 @@ params.put("user_id",userid.toString());
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("certification_id", certification.getCertificationId());
+               // map.put("certification_id", certification.getCertificationId());
                 return map;
 
 
@@ -238,8 +238,8 @@ params.put("user_id",userid.toString());
                 HashMap<String,String> hashMap=new HashMap<>();
 
                 hashMap.put("user_id",userid.toString());
-                hashMap.put("event_id",certification.getCertificationId());
-                hashMap.put("event_photo",certification.getPhoto());
+                hashMap.put("event_id",certification.getCreatedat());
+
                 hashMap.put("event_name",certification.getCertification_title());
                 hashMap.put("user_mname",certification.getCertification_from());
                 hashMap.put("event_guest",certification.getCertification_year());

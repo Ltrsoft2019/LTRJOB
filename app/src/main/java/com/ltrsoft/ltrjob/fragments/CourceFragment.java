@@ -37,29 +37,24 @@ public class CourceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cource, container, false);
 
 
-        recyclerView = view.findViewById(R.id.fragment_recycler_courses);
+        recyclerView = view.findViewById(R.id.recycleview);
 
 
         Cources  eventCard = new Cources();
         eventCard.fetchCources(requireContext(), recyclerView, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
-
                 ArrayList<Course_Class> list = (ArrayList<Course_Class>) object;
-
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 CourseCardAdapter adapter = new CourseCardAdapter(list);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-
             }
-
             @Override
             public void userError(String error) {
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
             }
         });
-
         return view;
     }
 }
