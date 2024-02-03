@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#18613E"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:background="#18613E"
+
+    <TextView
+        android:layout_width="182dp"
+        android:layout_height="95dp"
+        android:text="Course "
+        android:textStyle="bold"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"/>
+
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="700dp"
+        android:background="@drawable/addresume"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="50dp">
 
 
 
+        <androidx.recyclerview.widget.RecyclerView
 
-        <TextView
-            android:layout_width="182dp"
-            android:layout_marginTop="25dp"
-            android:layout_height="95dp"
-            android:layout_centerHorizontal="true"
-            android:padding="7dp"
-            android:text="Courses"
-            android:textColor="#fff"
-            android:textSize="50dp" />
+            android:id="@+id/fragment_recycler_courses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="200dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_recycler_courses"/>
-</FrameLayout>
+    </LinearLayout>

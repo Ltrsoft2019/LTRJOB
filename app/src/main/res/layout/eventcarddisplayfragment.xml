@@ -1,59 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:cardBackgroundColor="#18613E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005">
-
-        <ImageView
-            android:id="@+id/download"
-            android:layout_width="49dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="10dp"
-            android:background="#C6C6C6"
-            android:backgroundTint="#11655D"
-            />
+    android:layout_height="match_parent"
+    android:background="#18613E"
+    android:orientation="vertical">
 
 
         <TextView
             android:layout_width="182dp"
             android:layout_height="95dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:padding="7dp"
             android:text="Events "
-            android:textColor="#fff"
-            android:textSize="50dp" />
+            android:textStyle="bold"
+            android:fontFamily="@font/adamina"
+            android:textColor="@color/white"
+            android:textSize="50dp"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
 
 
-    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:background="@drawable/addresume"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="50dp">
+
+
 
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/recycleview"
-        android:layout_width="413dp"
-        android:layout_height="523dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
