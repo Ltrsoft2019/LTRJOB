@@ -13,7 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.AwardCategory;
-import com.ltrsoft.ltrjob.pojoclass.Course;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;

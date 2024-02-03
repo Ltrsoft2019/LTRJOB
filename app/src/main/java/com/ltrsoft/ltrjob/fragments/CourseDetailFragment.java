@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class CourseDetailFragment extends Fragment {
     public CourseDetailFragment(){}
-    TextView course_type,course_name,duration,fees,about,discryption,include,details,mode;
+    TextView fullcourse,java,duration,fees,about,discryption,include,details,mode;
     Button apply_now;
     ImageView imageView;
     ArrayList one_time_fees=new ArrayList<>();
@@ -47,17 +47,17 @@ public class CourseDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.coursedetailfragment,container,false);
        // Toast.makeText(getActivity(), "course detail", Toast.LENGTH_SHORT).show();
-        course_type=view.findViewById(R.id.course__type);
-        course_name=view.findViewById(R.id.course__name);
-        duration=view.findViewById(R.id.course_duration);
+        fullcourse=view.findViewById(R.id.fullcourse);
+        java=view.findViewById(R.id.java);
+        duration=view.findViewById(R.id.days);
         fees=view.findViewById(R.id.fees);
-        about=view.findViewById(R.id.about);
-        discryption=view.findViewById(R.id.discryption);
-        include=view.findViewById(R.id.course_include);
+        about=view.findViewById(R.id.aboutcourse);
+        discryption=view.findViewById(R.id.coursedetails);
+        include=view.findViewById(R.id.includes);
         details=view.findViewById(R.id.include_details);
         mode=view.findViewById(R.id.mode);
-        apply_now=view.findViewById(R.id.apply_now);
-        imageView=view.findViewById(R.id.imageView);
+        apply_now=view.findViewById(R.id.join);
+        imageView=view.findViewById(R.id.wipro);
 
         Bundle args = getArguments();
 
@@ -65,7 +65,7 @@ public class CourseDetailFragment extends Fragment {
         courseClass.setCourse_id(course_id);
 
 
-        course_type.setText("full course");
+        fullcourse.setText("full course");
 
 
         mode.setText("Mode:offline");
@@ -89,7 +89,7 @@ public class CourseDetailFragment extends Fragment {
                               String  course_duration1= jsonObject1.optString("course_duration");
                                  // System.out.println("system.out="+ course_id+   course_duration+   course_name);
                                 // Courses_data_class coursesDataClass=new Courses_data_class(course_id,course_name,course_type,course_duration);
-                                course_name.setText( courseClass.setCourse_name(course_name1));
+                                java.setText( courseClass.setCourse_name(course_name1));
                                 duration.setText( courseClass.setCourse_duration(course_duration1));
                                 discryption.setText(courseClass.setCourse_description(course_description));
                                 fees.setText(courseClass.setFees(one_time_fees));

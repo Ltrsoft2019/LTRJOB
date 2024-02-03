@@ -12,7 +12,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Account_Detail;
-import com.ltrsoft.ltrjob.pojoclass.Course;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;

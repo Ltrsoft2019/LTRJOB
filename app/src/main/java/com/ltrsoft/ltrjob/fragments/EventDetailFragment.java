@@ -36,16 +36,16 @@ public class EventDetailFragment extends Fragment {
 
 
         eventname1 = v.findViewById(R.id.name);
-        description1 = v.findViewById(R.id.eventdescription);
-        duration1 = v.findViewById(R.id.eventduration);
-        guest1 = v.findViewById(R.id.eventguest);
-        vanue1 = v.findViewById(R.id.eventvenue);
-        date1 = v.findViewById(R.id.eventdate);
-        time1 = v.findViewById(R.id.eventtime);
+        description1 = v.findViewById(R.id.discription);
+        duration1 = v.findViewById(R.id.duration);
+        guest1 = v.findViewById(R.id.guest);
+        vanue1 = v.findViewById(R.id.discription1);
+        date1 = v.findViewById(R.id.date);
+        time1 = v.findViewById(R.id.time);
 
-        button = v.findViewById(R.id.button);
+        button = v.findViewById(R.id.loginButton);
 
-        imageView1 = v.findViewById(R.id.imageView1);
+        imageView1 = v.findViewById(R.id.img);
 
 
         Bundle bundle = getArguments();
@@ -78,7 +78,7 @@ public class EventDetailFragment extends Fragment {
             String imageUrl = bundle.getString("imag");
 
 
-            ImageView eventImageView = v.findViewById(R.id.imageView1);
+            ImageView eventImageView = v.findViewById(R.id.img);
 
             if (imageUrl != null) {
                 Picasso.get().load(imageUrl).into(eventImageView);
