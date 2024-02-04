@@ -1,6 +1,9 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -20,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Feedback_Deo {
@@ -28,6 +32,7 @@ public class Feedback_Deo {
     private static String Create_URL="https://job.ltr-soft.com/feedback/feedback_insert.php";
     private static String Update_URL="https://job.ltr-soft.com/feedback/feedback_user_read.php";
     private static String Delete_URL="https://job.ltr-soft.com/feedback/feedback_user_read.php";
+
     private static String ReadAll_URL="https://job.ltr-soft.com/feedback/feedback_user_read.php";
     String user_id;
     Feedback feedback;
@@ -170,6 +175,7 @@ public class Feedback_Deo {
         requestQueue.add(stringRequest);
     }
 
+
     public void deleteFeedback(String user_id, Context context){
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
@@ -237,4 +243,63 @@ public class Feedback_Deo {
         requestQueue.add(stringRequest);
     }
 
+
+
+    public void feedback(String des,String sub,String cname, Context context, UserCallBack userCallBack) {
+        String insertUrl = "https://job.ltr-soft.com/feedback/feedback_insert.php";
+        StringRequest insertRequest = new StringRequest(Request.Method.POST, insertUrl,
+                response -> {
+                    Log.d("Insert Response", response);
+                    userCallBack.userSuccess(response);
+                },
+                error -> {
+                    Log.e("Volley Error", "Error: " + error.getMessage());
+                    Toast.makeText(context, "Error inserting data", Toast.LENGTH_SHORT).show();
+                    userCallBack.userError(error.toString());
+                }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id", "user-17");
+                // Add other parameters
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(insertRequest);
+    }
+
+    public void fetchFeedbackCategoryNames(Context context) {
+        String url = "https://job.ltr-soft.com/feedback/feedback_read.php";
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Log.d("Server Response", response);
+
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        List<String> feedbackCategories = new ArrayList<>();
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String name = jsonObject.getString("feedback_category_name");
+                            feedbackCategories.add(name);
+                        }
+
+                        // Handle your feedbackCategories data as needed
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, "Error parsing JSON", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Log.e("Volley Error", "Error: " + error.getMessage());
+                    Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
+                });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(request);
+    }
 }
