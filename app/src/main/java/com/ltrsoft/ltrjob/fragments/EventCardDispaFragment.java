@@ -32,7 +32,6 @@ public class EventCardDispaFragment extends Fragment {
     EventCardAdapter myAdapter;
     List<Event_class> imglist;
     Event_class modelImage;
-    LinearLayoutManager manager;
     String date;
     String time;
 //    String url = "http://job.ltr-soft.com/Event/event_photo.php";
@@ -54,7 +53,6 @@ public class EventCardDispaFragment extends Fragment {
         eventCard.fetchEventData(requireContext(), recyclerView, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
-
                 ArrayList<Event_class> list = (ArrayList<Event_class>)object;
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

@@ -78,6 +78,9 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
+                } else if (id == R.id.sidenav_resume) {
+                    getFragmentManager().beginTransaction().add(R.id.container, new profile_1()).addToBackStack(null).commit();
+
                 } else if (id == R.id.sidenav_setting) {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();

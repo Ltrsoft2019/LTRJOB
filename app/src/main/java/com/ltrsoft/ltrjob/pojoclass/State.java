@@ -2,17 +2,12 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class State {
     private String state_name;
-    private int id,state_id,country_id;
+    private String id,state_id,country_id;
 
-
-    public State(String state_name, int id, int state_id, int country_id) {
+    public State(String state_name, String state_id, String country_id) {
         this.state_name = state_name;
-        this.id = id;
         this.state_id = state_id;
         this.country_id = country_id;
-    }
-
-    public State(String stateName) {
     }
 
     public String getState_name() {
@@ -23,27 +18,27 @@ public class State {
         this.state_name = state_name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getState_id() {
+    public String getState_id() {
         return state_id;
     }
 
-    public void setState_id(int state_id) {
+    public void setState_id(String state_id) {
         this.state_id = state_id;
     }
 
-    public int getCountry_id() {
+    public String getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(int country_id) {
+    public void setCountry_id(String country_id) {
         this.country_id = country_id;
     }
 }

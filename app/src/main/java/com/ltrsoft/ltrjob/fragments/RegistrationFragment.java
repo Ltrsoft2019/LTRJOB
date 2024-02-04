@@ -25,6 +25,7 @@ public class RegistrationFragment extends Fragment {
     private EditText createfname,createlmname,createemail,usermobile, password1,conform_password1;
 
     Userclass userclass=new Userclass();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,10 +47,10 @@ public class RegistrationFragment extends Fragment {
 
 
 
-                User user = new User(10,"10",createfname.getText().toString(),createlmname.getText().toString(),createlmname.getText().toString(),createfname.getText().toString()
+                User user = new User("10","10",createfname.getText().toString(),createlmname.getText().toString(),createlmname.getText().toString(),createfname.getText().toString()
                         ,createfname.getText().toString(),"","","","","",""
                         ,"","","","","","","","","",""
-                        ,"","");
+                        ,"");
 
                 User_Deo userDeo = new User_Deo();
             }

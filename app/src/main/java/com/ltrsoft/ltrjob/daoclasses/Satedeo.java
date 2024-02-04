@@ -20,16 +20,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Satedeo {
 
-    String fatchall="";
+    String fatchall="https://rj.ltr-soft.com/public/police_api/state/select_state.php";
     String create="";
     String fach="";
     String update="";
     String delete="";
+    public ArrayList<State>list = new ArrayList<>();
 
     public  void create(State sate, UserCallBack callBack, Context context)
     {
@@ -94,7 +96,7 @@ public class Satedeo {
 
                                 String state_name = jsonObject.getString("state_name");
 
-                                State  salaryDetails1=new State(state_name);
+//                                State  salaryDetails1=new State(state_name);
                             }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -119,7 +121,7 @@ public class Satedeo {
         requestQueue.add(stringRequest);
     }
 
-    public void getallstate(final Context context , State state, UserCallBack
+    public void getallstate(String countyrId, Context context , UserCallBack
             callBack) {
         StringRequest request = new StringRequest(Request.Method.POST, fatchall, new Response.Listener<String>() {
             @Override
@@ -128,18 +130,17 @@ public class Satedeo {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
+                        String state_id = jsonObject.getString("state_id");
                         String state_name = jsonObject.getString("state_name");
-
-                        State  salaryDetails1=new State(state_name);
-
-                        //  miniProject.add(miniProject1);
+                        String country_id = jsonObject.getString("country_id");
+                        list.add(new State(state_name,state_id,country_id));
                     }
 
                 } catch (JSONException e) {
                     callBack.userError(e.toString());
                     e.printStackTrace();
                 }
-                callBack.userSuccess(state);
+                callBack.userSuccess(list);
             }
 
         }, new Response.ErrorListener() {
@@ -149,8 +150,13 @@ public class Satedeo {
                 callBack.userError(error.toString());
             }
         }){
-
-
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> hashMap=new HashMap<>();
+                hashMap.put("country_id",countyrId);
+                return hashMap;
+            }
         };
 
         RequestQueue queue = Volley.newRequestQueue(context);

@@ -1,11 +1,9 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Country {
-    private int id;
     private String country_name,country_id;
 
-    public Country(int id, String country_id, String country_name) {
-        this.id = id;
+    public Country( String country_id, String country_name) {
         this.country_id = country_id;
         this.country_name = country_name;
     }
@@ -15,13 +13,6 @@ public class Country {
 
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCountry_id() {
         return country_id;

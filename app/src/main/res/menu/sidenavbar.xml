@@ -47,7 +47,7 @@
             android:id="@+id/Scheduling"
             android:title="Scheduling" />
         <item
-            android:id="@+id/Resume"
+            android:id="@+id/sidenav_resume"
             android:title="Resume" />
     </group>
 

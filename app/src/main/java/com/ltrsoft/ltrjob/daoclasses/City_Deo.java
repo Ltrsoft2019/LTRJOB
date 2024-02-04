@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Batch;
 import com.ltrsoft.ltrjob.pojoclass.City;
+import com.ltrsoft.ltrjob.pojoclass.District;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,11 +29,11 @@ public class City_Deo {
     private static String Create_URL="";
     private static String Update_URL="";
     private static String Delete_URL="";
-    private static String ReadAll_URL="";
+    private static String ReadAll_URL="https://rj.ltr-soft.com/public/police_api/city/select_city.php";
     City city;
     ArrayList<City> list=new ArrayList<>();
 
-    public void getAllCity(Context context, UserCallBack userCallBack){
+    public void getAllCity(String district_id,Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, ReadAll_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -45,15 +46,15 @@ public class City_Deo {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                                 String city_name = jsonObject.getString("city_name");
-
-                                city =new City(city_name);
-
+                                String city_id = jsonObject.getString("city_id");
+                                String district_id = jsonObject.getString("district_id");
+                                list.add(new City(city_id,district_id,city_name));
                             }
                         } catch (JSONException e) {
                             userCallBack.userError(e.toString());
                             throw new RuntimeException(e);
                         }
-                        userCallBack.userSuccess(city);
+                        userCallBack.userSuccess(list);
 
                     }
                 }, new Response.ErrorListener() {
@@ -66,7 +67,7 @@ public class City_Deo {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> map=new HashMap<>();
-
+                map.put("district_id",district_id);
                 return map;
             }
         };
@@ -87,7 +88,7 @@ public class City_Deo {
 
                                 String city_name = jsonObject.getString("city_name");
 
-                                city =new City(city_name);
+
 
                             }
                         } catch (JSONException e) {
