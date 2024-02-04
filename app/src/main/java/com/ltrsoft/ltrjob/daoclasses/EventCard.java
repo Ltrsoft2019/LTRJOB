@@ -101,7 +101,7 @@ public class EventCard {
 
 
 
-    public  void  getevent( Event_class eventClass, String eventid, Context context, UserCallBack callBack) {
+    public  void  getevent( final Context context , RecyclerView recyclerView, UserCallBack callBack) {
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
@@ -110,21 +110,22 @@ public class EventCard {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                        String id = jsonObject.getString("event_id");
-                        String description=jsonObject.getString("event_description");
+                        String description = jsonObject.getString("event_description");
                         String name = jsonObject.getString("event_name");
                         String guest = jsonObject.getString("event_guest");
                         String venue = jsonObject.getString("event_venue");
                         String date_time = jsonObject.getString("event_date_time");
                         String duration = jsonObject.getString("event_duration");
-                        String path = jsonObject.getString("photo_path");
-                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + path;
+                        String photo_path = jsonObject.getString("photo_path");
 
+                        String imageurl = "https://institute.ltr-soft.com/event_photo/" + photo_path;
                         String[] dateAndTime = date_time.split(" ");
                         String date = dateAndTime[0];
                         String time = dateAndTime[1];
-                        Event_class modelImage = new Event_class( id, name, imageurl, duration, guest, venue, date, time,description, description);
-                        imglist.add(modelImage);
+
+                        Event_class eventClass = new Event_class(name,"",description,guest,venue,date_time,duration,imageurl,description,"");
+//
+                        imglist.add(eventClass);
                     }
 
                 } catch (JSONException e) {
@@ -145,8 +146,8 @@ public class EventCard {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                // Add parameters here, for example, if you want to fetch data for event ID 123
-                hashMap.put("event_id", eventid.toString());
+
+                hashMap.put("event_id","event-1");
 
                 return hashMap;
             }
