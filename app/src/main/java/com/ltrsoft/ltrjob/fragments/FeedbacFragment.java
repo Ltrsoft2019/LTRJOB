@@ -1,25 +1,27 @@
 package com.ltrsoft.ltrjob.fragments;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.fragment.app.Fragment;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Feedback_Deo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Feedback;
+
+import java.util.List;
 
 public class FeedbacFragment extends Fragment {
     private EditText editText1, editText2;
     private Spinner spinner;
 
     public FeedbacFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -28,39 +30,52 @@ public class FeedbacFragment extends Fragment {
 
         editText1 = view.findViewById(R.id.editTextText2);
         editText2 = view.findViewById(R.id.editTextText3);
-
         spinner = view.findViewById(R.id.spinner);
+        Button button = view.findViewById(R.id.button);
 
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        Feedback_Deo feedbackDeo = new Feedback_Deo();
+
+        feedbackDeo.fetchFeedbackCategoryNames(requireContext(), new UserCallBack() {
+            @Override
+            public void userSuccess(Object object) {
+                List<String> feedbackCategories = (List<String>) object;
+
+                ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, feedbackCategories);
+                nameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(nameAdapter);
+            }
+
+            @Override
+            public void userError(String error) {
+                // Handle error
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get data from UI elements
                 String sub = editText1.getText().toString();
                 String des = editText2.getText().toString();
-                String selectedSpinnerItem = spinner.getSelectedItem().toString();
 
+                // Check if the spinner has items
+                if (spinner.getCount() > 0) {
+                    String selectedSpinnerItem = spinner.getSelectedItem().toString();
 
-                Feedback_Deo feedbackDeo = new Feedback_Deo();
+                    feedbackDeo.feedback(des, sub, selectedSpinnerItem, getContext(), new UserCallBack() {
+                        @Override
+                        public void userSuccess(Object response) {
+                            // Handle success
+                        }
 
+                        @Override
+                        public void userError(String error) {
+                            // Handle error
+                        }
+                    });
+                } else {
 
-                feedbackDeo.feedback(des, sub, selectedSpinnerItem, getContext(), new UserCallBack() {
-                    @Override
-                    public void userSuccess(Object response) {
-
-                    }
-
-                    @Override
-                    public void userError(String error) {
-
-                    }
-                });
-
-                // Call the fetchFeedbackCategoryNames method
-                feedbackDeo.fetchFeedbackCategoryNames(getContext());
-
-                ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item);
-                nameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(nameAdapter);
+                }
             }
         });
 
