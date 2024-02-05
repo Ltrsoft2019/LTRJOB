@@ -28,7 +28,9 @@ public class User_Deo {
     public String USER_PROFILE_READ_URL = "";
     public String URL = "";
     public String UpdateUrl="https://job.ltr-soft.com/User_Detail/user_update.php";
-    private static String USERCREATEURL = "https://job.ltr-soft.com/registration.php";
+    private static String USERCREATEURL = "https://job.ltr-soft.com/User_Detail/user_insert.php";
+
+
     public StringBuilder success = new StringBuilder();
     public User user;
     String userid;
@@ -152,7 +154,7 @@ public void getUser(String userid,Context context,UserCallBack callBack){
 //    return user;
 }
 
-public void createUser(User user,Context context , UserCallBack callBack){
+public void createUser(String fname,String lname,String email,String mobile,String pass,Context context , UserCallBack callBack){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USERCREATEURL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -172,13 +174,12 @@ public void createUser(User user,Context context , UserCallBack callBack){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap <String , String>map= new HashMap<>();
-                map.put("user_fname",user.getUser_fname());
-                map.put("user_mname",user.getUser_mname());
-                map.put("user_lname",user.getUser_lname());
-//                map.put("",String.valueOf(user.getUser_email()));
-//                map.put("",String.valueOf(user.getUser_password()));
-//                map.put("",String.valueOf(user.getUser_address()));
-//                map.put("",String.valueOf(user.getUser_smobile()));
+                map.put("user_fname",fname);
+                map.put("user_mname",lname);
+                map.put("user_email",email);
+                map.put("user_smobile ",mobile);
+                map.put("user_password",pass);
+
               return map;
             }
         };
@@ -220,6 +221,7 @@ public void updateUser(User user,String userid,Context context,UserCallBack call
             hashMap.put("user_DOB",user.getUser_DOB());
 //            hashMap.put("user_photo",user.getUser_photo());
             hashMap.put("user_address",user.getUser_address());
+//
 //            hashMap.put("user_city",user.getUser_city());
 //            hashMap.put("user_district",user.getUser_district());
 //            hashMap.put("user_state",user.getUser_state());
