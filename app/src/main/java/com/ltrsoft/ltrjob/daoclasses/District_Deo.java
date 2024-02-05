@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Country;
 import com.ltrsoft.ltrjob.pojoclass.District;
+import com.ltrsoft.ltrjob.pojoclass.State;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,33 +29,30 @@ public class District_Deo {
     private static String Create_URL="";
     private static String Update_URL="";
     private static String Delete_URL="";
-    private static String ReadAll_URL="";
+    private static String ReadAll_URL="https://rj.ltr-soft.com/public/police_api/district/select_district.php";
     District district;
     ArrayList<District> list=new ArrayList<>();
 
-    public void getAllDistrict(Context context, UserCallBack userCallBack){
+    public void getAllDistrict(String state_id,Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, ReadAll_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        System.out.println("response "+response.toString());
                         try {
                             JSONArray jsonArray=new JSONArray(response);
-
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
                                 String district_name = jsonObject.getString("district_name");
-
-                                district =new District(district_name);
-
+                                String district_id = jsonObject.getString("district_id");
+                                String state_id = jsonObject.getString("state_id");
+                                list.add(new District(state_id,district_name,district_id));
                             }
                         } catch (JSONException e) {
                             userCallBack.userError(e.toString());
                             throw new RuntimeException(e);
                         }
-                        userCallBack.userSuccess(context);
-
+                        userCallBack.userSuccess(list);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -66,7 +64,7 @@ public class District_Deo {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> map=new HashMap<>();
-
+                map.put("state_id", state_id);
                 return map;
             }
         };
@@ -87,7 +85,7 @@ public class District_Deo {
 
                                 String district_name = jsonObject.getString("district_name");
 
-                                district =new District(district_name);
+
 
                             }
                         } catch (JSONException e) {

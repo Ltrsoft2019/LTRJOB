@@ -29,7 +29,7 @@ public class Country_Deo {
     private static String Create_URL="";
     private static String Update_URL="";
     private static String Delete_URL="";
-    private static String ReadAll_URL="";
+    private static String ReadAll_URL="https://rj.ltr-soft.com/public/police_api/country/select_country.php";
     Country country;
     ArrayList<Country> list=new ArrayList<>();
 
@@ -46,15 +46,15 @@ public class Country_Deo {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                                 String country_name = jsonObject.getString("country_name");
-
-                                country =new Country(country_name);
-
+                                String country_id = jsonObject.getString("country_id");
+                                country =new Country(country_id,country_name);
+                                list.add(country);
                             }
                         } catch (JSONException e) {
                             userCallBack.userError(e.toString());
                             throw new RuntimeException(e);
                         }
-                        userCallBack.userSuccess(context);
+                        userCallBack.userSuccess(list);
 
                     }
                 }, new Response.ErrorListener() {

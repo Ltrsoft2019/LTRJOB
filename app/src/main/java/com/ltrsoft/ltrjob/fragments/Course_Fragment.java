@@ -9,53 +9,55 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.ltrsoft.ltrjob.Adpter.CourseCardAdapter;
-
+import com.ltrsoft.ltrjob.Adpter.Course_Adapter;
+import com.ltrsoft.ltrjob.Adpter.EventCardAdapter;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Cources_Deo;
-
+import com.ltrsoft.ltrjob.daoclasses.EventCard;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 
 import com.ltrsoft.ltrjob.pojoclass.Course_Class;
-
+import com.ltrsoft.ltrjob.pojoclass.Event_class;
 
 import java.util.ArrayList;
 
-
-public class CourceFragment extends Fragment {
-
-    public CourceFragment() {
-
+public class Course_Fragment extends Fragment {
+    RecyclerView recyclerView;
+    private SearchView searchView;
+    public Course_Fragment() {
+        // Required empty public constructor
     }
 
-    private RecyclerView recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cource, container, false);
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_course, container, false);
 
+        recyclerView=view.findViewById(R.id.recycleview);
 
-        recyclerView = view.findViewById(R.id.fragment_recycler_courses);
-
-
-
-        Cources_Deo  eventCard = new Cources_Deo();
+        Cources_Deo eventCard=new Cources_Deo();
         eventCard.fetchCources(requireContext(), recyclerView, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
-                ArrayList<Course_Class> list = (ArrayList<Course_Class>) object;
+                ArrayList<Course_Class> list = (ArrayList<Course_Class>)object;
+
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                CourseCardAdapter adapter = new CourseCardAdapter(list);
+                Course_Adapter adapter = new Course_Adapter(list);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
+
+
             }
-            @Override
-            public void userError(String error) {
-                Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-            }
-        });
+        @Override
+        public void userError(String error) {
+            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+
+        }
+    });
         return view;
     }
 }

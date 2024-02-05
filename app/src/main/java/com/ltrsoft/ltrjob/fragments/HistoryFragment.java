@@ -19,7 +19,8 @@ import com.ltrsoft.ltrjob.Adpter.EventCardAdapter;
 import com.ltrsoft.ltrjob.Adpter.EventHistoryAdapter;
 import com.ltrsoft.ltrjob.Adpter.JobHistoryAdapter;
 import com.ltrsoft.ltrjob.R;
-import com.ltrsoft.ltrjob.daoclasses.Cources;
+
+import com.ltrsoft.ltrjob.daoclasses.Cources_Deo;
 import com.ltrsoft.ltrjob.daoclasses.EventCard;
 import com.ltrsoft.ltrjob.daoclasses.JobDashboard;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
@@ -76,7 +77,7 @@ public class HistoryFragment extends Fragment {
         course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cources courses = new Cources();
+                Cources_Deo courses = new Cources_Deo();
                 courses.getcorces(requireContext() , recyclerView, new UserCallBack() {
                     @Override
                     public void userSuccess(Object object) {
