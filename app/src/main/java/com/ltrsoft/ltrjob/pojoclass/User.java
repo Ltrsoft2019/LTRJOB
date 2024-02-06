@@ -31,6 +31,10 @@ public class User {
         this.user_marital_status = user_marital_status;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -67,24 +71,27 @@ public class User {
         return user_lname;
     }
 
-    public void setUser_lname(String user_lname) {
+    public String setUser_lname(String user_lname) {
         this.user_lname = user_lname;
+        return user_lname;
     }
 
     public String getUser_email() {
         return user_email;
     }
 
-    public void setUser_email(String user_email) {
+    public String setUser_email(String user_email) {
         this.user_email = user_email;
+        return user_email;
     }
 
     public String getUser_smobile() {
         return user_smobile;
     }
 
-    public void setUser_smobile(String user_smobile) {
+    public String setUser_smobile(String user_smobile) {
         this.user_smobile = user_smobile;
+        return user_smobile;
     }
 
     public String getUser_pmobile() {
@@ -211,8 +218,9 @@ public class User {
         return user_password;
     }
 
-    public void setUser_password(String user_password) {
+    public String setUser_password(String user_password) {
         this.user_password = user_password;
+        return user_password;
     }
 
     public String getUser_carier_objective() {

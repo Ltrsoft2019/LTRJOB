@@ -1,5 +1,7 @@
 package com.ltrsoft.ltrjob.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,7 +58,11 @@ public class LoginFragment extends Fragment {
                     login.login(email, password, getContext(), new UserCallBack() {
                         @Override
                         public void userSuccess(Object object) {
+
                             getFragmentManager().beginTransaction().replace(R.id.constraint, new NavigationDrawerFragment()).addToBackStack(null).commit();
+                            SharedPreferences preferences=getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=preferences.edit();
+                            editor.putBoolean("flag",false).apply();
                         }
 
                         @Override
@@ -81,11 +87,10 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
 
                 RegistrationFragment registrationFragment =new RegistrationFragment();
-                getFragmentManager().beginTransaction().replace(R.id.constraint, registrationFragment).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.constraint,RegistrationFragment).addToBackStack(null).commit();
 
 
             }
-
         });
 
         forgot.setOnClickListener(new View.OnClickListener() {

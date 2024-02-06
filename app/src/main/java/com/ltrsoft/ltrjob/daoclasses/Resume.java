@@ -14,6 +14,7 @@ import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Award;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
 import com.ltrsoft.ltrjob.pojoclass.User;
+import com.ltrsoft.ltrjob.pojoclass.Userclass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,12 +57,12 @@ public class Resume {
                             String user_github_id = jsonObject.getString("user_github_id");
                             String user_carier_objective = jsonObject.getString("user_carier_objective");
 
-                                User user = new User(user_id,user_fname,user_mname,user_lname,user_email,user_smobile
-                                ,"",user_gender,"",user_photo,user_address,city_name,district_name,state_name
-                                ,country_name,user_collegename,"","",user_linkedin_id,user_github_id,"","" ,
-                                        user_carier_objective);
+//                                Userclass user = new Userclass(user_id,user_fname,user_mname,user_lname,user_email,user_smobile
+//                                ,"",user_gender,"",user_photo,user_address,city_name,district_name,state_name
+//                                ,country_name,user_collegename,"","",user_linkedin_id,user_github_id,"","" ,
+//                                        user_carier_objective);
 
-                                objects[0]=user;
+                              //  objects[0]=user;
 
                             JSONArray jsonArray = jsonObject.getJSONArray("awards");
                             for (int i = 0; i <jsonArray.length() ; i++) {
