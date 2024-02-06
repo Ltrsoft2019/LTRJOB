@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -38,6 +40,7 @@ import com.ltrsoft.ltrjob.pojoclass.User;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class profile_1 extends Fragment {
 
@@ -103,7 +106,7 @@ public class profile_1 extends Fragment {
         maritalS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedMaritalStatus = maritalStatusOptions[position];
+                 selectedMaritalStatus = maritalStatusOptions[position];
             }
 
             @Override
@@ -186,11 +189,13 @@ public class profile_1 extends Fragment {
                     selectedGender = "Female";
                 }
 
-                User user = new User("10", name.getText().toString(), selectedGender, "", email.getText().toString(),
+                User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
                         phone.getText().toString(), "", "", dob.getText().toString(), "", address.getText().toString(),
                         "", "", "", "", "", adhar.getText().toString(), "",
-                        "", "", "", "", "");
-                userDeo.updateUser(user, "10", getContext(), new UserCallBack() {
+                        "", "", "", "", "", selectedMaritalStatus);
+
+                Toast.makeText(getContext(), ""+selectedMaritalStatus, Toast.LENGTH_SHORT).show();
+                userDeo.createUser(user, getContext(), new UserCallBack() {
                     @Override
                     public void userSuccess(Object object) {
                         Toast.makeText(getActivity(), "" + object, Toast.LENGTH_SHORT).show();
@@ -201,6 +206,7 @@ public class profile_1 extends Fragment {
                         Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
                     }
                 });
+                getFragmentManager().beginTransaction().replace(R.id.container, new Profile_Edu_2()).addToBackStack(null).commit();
 
 
             }

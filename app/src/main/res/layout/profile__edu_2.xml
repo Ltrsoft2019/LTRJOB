@@ -14,28 +14,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/download"
-        android:layout_width="43dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="45dp"
-        app:srcCompat="@drawable/back"
-        />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skip"
-        android:layout_marginTop="-70dp"
-        android:layout_marginLeft="330dp"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        android:textColor="#18613E" />
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="345dp"
@@ -99,27 +77,34 @@
         android:hint="School Name"
         android:textSize="14dp"/>
 
-    <EditText
-        android:id="@+id/select_10th_board"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:background="@drawable/square"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:autofillHints="Select 10th Board"
-        android:textSize="14dp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Spinner
+        <TextView
+            android:id="@+id/passing_txt"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:background="@drawable/square"
+            android:padding="12dp"
+            android:hint="Passing Year"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="14dp"/>
+
+    <NumberPicker
         android:id="@+id/passing_year"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
         android:background="@drawable/square"
         android:autofillHints="Passing Year"
-        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:inputType="text"
+        android:layout_marginLeft="5dp"
         android:textSize="14dp"/>
+
+        </LinearLayout>
 
     <EditText
         android:id="@+id/percentage10th"
@@ -131,12 +116,12 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:inputType="number"
-        android:maxLength="4"
+        android:maxLength="5"
         android:digits="0123456789."
         android:textSize="14dp"/>
 
     <TextView
-        android:id="@+id/more"
+        android:id="@+id/add1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add More +"
@@ -155,7 +140,7 @@
         android:layout_marginLeft="35dp"/>
 
     <EditText
-        android:id="@+id/college"
+        android:id="@+id/college_name"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:background="@drawable/square"
@@ -167,38 +152,35 @@
         android:hint="College Name"
         android:textSize="14dp"/>
 
-        <Spinner
-            android:id="@+id/select_field"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:background="@drawable/square"
-            android:autofillHints="Select Field"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:textSize="14dp"/>
 
-        <Spinner
-            android:id="@+id/select_12th_board"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:background="@drawable/square"
-            android:autofillHints="Passing Year"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:textSize="14dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/college_passing_year"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:background="@drawable/square"
-            android:autofillHints="College Passing Year"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:textSize="14dp"/>
+            <TextView
+                android:id="@+id/passing_txt_12th"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:background="@drawable/square"
+                android:padding="12dp"
+                android:hint="Passing Year"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="14dp"/>
+
+            <NumberPicker
+                android:id="@+id/passing_year_12th"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/square"
+                android:autofillHints="Passing Year"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="14dp"/>
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/percentage12th"
@@ -216,7 +198,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/add"
+            android:id="@+id/add2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add More +"
@@ -258,19 +240,37 @@
             android:autofillHints="Select Degree"
             android:textSize="14dp"/>
 
-        <Spinner
-            android:id="@+id/dpassing_year"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:background="@drawable/square"
-            android:autofillHints="Passing Year"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
-            android:textSize="14dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/passing_txt_degree"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:background="@drawable/square"
+                android:padding="12dp"
+                android:hint="Passing Year"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="14dp"/>
+
+            <NumberPicker
+                android:id="@+id/passing_year_degree"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/square"
+                android:autofillHints="Passing Year"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="14dp"/>
+
+        </LinearLayout>
+
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/degree_percentage"
             android:layout_width="300dp"
             android:layout_height="45dp"
             android:background="@drawable/square"

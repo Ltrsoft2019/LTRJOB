@@ -1,6 +1,7 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -29,8 +30,6 @@ public class User_Deo {
     public String URL = "";
     public String UpdateUrl="https://job.ltr-soft.com/User_Detail/user_update.php";
     private static String USERCREATEURL = "https://job.ltr-soft.com/User_Detail/user_insert.php";
-
-
     public StringBuilder success = new StringBuilder();
     public User user;
     String userid;
@@ -129,7 +128,7 @@ public void getUser(String userid,Context context,UserCallBack callBack){
                             user=new User( user_fname,user_mname,user_lname,user_email,user_smobile,
                                 user_pmobile,user_gender,user_DOB,user_photo,user_address,user_city,user_district,
                                 user_state,user_country,user_collegename,user_adhar,user_pan, user_linkedin_id,
-                                user_github_id,user_username,user_carier_objective,user_marital_status,user_carier_objective);
+                                user_github_id,user_username,user_carier_objective,user_marital_status,user_carier_objective,user_marital_status);
                             }
                         } catch (JSONException e) {
                             callBack.userError(e.toString());
@@ -154,17 +153,20 @@ public void getUser(String userid,Context context,UserCallBack callBack){
 //    return user;
 }
 
-public void createUser(String fname,String lname,String email,String mobile,String pass,Context context , UserCallBack callBack){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, USERCREATEURL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.contains("success")) {
-                    callBack.userSuccess("success");
-                } else {
-                  callBack.userError(response.toString());
-                }
-            }
-        }, new Response.ErrorListener() {
+    public void createUser(User user,Context context,UserCallBack callBack){
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, USERCREATEURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.contains("success")) {
+                            callBack.userSuccess("success");
+                        } else {
+                            callBack.userError(response.toString());
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 callBack.userError(error.toString());
@@ -173,19 +175,38 @@ public void createUser(String fname,String lname,String email,String mobile,Stri
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap <String , String>map= new HashMap<>();
-                map.put("user_fname",fname);
-                map.put("user_mname",lname);
-                map.put("user_email",email);
-                map.put("user_smobile ",mobile);
-                map.put("user_password",pass);
+                HashMap<String,String> hashMap=new HashMap<>();
+                hashMap.put("user_fname",user.getUser_fname());
+            hashMap.put("user_mname",user.getUser_mname());
+            hashMap.put("user_lname",user.getUser_lname());
+                hashMap.put("user_email",user.getUser_email());
+                hashMap.put("user_smobile",user.getUser_smobile());
+            hashMap.put("user_pmobile",user.getUser_pmobile());
+                hashMap.put("user_gender",user.getUser_gender());
+                hashMap.put("user_DOB",user.getUser_DOB());
+            hashMap.put("user_photo",user.getUser_photo());
+                hashMap.put("user_address",user.getUser_address());
+            hashMap.put("user_city",user.getUser_city());
+            hashMap.put("user_district",user.getUser_district());
+            hashMap.put("user_state",user.getUser_state());
+            hashMap.put("user_country",user.getUser_country());
+            hashMap.put("user_collegename",user.getUser_collegename());
+                hashMap.put("user_adhar",user.getUser_adhar());
+            hashMap.put("user_pan",user.getUser_pan());
+            hashMap.put("user_linkedin_id",user.getUser_linkedin_id());
+            hashMap.put("user_github_id",user.getUser_github_id());
+            hashMap.put("user_username",user.getUser_username());
+            hashMap.put("user_password",user.getUser_password());
+            hashMap.put("user_carier_objective",user.getUser_carier_objective());
+            hashMap.put("user_marital_status",user.getUser_marital_status());
 
-              return map;
+                return hashMap;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-}
+    }
+
 
 public void updateUser(User user,String userid,Context context,UserCallBack callBack){
     StringRequest stringRequest= new StringRequest(Request.Method.POST, UpdateUrl,
@@ -210,31 +231,30 @@ public void updateUser(User user,String userid,Context context,UserCallBack call
         @Override
         protected Map<String, String> getParams() throws AuthFailureError {
             HashMap<String,String> hashMap=new HashMap<>();
-            hashMap.put("user_id",userid);
+//            hashMap.put("user_id",userid);
             hashMap.put("user_fname",user.getUser_lname());
-//            hashMap.put("user_mname",user.getUser_mname());
-//            hashMap.put("user_lname",user.getUser_lname());
+            hashMap.put("user_mname",user.getUser_mname());
+            hashMap.put("user_lname",user.getUser_lname());
             hashMap.put("user_email",user.getUser_email());
             hashMap.put("user_smobile",user.getUser_smobile());
-//            hashMap.put("user_pmobile",user.getUser_pmobile());
+            hashMap.put("user_pmobile",user.getUser_pmobile());
             hashMap.put("user_gender",user.getUser_gender());
             hashMap.put("user_DOB",user.getUser_DOB());
-//            hashMap.put("user_photo",user.getUser_photo());
+            hashMap.put("user_photo",user.getUser_photo());
             hashMap.put("user_address",user.getUser_address());
-//
-//            hashMap.put("user_city",user.getUser_city());
-//            hashMap.put("user_district",user.getUser_district());
-//            hashMap.put("user_state",user.getUser_state());
-//            hashMap.put("user_country",user.getUser_country());
-//            hashMap.put("user_collegename",user.getUser_collegename());
+            hashMap.put("user_city",user.getUser_city());
+            hashMap.put("user_district",user.getUser_district());
+            hashMap.put("user_state",user.getUser_state());
+            hashMap.put("user_country",user.getUser_country());
+            hashMap.put("user_collegename",user.getUser_collegename());
             hashMap.put("user_adhar",user.getUser_adhar());
-//            hashMap.put("user_pan",user.getUser_pan());
-//            hashMap.put("user_linkedin_id",user.getUser_linkedin_id());
-//            hashMap.put("user_github_id",user.getUser_github_id());
-//            hashMap.put("user_username",user.getUser_username());
-//            hashMap.put("user_password",user.getUser_password());
-//            hashMap.put("user_carier_objective",user.getUser_carier_objective());
-//            hashMap.put("user_marital_status",user.getUser_marital_status());
+            hashMap.put("user_pan",user.getUser_pan());
+            hashMap.put("user_linkedin_id",user.getUser_linkedin_id());
+            hashMap.put("user_github_id",user.getUser_github_id());
+            hashMap.put("user_username",user.getUser_username());
+            hashMap.put("user_password",user.getUser_password());
+            hashMap.put("user_carier_objective",user.getUser_carier_objective());
+            hashMap.put("user_marital_status",user.getUser_marital_status());
 
             return hashMap;
         }

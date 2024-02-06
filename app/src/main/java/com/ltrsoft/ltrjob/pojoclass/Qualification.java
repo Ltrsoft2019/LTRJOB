@@ -1,53 +1,49 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Qualification {
-    private int id,qualification_id,user_id,qualification_level_id;
+    private String id,qualification_id,user_id,qualification_level_id;
     private String qualification_school_college,qualification_passing_year,qualification_percentage_cgpa;
 
-    public Qualification(int id, int qualification_id, int user_id, int qualification_level_id, String qualification_school_college, String qualification_passing_year, String qualification_percentage_cgpa) {
-        this.id = id;
+    public Qualification(String qualification_id, String user_id, String qualification_level_id,
+                         String qualification_school_college, String qualification_passing_year,
+                         String qualification_percentage_cgpa) {
         this.qualification_id = qualification_id;
         this.user_id = user_id;
-
+        this.qualification_level_id = qualification_level_id;
+        this.qualification_school_college = qualification_school_college;
+        this.qualification_passing_year = qualification_passing_year;
+        this.qualification_percentage_cgpa = qualification_percentage_cgpa;
     }
 
-    public Qualification(int qualificationLevelId, String qualificationSchoolCollege, String qualificationPassingYear, String qualificationPercentageCgpa) {
-
-        this.qualification_level_id = qualificationLevelId;
-        this.qualification_school_college = qualificationSchoolCollege;
-        this.qualification_passing_year = qualificationPassingYear;
-        this.qualification_percentage_cgpa = qualificationPercentageCgpa;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getQualification_id() {
+    public String getQualification_id() {
         return qualification_id;
     }
 
-    public void setQualification_id(int qualification_id) {
+    public void setQualification_id(String qualification_id) {
         this.qualification_id = qualification_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
-    public int getQualification_level_id() {
+    public String getQualification_level_id() {
         return qualification_level_id;
     }
 
-    public void setQualification_level_id(int qualification_level_id) {
+    public void setQualification_level_id(String qualification_level_id) {
         this.qualification_level_id = qualification_level_id;
     }
 
