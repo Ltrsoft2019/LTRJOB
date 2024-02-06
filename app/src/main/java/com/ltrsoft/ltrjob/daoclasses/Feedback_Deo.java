@@ -262,6 +262,10 @@ public class Feedback_Deo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("user_id", "user-17");
+                params.put("feedback_subject",sub);
+                params.put("feedback_description",des);
+                params.put("feedback_category_name",cname);
+                params.put("feedback_category_id","feedback_cat-1");
                 // Add other parameters
                 return params;
             }
@@ -271,32 +275,42 @@ public class Feedback_Deo {
         requestQueue.add(insertRequest);
     }
 
-    public void fetchFeedbackCategoryNames(Context context) {
+    public void fetchFeedbackCategoryNames(Context context, UserCallBack callBack) {
         String url = "https://job.ltr-soft.com/feedback/feedback_read.php";
+
         StringRequest request = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    Log.d("Server Response", response);
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Server Response", response);
 
-                    try {
-                        JSONArray jsonArray = new JSONArray(response);
-                        List<String> feedbackCategories = new ArrayList<>();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            List<String> feedbackCategories = new ArrayList<>();
 
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            String name = jsonObject.getString("feedback_category_name");
-                            feedbackCategories.add(name);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String name = jsonObject.getString("feedback_category_name");
+                                feedbackCategories.add(name);
+                            }
+
+                            // Handle your feedbackCategories data as needed
+                            callBack.userSuccess(feedbackCategories);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context, "Error parsing JSON", Toast.LENGTH_SHORT).show();
+                            callBack.userError("Error parsing JSON");
                         }
-
-                        // Handle your feedbackCategories data as needed
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(context, "Error parsing JSON", Toast.LENGTH_SHORT).show();
                     }
                 },
-                error -> {
-                    Log.e("Volley Error", "Error: " + error.getMessage());
-                    Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Volley Error", "Error: " + error.getMessage());
+                        Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
+                        callBack.userError("Error fetching data");
+                    }
                 });
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
