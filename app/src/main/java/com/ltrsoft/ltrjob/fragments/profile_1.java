@@ -106,7 +106,7 @@ public class profile_1 extends Fragment {
         maritalS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedMaritalStatus = maritalStatusOptions[position];
+                 selectedMaritalStatus = maritalStatusOptions[position];
             }
 
             @Override
@@ -189,11 +189,13 @@ public class profile_1 extends Fragment {
                     selectedGender = "Female";
                 }
 
-                User user = new User("10", name.getText().toString(), selectedGender, "", email.getText().toString(),
+                User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
                         phone.getText().toString(), "", "", dob.getText().toString(), "", address.getText().toString(),
                         "", "", "", "", "", adhar.getText().toString(), "",
                         "", "", "", "", "", selectedMaritalStatus);
-                userDeo.updateUser(user, "10", getContext(), new UserCallBack() {
+
+                Toast.makeText(getContext(), ""+selectedMaritalStatus, Toast.LENGTH_SHORT).show();
+                userDeo.createUser(user, getContext(), new UserCallBack() {
                     @Override
                     public void userSuccess(Object object) {
                         Toast.makeText(getActivity(), "" + object, Toast.LENGTH_SHORT).show();

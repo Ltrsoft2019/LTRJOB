@@ -230,4 +230,5 @@ public class User {
     public void setUser_marital_status(String user_marital_status) {
         this.user_marital_status = user_marital_status;
     }
+
 }

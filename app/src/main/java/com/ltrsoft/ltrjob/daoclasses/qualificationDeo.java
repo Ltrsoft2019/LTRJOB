@@ -12,7 +12,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Mini_Project;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Qualification_Level;
 
@@ -24,45 +23,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class qualificationDeo {
-
-
     String fatchall="";
-    String create="";
+    String create="http://job.ltr-soft.com/Qualification/qulification_insert.php";
     String fach="";
     String update="";
     String delete="";
-
-    public  void create(Qualification qualification, String qulificationid,UserCallBack callBack, Context context, String user_id, String qualification_level_id,String qualification_school_college,String qualification_passing_year,String qualification_percentage_cgpa)
+    String qname,qyear,qcgpa;
+    public  void create(Qualification qualification, Context context, String user_id,
+                        UserCallBack userCallBack)
     {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, create,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String msg = jsonObject.getString("Message");
-                            if (msg.equals("100")) {
-                                callBack.userSuccess(msg);
-
-                            } else if (msg=="200") {
-                                callBack.userError("created");
-
-                            } else if (msg=="300") {
-                                callBack.userError("created Failed");
+                            if (response.contains("success")) {
+                                userCallBack.userSuccess("success");
+                            } else {
+                                userCallBack.userError(response.toString());
                             }
-                        } catch (JSONException e) {
-                            callBack.userError(e.toString());
-                            throw new RuntimeException(e);
-
                         }
-
-//
-                    }
+                        
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                callBack.userError(error.toString());
+                userCallBack.userError(error.toString());
             }
         }){
             @Nullable
@@ -70,12 +55,13 @@ public class qualificationDeo {
 
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
                params.put("qualification_school_college" ,qualification.getQualification_school_college());
                params.put("qualification_passing_year",qualification.getQualification_passing_year());
                params.put("qualification_percentage_cgpa",qualification.getQualification_percentage_cgpa());
 
-                params.put("user_id",user_id);
-                params.put("qualification_level_id",qulificationid.toString());
+                params.put("user_id","user-17");
+                params.put("qualification_level_id","qua_level-1");
 
               //  params.put("qualification_level_id",qualification.getQualification_id());
 
@@ -99,12 +85,12 @@ public class qualificationDeo {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                int   qualification_level_id= Integer.parseInt(jsonObject.getString("qualification_level_id"));
-                               String qualification_school_college =jsonObject.getString("qualification_school_college");
+                                String qualification_level_id = jsonObject.getString("qualification_level_id");
+                                String qualification_school_college =jsonObject.getString("qualification_school_college");
                                String qualification_passing_year=jsonObject.getString("qualification_passing_year");
                                String qualification_percentage_cgpa=jsonObject.getString("qualification_percentage_cgpa");
 
-                                Qualification qualification1 = new Qualification(qualification_level_id, qualification_school_college, qualification_passing_year, qualification_percentage_cgpa);
+                                Qualification qualification1 = new Qualification("","",qualification_level_id, qualification_school_college, qualification_passing_year, qualification_percentage_cgpa);
 
 
                             }
@@ -145,12 +131,12 @@ public class qualificationDeo {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
-                        int   qualification_level_id= Integer.parseInt(jsonObject.getString("qualification_level_id"));
+                        String qualification_level_id = jsonObject.getString("qualification_level_id");
                         String qualification_school_college =jsonObject.getString("qualification_school_college");
                         String qualification_passing_year=jsonObject.getString("qualification_passing_year");
                         String qualification_percentage_cgpa=jsonObject.getString("qualification_percentage_cgpa");
 
-                        Qualification qualification1 = new Qualification(qualification_level_id, qualification_school_college, qualification_passing_year, qualification_percentage_cgpa);
+                        Qualification qualification1 = new Qualification("","",qualification_level_id, qualification_school_college, qualification_passing_year, qualification_percentage_cgpa);
 
 
                         //  miniProject.add(miniProject1);

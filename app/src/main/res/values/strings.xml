@@ -6,4 +6,22 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="Description">Web development is the work involved
+        in developing a website for the Internet or an intranet.
+        Web development can range from developing a simple single
+        static page of plain text to complex web applications,
+        electronic businesses, and social network services.</string>
+
+    <string name="ComDescription">Wipro is an Indian multinational corporation that provides
+        information technology, consultant and business process services. It is one of the
+        leading Big Tech companies.Wipros capabilities range across cloud computing,
+        computer security, digital transformation,
+        artificial intelligence, robotics, data analytics, and other technology.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Locatoin">Wipro Enterprises (P) Ltd. Wipro House, No. 8, 7th Main 80 Feet Road, Koramangala,
+        Ist Block Bangalore-560034 Karnataka, India</string>
+
+
 </resources>
