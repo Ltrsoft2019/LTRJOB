@@ -87,7 +87,7 @@ public class Profile_3 extends Fragment {
                     User user =new User("10","","","","","","",
                             "","",selectedImageUri.toString(),"","","","","",
                             "","","","","","","",
-                            "","");
+                            "");
 
                     userDeo.createUser(user,getContext(), new UserCallBack() {
                         @Override

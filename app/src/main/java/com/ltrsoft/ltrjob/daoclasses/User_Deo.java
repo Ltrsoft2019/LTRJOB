@@ -1,7 +1,6 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -128,7 +127,7 @@ public void getUser(String userid,Context context,UserCallBack callBack){
                             user=new User( user_fname,user_mname,user_lname,user_email,user_smobile,
                                 user_pmobile,user_gender,user_DOB,user_photo,user_address,user_city,user_district,
                                 user_state,user_country,user_collegename,user_adhar,user_pan, user_linkedin_id,
-                                user_github_id,user_username,user_carier_objective,user_marital_status,user_carier_objective,user_marital_status);
+                                user_github_id,user_username,user_carier_objective,user_marital_status,user_carier_objective);
                             }
                         } catch (JSONException e) {
                             callBack.userError(e.toString());

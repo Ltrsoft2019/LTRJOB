@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
 
                 RegistrationFragment registrationFragment =new RegistrationFragment();
-                getFragmentManager().beginTransaction().replace(R.id.constraint,RegistrationFragment).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.constraint,registrationFragment).addToBackStack(null).commit();
 
 
             }

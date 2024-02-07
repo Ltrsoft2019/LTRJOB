@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.android.volley.AuthFailureError;
@@ -23,7 +24,7 @@ import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login {
+public class Login extends Fragment {
     private static final String BASE_URL = "https://job.ltr-soft.com/login1.php";
     private static final String PREF_NAME = "user_session";
     private static final String KEY_EMAIL = "email";

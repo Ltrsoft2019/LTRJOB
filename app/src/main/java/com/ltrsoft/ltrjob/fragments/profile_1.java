@@ -4,8 +4,6 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,7 +38,6 @@ import com.ltrsoft.ltrjob.pojoclass.User;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 public class profile_1 extends Fragment {
 
@@ -192,7 +189,7 @@ public class profile_1 extends Fragment {
                 User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
                         phone.getText().toString(), "", "", dob.getText().toString(), "", address.getText().toString(),
                         "", "", "", "", "", adhar.getText().toString(), "",
-                        "", "", "", "", "", selectedMaritalStatus);
+                        "", "", "", "", "");
 
                 Toast.makeText(getContext(), ""+selectedMaritalStatus, Toast.LENGTH_SHORT).show();
                 userDeo.createUser(user, getContext(), new UserCallBack() {

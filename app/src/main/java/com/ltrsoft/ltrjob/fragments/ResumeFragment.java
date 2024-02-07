@@ -49,18 +49,18 @@ public class ResumeFragment extends Fragment {
                 for (int i = 0; i <awards.size() ; i++) {
                     Award award = awards.get(i);
                     textViewResume2.setText(award.getAward_name()+award.getAward_date_recieved());
+
                 }
-                //set award class here
 
                 certifications = (ArrayList<Certification>) object[2];
                 for (int i = 0; i <certifications.size() ; i++) {
                    Certification certification = certifications.get(i);
                     textViewResume3.setText(certification.getCertification_title());
                 }
-                //set certification detail
 
 
-                //so cast your other class Arralist details like this
+
+
             }
             @Override
             public void userError(String error) {
