@@ -136,7 +136,6 @@ params.put("user_id",userid.toString());
                         String certification_year = jsonObject.getString("certification_year");
                         String certification_from = jsonObject.getString("certification_from");
                         String certification_number = jsonObject.getString("certification_number");
-                        Toast.makeText(context, ""+certification_title.toString(), Toast.LENGTH_SHORT).show();
                         Certification certification1 = new Certification(certification_id, certification_title, certification_year, certification_from, certification_number);
                         certifications.add(certification1);
                     }

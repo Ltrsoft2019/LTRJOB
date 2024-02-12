@@ -17,11 +17,13 @@ import com.ltrsoft.ltrjob.Adpter.ProjectAdapter;
 import com.ltrsoft.ltrjob.Adpter.QualificationAdpter;
 import com.ltrsoft.ltrjob.Adpter.TechnicalSkillAdapter;
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.daoclasses.Award_Deo;
 import com.ltrsoft.ltrjob.daoclasses.Certificationdeo;
 import com.ltrsoft.ltrjob.daoclasses.qualificationDeo;
 import com.ltrsoft.ltrjob.daoclasses.technical_skilldeo;
 import com.ltrsoft.ltrjob.daoclasses.user_projectDeo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
+import com.ltrsoft.ltrjob.pojoclass.Award;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
 import com.ltrsoft.ltrjob.pojoclass.Project;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
@@ -30,7 +32,7 @@ import com.ltrsoft.ltrjob.pojoclass.Technical_Skill;
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
-    private RecyclerView skills, education, certification,project;
+    private RecyclerView skills, education, certification,project,recognization;
 
     public ProfileFragment() {
 
@@ -40,6 +42,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+       recognization=view.findViewById(R.id.recognization);
         skills = view.findViewById(R.id.skill);
         education = view.findViewById(R.id.qualification);
         certification = view.findViewById(R.id.project);
@@ -51,7 +54,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Technical_Skill> list = (ArrayList<Technical_Skill>) object;
-                Toast.makeText(getContext(), "skill " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 TechnicalSkillAdapter adapter = new TechnicalSkillAdapter(list);
                 skills.setLayoutManager(layoutManager);
@@ -86,6 +88,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
+
         Certificationdeo certificationdeo = new Certificationdeo();
         certificationdeo.getuser(requireContext(), certification, new UserCallBack() {
             @Override
@@ -107,16 +110,19 @@ public class ProfileFragment extends Fragment {
 
 
 
-        user_projectDeo certificationdeo1 = new user_projectDeo();
-        certificationdeo1.getalluserproject(requireContext(), project, new UserCallBack() {
-            @Override
+
+        user_projectDeo userProjectDeo = new user_projectDeo();
+        userProjectDeo.getalluserproject(requireContext(), project, new UserCallBack() {
+
+
             public void userSuccess(Object object) {
-                ArrayList<Project> list = (ArrayList<Project>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
+                ArrayList<Project> projectArrayList = (ArrayList<Project>) object;
+
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                ProjectAdapter adapter = new ProjectAdapter(list);
+                ProjectAdapter adapter = new ProjectAdapter(projectArrayList);
                 project.setLayoutManager(layoutManager);
                 project.setAdapter(adapter);
+
             }
 
             @Override
@@ -128,10 +134,22 @@ public class ProfileFragment extends Fragment {
 
 
 
+        Award_Deo awardDeo = new Award_Deo();
+        awardDeo.getalluserAward(requireContext(), recognization,new UserCallBack() {
+            public void userSuccess(Object object) {
+                ArrayList<Award> awards = (ArrayList<Award>) object;
 
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                ProjectAdapter adapter = new ProjectAdapter(awards);
+                recognization.setLayoutManager(layoutManager);
+                recognization.setAdapter(adapter);
+            }
 
-
-
+            @Override
+            public void userError(String error) {
+                Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
