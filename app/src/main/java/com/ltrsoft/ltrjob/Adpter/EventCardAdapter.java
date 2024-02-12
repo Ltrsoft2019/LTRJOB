@@ -26,6 +26,7 @@ import java.util.List;
 
 public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.ImageViewholder> {
     private Context context;
+
     private List<Event_class> imageList;
 
     public EventCardAdapter(List<Event_class> imageList) {
@@ -50,11 +51,14 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
 
 
         holder.name.setText(model.getEvent_name());
+        Toast.makeText(context, ""+model.getEvent_name().toString(), Toast.LENGTH_SHORT).show();
 
 //        System.out.println(model.getName());
         holder.vanue.setText(model.getEvent_venue());
         holder.date.setText(model.getEvent_date_time());
         holder.duration.setText(model.getEvent_duration());
+
+
 //                .load("https://institute.ltr-soft.com/event_photo/inputfiles/vector-contact-us-background.jpg")
 
         String Photo_path = model.getPhoto_path();
@@ -66,11 +70,12 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
                     @Override
                     public void onSuccess() {
 
+
                     }
 
                     @Override
                     public void onError(Exception e) {
-//                        System.out.println("error while loading image "+e.toString());
+                        System.out.println("error while loading image "+e.toString());
                     }
                 });
 

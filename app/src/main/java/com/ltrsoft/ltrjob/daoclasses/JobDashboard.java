@@ -76,7 +76,6 @@ public class JobDashboard {
                         String company_logo = jsonObject.getString("company_logo");
 
 
-
                       job j=new job(company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
 
                       //  Job experience  = new Job(imageurl,experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);

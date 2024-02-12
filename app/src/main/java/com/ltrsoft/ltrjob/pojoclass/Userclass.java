@@ -26,6 +26,32 @@ public class Userclass {
     String user_carier_objective;
     String user_marital_status;
 
+    public Userclass(String user_id, String user_fname, String user_mname, String user_lname, String user_email, String user_smobile, String user_pmobile, String user_gender, String user_DOB, String user_photo, String user_address, String user_city, String user_district, String user_state, String user_country, String user_collegename, String user_adhar, String user_pan, String user_linkedin_id, String user_github_id, String user_username, String user_password, String user_carier_objective) {
+        this.user_id = user_id;
+        this.user_fname = user_fname;
+        this.user_mname = user_mname;
+        this.user_lname = user_lname;
+        this.user_email = user_email;
+        this.user_smobile = user_smobile;
+        this.user_pmobile = user_pmobile;
+        this.user_gender = user_gender;
+        this.user_DOB = user_DOB;
+        this.user_photo = user_photo;
+        this.user_address = user_address;
+        this.user_city = user_city;
+        this.user_district = user_district;
+        this.user_state = user_state;
+        this.user_country = user_country;
+        this.user_collegename = user_collegename;
+        this.user_adhar = user_adhar;
+        this.user_pan = user_pan;
+        this.user_linkedin_id = user_linkedin_id;
+        this.user_github_id = user_github_id;
+        this.user_username = user_username;
+        this.user_password = user_password;
+        this.user_carier_objective = user_carier_objective;
+        this.user_marital_status = user_marital_status;
+    }
 
     public String getUser_id() {
         return user_id;
