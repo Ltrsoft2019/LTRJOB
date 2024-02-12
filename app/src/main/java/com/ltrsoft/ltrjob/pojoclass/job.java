@@ -2,7 +2,7 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class job {
 
-    String  company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,imageurl;
+    private String  company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,imageurl;
 
     public job(String company_name, String company_email, String job_description, String company_phone, String job_position, String company_hoaddress, String job_category_name, String job_salary, String company_id, String imageurl) {
 
@@ -11,6 +11,11 @@ public class job {
         this.job_salary = job_salary;
         this.company_id = company_id;
         this.imageurl = imageurl;
+        this.company_name = company_name;
+        this.company_email = company_email;
+        this.job_description = job_description;
+        this.company_phone = company_phone;
+        this.job_position = job_position;
     }
 
     public job(String companyName, String companyEmail, String jobDescription, String companyPhone, String jobPosition) {
@@ -19,7 +24,6 @@ public class job {
         this.job_description = jobDescription;
         this.company_phone = companyPhone;
         this.job_position = jobPosition;
-
     }
 
     public String getCompany_name() {

@@ -36,10 +36,7 @@ public class CourceFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cource, container, false);
 
-
         recyclerView = view.findViewById(R.id.fragment_recycler_courses);
-
-
 
         Cources_Deo  eventCard = new Cources_Deo();
         eventCard.fetchCources(requireContext(), recyclerView, new UserCallBack() {

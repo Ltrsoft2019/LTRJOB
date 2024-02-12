@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,19 +9,18 @@
     >
 
     <TextView
-        android:id="@+id/txt1"
+        android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:textSize="14dp"
-        android:text="@string/Description"/>
+        android:textSize="14dp"/>
 
     <TextView
         android:id="@+id/txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt1"
+        android:layout_below="@+id/desc"
         android:textSize="18dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
@@ -37,14 +37,13 @@
         android:text="Skill's:"/>
 
     <TextView
-        android:id="@+id/txt4"
+        android:id="@+id/skill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="60dp"
         android:layout_below="@+id/txt3"
-        android:textSize="13dp"
-        android:text="HTML,CSS,JAVASCRIPT,REACT"/>
+        android:textSize="13dp" />
 
     <TextView
         android:id="@+id/txt5"
@@ -52,19 +51,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_below="@+id/txt4"
+        android:layout_below="@+id/skill"
         android:textSize="16dp"
         android:text="Eligible:"/>
 
     <TextView
-        android:id="@+id/txt6"
+        android:id="@+id/eligible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="60dp"
         android:layout_below="@+id/txt5"
-        android:textSize="13dp"
-        android:text="BSC(CS),BCA,MCA"/>
+        android:textSize="13dp" />
 
     <TextView
         android:id="@+id/txt7"
@@ -72,24 +70,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_below="@+id/txt6"
+        android:layout_below="@+id/eligible"
         android:textSize="16dp"
         android:text="Location:"/>
 
     <TextView
-        android:id="@+id/txt8"
+        android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="60dp"
         android:layout_below="@+id/txt7"
-        android:textSize="14dp"
-        android:text="Mumbai,Hydrabad,channai"/>
+        android:textSize="14dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt8"
+        android:layout_below="@+id/location"
         android:layout_marginTop="20dp"
         android:background="@drawable/button"
         android:text="Apply Now"

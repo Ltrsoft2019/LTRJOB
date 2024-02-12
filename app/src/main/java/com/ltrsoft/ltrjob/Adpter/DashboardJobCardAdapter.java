@@ -14,7 +14,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.Company_desc;
 import com.ltrsoft.ltrjob.fragments.JobDetail;
+import com.ltrsoft.ltrjob.fragments.Job_desc;
 import com.ltrsoft.ltrjob.pojoclass.job;
 import com.squareup.picasso.Picasso;
 
@@ -64,11 +66,17 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
                 args.putString("company_logo", job_class.getImageurl());
 
                 // Navigate to JobDetailFragment with the arguments
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                AppCompatActivity activity1 = (AppCompatActivity) view.getContext();
                 JobDetail jobDetailFragment = new JobDetail();
                 jobDetailFragment.setArguments(args);
+                activity1.getSupportFragmentManager().beginTransaction().add(R.id.container, jobDetailFragment).addToBackStack(null).commit();
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, jobDetailFragment).addToBackStack(null).commit();
+                // Navigate to Job_desc fragment with the arguments
+//                Job_desc job_desc = new Job_desc();
+//                job_desc.setArguments(args);
+//                activity1.getSupportFragmentManager().beginTransaction().add(R.id.frag, job_desc).addToBackStack(null).commit();
+
+
             }
         });
 

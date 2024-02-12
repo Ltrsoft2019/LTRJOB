@@ -30,25 +30,11 @@ import java.util.Map;
 import kotlinx.coroutines.Job;
 
 public class JobDashboard {
-
-
-
-
     String url = "https://job.ltr-soft.com/job/read_job.php";
-
-
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
-
-
-
-    String redid="https://job.ltr-soft.com/user_job_by_id.php";
-
-
+    String redid="https://job.ltr-soft.com/user_job_history_read.php";
     final ArrayList<job> experiences = new ArrayList<>();
-
-
-
 
     public void getall(final Context context , RecyclerView recyclerView, UserCallBack
             callBack) {
@@ -63,19 +49,12 @@ public class JobDashboard {
                         String company_email = jsonObject.getString("company_email");
                         String job_description = jsonObject.getString("job_description");
                         String company_phone = jsonObject.getString("company_phone");
-
                         String company_hoaddress=jsonObject.getString("company_hoaddress");
                         String job_category_name=jsonObject.getString("job_category_name");
                         String job_salary=jsonObject.getString("job_salary");
                         String job_position=jsonObject.getString("job_position");
-
                         String company_id=jsonObject.getString("company_id");
-
-
-
                         String company_logo = jsonObject.getString("company_logo");
-
-
 
                       job j=new job(company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
 
@@ -99,20 +78,13 @@ public class JobDashboard {
             }
         }){
 
-
         };
 
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }
 
-
-
-
-
-
-
-    public  void  geteuser(  Context context, RecyclerView recyclerView, UserCallBack callBack) {
+    public  void  geteuser(  Context context, String company_id, UserCallBack callBack) {
         final ArrayList<job> experiences1 = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
@@ -127,19 +99,19 @@ public class JobDashboard {
                         String company_email = jsonObject.getString("company_email");
                         String job_description = jsonObject.getString("job_description");
                         String company_phone = jsonObject.getString("company_phone");
-
                         String company_hoaddress=jsonObject.getString("company_hoaddress");
-                        String job_category_name="";
+//                        String job_category_name=jsonObject.getString("job_category_name");
+                        String job_category_name="jo";
                         String job_salary=jsonObject.getString("job_salary");
                         String job_position=jsonObject.getString("job_position");
-
                         String company_id=jsonObject.getString("company_id");
-
                         String company_logo = jsonObject.getString("company_logo");
 
                         Toast.makeText(context, ""+company_name.toString(), Toast.LENGTH_SHORT).show();
 
-                        job certification1 = new job(company_name,company_email, job_description, company_phone, job_position);
+                        job certification1 = new job(company_name,company_email,job_description,company_phone,
+                                job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
+
                         experiences1.add(certification1);
                     }
 
