@@ -18,31 +18,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-//        boolean isFirstLaunch = preferences.getBoolean("flag", true);
+        SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        boolean isFirstLaunch = preferences.getBoolean("flag", true);
 
-//        if (isFirstLaunch) {
+        if (isFirstLaunch) {
            PlascreenFragment plascreenFragment = new PlascreenFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.constraint, plascreenFragment).commit();
-//
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    showDashboardFragment();
-//                }
-//            }, 5000);
-//        } else {
-//            showLoginFragment();
-//        }
-//    }
-//
-//    private void showDashboardFragment() {
-//        DashboardFragment dashboardFragment = new DashboardFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, dashboardFragment).commit();
-//    }
-//
-//    private void showLoginFragment() {
-//        LoginFragment loginFragment = new LoginFragment();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, loginFragment).commit();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showDashboardFragment();
+                }
+            }, 5000);
+        } else {
+            showLoginFragment();
+        }
+    }
+
+
+    private void showDashboardFragment() {
+        DashboardFragment dashboardFragment = new DashboardFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, dashboardFragment).commit();
+    }
+
+    private void showLoginFragment() {
+        LoginFragment loginFragment = new LoginFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, loginFragment).commit();
   }
 }

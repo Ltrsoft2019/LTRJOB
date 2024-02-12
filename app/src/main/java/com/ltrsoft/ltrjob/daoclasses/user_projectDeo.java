@@ -1,8 +1,10 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -12,6 +14,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
+import com.ltrsoft.ltrjob.pojoclass.Project;
+import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Transaction_Mode;
 import com.ltrsoft.ltrjob.pojoclass.User_Interpersonal_Skills;
 import com.ltrsoft.ltrjob.pojoclass.User_Project;
@@ -20,15 +24,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class user_projectDeo {
 
-    String fatchall = "";
+    String fatchuser = "https://job.ltr-soft.com/project/read_user_project.php";
     String create = "";
-    String fach = "";
+    String fach = "https://andromot.ltr-soft.com/public/user_pump_status/r_user_p_status.php";
     String update = "";
     String delete = "";
 
@@ -113,7 +118,7 @@ public class user_projectDeo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("user_project_id", user_project_id);
-                params.put("user_id", user_id.toString());
+                params.put("user_id", "user-17");
                 params.put("project_id",project_id.toString());
 
 
@@ -129,40 +134,57 @@ public class user_projectDeo {
 
 
 
-    public void getalluserproject(final Context context, User_Project  userProject, UserCallBack
-            callBack) {
-        StringRequest request = new StringRequest(Request.Method.POST, fatchall, new Response.Listener<String>() {
+
+
+
+
+    public void getalluserproject(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
+        StringRequest request = new StringRequest(Request.Method.POST, fatchuser, new Response.Listener<String>() {
+            final ArrayList<Project> projectArrayList = new ArrayList<>();
+
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray json = new JSONArray(response);
                     for (int i = 0; i < json.length(); i++) {
                         JSONObject jsonObject = json.getJSONObject(i);
+                        String name = jsonObject.getString("user_fname");
+                        String email = jsonObject.getString("user_email");
+                        String projectname = jsonObject.getString("project_name");
+                        String project_description = jsonObject.getString("project_description");
+                        String startDate = jsonObject.getString("project_start_date");
+                        String endDate = jsonObject.getString("project_end_date");
+                        String technology = jsonObject.getString("project_technologies");
 
-                        //  miniProject.add(miniProject1);
+                        Toast.makeText(context, "" + email, Toast.LENGTH_SHORT).show();
+                        Project project = new Project(name, email, endDate, projectname, project_description, startDate, endDate, technology);
+                        projectArrayList.add(project);
                     }
-
                 } catch (JSONException e) {
                     callBack.userError(e.toString());
                     e.printStackTrace();
                 }
-                callBack.userSuccess(userProject);
+                callBack.userSuccess(projectArrayList);
             }
-
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(context, "Error: " + error, Toast.LENGTH_SHORT).show();
                 callBack.userError(error.toString());
             }
         }) {
-
-
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("user_id", "user-17");
+                return map;
+            }
         };
 
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
+
     }
+
+
 
 
     public void updateusertechnicalskill(User_Project userProject, String user_id,String user_project_id,String project_id

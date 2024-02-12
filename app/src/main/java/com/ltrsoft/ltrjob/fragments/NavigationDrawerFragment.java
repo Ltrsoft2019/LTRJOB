@@ -85,6 +85,10 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().add(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
+                } else if (id==R.id.Profile) {
+                    getFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).addToBackStack(null).commit();
+
+
                 } else if (id == R.id.nav_logout) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Logout Dailoge");

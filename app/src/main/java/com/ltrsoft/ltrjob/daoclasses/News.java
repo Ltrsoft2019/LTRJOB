@@ -48,28 +48,6 @@ public class News {
 
 
 
-//                DashboardImageAdapter adapter = new DashboardImageAdapter(listofimg);
-//                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-//                dashboard_horizontal_recycler.setLayoutManager(layoutManager);
-//                dashboard_horizontal_recycler.setAdapter(adapter);
-
-//                LinearSnapHelper snapHelper = new LinearSnapHelper();
-//                snapHelper.attachToRecyclerView(dashboard_horizontal_recycler);
-//
-//                Timer timer = new Timer();
-//                timer.schedule(new TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        if (layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() - 1)) {
-//                            layoutManager.smoothScrollToPosition(dashboard_horizontal_recycler, new RecyclerView.State(),
-//                                    layoutManager.findLastCompletelyVisibleItemPosition() + 1);
-//                        } else if (layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount()) {
-//                            layoutManager.smoothScrollToPosition(dashboard_horizontal_recycler, new RecyclerView.State(),
-//                                    layoutManager.findLastCompletelyVisibleItemPosition() - adapter.getItemCount());
-//                        }
-
-                  //  }
-              //  }, 0, 3000);//
             }
 
         }, new Response.ErrorListener() {

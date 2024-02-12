@@ -1,5 +1,6 @@
 package com.ltrsoft.ltrjob.Adpter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,8 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
         holder.dash_company_name.setText(job_class.getCompany_name());
         holder.dash_job_desc.setText(job_class.getJob_description());
         holder.dash_job_position.setText(job_class.getJob_position());
+
+
 
          String imgurl = "https://institute.ltr-soft.com/company_details/" + job_class.getImageurl();
          Picasso.get().load(imgurl).into(holder.dash_companylogo);

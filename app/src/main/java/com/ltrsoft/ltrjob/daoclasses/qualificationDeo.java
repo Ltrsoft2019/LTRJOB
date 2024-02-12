@@ -1,8 +1,10 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -14,18 +16,21 @@ import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Qualification_Level;
+import com.ltrsoft.ltrjob.pojoclass.Technical_Skill;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class qualificationDeo {
     String fatchall="";
     String create="http://job.ltr-soft.com/Qualification/qulification_insert.php";
-    String fach="";
+    String redid="   https://job.ltr-soft.com/Qualification/qualification_user_read.php";
+
     String update="";
     String delete="";
     String qname,qyear,qcgpa;
@@ -73,53 +78,59 @@ public class qualificationDeo {
         requestQueue.add(stringRequest);
     }
 
-    public void fatchqulification( Qualification qualification,String userid,Context context) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, fach,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                String qualification_level_id = jsonObject.getString("qualification_level_id");
-                                String qualification_school_college =jsonObject.getString("qualification_school_college");
-                               String qualification_passing_year=jsonObject.getString("qualification_passing_year");
-                               String qualification_percentage_cgpa=jsonObject.getString("qualification_percentage_cgpa");
-
-                                Qualification qualification1 = new Qualification("","",qualification_level_id, qualification_school_college, qualification_passing_year, qualification_percentage_cgpa);
 
 
-                            }
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
+
+
+    public  void  fatchtqualification(final Context context , RecyclerView recyclerView, UserCallBack callBack) {
+        final ArrayList<Qualification> qualificationArrayList = new ArrayList<>();
+
+        StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray json = new JSONArray(response);
+                    for (int i = 0; i < json.length(); i++) {
+                        JSONObject jsonObject = json.getJSONObject(i);
+                        String qualification_level_id = jsonObject.getString("qualification_level_id");
+                        String qualification_school_college =jsonObject.getString("qualification_school_college");
+                        String qualification_passing_year=jsonObject.getString("qualification_passing_year");
+                        String qualification_percentage_cgpa=jsonObject.getString("qualification_percentage_cgpa");
+                        Toast.makeText(context, ""+qualification_percentage_cgpa.toString(), Toast.LENGTH_SHORT).show();
+                        Qualification technicalSkill = new Qualification(qualification_school_college,qualification_passing_year,qualification_percentage_cgpa);
+                        qualificationArrayList.add(technicalSkill);
+
 
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+
+                } catch (JSONException e) {
+                    callBack.userError(e.toString());
+                    e.printStackTrace();
+                }
+                callBack.userSuccess(qualificationArrayList);
 
             }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callBack.userError(error.toString());
+            }
         }) {
+            @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("User_id",String.valueOf(qualification.getUser_id()));
-                hashMap.put("qualification_level_id",String.valueOf(qualification.getQualification_level_id()));
+
+                hashMap.put("user_id","user-26");
 
                 return hashMap;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
 
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
     }
-
-
 
 
     public void getall(final Context context , Qualification qualification, UserCallBack
@@ -239,6 +250,14 @@ map.put("user_id",userid);
 
     }
 
+
+
+
+
+
+
+
+
     public  void createqulificationlevel(Qualification_Level qualificationLevel, UserCallBack callBack, Context context)
     {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, create,
@@ -289,9 +308,31 @@ map.put("user_id",userid);
         requestQueue.add(stringRequest);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void fatchqulificationlevel( Qualification_Level  qualificationLevel,String qulificationlevelid,Context context) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, fach,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

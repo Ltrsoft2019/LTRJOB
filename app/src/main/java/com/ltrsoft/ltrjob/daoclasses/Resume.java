@@ -31,6 +31,7 @@ public class Resume {
 //    ArrayList<Award>awards=new ArrayList<>();
 //    ArrayList<Award>awards=new ArrayList<>();
 //    ArrayList<Award>awards=new ArrayList<>();
+
    String  USER_PROFILE_READ_URL="https://job.ltr-soft.com/resume_query.php";
     public void getall(Context context, UserCallBack userCallBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE_READ_URL,
@@ -57,12 +58,14 @@ public class Resume {
                             String user_github_id = jsonObject.getString("user_github_id");
                             String user_carier_objective = jsonObject.getString("user_carier_objective");
 
-//                                Userclass user = new Userclass(user_id,user_fname,user_mname,user_lname,user_email,user_smobile
-//                                ,"",user_gender,"",user_photo,user_address,city_name,district_name,state_name
-//                                ,country_name,user_collegename,"","",user_linkedin_id,user_github_id,"","" ,
-//                                        user_carier_objective);
+                            Toast.makeText(context, ""+user_fname.toString(), Toast.LENGTH_SHORT).show();
 
-                              //  objects[0]=user;
+                                Userclass user = new Userclass(user_id,user_fname,user_mname,user_lname,user_email,user_smobile
+                                ,"",user_gender,"",user_photo,user_address,city_name,district_name,state_name
+                                ,country_name,user_collegename,"","",user_linkedin_id,user_github_id,"","" ,
+                                        user_carier_objective);
+
+                                objects[0]=user;
 
                             JSONArray jsonArray = jsonObject.getJSONArray("awards");
                             for (int i = 0; i <jsonArray.length() ; i++) {
@@ -72,6 +75,10 @@ public class Resume {
                                 String award_given_by = jsonObject1.getString("award_given_by");
                                 String award_category_name = jsonObject1.getString("award_category_name");
                                 Award award = new Award(award_name,award_given_by,award_id,award_category_name);
+
+
+                                Toast.makeText(context, ""+award_name.toString(), Toast.LENGTH_SHORT).show();
+
                                 awards.add(award);
                                 objects[1] = awards;
                             }
@@ -87,7 +94,6 @@ public class Resume {
                             }
 
 
-                            //Parse other JSONARRAY here and enter it in  like this
 
                         } catch (JSONException e) {
                             // Handle JSON parsing error

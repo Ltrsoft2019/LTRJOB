@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="180dp">
+    <TextView
+        android:layout_marginLeft="29dp"
+        android:id="@+id/name"
+        android:layout_width="215dp"
+        android:layout_height="47dp" />
+
+    <TextView
+        android:id="@+id/cgp"
+        android:layout_width="288dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp" />
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="115dp"
+        android:id="@+id/year"
+        android:layout_width="288dp"
+        android:layout_height="40dp" />
+
+</androidx.cardview.widget.CardView>

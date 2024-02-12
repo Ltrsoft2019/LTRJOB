@@ -12,6 +12,7 @@ public class Technical_Skill {
     }
 
     public Technical_Skill(String technicalSkillName) {
+        this.technical_skill_name=technicalSkillName;
     }
 
     public int getId() {

@@ -94,9 +94,9 @@ recyclerView2=view.findViewById(R.id.dashboard_verticle_recycler);
         jobDashboard.getall(requireContext(), recyclerView2, new UserCallBack() {
             @Override
             public void userSuccess(Object object1) {
-                ArrayList<job> list1 = (ArrayList<job>) object1;
+                ArrayList<job> yourJobList = (ArrayList<job>) object1;
                 LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
-                DashboardJobCardAdapter adapter1 = new DashboardJobCardAdapter(list1);
+                DashboardJobCardAdapter adapter1 = new DashboardJobCardAdapter(yourJobList);
                 recyclerView2.setLayoutManager(layoutManager1);
                 recyclerView2.setAdapter(adapter1);
 

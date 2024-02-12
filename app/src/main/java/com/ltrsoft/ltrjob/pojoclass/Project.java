@@ -2,18 +2,27 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class Project {
     private int project_id,id,user_id;
-    private String project_name,project_description,project_end_date,project_start_date,project_technologies,project_category;
+    private String name;
+    private String email;
+    private String endDate;
+    private String projectName;
+    private String projectDescription;
+    private String startDate;
+    private String endDate1;
+    private String technology;
 
-    public Project(int project_id, int id, int user_id, String project_name, String project_description, String project_end_date, String project_start_date, String project_technologies, String project_category) {
-        this.project_id = project_id;
-        this.id = id;
-        this.user_id = user_id;
-        this.project_name = project_name;
-        this.project_description = project_description;
-        this.project_end_date = project_end_date;
-        this.project_start_date = project_start_date;
-        this.project_technologies = project_technologies;
-        this.project_category = project_category;
+    // Constructor
+    public Project(String name, String email, String endDate, String projectName,
+                   String projectDescription, String startDate, String endDate1,
+                   String technology) {
+        this.name = name;
+        this.email = email;
+        this.endDate = endDate;
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.startDate = startDate;
+        this.endDate1 = endDate1;
+        this.technology = technology;
     }
 
     public int getProject_id() {
@@ -40,51 +49,67 @@ public class Project {
         this.user_id = user_id;
     }
 
-    public String getProject_name() {
-        return project_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProject_name(String project_name) {
-        this.project_name = project_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProject_description() {
-        return project_description;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProject_description(String project_description) {
-        this.project_description = project_description;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getProject_end_date() {
-        return project_end_date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setProject_end_date(String project_end_date) {
-        this.project_end_date = project_end_date;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public String getProject_start_date() {
-        return project_start_date;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProject_start_date(String project_start_date) {
-        this.project_start_date = project_start_date;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public String getProject_technologies() {
-        return project_technologies;
+    public String getProjectDescription() {
+        return projectDescription;
     }
 
-    public void setProject_technologies(String project_technologies) {
-        this.project_technologies = project_technologies;
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
     }
 
-    public String getProject_category() {
-        return project_category;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setProject_category(String project_category) {
-        this.project_category = project_category;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate1() {
+        return endDate1;
+    }
+
+    public void setEndDate1(String endDate1) {
+        this.endDate1 = endDate1;
+    }
+
+    public String getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(String technology) {
+        this.technology = technology;
     }
 }
