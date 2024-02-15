@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    showDashboardFragment();
+                    //showDashboardFragment();
                 }
             }, 5000);
         } else {

@@ -29,7 +29,6 @@ public class NavigationDrawerFragment extends Fragment {
     public ActionBarDrawerToggle toggle;
 
     public NavigationDrawerFragment() {
-
     }
 
     @Nullable
@@ -49,13 +48,12 @@ public class NavigationDrawerFragment extends Fragment {
         getFragmentManager().beginTransaction().add(R.id.container, dashboardFragment).commit();
 
 
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 item.setChecked(true);
-
-
                 if (id == R.id.sidenav_home) {
                     DashboardFragment dashboardFragment = new DashboardFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).addToBackStack(null).commit();
@@ -89,7 +87,23 @@ public class NavigationDrawerFragment extends Fragment {
                     getFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).addToBackStack(null).commit();
 
 
-                } else if (id == R.id.nav_logout) {
+                }
+                else if (id==R.id.mycources) {
+                    getFragmentManager().beginTransaction().replace(R.id.container, new MyCources()).addToBackStack(null).commit();
+
+
+                }
+
+                else if (id==R.id.news) {
+                    NewsFragment newsFragment=new NewsFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container, newsFragment).addToBackStack(null).commit();
+
+
+                }
+
+
+
+                else if (id == R.id.nav_logout) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Logout Dailoge");
                     builder.setMessage("Do You Want To Logout?");

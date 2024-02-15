@@ -13,6 +13,10 @@ public class News {
         this.news_resource = news_resource;
     }
 
+    public static int size() {
+        return 0;
+    }
+
     public int getNews_id() {
         return news_id;
     }
@@ -61,4 +65,7 @@ public class News {
         this.news_resource = news_resource;
     }
 
+    public String ImageView() {
+        return null;
+    }
 }

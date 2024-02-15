@@ -37,12 +37,13 @@ public class PlascreenFragment extends Fragment {
                     sleep(4000);
                     SharedPreferences pref = getContext().getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
-                  if (pref.getBoolean("flag", false)) {
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id. constraint, new DashboardFragment())
 
-                                .commit();
+                  if (pref.getBoolean("flag", false)) {
+//                        getActivity().getSupportFragmentManager()
+//                                .beginTransaction()
+//                                .replace(R.id. constraint, new DashboardFragment())
+//
+//                                .commit();
 
 //
                     }
