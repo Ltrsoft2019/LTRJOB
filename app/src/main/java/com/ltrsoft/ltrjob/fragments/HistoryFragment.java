@@ -54,7 +54,7 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 JobDashboard jobDashboard = new JobDashboard();
-                jobDashboard.geteuser(requireContext(), recyclerView, new UserCallBack() {
+                jobDashboard.geteuser(requireContext(),"company-24", new UserCallBack() {
 
                     @Override
                     public void userSuccess(Object object1) {
@@ -78,7 +78,7 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Cources_Deo courses = new Cources_Deo();
-                courses.getcorces(requireContext() , recyclerView, new UserCallBack() {
+                courses.getcorces(requireContext() , recyclerView,"", new UserCallBack() {
                     @Override
                     public void userSuccess(Object object) {
                         ArrayList<Course_Class> courseList = (ArrayList<Course_Class>) object;

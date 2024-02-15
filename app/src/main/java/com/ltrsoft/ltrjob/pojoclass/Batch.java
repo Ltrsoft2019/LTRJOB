@@ -4,8 +4,7 @@ public class Batch {
     private int id;
     private String user_id,batch_id,batch_name,batch_time,batch_start_date,batch_end_date,one_time_fees,fees_with_installmaent;
 
-    public Batch(int id, String batch_id, String user_id, String batch_name, String batch_time, String batch_start_date, String batch_end_date, String one_time_fees, String fees_with_installmaent) {
-        this.id = id;
+    public Batch( String batch_id, String user_id, String batch_name, String batch_time, String batch_start_date, String batch_end_date, String one_time_fees, String fees_with_installmaent) {
         this.batch_id = batch_id;
         this.user_id = user_id;
         this.batch_name = batch_name;
@@ -17,12 +16,12 @@ public class Batch {
     }
 
     public Batch(String batchName, String batchTime, String batchStartDate, String batchEndDate, String oneTimeFees, String feesWithInstallmaent) {
-        this.batch_name = batch_name;
-        this.batch_time = batch_time;
-        this.batch_start_date = batch_start_date;
-        this.batch_end_date = batch_end_date;
-        this.one_time_fees = one_time_fees;
-        this.fees_with_installmaent = fees_with_installmaent;
+        this.batch_name = batchName;
+        this.batch_time = batchTime;
+        this.batch_start_date = batchStartDate;
+        this.batch_end_date = batchEndDate;
+        this.one_time_fees = oneTimeFees;
+        this.fees_with_installmaent = feesWithInstallmaent;
     }
 
     public int getId() {

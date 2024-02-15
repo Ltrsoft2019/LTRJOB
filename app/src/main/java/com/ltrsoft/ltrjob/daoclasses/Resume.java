@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Award;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
-import com.ltrsoft.ltrjob.pojoclass.User;
+import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Userclass;
 
 import org.json.JSONArray;
@@ -27,11 +27,12 @@ import java.util.Map;
 public class Resume {
     Object []objects=new Object[3];
     ArrayList<Award>awards=new ArrayList<>();
+    ArrayList<Qualification> qualification=new ArrayList<Qualification>();
     ArrayList<Certification>certifications=new ArrayList<>();
 //    ArrayList<Award>awards=new ArrayList<>();
 //    ArrayList<Award>awards=new ArrayList<>();
 //    ArrayList<Award>awards=new ArrayList<>();
-
+    String  USER_PROFILE_READ_URL2="https://job.ltr-soft.com/resume2.php";
    String  USER_PROFILE_READ_URL="https://job.ltr-soft.com/resume_query.php";
     public void getall(Context context, UserCallBack userCallBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE_READ_URL,
@@ -92,6 +93,89 @@ public class Resume {
                                     certifications.add(certification);
                                 objects[2] = certifications;
                             }
+
+
+
+                        } catch (JSONException e) {
+                            // Handle JSON parsing error
+                            userCallBack.userError(e.toString());
+                        }
+                        userCallBack.userSuccess(objects);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                userCallBack.userError(error.toString());
+            }
+        }) {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("user_id", "user-17");
+                return hashMap;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    public void getall2(Context context, UserCallBack userCallBack) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE_READ_URL2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String user_id = jsonObject.getString("user_id");
+                            String user_fname = jsonObject.getString("user_fname");
+                            String user_mname = jsonObject.getString("user_mname");
+                            String user_lname = jsonObject.getString("user_lname");
+                            String user_email = jsonObject.getString("user_email");
+                            String user_smobile = jsonObject.getString("user_smobile");
+                            String user_gender = jsonObject.getString("user_gender");
+                            String user_photo = jsonObject.getString("user_photo");
+                            String user_address = jsonObject.getString("user_address");
+                            String city_name = jsonObject.getString("city_name");
+                            String district_name = jsonObject.getString("district_name");
+                            String state_name = jsonObject.getString("state_name");
+                            String country_name = jsonObject.getString("country_name");
+                            String user_collegename = jsonObject.getString("user_collegename");
+                            String user_linkedin_id = jsonObject.getString("user_linkedin_id");
+                            String user_github_id = jsonObject.getString("user_github_id");
+                            String user_carier_objective = jsonObject.getString("user_carier_objective");
+
+                            Toast.makeText(context, ""+user_fname.toString(), Toast.LENGTH_SHORT).show();
+
+                            Userclass user = new Userclass(user_id,user_fname,user_mname,user_lname,user_email,user_smobile
+                                    ,"",user_gender,"",user_photo,user_address,city_name,district_name,state_name
+                                    ,country_name,user_collegename,"","",user_linkedin_id,user_github_id,"","" ,
+                                    user_carier_objective);
+
+                            objects[0]=user;
+
+                            JSONArray jsonArray = jsonObject.getJSONArray("qualification");
+                            for (int i = 0; i <jsonArray.length() ; i++) {
+                                JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+
+//                                private String id,qualification_id,user_id,qualification_level_id;
+//                                private String qualification_school_college,qualification_passing_year,qualification_percentage_cgpa;
+
+
+                                String qualification_id = jsonObject1.getString("qualification_id");
+//                                String user_id = jsonObject1.getString("user_id");
+                                String qualification_level_id = jsonObject1.getString("qualification_level_id");
+                                String qualification_school_college = jsonObject1.getString("qualification_school_college");
+                                String qualification_passing_year = jsonObject1.getString("qualification_passing_year");
+                                String qualification_percentage_cgpa = jsonObject1.getString("qualification_percentage_cgpa");
+
+//                                 qualification = new Qualification(qualification_id,"",qualification_level_id,qualification_school_college,
+//                                        qualification_passing_year,qualification_percentage_cgpa);
+
+//                                qualification.add(qualification);
+                                objects[1] = awards;
+                            }
+
 
 
 

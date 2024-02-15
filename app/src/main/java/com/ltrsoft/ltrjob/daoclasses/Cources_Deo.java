@@ -32,17 +32,12 @@ import java.util.HashMap;
 import java.util.Map;
 public class Cources_Deo{
 
-
-
     String url = "https://job.ltr-soft.com/course_card.php";
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
     String redid="https://job.ltr-soft.com/course_detail.php";
 
-
-
     final ArrayList<Course_Class> courcesArrayList = new ArrayList<>();
-
 
     public void fetchCources(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -91,7 +86,7 @@ public class Cources_Deo{
 
 
 
-        public  void  getcorces( final Context context, RecyclerView recyclerView, UserCallBack callBack) {
+        public  void  getcorces( final Context context, RecyclerView recyclerView,String course_id, UserCallBack callBack) {
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
@@ -128,7 +123,7 @@ public class Cources_Deo{
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("course_id", "course-1");
+                hashMap.put("course_id","course-1");
 
                 return hashMap;
             }
@@ -138,6 +133,52 @@ public class Cources_Deo{
         queue.add(request);
     }
 
+    public  void  getcorces1( final Context context,String course_id, UserCallBack callBack) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray json = new JSONArray(response);
+                    for (int i = 0; i < json.length(); i++) {
+                        JSONObject jsonObject = json.getJSONObject(i);
+                        String course_id, course_name, course_type, course_duration;
+
+                        course_id = jsonObject.getString("course_id");
+                        course_name = jsonObject.getString("course_name");
+                        course_duration = jsonObject.getString("course_description");
+                        String  created_at=jsonObject.getString("course_duration");
+                        Course_Class coursesDataClass = new Course_Class(course_id, course_name, course_duration, null, null, null, null,created_at);
+                        courcesArrayList.add(coursesDataClass);
+                    }
+
+                } catch (JSONException e) {
+                    callBack.userError(e.toString());
+                    e.printStackTrace();
+                }
+                callBack.userSuccess(courcesArrayList);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callBack.userError(error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put("course_id","course-1");
+
+                return hashMap;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
+    }
 
 
 

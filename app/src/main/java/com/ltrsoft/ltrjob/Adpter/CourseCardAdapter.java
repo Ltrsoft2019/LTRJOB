@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.Batch_Detail;
 import com.ltrsoft.ltrjob.fragments.CourseDetailFragment;
 import com.ltrsoft.ltrjob.pojoclass.Course_Class;
 
@@ -37,7 +38,6 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
     public void onBindViewHolder(@NonNull ViewHolderr holder, int position) {
         Course_Class model=list.get(position);
         holder.course_name.setText(model.getCourse_name());
-
         holder.course_type.setText(model.getCreated_at());
         holder.course_duration.setText(model.getCourse_duration());
 
@@ -46,14 +46,14 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
             public void onClick(View view) {
 
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                CourseDetailFragment cd=new CourseDetailFragment();
+                CourseDetailFragment courseDetailFragment = new CourseDetailFragment();
                 Bundle args = new Bundle();
-                args.putString("course_id", model.course_id);
+                String id = model.course_id;
+                Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+                args.putString("course_id", id);
 
-
-                cd.setArguments(args);
-
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,cd).addToBackStack(null).commit();
+                courseDetailFragment.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,courseDetailFragment).addToBackStack(null).commit();
 
             }
         });

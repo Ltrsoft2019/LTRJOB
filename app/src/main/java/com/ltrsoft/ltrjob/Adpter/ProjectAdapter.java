@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
@@ -38,9 +39,9 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         holder.t2.setText(model.getProjectDescription());
         holder.t3.setText(model.getStartDate());
         holder.t4.setText(model.getEndDate());
-        holder.t5.setText(model.getTechnology());
 
-        // You can add more fields as needed
+
+
     }
 
     @Override
@@ -49,9 +50,9 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView projectImageView;
 
-        TextView t1, t2, t3, t4, t5;
+CardView cardView;
+        TextView t1, t2, t3, t4;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,7 +60,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             t2 = itemView.findViewById(R.id.project_description);
             t3 = itemView.findViewById(R.id.start_date);
             t4 = itemView.findViewById(R.id.end_date);
-            t5 = itemView.findViewById(R.id.card2);
+            cardView = itemView.findViewById(R.id.card2);
         }
     }
 }
