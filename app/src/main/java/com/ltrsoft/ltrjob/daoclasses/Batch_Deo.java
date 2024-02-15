@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class Batch_Deo {
     private static String URL="https://job.ltr-soft.com/batch/read_batch_id.php";
-    private static String Create_URL="";
+    private static String Create_URL="https://job.ltr-soft.com/enrollment/create_enrollment.php";
     private static String Update_URL="";
     private static String Delete_URL="";
     private static String Readone_URL="https://job.ltr-soft.com/batch/batch_by_id.php";
@@ -171,7 +171,8 @@ public class Batch_Deo {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String>map=new HashMap<>();
-
+                map.put("batch_id",batch.getBatch_id());
+                map.put("user_id",batch.getUser_id());
                 map.put("batch_name",batch.getBatch_name());
                 map.put("batch_time",batch.getBatch_time());
                 map.put("batch_start_date",batch.getBatch_start_date());

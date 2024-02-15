@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    showDashboardFragment();
+//                    showDashboardFragment();
                 }
             }, 5000);
         } else {
@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void showDashboardFragment() {
-        DashboardFragment dashboardFragment = new DashboardFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, dashboardFragment).commit();
-    }
+//    private void showDashboardFragment() {
+//        DashboardFragment dashboardFragment = new DashboardFragment();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, dashboardFragment).commit();
+//    }
 
     private void showLoginFragment() {
         LoginFragment loginFragment = new LoginFragment();

@@ -17,10 +17,10 @@ public class Award {
     }
 
     public Award(String awardName, String awardGivenBy, String awardDateRecieved, String awardVenue) {
-        this.award_name = award_name;
-        this.award_given_by = award_given_by;
-        this.award_date_recieved = award_date_recieved;
-        this.award_venue = award_venue;
+        this.award_name = awardName;
+        this.award_given_by = awardGivenBy;
+        this.award_date_recieved = awardDateRecieved;
+        this.award_venue = awardVenue;
     }
 
     public int getId() {
