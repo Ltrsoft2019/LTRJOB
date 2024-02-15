@@ -36,6 +36,7 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.navigationfragment, container, false);
+
         toolbar = v.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
@@ -59,7 +60,6 @@ public class NavigationDrawerFragment extends Fragment {
                 if (id == R.id.sidenav_home) {
                     DashboardFragment dashboardFragment = new DashboardFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).addToBackStack(null).commit();
-
                 } else if (id == R.id.sidenav_exam) {
                     getFragmentManager().beginTransaction().replace(R.id.container, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_event) {

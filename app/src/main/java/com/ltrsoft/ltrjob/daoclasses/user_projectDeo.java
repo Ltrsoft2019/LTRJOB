@@ -187,6 +187,11 @@ public class user_projectDeo {
 
 
 
+
+
+
+
+
     public void updateusertechnicalskill(User_Project userProject, String user_id,String user_project_id,String project_id
             , Context context, UserCallBack callBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, update,
@@ -224,6 +229,12 @@ public class user_projectDeo {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+
+
+
+
+
 
 
 

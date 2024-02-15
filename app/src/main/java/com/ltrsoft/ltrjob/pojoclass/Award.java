@@ -2,7 +2,7 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class Award {
     private int id,award_level_id,award_category_id,award_type_id;
-    private String award_name,award_given_by,award_date_recieved,award_venue,user_id;
+    private String award_name,award_given_by,award_date_recieved,award_venue,user_id,award_level_name;
 
     public Award(int id,String user_id, int award_level_id, int award_category_id, int award_type_id, String award_name, String award_given_by, String award_date_recieved, String award_venue) {
         this.id = id;
@@ -22,6 +22,15 @@ public class Award {
         this.award_date_recieved = awardDateRecieved;
         this.award_venue = awardVenue;
     }
+
+    public Award(String name, String reciveddate, String awardvanue, String awardcategeryname, String awardlevelname) {
+        this.award_name = name;
+        this.award_date_recieved = reciveddate;
+        this.award_venue = awardvanue;
+        this.award_category_id = Integer.parseInt(awardcategeryname);
+        this.award_level_name = awardlevelname;
+    }
+
 
     public int getId() {
         return id;

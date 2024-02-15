@@ -1,16 +1,21 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Award;
+import com.ltrsoft.ltrjob.pojoclass.Project;
 
 
 import org.json.JSONArray;
@@ -26,13 +31,18 @@ public class Award_Deo {
     private static String Create_URL="";
     private static String Update_URL="";
     private static String Delete_URL="";
-    private static String ReadAll_URL="";
+
+
+    private static String fatchuser="http://job.ltr-soft.com/Awards_Recognization/award_Recog_read.php";
+
+
+
     Award award;
 
     ArrayList<Award>list=new ArrayList<>();
 
     public void getAllAward(Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, ReadAll_URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -47,7 +57,7 @@ public class Award_Deo {
                                 String award_date_recieved = jsonObject.getString("award_date_recieved");
                                 String award_venue = jsonObject.getString("award_venue");
 
-                                award=new Award(award_name,award_given_by,award_date_recieved,award_venue);
+                               // award=new Award(award_name,award_given_by,award_date_recieved,award_venue);
 
                             }
                         } catch (JSONException e) {
@@ -72,47 +82,67 @@ public class Award_Deo {
         };
     }
 
-    public void getAward(String user_id,Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, ReadAll_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray=new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                String award_name = jsonObject.getString("award_name");
-                                String award_given_by = jsonObject.getString("award_given_by");
-                                String award_date_recieved = jsonObject.getString("award_date_recieved");
-                                String award_venue = jsonObject.getString("award_venue");
 
-                                award=new Award(award_name,award_given_by,award_date_recieved,award_venue);
 
-                            }
-                        } catch (JSONException e) {
-                            userCallBack.userError(e.toString());
-                            throw new RuntimeException(e);
-                        }
-                        userCallBack.userSuccess(award);
+
+
+
+    public void getalluserAward(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
+        StringRequest request = new StringRequest(Request.Method.POST, fatchuser, new Response.Listener<String>() {
+            final ArrayList<Award> awardArrayList = new ArrayList<>();
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray json = new JSONArray(response);
+                    for (int i = 0; i < json.length(); i++) {
+
+
+                        JSONObject jsonObject = json.getJSONObject(i);
+                        String name = jsonObject.getString("award_name");
+                        String reciveddate = jsonObject.getString("award_date_recieved");
+                        String awardvanue = jsonObject.getString("award_venue");
+                        String awardcategeryname = jsonObject.getString("award_category_name");
+                        String awardlevelname = jsonObject.getString("award_level_name");
+
+                        Toast.makeText(context, ""+name.toString(), Toast.LENGTH_SHORT).show();
+                        Award award1 = new Award(name, reciveddate, awardvanue, awardcategeryname, awardlevelname);
+                        awardArrayList.add(award1);
 
                     }
-                }, new Response.ErrorListener() {
+                } catch (JSONException e) {
+                    callBack.userError(e.toString());
+                    e.printStackTrace();
+                }
+                callBack.userSuccess(awardArrayList);
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                callBack.userError(error.toString());
             }
-        }){
-            @Nullable
-            @Override
+        }) {
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String>map=new HashMap<>();
-                map.put("user_id",user_id); 
+                HashMap<String, String> map = new HashMap<>();
+                map.put("user_id", "user-17");
                 return map;
             }
         };
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
+
     }
+
+
+
+
+
+
+
+
     public void createAward(Award award, String user_id, Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Create_URL,
                 new Response.Listener<String>() {
