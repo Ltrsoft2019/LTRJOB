@@ -1,8 +1,10 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -12,14 +14,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Mini_Project;
-import com.ltrsoft.ltrjob.pojoclass.Research_Category;
 import com.ltrsoft.ltrjob.pojoclass.Research_Paper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class research_paperDeo {
 
     String fatchall="";
     String create="";
-    String fach="";
+    String fatchuser="https://job.ltr-soft.com/Research_Paper/user_research_paper.php";
     String update="";
     String delete="";
 
@@ -109,73 +110,76 @@ public class research_paperDeo {
     }
 
 
-    public void fatchreasrchpaper( Research_Paper user_id,String research_paper_id,Context context) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, fach,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                String research_topic_name=jsonObject.getString("research_topic_name");
-                                String research_discipline_id=jsonObject.getString("research_discipline_id");
-                                String research_citation =jsonObject.getString("research_citation");
-                                String research_author_1=jsonObject.getString("research_author_1");
-                                String  research_author_2=jsonObject.getString("research_author_2");
-                                String sresearch_author_3=jsonObject.getString("research_author_3");
-                                String  research_author_4=jsonObject.getString("research_author_4");
-                                String research_author_5=jsonObject.getString("research_author_5");
-                                String  research_author_6=jsonObject.getString("research_author_6");
-                                String Published_in =jsonObject.getString("Published_in");
-                                String  ISBN_no=jsonObject.getString("ISBN_no");
-                                 String Location=jsonObject.getString("Location");
-                                 String  Pages_start=jsonObject.getString("Pages_start");
-                                 String Pages_end =jsonObject.getString("Pages_end");
-                                 String volumeedition=jsonObject.getString("volume/ edition");
-                                 String DOI=jsonObject.getString("DOI");
-                                 String  date=jsonObject.getString("date");
-                                 String  research_paper_published_in_journal=jsonObject.getString("research_paper_published_in_journal");
 
 
 
-                                Research_Paper researchPaper = new Research_Paper(research_topic_name, research_discipline_id, research_citation,
-                                        research_author_1, research_author_2, sresearch_author_3,
-                                        research_author_4, research_author_5, research_author_6,
-                                        Published_in, ISBN_no, Location, Pages_start,
-                                        Pages_end, volumeedition, DOI, date,
-                                        research_paper_published_in_journal);
 
 
-                            }
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
+
+
+    public void getallusereachd(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
+        StringRequest request = new StringRequest(Request.Method.POST, fatchuser, new Response.Listener<String>() {
+            final ArrayList<Research_Paper> awardArrayList = new ArrayList<>();
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray json = new JSONArray(response);
+                    for (int i = 0; i < json.length(); i++) {
+
+
+                        JSONObject jsonObject = json.getJSONObject(i);
+                        String research_topic_name = jsonObject.getString("research_topic_name");
+                        String research_citation = jsonObject.getString("research_citation");
+                        String research_author_1 = jsonObject.getString("research_author_1");
+                      //  String Published_in = jsonObject.getString("award_category_name");
+
+                      //  String awardlevelname = jsonObject.getString("award_level_name");
+
+                        Toast.makeText(context, "" + research_topic_name.toString(), Toast.LENGTH_SHORT).show();
+
+                        Research_Paper researchPaper = new Research_Paper(research_topic_name, research_citation, research_author_1);
+
+                        awardArrayList.add(researchPaper);
 
                     }
-                }, new Response.ErrorListener() {
+                } catch (JSONException e) {
+                    callBack.userError(e.toString());
+                    e.printStackTrace();
+                }
+                callBack.userSuccess(awardArrayList);
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                callBack.userError(error.toString());
             }
         }) {
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("research_paper_id", user_id.toString());
-                return hashMap;
+                HashMap<String, String> map = new HashMap<>();
+                map.put("user_id", "user-17");
+                return map;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
+
     }
 
 
 
-    public void getallreasaarchpaper(final Context context , Research_Paper researchPaper, UserCallBack
+
+
+
+
+
+
+
+    public void getallreasaarchpaper(final Context context , RecyclerView recyclerView, UserCallBack
             callBack) {
+        final ArrayList<Research_Paper> researchPaper = new ArrayList<>();
+
         StringRequest request = new StringRequest(Request.Method.POST, fatchall, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

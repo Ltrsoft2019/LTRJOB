@@ -1,6 +1,8 @@
 package com.ltrsoft.ltrjob;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         boolean isFirstLaunch = preferences.getBoolean("flag", true);
 
         if (isFirstLaunch) {
-           PlascreenFragment plascreenFragment = new PlascreenFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.constraint, plascreenFragment).commit();
+        Intent intent=new Intent(MainActivity.this, spashscreen.class);
+        startActivity(intent);
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //showDashboardFragment();
+                    showDashboardFragment();
                 }
             }, 5000);
         } else {

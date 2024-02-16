@@ -33,7 +33,7 @@ public class ResumeAwardAdapter extends RecyclerView.Adapter<ResumeAwardAdapter.
     @Override
     public void onBindViewHolder(@NonNull AwardViewHolder holder, int position) {
         Award award = awards.get(position);
-        holder.text_award_title.setText(award.getAward_name());
+        holder.text_award_title.setText(award.getName());
     }
     @Override
     public int getItemCount() {

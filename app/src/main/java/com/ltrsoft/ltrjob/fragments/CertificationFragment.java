@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
 import com.ltrsoft.ltrjob.Adpter.CertificationAdapter;
 import com.ltrsoft.ltrjob.Adpter.DashboardJobCardAdapter;
 import com.ltrsoft.ltrjob.R;
@@ -55,7 +56,7 @@ private RecyclerView recyclerView;
 
             @Override
             public void userError(String error) {
-                // Handle error for the second RecyclerView, if needed
+
             }
         });
 

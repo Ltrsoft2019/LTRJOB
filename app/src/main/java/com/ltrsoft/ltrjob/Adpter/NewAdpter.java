@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.fragments.JobDetail;
+import com.ltrsoft.ltrjob.fragments.NewsDetail;
 import com.ltrsoft.ltrjob.pojoclass.NewsClass;
 import com.ltrsoft.ltrjob.pojoclass.job;
 import com.squareup.picasso.Picasso;
@@ -44,33 +45,29 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
         String imgUrl = "https://institute.ltr-soft.com/company_details/" + jobClass.getNews_photo_path();
         Picasso.get().load(imgUrl).into(holder.dashCompanyLogo);
 
-//        holder.layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Context context = view.getContext();
-//                Bundle args = new Bundle();
-//                args.putString("company_name", jobClass.getCompany_name());
-//                args.putString("company_email", jobClass.getCompany_email());
-//                args.putString("job_description", jobClass.getJob_description());
-//                args.putString("company_phone", jobClass.getCompany_phone());
-//                args.putString("job_position", jobClass.getJob_position());
-//                args.putString("company_hoaddress", jobClass.getCompany_hoaddress());
-//                args.putString("job_category_name", jobClass.getJob_category_name());
-//                args.putString("job_salary", jobClass.getJob_salary());
-//                args.putString("company_id", jobClass.getCompany_id());
-//                args.putString("company_logo", jobClass.getImageurl());
-//
-//                JobDetail jobDetailFragment = new JobDetail();
-//                jobDetailFragment.setArguments(args);
-//
-//                AppCompatActivity activity = (AppCompatActivity) context;
-//                activity.getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.container, jobDetailFragment)
-//                        .addToBackStack(null)
-//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                        .commit();
-//            }
-//        });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Bundle args = new Bundle();
+                args.putString("company_name", jobClass.getNews_title());
+                args.putString("company_email", jobClass.getNews_description());
+                args.putString("job_description", jobClass.getNews_date());
+                args.putString("company_phone", jobClass.getNews_resource());
+                args.putString("job_position", jobClass.getNews_photo_path());
+
+
+                NewsDetail jobDetailFragment = new NewsDetail();
+                jobDetailFragment.setArguments(args);
+
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, jobDetailFragment)
+                        .addToBackStack(null)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
+            }
+        });
     }
 
     @Override
@@ -81,6 +78,7 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView dashCompanyLogo;
         public TextView dashJobDesc, dashCompanyName, dashJobPosition;
+
         public ConstraintLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -89,6 +87,8 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
             dashJobDesc=itemView.findViewById(R.id.newsposition);
             dashCompanyName=itemView.findViewById(R.id.news_description);
             dashJobPosition=itemView.findViewById(R.id.news_applied_date);
+
+            layout=itemView.findViewById(R.id.dasboard_layout);
         }
     }
 }

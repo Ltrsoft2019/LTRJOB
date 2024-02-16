@@ -32,10 +32,10 @@ public class AwardAdapter extends RecyclerView.Adapter<AwardAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Award model = awardList.get(position);
-        holder.t1.setText(model.getAward_name());
-        holder.t2.setText(model.getAward_venue());
-        holder.t3.setText(model.getAward_date_recieved());
-        holder.t4.setText(model.getAward_category_id());
+        holder.t1.setText(model.getName());
+        holder.t2.setText(model.getAwardvanue());
+        holder.t3.setText(model.getReciveddate());
+        holder.t4.setText(model.getAwardcategeryname());
     }
 
     @Override

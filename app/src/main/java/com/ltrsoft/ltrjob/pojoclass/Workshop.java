@@ -16,10 +16,10 @@ public class Workshop {
     }
 
     public Workshop(String workshopName, String workshopVenue, String workshopLevel, String workshopDate) {
-        this.workshop_name = workshop_name;
-        this.workshop_venue = workshop_venue;
-        this.workshop_level = workshop_level;
-        this.workshop_date = workshop_date;
+        this.workshop_name = workshopName;
+        this.workshop_venue = workshopVenue;
+        this.workshop_level = workshopLevel;
+        this.workshop_date = workshopDate;
     }
 
     public int getId() {

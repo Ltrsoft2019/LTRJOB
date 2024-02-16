@@ -34,18 +34,18 @@ public class PlascreenFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    sleep(4000);
+                    sleep(3000);
                     SharedPreferences pref = getContext().getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
 
                   if (pref.getBoolean("flag", false)) {
-//                        getActivity().getSupportFragmentManager()
-//                                .beginTransaction()
-//                                .replace(R.id. constraint, new DashboardFragment())
-//
-//                                .commit();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id. constraint, new DashboardFragment())
 
-//
+                                .commit();
+
+
                     }
                   else {
                       getActivity(). getSupportFragmentManager()
@@ -53,7 +53,7 @@ public class PlascreenFragment extends Fragment {
                             .replace(androidx.constraintlayout.widget.R.id.constraint, new LoginFragment())
 
                                 .commit();
-//                    }
+              //     }
                 }
 
                 } catch (InterruptedException e) {

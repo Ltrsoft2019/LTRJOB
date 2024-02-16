@@ -15,7 +15,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Award;
-import com.ltrsoft.ltrjob.pojoclass.Project;
 
 
 import org.json.JSONArray;
@@ -27,27 +26,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Award_Deo {
-    private static String URL="http://job.ltr-soft.com/course_detail.php";
-    private static String Create_URL="";
-    private static String Update_URL="";
-    private static String Delete_URL="";
+    private static String URL = "http://job.ltr-soft.com/course_detail.php";
+    private static String Create_URL = "";
+    private static String Update_URL = "";
+    private static String Delete_URL = "";
 
 
-    private static String fatchuser="http://job.ltr-soft.com/Awards_Recognization/award_Recog_read.php";
-
+    private static String fatchuser = "http://job.ltr-soft.com/Awards_Recognization/award_Recog_read.php";
 
 
     Award award;
 
-    ArrayList<Award>list=new ArrayList<>();
+    ArrayList<Award> list = new ArrayList<>();
 
-    public void getAllAward(Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
+    public void getAllAward(Context context, UserCallBack userCallBack) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Delete_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArray=new JSONArray(response);
+                            JSONArray jsonArray = new JSONArray(response);
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -57,7 +55,7 @@ public class Award_Deo {
                                 String award_date_recieved = jsonObject.getString("award_date_recieved");
                                 String award_venue = jsonObject.getString("award_venue");
 
-                               // award=new Award(award_name,award_given_by,award_date_recieved,award_venue);
+                                // award=new Award(award_name,award_given_by,award_date_recieved,award_venue);
 
                             }
                         } catch (JSONException e) {
@@ -72,19 +70,15 @@ public class Award_Deo {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String>map=new HashMap<>();
+                HashMap<String, String> map = new HashMap<>();
                 return map;
             }
         };
     }
-
-
-
-
 
 
 
@@ -107,8 +101,9 @@ public class Award_Deo {
                         String awardcategeryname = jsonObject.getString("award_category_name");
                         String awardlevelname = jsonObject.getString("award_level_name");
 
-                        Toast.makeText(context, ""+name.toString(), Toast.LENGTH_SHORT).show();
-                        Award award1 = new Award(name, reciveddate, awardvanue, awardcategeryname, awardlevelname);
+                        Toast.makeText(context, "" + name.toString(), Toast.LENGTH_SHORT).show();
+
+                        Award award1 = new Award(name, reciveddate, awardvanue, awardcategeryname);
                         awardArrayList.add(award1);
 
                     }
@@ -143,38 +138,11 @@ public class Award_Deo {
 
 
 
-    public void createAward(Award award, String user_id, Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Create_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response.contains("success")) {
-                            userCallBack.userSuccess("success");
-                        } else {
-                            userCallBack.userError(response.toString());
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                userCallBack.userError(error.toString());
-            }
-        }){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String>map=new HashMap<>();
 
-                map.put("award_name",award.getAward_name());
-                map.put("award_given_by",award.getAward_given_by());
-                map.put("award_date_recieved",award.getAward_date_recieved());
-                map.put("award_venue",award.getAward_venue());
-                return map;
-            }
-        };
-    }
-    public void updateAward(Award award, String user_id, Context context, UserCallBack userCallBack) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Update_URL,
+
+
+    public void createAward(Award award, String user_id, Context context, UserCallBack userCallBack) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Create_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -195,66 +163,104 @@ public class Award_Deo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> map = new HashMap<>();
 
-                map.put("award_name", award.getAward_name());
-                map.put("award_given_by", award.getAward_given_by());
-                map.put("award_date_recieved", award.getAward_date_recieved());
-                map.put("award_venue", award.getAward_venue());
-                return map;
+//                map.put("award_name",award.getAward_name());
+//                map.put("award_given_by",award.getAward_given_by());
+//                map.put("award_date_recieved",award.getAward_date_recieved());
+//                map.put("award_venue",award.getAward_venue());
+//                return map;
+                //   }
+                return null;
             }
-        };
-    }
-        public void deleteAward(Award award, String user_id, Context context, UserCallBack userCallBack){
-            StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            if (response.contains("success")) {
-                                userCallBack.userSuccess("success");
-                            } else {
-                                userCallBack.userError(response.toString());
+
+            ;
+
+            public void updateAward(Award award, String user_id, Context context, UserCallBack
+                    userCallBack) {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Update_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if (response.contains("success")) {
+                                    userCallBack.userSuccess("success");
+                                } else {
+                                    userCallBack.userError(response.toString());
+                                }
                             }
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    userCallBack.userError(error.toString());
-                }
-            }){
-                @Nullable
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    HashMap<String,String>map=new HashMap<>();
-
-                    map.put("user_id",award.getUser_id());
-                    return map;
-                }
-            };
-        }
-    public void searchAward(Award award, String user_id, Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>() {
+                        }, new Response.ErrorListener() {
                     @Override
-                    public void onResponse(String response) {
-                        if (response.contains("success")) {
-                            userCallBack.userSuccess("success");
-                        } else {
-                            userCallBack.userError(response.toString());
-                        }
+                    public void onErrorResponse(VolleyError error) {
+                        userCallBack.userError(error.toString());
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                userCallBack.userError(error.toString());
-            }
-        }){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String>map=new HashMap<>();
+                }) {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        HashMap<String, String> map = new HashMap<>();
 
-                map.put("user_id",award.getUser_id());
-                return map;
+//                map.put("award_name", award.getAward_name());
+//                map.put("award_given_by", award.getAward_given_by());
+//                map.put("award_date_recieved", award.getAward_date_recieved());
+//                map.put("award_venue", award.getAward_venue());
+//                return map;
+                        return null;
+                    }
+                };
             }
+//        public void deleteAward(Award award, String user_id, Context context, UserCallBack userCallBack){
+//            StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
+//                    new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//                            if (response.contains("success")) {
+//                                userCallBack.userSuccess("success");
+//                            } else {
+//                                userCallBack.userError(response.toString());
+//                            }
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    userCallBack.userError(error.toString());
+//                }
+//            }){
+//                @Nullable
+//                @Override
+//                protected Map<String, String> getParams() throws AuthFailureError {
+//                    HashMap<String,String>map=new HashMap<>();
+//
+//                    map.put("user_id",award.getUser_id());
+//                    return map;
+//                }
+//            };
+//        }
+//    public void searchAward(Award award, String user_id, Context context, UserCallBack userCallBack){
+//        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        if (response.contains("success")) {
+//                            userCallBack.userSuccess("success");
+//                        } else {
+//                            userCallBack.userError(response.toString());
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                userCallBack.userError(error.toString());
+//            }
+//        }){
+//            @Nullable
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                HashMap<String,String>map=new HashMap<>();
+//
+//                map.put("user_id",award.getUser_id());
+//                return map;
+//            }
+//        };
+//    }
+            //};
         };
     }
 }

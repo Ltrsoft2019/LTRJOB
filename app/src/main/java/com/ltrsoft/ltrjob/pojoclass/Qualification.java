@@ -15,6 +15,11 @@ public class Qualification {
         this.qualification_percentage_cgpa = qualification_percentage_cgpa;
     }
 
+    public Qualification(String qualificationSchoolCollege, String qualificationPassingYear, String qualificationPercentageCgpa) {
+        this.qualification_school_college = qualificationSchoolCollege;
+        this.qualification_passing_year = qualificationPassingYear;
+        this.qualification_percentage_cgpa = qualificationPercentageCgpa;
+    }
 
 
 //    public Qualification(String qualificationSchoolCollege, String qualificationPassingYear, String qualificationPercentageCgpa) {
@@ -22,6 +27,7 @@ public class Qualification {
 //        this.qualification_passing_year = qualificationPassingYear;
 //        this.qualification_percentage_cgpa = qualificationPercentageCgpa;
 //    }
+
 
     public String getId() {
         return id;

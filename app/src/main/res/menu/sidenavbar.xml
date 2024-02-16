@@ -55,12 +55,8 @@
             android:title="Profile" />
 
         <item
-            android:id="@+id/mycources"
-            android:title="My Cources" />
-
-        <item
             android:id="@+id/news"
-            android:title="news" />
+            android:title="News" />
     </group>
 
 

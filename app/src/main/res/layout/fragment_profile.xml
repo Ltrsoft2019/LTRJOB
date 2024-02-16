@@ -124,6 +124,48 @@ tools:context=".fragments.ProfileFragment">
         app:layout_constraintTop_toBottomOf="@+id/qualification" />
 
 
+    <TextView
+        android:layout_width="285dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="464dp"
+        android:text="Rearsch paper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/project" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rearchpapperreycleview"
+        android:layout_width="410dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="750dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qualification" />
+
+
+    <TextView
+
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:text="Workshop"
+        app:layout_constraintBottom_toTopOf="@+id/workhoprecycle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rearchpapperreycleview" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workhoprecycle"
+        android:layout_width="410dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="980dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qualification" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

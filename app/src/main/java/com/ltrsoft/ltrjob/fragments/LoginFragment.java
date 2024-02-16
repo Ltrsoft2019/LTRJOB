@@ -96,8 +96,8 @@ public class LoginFragment extends Fragment {
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Otpsend otpsend=new Otpsend();
-//                getFragmentManager().beginTransaction().replace(R.id.constraint, otpsend).addToBackStack(null).commit();
+                ForgetPassword otpsend=new ForgetPassword();
+                getFragmentManager().beginTransaction().replace(R.id.constraint, otpsend).addToBackStack(null).commit();
 
             }
         });

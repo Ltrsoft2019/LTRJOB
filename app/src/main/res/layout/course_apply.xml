@@ -34,7 +34,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/con"
+        android:src="@drawable/congratulation"
         android:layout_marginTop="-125dp"
         android:layout_gravity="center"/>
 
