@@ -46,30 +46,32 @@ public class LoginFragment extends Fragment {
         createaccount = v.findViewById(R.id.create_new_account);
         bar.setVisibility(View.GONE);
 
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = loginEmail.getText().toString();
                 String password = loginPassword.getText().toString();
+
                 if (!email.isEmpty() && !password.isEmpty()) {
-                    Login login=new Login();
+                    Login login = new Login();
                     login.login(email, password, getContext(), new UserCallBack() {
                         @Override
                         public void userSuccess(Object object) {
-
+                            // Successful login
                             getFragmentManager().beginTransaction().replace(R.id.constraint, new NavigationDrawerFragment()).addToBackStack(null).commit();
-                            SharedPreferences preferences=getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor=preferences.edit();
-                            editor.putBoolean("flag",false).apply();
+
+
+                            SharedPreferences preferences = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putBoolean("isLoggedIn", true).apply(); // Set the flag to true
                         }
 
                         @Override
                         public void userError(String error) {
-                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
                         }
                     });
+
                     loginButton.setVisibility(View.GONE);
                     bar.setVisibility(View.VISIBLE);
 
@@ -77,7 +79,6 @@ public class LoginFragment extends Fragment {
                     loginEmail.setError("Please Enter Email");
                     loginPassword.setError("Please Enter Password");
                 }
-
             }
         });
 

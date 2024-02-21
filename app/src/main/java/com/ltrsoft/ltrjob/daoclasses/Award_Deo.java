@@ -28,7 +28,7 @@ import java.util.Map;
 public class Award_Deo {
     private static String URL = "http://job.ltr-soft.com/course_detail.php";
     private static String Create_URL = "";
-    private static String Update_URL = "";
+    private static String Update_URL = "http://job.ltr-soft.com/Awards_Recognization/award_Recog_categary.php";
     private static String Delete_URL = "";
 
 
@@ -101,7 +101,6 @@ public class Award_Deo {
                         String awardcategeryname = jsonObject.getString("award_category_name");
                         String awardlevelname = jsonObject.getString("award_level_name");
 
-                        Toast.makeText(context, "" + name.toString(), Toast.LENGTH_SHORT).show();
 
                         Award award1 = new Award(name, reciveddate, awardvanue, awardcategeryname);
                         awardArrayList.add(award1);
@@ -172,40 +171,10 @@ public class Award_Deo {
                 return null;
             }
 
-            ;
 
-            public void updateAward(Award award, String user_id, Context context, UserCallBack
-                    userCallBack) {
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, Update_URL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                if (response.contains("success")) {
-                                    userCallBack.userSuccess("success");
-                                } else {
-                                    userCallBack.userError(response.toString());
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        userCallBack.userError(error.toString());
-                    }
-                }) {
-                    @Nullable
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> map = new HashMap<>();
 
-//                map.put("award_name", award.getAward_name());
-//                map.put("award_given_by", award.getAward_given_by());
-//                map.put("award_date_recieved", award.getAward_date_recieved());
-//                map.put("award_venue", award.getAward_venue());
-//                return map;
-                        return null;
-                    }
-                };
-            }
+
+//            }
 //        public void deleteAward(Award award, String user_id, Context context, UserCallBack userCallBack){
 //            StringRequest stringRequest=new StringRequest(Request.Method.POST, Delete_URL,
 //                    new Response.Listener<String>() {
@@ -263,4 +232,53 @@ public class Award_Deo {
             //};
         };
     }
+
+
+
+    public void updateAward( String name,String vanue,String date,String givenby,String type, Context context, UserCallBack
+            userCallBack) {
+
+
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Update_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.contains("success")) {
+                                userCallBack.userSuccess("success");
+                            } else {
+                                userCallBack.userError(response.toString());
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    userCallBack.userError(error.toString());
+                }
+            }) {
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("user_id","user-17");
+                    hashMap.put("award_id","award-45");
+
+
+                    hashMap.put("award_category_id","award_cat-1");
+                    hashMap.put("award_level_id","award_level-1");
+
+
+
+                    hashMap.put("award_name",name);
+                    hashMap.put("award_given_by",givenby);
+                    hashMap.put("award_venue",vanue);
+                    hashMap.put("award_date_recieved",date);
+                    hashMap.put("award_type_name",type);
+                    return hashMap;
+
+
+
+                }
+            };
+        }
 }

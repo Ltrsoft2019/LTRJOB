@@ -57,12 +57,12 @@ public class ProfileFragment extends Fragment {
         reasearchpaperrecycle =view.findViewById(R.id.rearchpapperreycleview);
 workshop=view.findViewById(R.id.workhoprecycle);
 
+
         technical_skilldeo technicalSkilldeo = new technical_skilldeo();
         technicalSkilldeo.fatchtechnicalskill(requireContext(), skills, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Technical_Skill> list = (ArrayList<Technical_Skill>) object;
-                Toast.makeText(getContext(), "skill " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 TechnicalSkillAdapter adapter = new TechnicalSkillAdapter(list);
                 skills.setLayoutManager(layoutManager);
@@ -76,12 +76,11 @@ workshop=view.findViewById(R.id.workhoprecycle);
         });
 
 
-        qualificationDeo qualificationDeo = new qualificationDeo();
-        qualificationDeo.fatchtqualification(requireContext(), education, new UserCallBack() {
+        qualificationDeo technicalSkilldeo1 = new qualificationDeo();
+        technicalSkilldeo1.fatchtqualification(requireContext(), education, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Qualification> list = (ArrayList<Qualification>) object;
-                Toast.makeText(getContext(), "skill " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 QualificationAdpter adapter = new QualificationAdpter(list);
                 education.setLayoutManager(layoutManager);
@@ -90,19 +89,14 @@ workshop=view.findViewById(R.id.workhoprecycle);
 
             @Override
             public void userError(String error) {
-
-
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         Certificationdeo certificationdeo = new Certificationdeo();
         certificationdeo.getuser(requireContext(), certification, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Certification> list = (ArrayList<Certification>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 CertificationAdapter adapter = new CertificationAdapter(list);
                 certification.setLayoutManager(layoutManager);
@@ -123,7 +117,6 @@ workshop=view.findViewById(R.id.workhoprecycle);
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Project> list = (ArrayList<Project>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 ProjectAdapter adapter = new ProjectAdapter(list);
                 project.setLayoutManager(layoutManager);
@@ -142,7 +135,6 @@ workshop=view.findViewById(R.id.workhoprecycle);
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Award> list = (ArrayList<Award>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 AwardAdapter adapter = new AwardAdapter(list);
                 recognization.setLayoutManager(layoutManager);
@@ -162,7 +154,6 @@ workshop=view.findViewById(R.id.workhoprecycle);
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Research_Paper> list = (ArrayList<Research_Paper>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 ResearchPaperAdapter adapter = new ResearchPaperAdapter(list);
                 reasearchpaperrecycle.setLayoutManager(layoutManager);
@@ -181,7 +172,6 @@ workshop=view.findViewById(R.id.workhoprecycle);
             @Override
             public void userSuccess(Object object) {
                ArrayList<Workshop> list = (ArrayList<Workshop>) object;
-                Toast.makeText(getContext(), "certification " + list.size(), Toast.LENGTH_SHORT).show();
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 WorkshopAdapter adapter = new WorkshopAdapter(list);
                 workshop.setLayoutManager(layoutManager);

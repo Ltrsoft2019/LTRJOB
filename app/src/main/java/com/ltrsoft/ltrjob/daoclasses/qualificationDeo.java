@@ -16,7 +16,6 @@ import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Qualification_Level;
-import com.ltrsoft.ltrjob.pojoclass.Technical_Skill;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +30,7 @@ public class qualificationDeo {
     String create="http://job.ltr-soft.com/Qualification/qulification_insert.php";
     String redid="   https://job.ltr-soft.com/Qualification/qualification_user_read.php";
 
-    String update="";
+    String update="https://job.ltr-soft.com/Qualification/qulification_update.php";
     String delete="";
     String qname,qyear,qcgpa;
     public  void create(Qualification qualification, Context context, String user_id,
@@ -96,8 +95,11 @@ public class qualificationDeo {
                         String qualification_school_college =jsonObject.getString("qualification_school_college");
                         String qualification_passing_year=jsonObject.getString("qualification_passing_year");
                         String qualification_percentage_cgpa=jsonObject.getString("qualification_percentage_cgpa");
-                        Toast.makeText(context, ""+qualification_percentage_cgpa.toString(), Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(context, "choll name"+qualification_school_college.toString(), Toast.LENGTH_SHORT).show();
+
                         Qualification technicalSkill = new Qualification(qualification_school_college,qualification_passing_year,qualification_percentage_cgpa);
+
                         qualificationArrayList.add(technicalSkill);
 
 
@@ -122,7 +124,7 @@ public class qualificationDeo {
                 HashMap<String, String> hashMap = new HashMap<>();
 
 
-                hashMap.put("user_id","user-26");
+                hashMap.put("user_id","user-17");
 
                 return hashMap;
             }
@@ -131,6 +133,11 @@ public class qualificationDeo {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }
+
+
+
+
+
 
 
     public void getall(final Context context , Qualification qualification, UserCallBack
@@ -178,16 +185,18 @@ public class qualificationDeo {
 
 
 
-    public void updatequlification(Qualification qualification, String userid,String qualification_level_id, Context context, UserCallBack callBack){
-        StringRequest stringRequest= new StringRequest(Request.Method.POST, update,
+    public void updatequlification(String cname, String passingy,String cgp,Context context, UserCallBack callBack) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.contains("success")) {
 
                             callBack.userSuccess("success");
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                         } else {
                             callBack.userError(response.toString());
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -197,19 +206,20 @@ public class qualificationDeo {
             public void onErrorResponse(VolleyError error) {
                 callBack.userError(error.toString());
             }
-        }){
+        }) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> hashMap=new HashMap<>();
+                HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("qualification_school_college" ,qualification.getQualification_school_college());
-                hashMap.put("qualification_passing_year",qualification.getQualification_passing_year());
-                hashMap.put("qualification_percentage_cgpa",qualification.getQualification_percentage_cgpa());
+                hashMap.put("qualification_school_college" ,cname.toString());
+                hashMap.put("qualification_passing_year",passingy.toString());
+                hashMap.put("qualification_percentage_cgpa",cgp.toString());
 
 
-                hashMap.put("user_id",userid.toString());
-                hashMap.put("qualification_level_id",qualification_level_id.toString());
+                hashMap.put("user_id","user-17");
+                hashMap.put("qualification_level_id","qua_level-1");
+                hashMap.put("qualification_id","qua-19");
 
 
                 return hashMap;
@@ -218,6 +228,10 @@ public class qualificationDeo {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+
+
+
 
     public void deletequlification( Qualification qualification,String userid,String qualification_level_id,Context context,UserCallBack callBack){
 

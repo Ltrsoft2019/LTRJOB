@@ -10,6 +10,7 @@ import android.os.Handler;
 import com.ltrsoft.ltrjob.fragments.DashboardFragment;
 import com.ltrsoft.ltrjob.fragments.LoginFragment;
 import com.ltrsoft.ltrjob.fragments.PlascreenFragment;
+import com.ltrsoft.ltrjob.fragments.Splash_Screen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,33 +20,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Splash_Screen splashScreen=new Splash_Screen();
+getSupportFragmentManager().beginTransaction().replace(R.id.constraint, splashScreen).commit();
 
-        SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-        boolean isFirstLaunch = preferences.getBoolean("flag", true);
 
-        if (isFirstLaunch) {
-        Intent intent=new Intent(MainActivity.this, spashscreen.class);
-        startActivity(intent);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showDashboardFragment();
-                }
-            }, 5000);
-        } else {
-            showLoginFragment();
-        }
     }
 
 
-    private void showDashboardFragment() {
-        DashboardFragment dashboardFragment = new DashboardFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, dashboardFragment).commit();
-    }
 
-    private void showLoginFragment() {
-        LoginFragment loginFragment = new LoginFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.constraint, loginFragment).commit();
-  }
+
 }

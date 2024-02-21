@@ -1,15 +1,20 @@
 package com.ltrsoft.ltrjob.Adpter;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.AwardUpdate;
+import com.ltrsoft.ltrjob.fragments.CerificationUpdate;
 import com.ltrsoft.ltrjob.pojoclass.Award;
 
 import java.util.List;
@@ -36,6 +41,24 @@ public class AwardAdapter extends RecyclerView.Adapter<AwardAdapter.ViewHolder> 
         holder.t2.setText(model.getAwardvanue());
         holder.t3.setText(model.getReciveddate());
         holder.t4.setText(model.getAwardcategeryname());
+holder.cardView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        AwardUpdate awardUpdate=new AwardUpdate();
+        AppCompatActivity activity=(AppCompatActivity)v.getContext();
+
+
+        Bundle args = new Bundle();
+        String id = String.valueOf(model.getAwardcategeryname());
+        Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+        args.putString("course_id", id);
+
+        awardUpdate.setArguments(args);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();
+
+
+    }
+});
     }
 
     @Override

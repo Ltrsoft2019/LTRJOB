@@ -156,7 +156,6 @@ public class user_projectDeo {
                         String endDate = jsonObject.getString("project_end_date");
                         String technology = jsonObject.getString("project_technologies");
 
-                        Toast.makeText(context, "" + email, Toast.LENGTH_SHORT).show();
                         Project project = new Project(name, email, endDate, projectname, project_description, startDate, endDate, technology);
                         projectArrayList.add(project);
                     }

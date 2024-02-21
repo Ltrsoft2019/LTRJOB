@@ -1,14 +1,20 @@
 package com.ltrsoft.ltrjob.Adpter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.QualificationUpdate;
+import com.ltrsoft.ltrjob.fragments.UpdateTechnicalSkill;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import java.util.List;
 
@@ -30,9 +36,28 @@ public class QualificationAdpter extends RecyclerView.Adapter<QualificationAdpte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Qualification model = qualificationList.get(position);
-        holder.cnme.setText(model.getQualification_school_college());
-        holder.year.setText(model.getQualification_passing_year());
-        holder.cgpa.setText(model.getQualification_percentage_cgpa());
+        holder.collegenme.setText(model.getQualification_school_college());
+        holder.passingyear.setText(model.getQualification_passing_year());
+        holder.percentage.setText(model.getQualification_percentage_cgpa());
+     holder.   qualificationCard.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+
+             AppCompatActivity activity=(AppCompatActivity)v.getContext();
+
+             QualificationUpdate updateTechnicalSkill = new QualificationUpdate();
+
+             Bundle args = new Bundle();
+             String id = String.valueOf(model.getQualification_id());
+             Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+             args.putString("course_id", id);
+
+             updateTechnicalSkill.setArguments(args);
+             activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+
+
+         }
+     });
     }
 
     @Override
@@ -41,14 +66,15 @@ public class QualificationAdpter extends RecyclerView.Adapter<QualificationAdpte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView cnme, cgpa, year;
+        TextView collegenme, percentage, passingyear;
         CardView qualificationCard;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cnme = itemView.findViewById(R.id.name);
-            cgpa = itemView.findViewById(R.id.cgp);
-            year = itemView.findViewById(R.id.year);
+            collegenme = itemView.findViewById(R.id.name);
+            percentage = itemView.findViewById(R.id.cgp);
+            passingyear = itemView.findViewById(R.id.year);
+            qualificationCard=itemView.findViewById(R.id.card);
         }
     }
 }

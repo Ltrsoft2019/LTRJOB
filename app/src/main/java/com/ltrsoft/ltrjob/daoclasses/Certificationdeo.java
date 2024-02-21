@@ -1,7 +1,6 @@
 package com.ltrsoft.ltrjob.daoclasses;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -210,7 +209,7 @@ params.put("user_id",userid.toString());
 
 
 
-    public  void updatecertification(Certification  certification,Context context,UserCallBack callBack,String userid){
+    public  void updatecertification( String title, String givenBy,String  number, String date,Context context,UserCallBack callBack){
 
 
         StringRequest stringRequest= new StringRequest(Request.Method.POST, updateurl,
@@ -237,13 +236,14 @@ params.put("user_id",userid.toString());
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> hashMap=new HashMap<>();
 
-                hashMap.put("user_id",userid.toString());
-                hashMap.put("event_id",certification.getCreatedat());
+                hashMap.put("user_id","user-17");
+                hashMap.put("certification_id","certificate-30");
 
-                hashMap.put("event_name",certification.getCertification_title());
-                hashMap.put("user_mname",certification.getCertification_from());
-                hashMap.put("event_guest",certification.getCertification_year());
-                hashMap.put("event_venue",certification.getCertification_number());
+
+                hashMap.put("certification_title",title);
+                hashMap.put("certification_from",givenBy);
+                hashMap.put("certification_year",date);
+                hashMap.put("certification_number",number);
 
                 return hashMap;
             }

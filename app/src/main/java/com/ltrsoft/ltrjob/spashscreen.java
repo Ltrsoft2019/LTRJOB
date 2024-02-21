@@ -23,7 +23,7 @@ public class spashscreen extends AppCompatActivity {
                     sleep(4000);
                     LoginFragment login=new LoginFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.constraint,login)
-                            .addToBackStack(null ).commit();
+                            .commit();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -31,7 +31,7 @@ public class research_paperDeo {
     String fatchall="";
     String create="";
     String fatchuser="https://job.ltr-soft.com/Research_Paper/user_research_paper.php";
-    String update="";
+    String update="http://job.ltr-soft.com/Awards_Recognization/award_Recog_categary.php";
     String delete="";
 
     public  void create(Research_Paper researchPaper, String research_category_id, String research_discipline_i,UserCallBack callBack, Context context)
@@ -136,7 +136,6 @@ public class research_paperDeo {
 
                       //  String awardlevelname = jsonObject.getString("award_level_name");
 
-                        Toast.makeText(context, "" + research_topic_name.toString(), Toast.LENGTH_SHORT).show();
 
                         Research_Paper researchPaper = new Research_Paper(research_topic_name, research_citation, research_author_1);
 
@@ -242,7 +241,11 @@ public class research_paperDeo {
     }
 
 
-    public void updatereasrchpaper(Research_Paper researchPaper, String research_discipline_i, String research_discipline_id
+
+
+
+
+    public void updatereasrchpaper(String name, String givenby, String vanue,String date,String type
             , Context context, UserCallBack callBack){
         StringRequest stringRequest= new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
@@ -268,32 +271,19 @@ public class research_paperDeo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> hashMap=new HashMap<>();
 
-                hashMap.put("research_topic_name",researchPaper.getResearch_topic_name());
+                hashMap.put("user_id","user-17");
 
 
-                hashMap.put("research_discipline_id",research_discipline_i.toString());
+                hashMap.put("award_category_id","award_cat-1");
+                hashMap.put("award_level_id","award_level-1");
 
 
-                hashMap.put("research_citation",researchPaper.getResearch_citation());
-                hashMap.put("research_author_1",researchPaper.getResearch_author_1());
-                hashMap.put("research_author_2",researchPaper.getResearch_author_2());
-                hashMap.put("research_author_3",researchPaper.getResearch_author_3());
-                hashMap.put("research_author_4",researchPaper.getResearch_author_4());
-                hashMap.put("research_author_5",researchPaper.getResearch_author_5());
-                hashMap.put("research_author_6",researchPaper.getResearch_author_6());
 
-                hashMap.put("research_category_id",research_discipline_id.toString());
-
-                hashMap.put("Published_in",researchPaper.getPublished_in());
-                hashMap.put("ISBN_no",researchPaper.getISBN_no());
-                hashMap.put("Location",researchPaper.getLocation());
-                hashMap.put("Pages_start",researchPaper.getPages_start());
-                hashMap.put("Pages_end",researchPaper.getPages_end());
-                hashMap.put("volume/ edition",researchPaper.getVolumeedition());
-                hashMap.put("DOI",researchPaper.getDOI());
-                hashMap.put("date",researchPaper.getDate());
-                hashMap.put("research_paper_published_in_journal",researchPaper.getResearch_paper_published_in_journal());
-
+                hashMap.put("award_name",name);
+                hashMap.put("award_given_by",givenby);
+                hashMap.put("award_venue",vanue);
+                hashMap.put("award_date_recieved",date);
+                hashMap.put("award_type_name",type);
 
 
                 return hashMap;
@@ -302,6 +292,12 @@ public class research_paperDeo {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+
+
+
+
+
 
 
     public void deleterearshpaper( Research_Paper researchPaper,String research_paper_id,Context context,UserCallBack callBack){

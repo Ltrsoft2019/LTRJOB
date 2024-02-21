@@ -1,6 +1,7 @@
 package com.ltrsoft.ltrjob.Adpter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.CerificationUpdate;
+import com.ltrsoft.ltrjob.fragments.QualificationUpdate;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -50,7 +54,25 @@ public class CertificationAdapter extends RecyclerView.Adapter<CertificationAdap
         holder.t3.setText(model.getCertification_year());
         holder.t4.setText(model.getCertification_number());
         holder.t5.setText(model.getCreatedat());
+holder.card.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
+        AppCompatActivity activity=(AppCompatActivity)v.getContext();
+
+        CerificationUpdate updateTechnicalSkill = new CerificationUpdate();
+
+        Bundle args = new Bundle();
+        String id = String.valueOf(model.getCertification_number());
+        Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+        args.putString("course_id", id);
+
+        updateTechnicalSkill.setArguments(args);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+
+
+    }
+});
         holder.certificationImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +88,7 @@ public class CertificationAdapter extends RecyclerView.Adapter<CertificationAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView certificationImageView;
-        TextView t1, t2, t3, t4, t5;
+        TextView t1, t2, t3, t4, t5,card;
         Context context;
 
         public ViewHolder(@NonNull View itemView, Context context) {
@@ -78,6 +100,7 @@ public class CertificationAdapter extends RecyclerView.Adapter<CertificationAdap
             t3 = itemView.findViewById(R.id.certification_year);
             t4 = itemView.findViewById(R.id.certification_number);
             t5 = itemView.findViewById(R.id.created_at);
+            card=itemView.findViewById(R.id.cardv);
         }
 
         public void createPdf(Certification model) {

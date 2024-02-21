@@ -32,7 +32,7 @@ public class technical_skilldeo {
     String fatchall = "";
     String create = "";
     String redid = "https://job.ltr-soft.com/Technical_skill/user_id_technical_skill.php";
-    String update = "";
+    String update = "http://job.ltr-soft.com/Technical_skill/user_Technical_skill_update.php";
     String delete = "";
     final ArrayList<Technical_Skill> technicallist = new ArrayList<>();
 
@@ -185,8 +185,9 @@ public class technical_skilldeo {
 
 
 
-    public void updatetechnicalskill(Technical_Skill technicalSkill, String technicalid
-            , Context context, UserCallBack callBack) {
+
+
+    public void updatetechnicalskill(String skillname, String tid,Context context, UserCallBack callBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
                     @Override
@@ -194,8 +195,10 @@ public class technical_skilldeo {
                         if (response.contains("success")) {
 
                             callBack.userSuccess("success");
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                         } else {
                             callBack.userError(response.toString());
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -211,8 +214,10 @@ public class technical_skilldeo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("technical_skill_name", technicalSkill.getTechnical_skill_name());
-                hashMap.put("technical_skill_id", technicalid.toString());
+                hashMap.put("technical_skill_name", skillname.toString());
+                hashMap.put("user_technical_skill_id","user_tech_skill-36");
+                hashMap.put("technical_skill_id","tech_skill-4");
+                hashMap.put("user_id","user-17");
 
 
                 return hashMap;
@@ -221,6 +226,10 @@ public class technical_skilldeo {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+
+
+
 
 
     public void deletetechnicalskill(Technical_Skill technicalSkill, String technical_skill_id, Context context, UserCallBack callBack) {

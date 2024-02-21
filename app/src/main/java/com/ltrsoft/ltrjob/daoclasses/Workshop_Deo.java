@@ -53,7 +53,6 @@ public class Workshop_Deo {
                         String workshop_type_name = jsonObject.getString("workshop_type_name");
                        // String awardlevelname = jsonObject.getString("award_level_name");
 
-                        Toast.makeText(context, "" + workshop_name.toString(), Toast.LENGTH_SHORT).show();
 
                         Workshop award1 = new Workshop(workshop_name, workshop_venue, workshop_level, workshop_type_name);
                         workshopArrayList.add(award1);
