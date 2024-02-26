@@ -34,7 +34,52 @@ public class JobDashboard {
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
     String redid="https://job.ltr-soft.com/user_job_history_read.php";
+
+    String create="http://job.ltr-soft.com/user_job_history_insert.php";
     final ArrayList<job> experiences = new ArrayList<>();
+
+
+    public void create( Context context, UserCallBack callBack) {
+        StringRequest request = new StringRequest(Request.Method.POST, create, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+             
+                callBack.userSuccess(response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callBack.userError(error.toString());
+            }
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("job_id", "job-1");
+                map.put("user_id", "user-17");
+                return map;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void getall(final Context context , RecyclerView recyclerView, UserCallBack
             callBack) {

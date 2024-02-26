@@ -1,16 +1,21 @@
 package com.ltrsoft.ltrjob.Adpter;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.CerificationUpdate;
+import com.ltrsoft.ltrjob.fragments.ProjectUpdate;
 import com.ltrsoft.ltrjob.pojoclass.Project; // Assuming your Project class is named Project
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -39,7 +44,23 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         holder.t2.setText(model.getProjectDescription());
         holder.t3.setText(model.getStartDate());
         holder.t4.setText(model.getEndDate());
+holder.cardView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity=(AppCompatActivity)v.getContext();
 
+        ProjectUpdate update = new ProjectUpdate();
+
+        Bundle args = new Bundle();
+        String id = String.valueOf(model.getProject_id());
+        args.putString("project_id", id);
+
+        update.setArguments(args);
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, update).addToBackStack(null).commit();
+
+
+    }
+});
 
 
     }

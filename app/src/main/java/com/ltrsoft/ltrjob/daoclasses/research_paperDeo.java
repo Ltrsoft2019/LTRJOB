@@ -31,7 +31,7 @@ public class research_paperDeo {
     String fatchall="";
     String create="";
     String fatchuser="https://job.ltr-soft.com/Research_Paper/user_research_paper.php";
-    String update="http://job.ltr-soft.com/Awards_Recognization/award_Recog_categary.php";
+    String update="https://job.ltr-soft.com/Research_Paper/research_paper_update.php";
     String delete="";
 
     public  void create(Research_Paper researchPaper, String research_category_id, String research_discipline_i,UserCallBack callBack, Context context)
@@ -245,13 +245,15 @@ public class research_paperDeo {
 
 
 
-    public void updatereasrchpaper(String name, String givenby, String vanue,String date,String type
-            , Context context, UserCallBack callBack){
+    public void updatereasrchpaper(String name, String hindex,String iindex   ,String ciction,String author1,String aurthr2,String author3,String author4 ,String author5,String author6,String published,String isbpno,
+            String location,String pageend,String pagestart,String valumeedition,String  doi,String postdate,
+                                   Context context, UserCallBack callBack){
         StringRequest stringRequest= new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.contains("success")) {
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
 
                             callBack.userSuccess("success");
                         } else {
@@ -274,16 +276,32 @@ public class research_paperDeo {
                 hashMap.put("user_id","user-17");
 
 
-                hashMap.put("award_category_id","award_cat-1");
-                hashMap.put("award_level_id","award_level-1");
+                hashMap.put("research_topic_name",name);
+                hashMap.put("research_discipline_id","research_dis-1");
 
 
 
-                hashMap.put("award_name",name);
-                hashMap.put("award_given_by",givenby);
-                hashMap.put("award_venue",vanue);
-                hashMap.put("award_date_recieved",date);
-                hashMap.put("award_type_name",type);
+                hashMap.put("research_h_index",hindex);
+                hashMap.put("research_i_index",iindex);
+                hashMap.put("research_citation",ciction);
+                hashMap.put("research_author_1",author1);
+                hashMap.put("research_author_2",aurthr2);
+                hashMap.put("research_author_3",author3);
+                hashMap.put("research_author_4",author4);
+                hashMap.put("research_author_5",author5);
+                hashMap.put("research_author_6",author6);
+                hashMap.put("research_category_id","research_cat-1");
+                hashMap.put("Published_in",published);
+                hashMap.put("ISBN_no",isbpno);
+                hashMap.put("Location",location);
+                hashMap.put("Pages_end",pageend);
+                hashMap.put("Pages_start",pagestart);
+                hashMap.put("volume_edition",valumeedition);
+                hashMap.put("DOI",doi);
+                hashMap.put("date",postdate);
+                hashMap.put("research_paper_published_in_id","");
+
+
 
 
                 return hashMap;

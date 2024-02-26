@@ -32,6 +32,7 @@ public class CerificationUpdate extends Fragment {
         e2 = view.findViewById(R.id.givenby);
         e3 = view.findViewById(R.id.number);
         e4 = view.findViewById(R.id.cdate);
+
         updateButton = view.findViewById(R.id.Updatecertification);
 
         updateButton.setOnClickListener(new View.OnClickListener() {

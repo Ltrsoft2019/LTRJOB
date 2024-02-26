@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
+import com.ltrsoft.ltrjob.R;
 
 import java.util.Random;
 

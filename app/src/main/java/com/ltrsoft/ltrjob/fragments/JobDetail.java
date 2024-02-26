@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Company_Details_Deo;
 import com.ltrsoft.ltrjob.daoclasses.JobDashboard;
+import com.ltrsoft.ltrjob.daoclasses.user_projectDeo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Company_Details;
 import com.ltrsoft.ltrjob.pojoclass.job;
@@ -31,6 +33,7 @@ public class JobDetail extends Fragment {
     private String companyId;
     ArrayList<job>list;
     ArrayList<job> experiences1;
+    AppCompatButton appCompatButton;
 
     public JobDetail(){
             // Required empty public constructor
@@ -46,6 +49,7 @@ public class JobDetail extends Fragment {
         job_type = view.findViewById(R.id.job_type);
         company_name = view.findViewById(R.id.company_name);
         job_role = view.findViewById(R.id.job_role);
+        appCompatButton=view.findViewById(R.id.submitt);
 
         desc = view.findViewById(R.id.desc);
         eligible = view.findViewById(R.id.eligible);
@@ -166,6 +170,34 @@ public class JobDetail extends Fragment {
                 @Override
                 public void userError(String error) {
                     Toast.makeText(getContext(), "error "+error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            appCompatButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    JobDashboard awardDeo=new JobDashboard();
+                    awardDeo.create( requireContext(), new UserCallBack() {
+                        @Override
+                        public void userSuccess(Object object) {
+                            Toast.makeText(getContext(), "job applied  Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+                        @Override
+                        public void userError(String error) {
+                            userError(error.toString());
+
+                        }
+                    });
+
+
+
+
+
                 }
             });
 

@@ -61,7 +61,7 @@ public class AwardUpdate extends Fragment {
 awardDeo.updateAward(title, givenBy, number, date, atype, requireContext(), new UserCallBack() {
     @Override
     public void userSuccess(Object object) {
-        Toast.makeText(getContext(), "Certification Updated Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Award Updated Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
 
 
     }

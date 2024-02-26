@@ -31,7 +31,7 @@ public class Workshop_Deo {
 
     private static String ReadAll_URL="https://job.ltr-soft.com/Workshop/user_workshop.php";
     private static String Create_URL="";
-    private static String Update_URL="";
+    private static String Update_URL="http://job.ltr-soft.com/workshop_update.php";
     private static String Delete_URL="";
    // private static String ReadAll_URL="";
 
@@ -163,12 +163,13 @@ public class Workshop_Deo {
         requestQueue.add(stringRequest);
     }
 
-    public void updateWorkshop(Workshop workshop,String workshop_id,Context context, UserCallBack userCallBack){
+    public void updateWorkshop(String name,String vanue,String level,String date,Context context, UserCallBack userCallBack){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Update_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.contains("success")) {
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                             userCallBack.userSuccess("success");
                         } else {
                             userCallBack.userError(response.toString());
@@ -184,11 +185,13 @@ public class Workshop_Deo {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String>map=new HashMap<>();
-
-                map.put("workshop_name",workshop.getWorkshop_name());
-                map.put("workshop_venue",workshop.getWorkshop_venue());
-                map.put("workshop_level",workshop.getWorkshop_level());
-                map.put("workshop_date",workshop.getWorkshop_date());
+                map.put("workshop_id","workshop-17");
+                map.put("user_id","user-17");
+                map.put("workshop_name",name);
+                map.put("workshop_venue",vanue);
+                map.put("workshop_level",level);
+                map.put("workshop_date",date);
+                map.put("workshop_type_id","workshop_type-1");
 
                 return map;
             }

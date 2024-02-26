@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/rname"
+            android:hint="reasch name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/hindex"
+            android:layout_width="200dp"
+            android:hint="h index"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/iindex"
+            android:hint="i index"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+
+            android:id="@+id/cition"
+
+            android:hint="enter cititon"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a1"
+            android:hint="enter author 1"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a2"
+            android:hint="enter author 2"
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a3"
+            android:hint="enter author 3"
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a4"
+            android:hint="enter author 4"
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a5"
+            android:hint="enter author 5"
+
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/a6"
+            android:hint="enter author 6"
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/publish"
+            android:hint="enter published "
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/isbno"
+            android:hint="enter ISBN no"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:hint="enter location"
+            android:id="@+id/location"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:hint="enter start date"
+            android:id="@+id/sdate"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/enddate"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:hint="enter valume  edition"
+            android:id="@+id/vlaueedit"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:hint="enter doi"
+            android:id="@+id/doi"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/date"
+            android:hint="enter post date"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:text="update reasrch"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"/>
+
+<!--        <EditText-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
+<!--        <EditText-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"/>-->
+
+    </LinearLayout>
+
+</ScrollView>

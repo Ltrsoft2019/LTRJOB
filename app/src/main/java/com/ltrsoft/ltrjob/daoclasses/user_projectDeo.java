@@ -34,7 +34,7 @@ public class user_projectDeo {
     String fatchuser = "https://job.ltr-soft.com/project/read_user_project.php";
     String create = "";
     String fach = "https://andromot.ltr-soft.com/public/user_pump_status/r_user_p_status.php";
-    String update = "";
+    String update = "https://job.ltr-soft.com/project/update_project.php";
     String delete = "";
 
     public void create(User_Project userProject, String user_id,String project_id, UserCallBack callBack, Context context) {
@@ -191,14 +191,14 @@ public class user_projectDeo {
 
 
 
-    public void updateusertechnicalskill(User_Project userProject, String user_id,String user_project_id,String project_id
+    public void updateusertechnicalskill(  String pname,String sdate,String edate,String categery,String description,String technology
             , Context context, UserCallBack callBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, update,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.contains("success")) {
-
+                            Toast.makeText(context, ""+response.toString(), Toast.LENGTH_SHORT).show();
                             callBack.userSuccess("success");
                         } else {
                             callBack.userError(response.toString());
@@ -217,9 +217,17 @@ public class user_projectDeo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put("user_project_id",user_project_id.toString());
-                hashMap.put("project_id", project_id.toString());
-                hashMap.put("user_id",user_id.toString());
+                hashMap.put("user_id","user-17");
+                hashMap.put("project_id","project-1" );
+
+                hashMap.put("project_technologie",technology);
+                hashMap.put("project_category",categery);
+                hashMap.put("project_description",description);
+                hashMap.put("start_dat",sdate);
+                hashMap.put("end_date",edate);
+
+
+
 
 
                 return hashMap;

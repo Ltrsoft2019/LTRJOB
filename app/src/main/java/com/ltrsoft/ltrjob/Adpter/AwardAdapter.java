@@ -51,7 +51,7 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
         Bundle args = new Bundle();
         String id = String.valueOf(model.getAwardcategeryname());
         Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
-        args.putString("course_id", id);
+        args.putString("award_id", id);
 
         awardUpdate.setArguments(args);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();

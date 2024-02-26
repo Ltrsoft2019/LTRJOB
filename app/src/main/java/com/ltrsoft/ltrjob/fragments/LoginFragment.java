@@ -57,13 +57,14 @@ public class LoginFragment extends Fragment {
                     login.login(email, password, getContext(), new UserCallBack() {
                         @Override
                         public void userSuccess(Object object) {
-                            // Successful login
+
                             getFragmentManager().beginTransaction().replace(R.id.constraint, new NavigationDrawerFragment()).addToBackStack(null).commit();
 
 
                             SharedPreferences preferences = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putBoolean("isLoggedIn", true).apply(); // Set the flag to true
+
                         }
 
                         @Override
