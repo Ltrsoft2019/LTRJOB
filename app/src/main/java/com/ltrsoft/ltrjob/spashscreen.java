@@ -1,5 +1,5 @@
-package com.ltrsoft.ltrjob;//package com.ltrsoft.ltrjob;
-//
+package com.ltrsoft.ltrjob;
+
 import static java.lang.Thread.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +21,17 @@ public class spashscreen extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(4000);
-                    LoginFragment login=new LoginFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.constraint,login)
-                            .commit();
+//                    LoginFragment login=new LoginFragment();
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.constraint,login).addToBackStack(null).commit();
+
+                    Intent intent = new Intent(spashscreen.this,MainActivity.class);
+                    startActivity(intent);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         });
-       t.start();
-   }
+        t.start();
+    }
 }

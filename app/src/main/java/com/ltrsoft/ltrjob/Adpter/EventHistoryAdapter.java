@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.fragments.EventDetailFragment;
+import com.ltrsoft.ltrjob.fragments.EventHistoryDetailFragment;
 import com.ltrsoft.ltrjob.pojoclass.Event_class;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -61,6 +62,20 @@ public class EventHistoryAdapter extends RecyclerView.Adapter<EventHistoryAdapte
 
                     }
                 });
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                EventHistoryDetailFragment w = new EventHistoryDetailFragment();
+                activity. getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, w)
+                        .addToBackStack(null)
+                        .commit();
+
+
+            }
+        });
 
 
     }

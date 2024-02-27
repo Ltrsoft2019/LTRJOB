@@ -41,13 +41,13 @@ public class qualificationDeo {
                     @Override
                     public void onResponse(String response) {
 
-                            if (response.contains("success")) {
-                                userCallBack.userSuccess("success");
-                            } else {
-                                userCallBack.userError(response.toString());
-                            }
+                        if (response.contains("success")) {
+                            userCallBack.userSuccess("success");
+                        } else {
+                            userCallBack.userError(response.toString());
                         }
-                        
+                    }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -60,14 +60,14 @@ public class qualificationDeo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
-               params.put("qualification_school_college" ,qualification.getQualification_school_college());
-               params.put("qualification_passing_year",qualification.getQualification_passing_year());
-               params.put("qualification_percentage_cgpa",qualification.getQualification_percentage_cgpa());
+                params.put("qualification_school_college" ,qualification.getQualification_school_college());
+                params.put("qualification_passing_year",qualification.getQualification_passing_year());
+                params.put("qualification_percentage_cgpa",qualification.getQualification_percentage_cgpa());
 
                 params.put("user_id","user-17");
                 params.put("qualification_level_id","qua_level-1");
 
-              //  params.put("qualification_level_id",qualification.getQualification_id());
+                //  params.put("qualification_level_id",qualification.getQualification_id());
 
                 return params;
             }
@@ -254,8 +254,8 @@ public class qualificationDeo {
                 HashMap<String,String>map=new HashMap<>();
 
 
-map.put("String qualification_level_id",qualification_level_id.toString());
-map.put("user_id",userid);
+                map.put("String qualification_level_id",qualification_level_id.toString());
+                map.put("user_id",userid);
 
 
                 return map;
@@ -494,10 +494,10 @@ map.put("user_id",userid);
 
                 return map;
             }
-        };
+      };
 
 
 
 
-    }
+}
 }

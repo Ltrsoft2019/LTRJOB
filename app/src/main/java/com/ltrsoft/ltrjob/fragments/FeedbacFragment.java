@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -18,8 +19,9 @@ import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import java.util.List;
 
 public class FeedbacFragment extends Fragment {
-    private EditText editText1, editText2;
-    private Spinner spinner;
+    private EditText feedback_desc, subject;
+    private RatingBar rating;
+    private Spinner categery_spinner;
 
     public FeedbacFragment() {
     }
@@ -28,10 +30,11 @@ public class FeedbacFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feedbac, container, false);
 
-        editText1 = view.findViewById(R.id.editTextText2);
-        editText2 = view.findViewById(R.id.editTextText3);
-        spinner = view.findViewById(R.id.spinner);
-        Button button = view.findViewById(R.id.button);
+        feedback_desc = view.findViewById(R.id.feedback_desc);
+        subject = view.findViewById(R.id.subject);
+        rating = view.findViewById(R.id.rating);
+        categery_spinner = view.findViewById(R.id.categery_spinner);
+        Button submit = view.findViewById(R.id.submit);
 
         Feedback_Deo feedbackDeo = new Feedback_Deo();
 
@@ -42,7 +45,7 @@ public class FeedbacFragment extends Fragment {
 
                 ArrayAdapter<String> nameAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, feedbackCategories);
                 nameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(nameAdapter);
+                categery_spinner.setAdapter(nameAdapter);
             }
 
             @Override
@@ -51,16 +54,16 @@ public class FeedbacFragment extends Fragment {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get data from UI elements
-                String sub = editText1.getText().toString();
-                String des = editText2.getText().toString();
+                String sub = feedback_desc.getText().toString();
+                String des = subject.getText().toString();
 
                 // Check if the spinner has items
-                if (spinner.getCount() > 0) {
-                    String selectedSpinnerItem = spinner.getSelectedItem().toString();
+                if (categery_spinner.getCount() > 0) {
+                    String selectedSpinnerItem = categery_spinner.getSelectedItem().toString();
 
                     feedbackDeo.feedback(des, sub, selectedSpinnerItem, getContext(), new UserCallBack() {
                         @Override

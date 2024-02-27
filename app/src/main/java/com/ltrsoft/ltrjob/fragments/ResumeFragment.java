@@ -29,12 +29,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.Adpter.ResumeAwardAdapter;
 import com.ltrsoft.ltrjob.Adpter.ResumeCertificationAdapter;
+import com.ltrsoft.ltrjob.Adpter.ResumePatentAdapter;
+import com.ltrsoft.ltrjob.Adpter.ResumeResearch_Paper_Adapter;
+import com.ltrsoft.ltrjob.Adpter.ResumeWorkshop_Adapter;
+import com.ltrsoft.ltrjob.Adpter.Resume_Skill_Adapter;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Resume;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Award;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
+import com.ltrsoft.ltrjob.pojoclass.Patent;
+import com.ltrsoft.ltrjob.pojoclass.Research_Paper;
+import com.ltrsoft.ltrjob.pojoclass.Technical_Skill;
 import com.ltrsoft.ltrjob.pojoclass.Userclass;
+import com.ltrsoft.ltrjob.pojoclass.Workshop;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -45,14 +53,19 @@ public class ResumeFragment extends Fragment {
 
     private TextView education, work_exp, resumedetails, address, email, number, profession, name, git_hub, link_id;
     private ImageView download, profileimg;
-    private RecyclerView recyclerViewCertifications, award_title;
+    private RecyclerView recyclerViewCertifications, award_title,patents_recycler,Research_paper_recycler,workshop_recycler,skill_recycler;
     private ArrayList<Certification> certifications;
     private ArrayList<Award> awards;
+    private ArrayList<Patent> patents;
+    private ArrayList<Research_Paper> research_paper;
+    private ArrayList<Workshop> workshops;
+    private ArrayList<Technical_Skill> skills;
     private Resume resume;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 10;
     private static final String FILE_NAME = "RResume.png";
     private static final int NOTIFICATION_ID = 100;
     private static final String TAG = "ResumeFragment";
+    Object[] objects2;
 
     @Nullable
     @Override
@@ -72,13 +85,24 @@ public class ResumeFragment extends Fragment {
         link_id = view.findViewById(R.id.link_id);
         recyclerViewCertifications = view.findViewById(R.id.cer_title);
         award_title = view.findViewById(R.id.award_title);
+        patents_recycler = view.findViewById(R.id.patents_recycler);
+        Research_paper_recycler = view.findViewById(R.id.Research_paper_recycler);
+        workshop_recycler = view.findViewById(R.id.workshop_recycler);
+        skill_recycler = view.findViewById(R.id.skill_recycler);
 
         certifications = new ArrayList<>();
         awards = new ArrayList<>();
+        research_paper = new ArrayList<>();
+        workshops = new ArrayList<>();
         resume = new Resume();
 
         recyclerViewCertifications.setLayoutManager(new LinearLayoutManager(getContext()));
         award_title.setLayoutManager(new LinearLayoutManager(getContext()));
+        patents_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        Research_paper_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        workshop_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        skill_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         resume.getall(requireContext(), new UserCallBack() {
             @Override
@@ -104,14 +128,44 @@ public class ResumeFragment extends Fragment {
                 awards = (ArrayList<Award>) objects[1];
                 ResumeAwardAdapter awardAdapter = new ResumeAwardAdapter(getContext(), awards);
                 award_title.setAdapter(awardAdapter);
-            }
 
+                patents = (ArrayList<Patent>) objects[3];
+                ResumePatentAdapter patentAdapter = new ResumePatentAdapter(getContext(), patents);
+                patents_recycler.setAdapter(patentAdapter);
+
+                research_paper= (ArrayList<Research_Paper>) objects[4];
+                ResumeResearch_Paper_Adapter resumeResearchPaper = new ResumeResearch_Paper_Adapter(getContext(), research_paper);
+                Research_paper_recycler.setAdapter(resumeResearchPaper);
+            }
             @Override
             public void userError(String error) {
                 Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
             }
         });
 
+        resume.getall2(getContext(), new UserCallBack() {
+            @Override
+            public void userSuccess(Object object) {
+                Object[] objects = (Object[]) object;
+                workshops = (ArrayList<Workshop>) objects[1];
+                Toast.makeText(getContext(), "size "+workshops.size(), Toast.LENGTH_SHORT).show();
+                ResumeWorkshop_Adapter workshopAdapter = new ResumeWorkshop_Adapter(getContext(),workshops);
+                workshop_recycler.setAdapter(workshopAdapter);
+
+//                 skills= (ArrayList<Technical_Skill>) objects[2];
+//                Resume_Skill_Adapter resumeSkillAdapter = new Resume_Skill_Adapter(getContext(),skills);
+//                skill_recycler.setAdapter(resumeSkillAdapter);
+
+
+
+
+            }
+
+            @Override
+            public void userError(String error) {
+                Toast.makeText(getContext(), "error2"+error, Toast.LENGTH_SHORT).show();
+            }
+        });
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Java"
-            android:textSize="40dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:fontFamily="@font/adamina"
@@ -81,11 +81,10 @@
         <!-- CardView with ScrollView -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-
-            android:layout_height="match_parent"
+            android:layout_height="717dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/addresume"
-            app:cardCornerRadius="20dp"
-            android:layout_marginTop="50dp">
+            app:cardCornerRadius="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,27 +94,27 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/aboutcourse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/adamina"
                         android:text="About Courses"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:textSize="25dp"
-                        android:fontFamily="@font/adamina" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/coursedetails"
                         android:layout_width="350dp"
-                        android:layout_height="70dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
                         android:text="Artificial intelligence is the simulation of human intelligence processes by machines, especially computer systems. "
                         android:textSize="14dp" />
 
@@ -128,21 +127,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Start Date :"
-                        android:textSize="14dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/adamina"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="10dp" />
+                        android:text="Start Date :"
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/start"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="60 days"
-                        android:textSize="14dp"
-                        android:fontFamily="@font/adamina"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/adamina"
+                        android:text="60 days"
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 
@@ -153,21 +152,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="End Date :"
-                        android:textSize="14dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/adamina"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="10dp" />
+                        android:text="End Date :"
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="60 days"
-                        android:textSize="14dp"
-                        android:fontFamily="@font/adamina"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp" />
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/adamina"
+                        android:text="60 days"
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 
@@ -175,25 +174,25 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/includes"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/adamina"
                         android:text="This Courcses Includes"
                         android:textColor="@color/black"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/include_details"
-                        android:layout_width="204dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="30dp"
                         android:layout_marginTop="10dp"
                         android:text="LTR SOFT Malang complex 4th flour ,latur"
                         android:textSize="14sp" />
@@ -201,20 +200,28 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/adamina"
+                        android:text="Course Mode : "
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/mode"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/adamina"
-                        android:text="Course Mode : Offline"
+                        android:text="Offline"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -224,17 +231,17 @@
                     android:id="@+id/join"
                     android:layout_width="270dp"
                     android:layout_height="60dp"
-                    android:backgroundTint="#F45D2E"
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
+                    android:backgroundTint="#F45D2E"
                     android:text="Join Now"
                     android:textColor="#FFFFFF"
                     android:textSize="20dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

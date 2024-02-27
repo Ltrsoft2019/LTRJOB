@@ -6,6 +6,8 @@
     android:background="#F2F2F2"
     android:orientation="vertical">
 
+
+
 <!--    <ImageView-->
 <!--        android:id="@+id/back"-->
 <!--        android:layout_width="40dp"-->
@@ -15,25 +17,56 @@
 <!--        android:layout_marginBottom="45dp"-->
 <!--        android:background="@drawable/dashmenu"/>-->
 
-    <ImageView
-        android:id="@+id/download"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/man"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello, Neha"
-        android:textColor="#18613E"
-        android:layout_marginTop="-90dp"
-        android:textSize="18dp"
-        android:layout_marginLeft="25dp"
-        android:fontFamily="@font/adamina"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/dimen_0dp">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Hello, "-->
+<!--        android:textColor="#18613E"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginLeft="25dp"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:fontFamily="@font/adamina"/>-->
+
+<!--<TextView-->
+<!--    android:id="@+id/name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Neha"-->
+<!--        android:textColor="#18613E"-->
+<!--    android:layout_marginTop="70dp"-->
+<!--        android:textSize="18dp"-->
+<!--        android:fontFamily="@font/adamina"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/profile"-->
+<!--            android:layout_width="@dimen/dimen_100dp"-->
+<!--            android:layout_height="@dimen/dimen_100dp"-->
+<!--            android:layout_marginLeft="@dimen/dimen_170dp"-->
+<!--            android:src="@drawable/man"/>-->
+
+<!--    </LinearLayout>-->
+
+
+
+
 
     <!-- Dashboard title -->
+
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,38 +74,34 @@
         android:text="D"
         android:textColor="@color/black"
         android:layout_marginLeft="20dp"
-        android:textSize="60dp"
+        android:layout_marginTop="3dp"
+        android:textSize="40dp"
         android:textStyle="bold"
         android:fontFamily="@font/adamina"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:text="ashboard"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="-55dp"
+        android:layout_marginLeft="1dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         android:fontFamily="@font/adamina"/>
+
+</LinearLayout>
+
+
+<!--    </LinearLayout>-->
 
 
     <!-- Horizontal RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dashboard_horizontal_recycler"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal" />
-
-    <SearchView
-        android:id="@+id/editTextText"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/dashcor"
-        android:layout_marginTop="10dp"/>
+        android:layout_height="160dp"
+        android:layout_marginTop="10dp"
+        android:background="#0000"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/editTextText1"-->
@@ -98,11 +127,12 @@
 <!--        android:fontFamily="@font/adamina" />-->
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/dashboard_verticle_recycler"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:orientation="vertical" />
+        android:background="#0000"/>
 
 
 

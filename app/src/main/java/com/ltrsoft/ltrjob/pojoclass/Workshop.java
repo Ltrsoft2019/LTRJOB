@@ -1,10 +1,10 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Workshop {
-    private int id,workshop_type_id,user_id;
+    private String id,workshop_type_id,user_id;
     private String workshop_name,workshop_venue,workshop_level,workshop_date,workshop_id;
 
-    public Workshop(int id, String workshop_id, int workshop_type_id, int user_id, String workshop_name, String workshop_venue, String workshop_level, String workshop_date) {
+    public Workshop(String id, String workshop_id, String workshop_type_id, String user_id, String workshop_name, String workshop_venue, String workshop_level, String workshop_date) {
         this.id = id;
         this.workshop_id = workshop_id;
         this.workshop_type_id = workshop_type_id;
@@ -22,12 +22,28 @@ public class Workshop {
         this.workshop_date = workshopDate;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getWorkshop_type_id() {
+        return workshop_type_id;
+    }
+
+    public void setWorkshop_type_id(String workshop_type_id) {
+        this.workshop_type_id = workshop_type_id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getWorkshop_id() {
@@ -37,23 +53,6 @@ public class Workshop {
     public void setWorkshop_id(String workshop_id) {
         this.workshop_id = workshop_id;
     }
-
-    public int getWorkshop_type_id() {
-        return workshop_type_id;
-    }
-
-    public void setWorkshop_type_id(int workshop_type_id) {
-        this.workshop_type_id = workshop_type_id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
     public String getWorkshop_name() {
         return workshop_name;
     }

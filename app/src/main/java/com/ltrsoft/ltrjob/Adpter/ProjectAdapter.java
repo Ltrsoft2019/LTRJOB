@@ -72,7 +72,7 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-CardView cardView;
+        CardView cardView;
         TextView t1, t2, t3, t4;
 
         public ViewHolder(@NonNull View itemView) {

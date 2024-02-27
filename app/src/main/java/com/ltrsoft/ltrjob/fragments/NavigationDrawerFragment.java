@@ -1,11 +1,14 @@
 package com.ltrsoft.ltrjob.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,12 +24,20 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.daoclasses.Resume;
+import com.ltrsoft.ltrjob.interfaces.UserCallBack;
+import com.ltrsoft.ltrjob.pojoclass.User;
+import com.ltrsoft.ltrjob.pojoclass.Userclass;
+import com.squareup.picasso.Picasso;
 
 public class NavigationDrawerFragment extends Fragment {
     public DrawerLayout drawerLayout;
     public Toolbar toolbar;
     public NavigationView navigationView;
     public ActionBarDrawerToggle toggle;
+
+    private TextView name;
+    private ImageView profile;
 
     public NavigationDrawerFragment() {
 
@@ -48,6 +59,32 @@ public class NavigationDrawerFragment extends Fragment {
 
         DashboardFragment dashboardFragment = new DashboardFragment();
         getFragmentManager().beginTransaction().add(R.id.container, dashboardFragment).commit();
+
+        name = navigationView.getHeaderView(0).findViewById(R.id.name);
+        profile = navigationView.getHeaderView(0).findViewById(R.id.profile);
+        Resume resume = new Resume();
+
+        resume.getall(getContext(), new UserCallBack() {
+            @Override
+            public void userSuccess(Object object) {
+                Object[] objects = (Object[]) object;
+                Userclass user = (Userclass) objects[0];
+
+//                String profile= user.getUser_photo();
+//                String name = user.getUser_fname();
+
+                name.setText(user.getUser_fname());
+                String imgUrl = "https://institute.ltr-soft.com/company_details/" + user.getUser_photo();
+                Picasso.get().load(imgUrl).into(profile);
+
+            }
+
+            @Override
+            public void userError(String error) {
+                Toast.makeText(getContext(), "errr"+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -111,12 +148,16 @@ public class NavigationDrawerFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 //                            logout();
+                            LoginFragment loginFragment=new LoginFragment();
+                            getChildFragmentManager().beginTransaction().replace(R.id.container,loginFragment).commit();
+
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+
                         }
                     });
                     builder.show();

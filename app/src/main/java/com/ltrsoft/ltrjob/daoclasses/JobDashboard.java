@@ -34,52 +34,8 @@ public class JobDashboard {
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
     String redid="https://job.ltr-soft.com/user_job_history_read.php";
-
-    String create="http://job.ltr-soft.com/user_job_history_insert.php";
+    String create ="http://job.ltr-soft.com/user_job_history_insert.php";
     final ArrayList<job> experiences = new ArrayList<>();
-
-
-    public void create( Context context, UserCallBack callBack) {
-        StringRequest request = new StringRequest(Request.Method.POST, create, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-             
-                callBack.userSuccess(response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                callBack.userError(error.toString());
-            }
-        }) {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> map = new HashMap<>();
-                map.put("job_id", "job-1");
-                map.put("user_id", "user-17");
-                return map;
-            }
-        };
-
-        RequestQueue queue = Volley.newRequestQueue(context);
-        queue.add(request);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public void getall(final Context context , RecyclerView recyclerView, UserCallBack
             callBack) {
@@ -152,7 +108,6 @@ public class JobDashboard {
                         String company_id=jsonObject.getString("company_id");
                         String company_logo = jsonObject.getString("company_logo");
 
-                        Toast.makeText(context, ""+company_name.toString(), Toast.LENGTH_SHORT).show();
 
                         job certification1 = new job(company_name,company_email,job_description,company_phone,
                                 job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
@@ -187,13 +142,6 @@ public class JobDashboard {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
     }
-
-
-
-
-
-
-
 
     public void Deleteexp(  String expid, Context context, UserCallBack callBack ){
 
@@ -271,6 +219,34 @@ public class JobDashboard {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
+    }
+
+    public void create( Context context, UserCallBack callBack) {
+        StringRequest request = new StringRequest(Request.Method.POST, create, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // Save user session upon successful login
+                //   saveUserSession(context, email, pass);
+                callBack.userSuccess(response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callBack.userError(error.toString());
+            }
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("job_id", "job-1");
+                map.put("user_id", "user-17");
+                return map;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(request);
     }
 
 

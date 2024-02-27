@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.CourcehistoryFragment;
 import com.ltrsoft.ltrjob.fragments.CourseDetailFragment;
 import com.ltrsoft.ltrjob.pojoclass.Course_Class;
 
@@ -42,21 +43,21 @@ public class CourseCardHistoryAdapter extends RecyclerView.Adapter<CourseCardHis
         holder.courseDuration.setText(model.getCourse_duration());
         holder.courseType.setText(model.getCreated_at());
 
-//        holder.layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                CourseDetailFragment cd = new CourseDetailFragment();
-//                Bundle args = new Bundle();
-//                args.putString("course_id", model.course_id);
-//                cd.setArguments(args);
-//
-//                activity.getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.container, cd)
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                CourcehistoryFragment cd = new CourcehistoryFragment();
+                Bundle args = new Bundle();
+                args.putString("course_id", model.course_id);
+                cd.setArguments(args);
+
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, cd)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @Override

@@ -7,21 +7,30 @@
     app:cardElevation="8dp"
     app:cardMaxElevation="10dp"
     android:background="#F2F2F2"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_paper"
         android:layout_width="349dp"
-        android:layout_height="289dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#DCF4FF"
+        android:layout_marginBottom="@dimen/dimen_20dp">
 
 
         <TextView
             android:id="@+id/paper_title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/paper_author"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -30,20 +39,11 @@
             />
 
         <TextView
-            android:id="@+id/paper_author"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="100dp"
-
-            />
-
-        <TextView
             android:id="@+id/certification_year"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="75dp"
 
             />
 
@@ -52,7 +52,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="105dp"
 
             />
 
@@ -61,9 +61,8 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="200dp"
-
-            />
+            android:layout_marginTop="135dp"
+            android:layout_marginBottom="@dimen/dimen_20dp"/>
 
 
 

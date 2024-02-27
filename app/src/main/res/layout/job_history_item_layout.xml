@@ -46,13 +46,13 @@
 
         <TextView
             android:id="@+id/dash_company_name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
+            android:layout_width="@dimen/dimen_180dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="40dp"
             android:text="Wipro"
             android:textColor="#000000"
-            android:textSize="30dp"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.19"

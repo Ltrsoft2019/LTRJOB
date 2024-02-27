@@ -3,6 +3,7 @@ package com.ltrsoft.ltrjob.fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,7 @@ import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.Course_Class;
 import com.ltrsoft.ltrjob.pojoclass.Event_class;
 import com.ltrsoft.ltrjob.pojoclass.job;
+import com.ltrsoft.ltrjob.utils.Screen_Size;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,9 @@ public class HistoryFragment extends Fragment {
 
     Button job, course,event;
     RecyclerView recyclerView;
+
+    int screenwidth;
+    int screenheight;
 
     public HistoryFragment() {
     }
@@ -48,7 +53,30 @@ public class HistoryFragment extends Fragment {
         course = view.findViewById(R.id.corceheostry);
         event=view.findViewById(R.id.EventHistory);
 
-        recyclerView = view.findViewById(R.id.jobhesotry);
+        recyclerView = view.findViewById(R.id.courcerecycle);
+
+
+        JobDashboard jobDashboard = new JobDashboard();
+        jobDashboard.geteuser(requireContext(),"company-24", new UserCallBack() {
+
+            @Override
+            public void userSuccess(Object object1) {
+                Toast.makeText(getContext(), "in success", Toast.LENGTH_SHORT).show();
+                ArrayList<job> list1 = (ArrayList<job>) object1;
+                LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+                JobHistoryAdapter adapter1 = new JobHistoryAdapter(list1);
+                recyclerView.setLayoutManager(layoutManager1);
+                recyclerView.setAdapter(adapter1);
+            }
+
+            @Override
+            public void userError(String error) {
+                Toast.makeText(getContext(), "error " + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
         job.setOnClickListener(new View.OnClickListener() {
             @Override

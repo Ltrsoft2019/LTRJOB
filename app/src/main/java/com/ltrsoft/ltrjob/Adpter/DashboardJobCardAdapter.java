@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,7 +95,7 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView dash_companylogo;
         public TextView dash_job_desc, dash_company_name, dash_job_position, dash_post_date;
-        public ConstraintLayout layout;
+        public RelativeLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,7 +103,7 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
             dash_job_position = itemView.findViewById(R.id.dash_job_position);
             dash_company_name = itemView.findViewById(R.id.dash_company_name);
             dash_job_desc = itemView.findViewById(R.id.dash_job_description);
-            dash_companylogo = itemView.findViewById(R.id.dash_companylog);
+            dash_companylogo = itemView.findViewById(R.id.dash_companylog); // This line causes the error
             layout = itemView.findViewById(R.id.dasboard_layout);
         }
     }

@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class JobDetail extends Fragment {
+public class  JobDetail extends Fragment {
     private TextView company_name,job_type,job_role;
     private TextView location,eligible,skill,desc;
     private TextView contact_email,contact,com_location,com_desc;
@@ -193,10 +193,6 @@ public class JobDetail extends Fragment {
 
                         }
                     });
-
-
-
-
 
                 }
             });

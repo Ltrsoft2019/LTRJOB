@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,7 +74,7 @@ public class TechnicalSkillAdapter extends RecyclerView.Adapter<TechnicalSkillAd
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView skillName;
-        CardView skillCard;
+        LinearLayout skillCard;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

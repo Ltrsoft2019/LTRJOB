@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,7 +68,7 @@ public class QualificationAdpter extends RecyclerView.Adapter<QualificationAdpte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView collegenme, percentage, passingyear;
-        CardView qualificationCard;
+        LinearLayout qualificationCard;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

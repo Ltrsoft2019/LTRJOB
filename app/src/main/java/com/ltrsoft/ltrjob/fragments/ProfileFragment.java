@@ -3,12 +3,16 @@ package com.ltrsoft.ltrjob.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ltrsoft.ltrjob.Adpter.AwardAdapter;
@@ -22,6 +26,7 @@ import com.ltrsoft.ltrjob.Adpter.WorkshopAdapter;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Award_Deo;
 import com.ltrsoft.ltrjob.daoclasses.Certificationdeo;
+import com.ltrsoft.ltrjob.daoclasses.Resume;
 import com.ltrsoft.ltrjob.daoclasses.Workshop_Deo;
 import com.ltrsoft.ltrjob.daoclasses.qualificationDeo;
 import com.ltrsoft.ltrjob.daoclasses.research_paperDeo;
@@ -34,12 +39,27 @@ import com.ltrsoft.ltrjob.pojoclass.Project;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Research_Paper;
 import com.ltrsoft.ltrjob.pojoclass.Technical_Skill;
+import com.ltrsoft.ltrjob.pojoclass.Userclass;
 import com.ltrsoft.ltrjob.pojoclass.Workshop;
+import com.ltrsoft.ltrjob.utils.Screen_Size;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
-    private RecyclerView skills, education, certification,project,recognization,reasearchpaperrecycle,workshop;
+    private RecyclerView skills;
+    private RecyclerView education;
+    private RecyclerView certification;
+    private RecyclerView project;
+    private RecyclerView recognization;
+    private RecyclerView reasearchpaperrecycle;
+    private RecyclerView workshop;
+
+    private TextView skill_txt,education_txt,project_txt,
+            certification_txt,recognization_txt,rearchpapperreycle_txt,workshop_txt;
+
+    int screenwidth;
+    int screenheight;
 
     public ProfileFragment() {
 
@@ -51,21 +71,106 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         skills = view.findViewById(R.id.skill);
         education = view.findViewById(R.id.qualification);
-        certification = view.findViewById(R.id.project);
+        certification = view.findViewById(R.id.certification);
         project=view.findViewById(R.id.project1);
         recognization=view.findViewById(R.id.recognization);
         reasearchpaperrecycle =view.findViewById(R.id.rearchpapperreycleview);
-workshop=view.findViewById(R.id.workhoprecycle);
+        workshop=view.findViewById(R.id.workhoprecycle);
 
+        skill_txt = view.findViewById(R.id.skill_txt);
+        education_txt = view.findViewById(R.id.education_txt);
+        project_txt = view.findViewById(R.id.project_txt);
+        certification_txt = view.findViewById(R.id.certification_txt);
+        recognization_txt = view.findViewById(R.id.recognization_txt);
+        rearchpapperreycle_txt = view.findViewById(R.id.rearchpapperreycle_txt);
+        workshop_txt = view.findViewById(R.id.workshop_txt);
+
+        TextView name = view.findViewById(R.id.name);
+        ImageView profile = view.findViewById(R.id.profile);
+        Resume resume = new Resume();
+
+        resume.getall(getContext(), new UserCallBack() {
+                    @Override
+                    public void userSuccess(Object object) {
+                        Object[] objects = (Object[]) object;
+                        Userclass user = (Userclass) objects[0];
+
+//                String profile= user.getUser_photo();
+//                String name = user.getUser_fname();
+
+                        name.setText(user.getUser_fname());
+                        String imgUrl = "https://institute.ltr-soft.com/company_details/" + user.getUser_photo();
+                        Picasso.get().load(imgUrl).into(profile);
+
+                    }
+
+            @Override
+            public void userError(String error) {
+                Toast.makeText(getContext(), "Errror"+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        skills.setVisibility(View.INVISIBLE);
+        education.setVisibility(View.INVISIBLE);
+        project.setVisibility(View.INVISIBLE);
+        certification.setVisibility(View.INVISIBLE);
+        recognization.setVisibility(View.INVISIBLE);
+        reasearchpaperrecycle.setVisibility(View.INVISIBLE);
+        workshop.setVisibility(View.INVISIBLE);
+
+        skill_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.setVisibility(skills.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        education_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                education.setVisibility(education.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        project_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                project.setVisibility(project.getVisibility()==View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        certification_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                certification.setVisibility(certification.getVisibility()==View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        recognization_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recognization.setVisibility(recognization.getVisibility()==View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        rearchpapperreycle_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reasearchpaperrecycle.setVisibility(reasearchpaperrecycle.getVisibility()==View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+        workshop_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workshop.setVisibility(workshop.getVisibility()==View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
 
         technical_skilldeo technicalSkilldeo = new technical_skilldeo();
         technicalSkilldeo.fatchtechnicalskill(requireContext(), skills, new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
                 ArrayList<Technical_Skill> list = (ArrayList<Technical_Skill>) object;
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                GridLayoutManager gridLayout = new GridLayoutManager(getContext(),2);
                 TechnicalSkillAdapter adapter = new TechnicalSkillAdapter(list);
-                skills.setLayoutManager(layoutManager);
+                skills.setLayoutManager(gridLayout);
                 skills.setAdapter(adapter);
             }
 
@@ -171,7 +276,7 @@ workshop=view.findViewById(R.id.workhoprecycle);
         workshop_deo.getalluserAward(requireContext(), workshop,new UserCallBack() {
             @Override
             public void userSuccess(Object object) {
-               ArrayList<Workshop> list = (ArrayList<Workshop>) object;
+                ArrayList<Workshop> list = (ArrayList<Workshop>) object;
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 WorkshopAdapter adapter = new WorkshopAdapter(list);
                 workshop.setLayoutManager(layoutManager);
@@ -185,5 +290,5 @@ workshop=view.findViewById(R.id.workhoprecycle);
         });
 
         return view;
-    }
+}
 }

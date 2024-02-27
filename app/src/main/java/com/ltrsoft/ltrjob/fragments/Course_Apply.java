@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ltrsoft.ltrjob.R;
@@ -16,6 +18,8 @@ import com.ltrsoft.ltrjob.pojoclass.Batch;
 
 public class Course_Apply extends Fragment {
     String batch_id;
+    private Button apply;
+    private TextView home_page;
     public Course_Apply() {
         // Required empty public constructor
     }
@@ -25,14 +29,19 @@ public class Course_Apply extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.course_apply, container, false);
-
+        apply=view.findViewById(R.id.apply);
+        home_page = view.findViewById(R.id.home_page);
 
         Bundle arg = getArguments();
         if (arg !=null){
             batch_id=arg.getString("batch_id");
         }
 
-        Toast.makeText(getContext(), "batcj_id="+batch_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "batcj_id="+batch_id, Toast.LENGTH_SHORT).show();
+
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
         Batch batch=new Batch("batch-22","user-17","","","",
                 "","","");
@@ -46,6 +55,16 @@ public class Course_Apply extends Fragment {
             @Override
             public void userError(String error) {
                 Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+            }
+        });
+
+        home_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                getChildFragmentManager().beginTransaction().replace(R.id.container,new CourceFragment()).addToBackStack(null).commit();
             }
         });
         return view;

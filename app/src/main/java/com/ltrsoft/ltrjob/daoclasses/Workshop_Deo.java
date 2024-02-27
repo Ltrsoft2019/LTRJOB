@@ -14,9 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
-import com.ltrsoft.ltrjob.pojoclass.Award;
 import com.ltrsoft.ltrjob.pojoclass.Country;
-import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import com.ltrsoft.ltrjob.pojoclass.Workshop;
 
 import org.json.JSONArray;
@@ -29,11 +27,13 @@ import java.util.Map;
 
 public class Workshop_Deo {
 
-    private static String ReadAll_URL="https://job.ltr-soft.com/Workshop/user_workshop.php";
+    private static String URL="http://job.ltr-soft.com/batch_read.php";
     private static String Create_URL="";
     private static String Update_URL="http://job.ltr-soft.com/workshop_update.php";
     private static String Delete_URL="";
-   // private static String ReadAll_URL="";
+    private static String ReadAll_URL="https://job.ltr-soft.com/Workshop/user_workshop.php";
+    Workshop workshop;
+    ArrayList<Workshop> list=new ArrayList<>();
 
     public void getalluserAward(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
         StringRequest request = new StringRequest(Request.Method.POST, ReadAll_URL, new Response.Listener<String>() {
@@ -51,7 +51,7 @@ public class Workshop_Deo {
                         String workshop_venue = jsonObject.getString("workshop_venue");
                         String workshop_level = jsonObject.getString("workshop_level");
                         String workshop_type_name = jsonObject.getString("workshop_type_name");
-                       // String awardlevelname = jsonObject.getString("award_level_name");
+                        // String awardlevelname = jsonObject.getString("award_level_name");
 
 
                         Workshop award1 = new Workshop(workshop_name, workshop_venue, workshop_level, workshop_type_name);
@@ -81,10 +81,8 @@ public class Workshop_Deo {
         queue.add(request);
 
     }
-
-
     public void getWorkshop(String workshop_id,Context context, UserCallBack userCallBack){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Update_URL,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -100,7 +98,7 @@ public class Workshop_Deo {
                                 String workshop_level = jsonObject.getString("workshop_level");
                                 String workshop_date = jsonObject.getString("workshop_date");
 
-                                Workshop workshop =new Workshop(workshop_name,workshop_venue,workshop_level,workshop_date);
+                                workshop =new Workshop(workshop_name,workshop_venue,workshop_level,workshop_date);
 
                             }
                         } catch (JSONException e) {
@@ -121,7 +119,7 @@ public class Workshop_Deo {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> map=new HashMap<>();
 
-               // map.put("workshop_id",Workshop());
+                map.put("workshop_id",workshop.getWorkshop_id());
                 return map;
             }
         };

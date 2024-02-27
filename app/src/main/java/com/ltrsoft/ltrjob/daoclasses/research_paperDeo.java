@@ -132,9 +132,9 @@ public class research_paperDeo {
                         String research_topic_name = jsonObject.getString("research_topic_name");
                         String research_citation = jsonObject.getString("research_citation");
                         String research_author_1 = jsonObject.getString("research_author_1");
-                      //  String Published_in = jsonObject.getString("award_category_name");
+                        //  String Published_in = jsonObject.getString("award_category_name");
 
-                      //  String awardlevelname = jsonObject.getString("award_level_name");
+                        //  String awardlevelname = jsonObject.getString("award_level_name");
 
 
                         Research_Paper researchPaper = new Research_Paper(research_topic_name, research_citation, research_author_1);

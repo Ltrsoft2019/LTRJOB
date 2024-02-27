@@ -3,20 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
-    app:cardMaxElevation="10dp"
+    app:cardCornerRadius="@dimen/dimen_8dp"
+    app:cardElevation="@dimen/dimen_8dp"
+    app:cardMaxElevation="@dimen/dimen_10dp"
     android:background="#F2F2F2"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_award"
-        android:layout_width="349dp"
-        android:layout_height="289dp"
+        android:layout_width="@dimen/dimen_349dp"
+        android:layout_height="@dimen/dimen_280dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_margin="@dimen/dimen_30dp"
         app:cardCornerRadius="20dp">
 
 
@@ -28,46 +27,46 @@
 
         <TextView
             android:id="@+id/award_title"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginLeft="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_50dp"
 
             />
 
         <TextView
             android:id="@+id/award_description"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginLeft="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_100dp"
 
             />
 
         <TextView
             android:id="@+id/certification_year"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginLeft="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_150dp"
 
             />
 
         <TextView
             android:id="@+id/award_date"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginLeft="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_150dp"
 
             />
 
         <TextView
             android:id="@+id/award_level_name"
-            android:layout_width="250dp"
+            android:layout_width="@dimen/dimen_250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginLeft="@dimen/dimen_50dp"
+            android:layout_marginTop="@dimen/dimen_200dp"
 
             />
 

@@ -1,17 +1,21 @@
 package com.ltrsoft.ltrjob.Adpter;
 
-import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ltrsoft.ltrjob.R;
 
+
+import com.ltrsoft.ltrjob.fragments.JobHistoryDetail;
 import com.ltrsoft.ltrjob.pojoclass.job;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -33,15 +37,24 @@ public class JobHistoryAdapter extends RecyclerView.Adapter<JobHistoryAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         job job_class = jobHistoryList.get(position);
-        holder.dash_job_desc.setText(job_class.getCompany_name());
-        holder.dash_company_name.setText(job_class.getJob_description());
+        holder.dash_job_desc.setText(job_class.getJob_description());
+        holder.dash_company_name.setText(job_class.getCompany_name());
         holder.dash_job_position.setText(job_class.getJob_position());
 
         String imgurl = "https://institute.ltr-soft.com/company_details/" + job_class.getImageurl();
         Picasso.get().load(imgurl).into(holder.companyLogoImageView);
 
 
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity=(AppCompatActivity)v.getContext();
 
+                JobHistoryDetail updateTechnicalSkill = new JobHistoryDetail();
+
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override

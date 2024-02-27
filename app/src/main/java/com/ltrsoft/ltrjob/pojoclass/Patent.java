@@ -1,10 +1,12 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Patent {
-    private int patent_id,patent_type_id,patent_decipline_id,patent_country_id,user_id,id;
-    private String patent_number,patent_name,patent_granted_year,patent_valid_till_year;
+    private String patent_id, patent_type_id, patent_decipline_id, patent_country_id, user_id, id;
+    private String patent_number, patent_name, patent_granted_year, patent_valid_till_year;
 
-    public Patent(int patent_id, int patent_type_id, int patent_decipline_id, int patent_country_id, int user_id, int id, String patent_number, String patent_name, String patent_granted_year, String patent_valid_till_year) {
+    public Patent(String patent_id, String patent_type_id, String patent_decipline_id,
+                  String patent_country_id,String user_id, String id, String patent_number,
+                  String patent_name, String patent_granted_year, String patent_valid_till_year) {
         this.patent_id = patent_id;
         this.patent_type_id = patent_type_id;
         this.patent_decipline_id = patent_decipline_id;
@@ -17,51 +19,51 @@ public class Patent {
         this.patent_valid_till_year = patent_valid_till_year;
     }
 
-    public int getPatent_id() {
+    public String getPatent_id() {
         return patent_id;
     }
 
-    public void setPatent_id(int patent_id) {
+    public void setPatent_id(String patent_id) {
         this.patent_id = patent_id;
     }
 
-    public int getPatent_type_id() {
+    public String getPatent_type_id() {
         return patent_type_id;
     }
 
-    public void setPatent_type_id(int patent_type_id) {
+    public void setPatent_type_id(String patent_type_id) {
         this.patent_type_id = patent_type_id;
     }
 
-    public int getPatent_decipline_id() {
+    public String getPatent_decipline_id() {
         return patent_decipline_id;
     }
 
-    public void setPatent_decipline_id(int patent_decipline_id) {
+    public void setPatent_decipline_id(String patent_decipline_id) {
         this.patent_decipline_id = patent_decipline_id;
     }
 
-    public int getPatent_country_id() {
+    public String getPatent_country_id() {
         return patent_country_id;
     }
 
-    public void setPatent_country_id(int patent_country_id) {
+    public void setPatent_country_id(String patent_country_id) {
         this.patent_country_id = patent_country_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

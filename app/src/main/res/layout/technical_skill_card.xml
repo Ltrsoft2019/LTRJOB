@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="90dp"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/skillCard">
 
-
     <TextView
-android:layout_marginLeft="15dp"
         android:id="@+id/techname"
-        android:layout_width="239dp"
-        android:layout_height="56dp" />
+        android:layout_width="@dimen/dimen_180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/amethysta"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:background="@drawable/border2" />
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>
