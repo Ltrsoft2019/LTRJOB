@@ -15,7 +15,7 @@ import com.ltrsoft.ltrjob.pojoclass.Certification;
 
 import java.util.ArrayList;
 
-public class ResumeCertificationAdapter extends RecyclerView.Adapter<ResumeCertificationAdapter.CertificationViewHolder> {
+public class  ResumeCertificationAdapter extends RecyclerView.Adapter<ResumeCertificationAdapter.CertificationViewHolder> {
     private Context context;
     private ArrayList<Certification> certifications;
 

@@ -52,6 +52,8 @@ public class Research_Paper {
 
     }
 
+
+
     public int getResearch_paper_id() {
         return research_paper_id;
     }

@@ -42,25 +42,25 @@ public class ResearchPaperAdapter extends RecyclerView.Adapter<ResearchPaperAdap
         holder.t2.setText(model.getResearch_author_1());
         holder.t3.setText(model.getResearch_paper_published_in_journal());
         holder.t4.setText(model.getResearch_citation());
-holder.cardView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        ReasearchUpdate awardUpdate=new ReasearchUpdate();
-        AppCompatActivity activity=(AppCompatActivity)v.getContext();
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReasearchUpdate awardUpdate=new ReasearchUpdate();
+                AppCompatActivity activity=(AppCompatActivity)v.getContext();
 
 
-        Bundle args =
-                new Bundle();
-        String id = String.valueOf(model.getResearch_paper_id());
-        Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
-        args.putString("course_id", id);
+                Bundle args =
+                        new Bundle();
+                String id = String.valueOf(model.getResearch_paper_id());
+                Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+                args.putString("course_id", id);
 
-        awardUpdate.setArguments(args);
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();
+                awardUpdate.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();
 
 
-    }
-});
+            }
+        });
 
     }
 

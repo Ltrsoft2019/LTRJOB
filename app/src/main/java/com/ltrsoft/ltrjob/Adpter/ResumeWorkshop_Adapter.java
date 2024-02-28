@@ -34,7 +34,6 @@ public class ResumeWorkshop_Adapter extends RecyclerView.Adapter<ResumeWorkshop_
     public void onBindViewHolder(@NonNull ResumeWorkshop_Adapter.WorkshopViewHolder holder, int position) {
         Workshop workshop= workshops.get(position);
         holder.workshop_name.setText(workshop.getWorkshop_name());
-        holder.workshop_venue.setText(workshop.getWorkshop_venue());
     }
 
     @Override
@@ -45,11 +44,10 @@ public class ResumeWorkshop_Adapter extends RecyclerView.Adapter<ResumeWorkshop_
 
     public static class WorkshopViewHolder extends RecyclerView.ViewHolder {
 
-        TextView workshop_venue,workshop_name;
+        TextView workshop_name;
         public WorkshopViewHolder(@NonNull View itemView) {
             super(itemView);
             workshop_name = itemView.findViewById(R.id.workshop_name);
-            workshop_venue = itemView.findViewById(R.id.workshop_venue);
 
         }
     }

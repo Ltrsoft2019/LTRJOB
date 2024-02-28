@@ -125,11 +125,15 @@ tools:context=".fragments.ProfileFragment">
                 android:layout_marginLeft="@dimen/dimen_330dp"/>
 
         <TableLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/table"
-            android:orientation="horizontal"
             android:layout_below="@+id/education_txt">
+
+            <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
         <!-- Column 1 Name -->
         <TextView
@@ -137,7 +141,7 @@ tools:context=".fragments.ProfileFragment">
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name"
+            android:text="School/College"
             android:gravity="center" />
 
         <!-- Vertical Line -->
@@ -151,7 +155,7 @@ tools:context=".fragments.ProfileFragment">
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="CGP"
+            android:text="CGP/Per."
             android:gravity="center"/>
 
         <!-- Vertical Line -->
@@ -168,6 +172,8 @@ tools:context=".fragments.ProfileFragment">
             android:text="Year"
             android:gravity="center"/>
 
+            </TableRow>
+
         </TableLayout>
 
 
@@ -175,7 +181,8 @@ tools:context=".fragments.ProfileFragment">
             android:id="@+id/qualification"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_300dp"
-            android:layout_below="@+id/table" />
+            android:layout_marginTop="@dimen/dimen_5dp"
+            android:layout_below="@+id/table"/>
 
         <TextView
             android:layout_width="match_parent"

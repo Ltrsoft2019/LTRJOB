@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ import com.ltrsoft.ltrjob.utils.Screen_Size;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ProfileFragment extends Fragment {
     private RecyclerView skills;
@@ -54,7 +56,8 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recognization;
     private RecyclerView reasearchpaperrecycle;
     private RecyclerView workshop;
-
+    private ArrayList<HashMap<Integer,String >> maplist1;
+    TableLayout table;
     private TextView skill_txt,education_txt,project_txt,
             certification_txt,recognization_txt,rearchpapperreycle_txt,workshop_txt;
 
@@ -84,6 +87,7 @@ public class ProfileFragment extends Fragment {
         recognization_txt = view.findViewById(R.id.recognization_txt);
         rearchpapperreycle_txt = view.findViewById(R.id.rearchpapperreycle_txt);
         workshop_txt = view.findViewById(R.id.workshop_txt);
+        table= view.findViewById(R.id.table);
 
         TextView name = view.findViewById(R.id.name);
         ImageView profile = view.findViewById(R.id.profile);
@@ -119,6 +123,7 @@ public class ProfileFragment extends Fragment {
         recognization.setVisibility(View.INVISIBLE);
         reasearchpaperrecycle.setVisibility(View.INVISIBLE);
         workshop.setVisibility(View.INVISIBLE);
+        table.setVisibility(View.INVISIBLE);
 
         skill_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +135,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 education.setVisibility(education.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+                table.setVisibility(table.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
             }
         });
         project_txt.setOnClickListener(new View.OnClickListener() {
@@ -251,6 +257,7 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
 

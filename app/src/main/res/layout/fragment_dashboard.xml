@@ -93,17 +93,57 @@
 
 
 <!--    </LinearLayout>-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="1dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_20dp">
 
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#DCF4FF"
+    android:text="Ads"
+    android:fontFamily="@font/amethysta"
+    android:textSize="@dimen/dimen_20dp"
+    android:paddingLeft="@dimen/dimen_20dp"
+    android:layout_marginTop="@dimen/dimen_5dp"
+    android:layout_marginBottom="5dp"
+    android:textStyle="bold"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Horizontal RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dashboard_horizontal_recycler"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:layout_marginTop="10dp"
-        android:background="#0000"/>
+        android:layout_marginTop="0dp"
+        />
 
-<!--    <TextView-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="1dp"
+        android:layout_marginTop="@dimen/dimen_20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCF4FF"
+        android:text="JObs"
+        android:fontFamily="@font/amethysta"
+        android:textSize="@dimen/dimen_18dp"
+        android:layout_marginBottom="@dimen/dimen_5dp"
+        android:paddingLeft="@dimen/dimen_20dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!--    <TextView-->
 <!--        android:id="@+id/editTextText1"-->
 <!--        android:layout_width="150dp"-->
 <!--        android:layout_height="40dp"-->
@@ -131,8 +171,7 @@
         android:id="@+id/dashboard_verticle_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:background="#0000"/>
+        android:layout_marginTop="0dp" />
 
 
 

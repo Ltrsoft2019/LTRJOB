@@ -19,6 +19,7 @@ import com.ltrsoft.ltrjob.fragments.UpdateTechnicalSkill;
 import com.ltrsoft.ltrjob.pojoclass.Qualification;
 import java.util.List;
 
+
 public class QualificationAdpter extends RecyclerView.Adapter<QualificationAdpter.ViewHolder> {
     private Context context;
     private List<Qualification> qualificationList;

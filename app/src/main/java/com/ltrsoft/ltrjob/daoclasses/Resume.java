@@ -3,6 +3,8 @@ package com.ltrsoft.ltrjob.daoclasses;
 import android.content.Context;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +28,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Resume {
@@ -120,10 +121,11 @@ public class Resume {
                                 String research_topic_name = jsonObject1.getString("research_topic_name");
                                 String research_paper_id = jsonObject1.getString("research_paper_id");
 //
-//                                Research_Paper researchPaper = new Research_Paper(research_paper_id,"","","","",research_topic_name,
+                                Research_Paper researchPaper=new Research_Paper(research_topic_name,research_citation,"");
+//                                Research_Paper researchPaper = new Research_Paper("","","","","",research_topic_name,
 //                                        research_citation,"","","","","","",
 //                                        "","","","","","","","","");
-                              //  researchPapers.add(researchPaper);
+                                researchPapers.add(researchPaper);
                                 objects[4] = researchPapers;
                             }
 
@@ -151,7 +153,7 @@ public class Resume {
         requestQueue.add(stringRequest);
     }
 
-    public void getall2(Context context, UserCallBack userCallBack) {
+    public void getall2(Context context, RecyclerView research_paper_recycler, UserCallBack userCallBack) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, USER_PROFILE_READ_URL2,
                 new Response.Listener<String>() {
                     @Override

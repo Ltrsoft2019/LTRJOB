@@ -2,16 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#F2F2F2"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -23,15 +24,14 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="45dp"
-                app:srcCompat="@drawable/back"
-                />
+                app:srcCompat="@drawable/back"/>
 
             <ImageView
                 android:id="@+id/download"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="340dp"
-                android:layout_marginTop="-80dp"
+                android:layout_marginTop="15dp"
                 app:srcCompat="@drawable/download"
                 />
 
@@ -39,60 +39,60 @@
                 android:id="@+id/Resume"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/amethysta"
                 android:text="RESUME"
                 android:textColor="#18613E"
                 android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/drawble"
-                android:layout_width="370dp"
-                android:layout_height="600dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/square1" />
-
-
-
-            <TextView
-                android:id="@+id/border"
-                android:layout_width="170dp"
-                android:layout_height="220dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-600dp"
-                android:background="@drawable/procard" />
+                android:textStyle="bold"
+                android:layout_below="@+id/download"/>
 
             <ImageView
                 android:id="@+id/profileimg"
                 android:layout_width="150dp"
                 android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="-210dp"
-               />
+                android:layout_below="@+id/Resume"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/objective"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="190dp"
+                android:fontFamily="@font/amethysta"
+                android:text="OBJECTIVE"
+                android:textColor="#18613E"
+                android:textSize="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/Resume"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/resumedetails"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="The meaning of PROFILE is a representation of something in outline; especially"
+                android:layout_below="@+id/objective"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/sq"
                 android:padding="10dp"
-                android:textSize="14dp"
-                android:layout_marginLeft="190dp"
-                android:layout_marginTop="0dp"/>
+                android:text="The meaning of PROFILE is a representation of something in outline; especially"
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/work"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="190dp"
                 android:fontFamily="@font/amethysta"
                 android:text="WORK EXPERIENCE"
                 android:textColor="#18613E"
                 android:textSize="15dp"
+                android:layout_below="@+id/resumedetails"
+                android:layout_marginTop="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -103,36 +103,42 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
                 android:padding="10dp"
+                android:layout_below="@+id/work"
                 android:text="The meaning of PROFILE is a representation of something in outline; especially"
                 android:textSize="14dp" />
 
+            <!--            <TextView-->
+            <!--                android:id="@+id/education_txt"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginLeft="200dp"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:fontFamily="@font/amethysta"-->
+            <!--                android:text="EDUCATION"-->
+            <!--                android:textColor="#18613E"-->
+            <!--                android:textSize="15dp"-->
+            <!--                android:layout_below="@+id/work_exp"-->
+            <!--                android:textStyle="bold" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/education"-->
+            <!--                android:layout_width="200dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="190dp"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:background="@drawable/sq"-->
+            <!--                android:padding="10dp"-->
+            <!--                android:layout_below="@+id/education_txt"-->
+            <!--                android:text="The meaning of PROFILE is a representation of something in outline; especially"-->
+            <!--                android:textSize="14dp" />-->
+
             <TextView
+                android:id="@+id/certification_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
+                android:layout_below="@+id/work_exp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/amethysta"
-                android:text="EDUCATION"
-                android:textColor="#18613E"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/education"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/sq"
-                android:padding="10dp"
-                android:text="The meaning of PROFILE is a representation of something in outline; especially"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="30dp"
                 android:fontFamily="@font/amethysta"
                 android:text="Certifications"
                 android:textColor="#18613E"
@@ -147,21 +153,21 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
                 android:padding="10dp"
+                android:layout_below="@+id/certification_txt"
                 android:textSize="14dp" />
 
             <TextView
+                android:id="@+id/reward_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amethysta"
                 android:text="Reward"
                 android:textColor="#18613E"
                 android:textSize="15dp"
+                android:layout_below="@+id/cer_title"
                 android:textStyle="bold" />
-
-
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/award_title"
@@ -171,38 +177,21 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
                 android:padding="10dp"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:layout_below="@+id/reward_txt"/>
 
             <TextView
+                android:id="@+id/patent_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="200dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amethysta"
                 android:text="Patents"
                 android:textColor="#18613E"
                 android:textSize="15dp"
+                android:layout_below="@+id/award_title"
                 android:textStyle="bold" />
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="200dp"-->
-<!--                android:background="@drawable/square">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="number"-->
-<!--                    android:layout_marginLeft="0dp"/>-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="80dp"-->
-<!--                    android:text="name" />-->
-
-<!--            </LinearLayout>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/patents_recycler"
@@ -211,61 +200,141 @@
                 android:layout_marginLeft="190dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
+                android:layout_below="@+id/patent_txt"
                 android:padding="10dp"
                 android:textSize="14dp" />
 
             <TextView
+                android:id="@+id/research_paper_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amethysta"
                 android:text="Research_paper"
                 android:textColor="#18613E"
                 android:textSize="15dp"
+                android:layout_below="@+id/workshop_recycler"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Research_paper_recycler"
-                android:layout_width="match_parent"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
-                android:padding="10dp"
+                android:layout_below="@+id/research_paper_txt"
                 android:textSize="14dp" />
 
             <TextView
+                android:id="@+id/qulification_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/amethysta"
+                android:text="Eductional Detail"
+                android:textColor="#18613E"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/Research_paper_recycler"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/table"
+                android:layout_below="@+id/qulification_txt">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Column 1 Name -->
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="School/College"
+                        android:gravity="center" />
+
+                    <!-- Vertical Line -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray"/>
+
+                    <!-- Column 2 Name -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CGP/Per."
+                        android:gravity="center"/>
+
+                    <!-- Vertical Line -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray"/>
+
+                    <!-- Column 3 Name -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Year"
+                        android:gravity="center"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/qualificationRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/sq"
+                android:padding="10dp"
+                android:layout_below="@+id/qulification_txt"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/workshop_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amethysta"
                 android:text="Workshop"
                 android:textColor="#18613E"
                 android:textSize="15dp"
+                android:layout_below="@+id/skill_recycler"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/workshop_recycler"
-                android:layout_width="match_parent"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/sq"
-                android:padding="10dp"
+                android:layout_below="@id/workshop_txt"
                 android:textSize="14dp" />
-
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="-380dp"
+                android:layout_below="@+id/profileimg"
+                android:layout_marginLeft="30dp"
                 android:fontFamily="@font/adamina"
-                android:gravity="center"
                 android:padding="10dp"
+                android:layout_marginTop="20dp"
                 android:text="NEHA BHUJBAL"
                 android:textColor="#18613E"
                 android:textSize="18dp" />
@@ -280,6 +349,7 @@
                 android:text="CREATIVE DESIGNER"
                 android:textColor="#F45D2E"
                 android:textSize="10dp"
+                android:layout_below="@+id/name"
                 android:textStyle="bold" />
 
             <TextView
@@ -293,32 +363,26 @@
                 android:text="CONTACT"
                 android:textColor="#18613E"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_below="@+id/profetion"/>
 
             <TextView
                 android:id="@+id/no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:padding="10dp"
+                android:layout_marginLeft="67dp"
+                android:layout_marginTop="12dp"
                 android:text="+91 1234567890"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:layout_below="@+id/con"/>
 
             <ImageView
                 android:id="@+id/img1"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="-30dp"
-                android:background="@drawable/call" />
-
-            <ImageView
-                android:id="@+id/e"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gmail" />
+                android:background="@drawable/call"
+                android:layout_below="@+id/con"/>
 
             <TextView
                 android:id="@+id/email"
@@ -326,9 +390,18 @@
                 android:layout_height="wrap_content"
                 android:text="nehabhujbal@gmail.com"
                 android:textSize="10dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="-25dp"
-                android:padding="10dp"/>
+                android:layout_marginLeft="67dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/img1"/>
+
+            <ImageView
+                android:id="@+id/e"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/img1"
+                android:background="@drawable/gmail" />
 
             <ImageView
                 android:id="@+id/l"
@@ -336,7 +409,8 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/linkedin" />
+                android:background="@drawable/linkedin"
+                android:layout_below="@+id/e"/>
 
             <TextView
                 android:id="@+id/link_id"
@@ -344,9 +418,9 @@
                 android:layout_height="wrap_content"
                 android:text="nehabhujbal@link_id.com"
                 android:textSize="10dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="-30dp"
-                android:padding="10dp"/>
+                android:layout_marginLeft="67dp"
+                android:layout_below="@+id/e"
+                android:layout_marginTop="12dp"/>
 
             <ImageView
                 android:id="@+id/g"
@@ -354,7 +428,8 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/github" />
+                android:background="@drawable/github"
+                android:layout_below="@id/l"/>
 
             <TextView
                 android:id="@+id/git_hub"
@@ -362,16 +437,17 @@
                 android:layout_height="wrap_content"
                 android:text="nehabhu22@git_hub.com"
                 android:textSize="10dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="-30dp"
-                android:padding="10dp"/>
+                android:layout_marginLeft="67dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/l"/>
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/location"/>
+                android:layout_marginTop="12dp"
+                android:background="@drawable/location"
+                android:layout_below="@+id/git_hub"/>
 
             <TextView
                 android:id="@+id/address"
@@ -379,41 +455,35 @@
                 android:layout_height="wrap_content"
                 android:text="Latur"
                 android:textSize="14dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="-35dp"
-                android:padding="10dp"/>
+                android:layout_marginLeft="67dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/git_hub"/>
 
             <TextView
+                android:id="@+id/skill_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/amethysta"
-                android:padding="10dp"
                 android:text="SKILLS"
                 android:textColor="#18613E"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/address"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/skill_recycler"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="c lang"
                 android:textSize="14dp"
-                android:layout_marginLeft="50dp"
                 android:fontFamily="@font/adamina"
-                android:layout_marginTop="-10dp"
-                android:padding="10dp"/>
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:layout_below="@+id/skill_txt"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/qualificationRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:padding="16dp"/>
-
-
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
+
 </LinearLayout>

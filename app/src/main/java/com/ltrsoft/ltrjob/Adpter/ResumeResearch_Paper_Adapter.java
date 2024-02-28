@@ -19,9 +19,8 @@ public class ResumeResearch_Paper_Adapter extends RecyclerView.Adapter<ResumeRes
     private Context context;
     private List<Research_Paper> research_paper;
 
-    public ResumeResearch_Paper_Adapter(Context context, ArrayList<Research_Paper> researchPaper) {
-        this.context = context;
-        this.research_paper=researchPaper;
+    public ResumeResearch_Paper_Adapter(List<Research_Paper> research_paper) {
+        this.research_paper = research_paper;
     }
 
     @NonNull
@@ -36,6 +35,9 @@ public class ResumeResearch_Paper_Adapter extends RecyclerView.Adapter<ResumeRes
         Research_Paper researchPaper = research_paper.get(position);
         holder.research_citation.setText(researchPaper.getResearch_citation());
         holder.research_topic_name.setText(researchPaper.getResearch_topic_name());
+
+
+
     }
 
     @Override
