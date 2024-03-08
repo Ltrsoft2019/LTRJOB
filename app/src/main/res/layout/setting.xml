@@ -6,6 +6,14 @@
     android:background="#EBFCFB"
     android:layout_height="match_parent"
     tools:context=".NavigationPages.Setting">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/back"
+        android:layout_margin="10dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

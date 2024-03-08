@@ -1,78 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/c"
-        android:layout_width="352dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="@dimen/dimen_350dp"
+        android:layout_height="@dimen/dimen_165dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginLeft="@dimen/dimen_5dp"
+        android:layout_marginBottom="@dimen/dimen_5dp"
         android:outlineSpotShadowColor="@color/black"
-        app:cardCornerRadius="20dp">
+        app:cardBackgroundColor="#ECF9FF"
+        app:cardCornerRadius="@dimen/dimen_20dp">
 
+
+        <TextView
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_100dp"
+            android:background="@drawable/cr"
+            android:layout_marginLeft="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_30dp"/>
 
         <ImageView
-            android:id="@+id/img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"/>
-        " />
+            android:id="@+id/AI"
+            android:layout_width="@dimen/dimen_60dp"
+            android:layout_height="@dimen/dimen_60dp"
+            android:layout_marginLeft="@dimen/dimen_26dp"
+            android:layout_marginTop="@dimen/dimen_50dp" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/AI"-->
+        <!--            android:layout_width="@dimen/dimen_80dp"-->
+        <!--            android:layout_height="80dp"-->
+        <!--            android:layout_marginLeft="@dimen/dimen_10dp"-->
+        <!--            android:layout_marginTop="@dimen/dimen_20dp" />-->
+        <!--        " />-->
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginLeft="125dp"/>
 
         <TextView
             android:id="@+id/txt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/dimen_180dp"
+            android:layout_marginTop="@dimen/dimen_30dp"
             android:text="WeAIbinar On "
             android:textColor="#18613E"
-            android:textSize="20dp" />
+            android:textSize="@dimen/dimen_16dp" />
 
         <TextView
-            android:id="@+id/txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="50dp"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="15dp" />
+            android:text="Date :"
+            android:layout_marginTop="@dimen/dimen_70dp"
+            android:layout_marginLeft="125dp"/>
 
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_180dp"
+            android:layout_marginTop="@dimen/dimen_70dp"
+            android:text=""
+            android:textColor="#18613E"
+            android:textSize="@dimen/dimen_15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration :"
+            android:layout_marginTop="@dimen/dimen_108dp"
+            android:layout_marginLeft="125dp"/>
+
+        <TextView
+            android:id="@+id/txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_190dp"
+            android:layout_marginTop="@dimen/dimen_108dp"
+            android:text=""
+            android:textColor="#18613E"
+            android:textSize="@dimen/dimen_15dp" />
 
         <TextView
             android:id="@+id/txt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="85dp"
+            android:layout_marginLeft="@dimen/dimen_260dp"
+            android:layout_marginTop="@dimen/dimen_130dp"
             android:text="More Details"
             android:textColor="#18613E"
-            android:textSize="15dp" />
+            android:textSize="@dimen/dimen_10dp" />
 
-        <TextView
-            android:id="@+id/txt4"
-            android:layout_width="120dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="125dp"
-            android:text=""
-            android:textColor="#18613E"
-            android:textSize="15dp" />
+    </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/txt5"
-            android:layout_width="76dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="125dp"
-            android:text=""
-            android:textColor="#18613E"
-            android:textSize="15dp" />
-
-    </androidx.cardview.widget.CardView>
-
-</RelativeLayout>
+</LinearLayout>

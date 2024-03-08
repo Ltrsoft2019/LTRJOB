@@ -8,6 +8,12 @@
     android:background="#18613E"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/back"
+        android:layout_marginTop="@dimen/dimen_10dp"/>
 
         <TextView
             android:layout_width="182dp"
@@ -18,14 +24,14 @@
             android:textColor="@color/white"
             android:textSize="50dp"
             android:gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"/>
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="724dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/addresume"
         app:cardCornerRadius="20dp">
 

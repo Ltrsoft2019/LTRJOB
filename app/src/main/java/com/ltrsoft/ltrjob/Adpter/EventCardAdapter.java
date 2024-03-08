@@ -54,7 +54,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
         Toast.makeText(context, ""+model.getEvent_name().toString(), Toast.LENGTH_SHORT).show();
 
 //        System.out.println(model.getName());
-        holder.vanue.setText(model.getEvent_venue());
+//        holder.vanue.setText(model.getEvent_venue());
         holder.date.setText(model.getEvent_date_time());
         holder.duration.setText(model.getEvent_duration());
 
@@ -93,7 +93,6 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
                 bundle.putString("description", model.getEvent_description());
                 bundle.putString("duration", model.getEvent_duration());
                 bundle.putString("guest", model.getEvent_guest());
-                bundle.putString("venue", model.getEvent_venue());
                 bundle.putString("date_time", model.getEvent_date_time());
 
                 EventDetailFragment w1 = new EventDetailFragment();
@@ -117,7 +116,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
     }
     public class ImageViewholder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name,vanue;
+        TextView name;
         TextView desc,time,date,duration;
         TextView link;
 
@@ -128,8 +127,6 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
 
 
             name=itemV.findViewById(R.id.txt1);
-            vanue=itemV.findViewById(R.id.txt2);
-
             link=itemV.findViewById(R.id.txt3);
             c=itemV.findViewById(R.id.c);
             date=itemV.findViewById(R.id.txt4);

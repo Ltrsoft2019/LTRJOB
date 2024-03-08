@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.fragments.CerificationUpdate;
+import com.ltrsoft.ltrjob.fragments.Certification_download;
 import com.ltrsoft.ltrjob.fragments.QualificationUpdate;
 import com.ltrsoft.ltrjob.pojoclass.Certification;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -49,34 +50,46 @@ public class CertificationAdapter extends RecyclerView.Adapter<CertificationAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Certification model = certificationList.get(position);
-        holder.t1.setText(model.getCertification_title());
-        holder.t2.setText(model.getCertification_from());
-        holder.t3.setText(model.getCertification_year());
-        holder.t4.setText(model.getCertification_number());
-        holder.t5.setText(model.getCreatedat());
-holder.card.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-
-        AppCompatActivity activity=(AppCompatActivity)v.getContext();
-
-        CerificationUpdate updateTechnicalSkill = new CerificationUpdate();
-
-        Bundle args = new Bundle();
-        String id = String.valueOf(model.getCertification_number());
-        Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
-        args.putString("course_id", id);
-
-        updateTechnicalSkill.setArguments(args);
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
-
-
-    }
-});
-        holder.certificationImageView.setOnClickListener(new View.OnClickListener() {
+        holder.title.setText(model.getCertification_title());
+        holder.name.setText("Sahil Kshirsagar");
+        holder.date.setText(model.getCertification_year());
+//        holder.t4.setText(model.getCertification_number());
+//        holder.t5.setText(model.getCreatedat());
+//holder.card.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
+//
+//        AppCompatActivity activity=(AppCompatActivity)v.getContext();
+//
+//        CerificationUpdate updateTechnicalSkill = new CerificationUpdate();
+//
+//        Bundle args = new Bundle();
+//        String id = String.valueOf(model.getCertification_number());
+//        Toast.makeText(activity, "id"+id, Toast.LENGTH_SHORT).show();
+//        args.putString("course_id", id);
+//
+//        updateTechnicalSkill.setArguments(args);
+//        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+//
+//
+//    }
+//});
+        holder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.createPdf(model);
+
+                Bundle bundle = new Bundle();
+
+                // Put necessary data into the Bundle
+                bundle.putString("certification_title", model.getCertification_title());
+                bundle.putString("certification_date", model.getCertification_year());
+                bundle.putString("certification_name", "Sahil Kshirsagar");
+
+                // Navigate to the fragment where you want to pass the Bundle
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Certification_download nextFragment = new Certification_download(); // Replace YourNextFragment with the appropriate fragment
+                nextFragment.setArguments(bundle);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, nextFragment).addToBackStack(null).commit();
             }
         });
     }
@@ -88,49 +101,19 @@ holder.card.setOnClickListener(new View.OnClickListener() {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView certificationImageView;
-        TextView t1, t2, t3, t4, t5,card;
+        TextView title, name, t3, t4, t5,card,date;
         Context context;
+        ImageView download;
 
         public ViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
             this.context = context;
-            certificationImageView = itemView.findViewById(R.id.img2);
-            t1 = itemView.findViewById(R.id.certification_title);
-            t2 = itemView.findViewById(R.id.certification_from);
-            t3 = itemView.findViewById(R.id.certification_year);
-            t4 = itemView.findViewById(R.id.certification_number);
-            t5 = itemView.findViewById(R.id.created_at);
-            card=itemView.findViewById(R.id.cardv);
+            title = itemView.findViewById(R.id.title);
+            name = itemView.findViewById(R.id.name);
+            date = itemView.findViewById(R.id.date);
+            download = itemView.findViewById(R.id.download);
         }
 
-        public void createPdf(Certification model) {
-            Document document;
 
-            try {
-                // Use the context to get the external files directory
-                File directory = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-                String filePath = new File(directory, "certification_details.pdf").getAbsolutePath();
-
-                PdfWriter writer = new PdfWriter(new FileOutputStream(filePath));
-                PdfDocument pdfDocument = new PdfDocument(writer);
-
-                document = new Document(pdfDocument);
-
-                // Add data to the PDF
-                document.add(new Paragraph("Certification Title: " + model.getCertification_title()));
-                document.add(new Paragraph("From: " + model.getCertification_from()));
-                document.add(new Paragraph("Year: " + model.getCertification_year()));
-                document.add(new Paragraph("Number: " + model.getCertification_number()));
-                document.add(new Paragraph("Created At: " + model.getCreatedat()));
-
-                document.close();
-
-                Toast.makeText(context, "PDF created successfully: " + filePath, Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(context, "Error creating PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-
-    }
     }
 }

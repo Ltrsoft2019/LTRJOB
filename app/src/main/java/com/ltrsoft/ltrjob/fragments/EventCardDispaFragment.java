@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import java.util.List;
 public class EventCardDispaFragment extends Fragment {
     RecyclerView recyclerView;
     private SearchView searchView;
+    private ImageView back;
     TextView t;
     EventCardAdapter myAdapter;
     List<Event_class> imglist;
@@ -47,6 +49,15 @@ public class EventCardDispaFragment extends Fragment {
 
 
         recyclerView = v.findViewById(R.id.recycleview);
+        back = v.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
 
 
         EventCard eventCard=new EventCard();

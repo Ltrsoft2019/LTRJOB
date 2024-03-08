@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal"
+<RelativeLayout android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     app:cardBackgroundColor="@color/white"
@@ -10,88 +10,156 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card2"
-        android:layout_width="350dp"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_300dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:src="@drawable/certification" />
+
+    <ImageView
+        android:id="@+id/download"
+        android:layout_width="30dp"
+        android:layout_height="@dimen/dimen_30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="@dimen/dimen_20dp"
+        android:layout_marginTop="@dimen/dimen_50dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:layout_marginBottom="@dimen/dimen_20dp"
+        android:background="@drawable/border"
+        android:src="@drawable/download" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="20dp">
+        android:text="12-02-2024"
+        android:textSize="5dp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:layout_marginLeft="@dimen/dimen_45dp"
+        android:layout_marginTop="@dimen/dimen_267dp"/>
 
-        <TextView
-            android:id="@+id/cardv"
-            android:layout_width="320dp"
-            android:layout_height="225dp"
-            android:background="@drawable/borderfile"
-            android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="@dimen/dimen_220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_162dp"
+        android:layout_marginLeft="@dimen/dimen_75dp"
+        android:textSize="18dp"
+        android:text="Sahil Netaji kshirsagar"
+        android:fontFamily="@font/amethysta"
+        android:background="@color/white"/>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/ltr"
-            android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Java Programing"
+        android:layout_marginTop="196dp"
+        android:textSize="5dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/dimen_246dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:layout_marginTop="202dp"
+        android:textSize="5dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingLeft="1dp"
+        android:paddingTop="2dp"
+        android:layout_marginLeft="@dimen/dimen_190dp"/>
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/card2"-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:cardCornerRadius="20dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/cardv"-->
+<!--            android:layout_width="320dp"-->
+<!--            android:layout_height="225dp"-->
+<!--            android:background="@drawable/borderfile"-->
+<!--            android:layout_gravity="center"/>-->
 
 <!--        <ImageView-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:background="@drawable/certiblack" />-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@drawable/ltr"-->
+<!--            android:layout_gravity="center"/>-->
 
-        <TextView
-            android:id="@+id/certification_title"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="50dp"
+<!--&lt;!&ndash;        <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="300dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="200dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@drawable/certiblack" />&ndash;&gt;-->
 
-            />
-        <TextView
-            android:id="@+id/certification_from"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="50dp"
+<!--        <TextView-->
+<!--            android:id="@+id/certification_title"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginLeft="50dp"-->
 
-            />
-        <TextView
-            android:id="@+id/certification_year"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="50dp"
+<!--            />-->
+<!--        <TextView-->
+<!--            android:id="@+id/certification_from"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="65dp"-->
+<!--            android:layout_marginLeft="50dp"-->
 
-            />
+<!--            />-->
+<!--        <TextView-->
+<!--            android:id="@+id/certification_year"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="100dp"-->
+<!--            android:layout_marginLeft="50dp"-->
 
-        <TextView
-            android:id="@+id/certification_number"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="135dp"
-            android:layout_marginLeft="50dp"
+<!--            />-->
 
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/certification_number"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="135dp"-->
+<!--            android:layout_marginLeft="50dp"-->
 
-        <TextView
-            android:id="@+id/created_at"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="170dp"
-            android:layout_marginLeft="50dp" />
+<!--            />-->
 
-        <ImageView
-            android:id="@+id/img2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="280dp"
-            android:src="@drawable/download"
-            android:background="#D2F1FF"
-          />
+<!--        <TextView-->
+<!--            android:id="@+id/created_at"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="170dp"-->
+<!--            android:layout_marginLeft="50dp" />-->
 
-
-
-    </androidx.cardview.widget.CardView>
+<!--        <ImageView-->
+<!--            android:id="@+id/img2"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginHorizontal="280dp"-->
+<!--            android:src="@drawable/download"-->
+<!--            android:background="#D2F1FF"-->
+<!--          />-->
 
 
 
-</LinearLayout>
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+
+</RelativeLayout>

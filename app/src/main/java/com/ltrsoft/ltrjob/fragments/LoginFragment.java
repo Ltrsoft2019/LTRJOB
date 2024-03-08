@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void userSuccess(Object object) {
 
-                            getFragmentManager().beginTransaction().replace(R.id.constraint, new NavigationDrawerFragment()).addToBackStack(null).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.container, new NavigationDrawerFragment()).addToBackStack(null).commit();
 
                             SharedPreferences preferences = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();

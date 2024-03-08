@@ -1,58 +1,59 @@
 package com.ltrsoft.ltrjob.Adpter;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.fragments.ReasearchUpdate;
 import com.ltrsoft.ltrjob.pojoclass.Research_Paper;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ResumeResearch_Paper_Adapter extends RecyclerView.Adapter<ResumeResearch_Paper_Adapter.Research_paperViewHolder> {
-    private Context context;
-    private List<Research_Paper> research_paper;
+public class ResumeResearch_Paper_Adapter extends RecyclerView.Adapter<ResumeResearch_Paper_Adapter.ViewHolder> {
 
-    public ResumeResearch_Paper_Adapter(List<Research_Paper> research_paper) {
-        this.research_paper = research_paper;
+    private List<Research_Paper> researchPaperList;
+
+    public ResumeResearch_Paper_Adapter(List<Research_Paper> researchPaperList) {
+        this.researchPaperList = researchPaperList;
     }
 
     @NonNull
     @Override
-    public ResumeResearch_Paper_Adapter.Research_paperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.research_paper_layout, parent, false);
-        return new Research_paperViewHolder(itemView);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.research_paper_item_layout1, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResumeResearch_Paper_Adapter.Research_paperViewHolder holder, int position) {
-        Research_Paper researchPaper = research_paper.get(position);
-        holder.research_citation.setText(researchPaper.getResearch_citation());
-        holder.research_topic_name.setText(researchPaper.getResearch_topic_name());
-
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Research_Paper model = researchPaperList.get(position);
+        holder.t1.setText(model.getResearch_topic_name());
 
     }
 
     @Override
     public int getItemCount() {
-        return research_paper.size();
+        return researchPaperList.size();
     }
 
-    public static class Research_paperViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView research_citation,research_topic_name;
-        public Research_paperViewHolder(@NonNull View itemView) {
+        CardView cardView;
+        TextView t1, t2, t3, t4;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            research_topic_name=itemView.findViewById(R.id.research_topic_name);
-            research_citation = itemView.findViewById(R.id.research_citation);
-        }
+            t1 = itemView.findViewById(R.id.paper);
 
+        }
     }
 }

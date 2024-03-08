@@ -12,6 +12,13 @@
         android:background="#18613E"
         tools:context=".MainActivity">
 
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_50dp"
+            android:src="@drawable/back"
+            android:layout_marginTop="@dimen/dimen_10dp"/>
+
         <TextView
             android:id="@+id/java"
             android:layout_width="wrap_content"
@@ -21,7 +28,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:fontFamily="@font/adamina"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="30dp" />
 
         <TextView

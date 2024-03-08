@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ltrsoft.ltrjob.Adpter.CourseCardHistoryAdapter;
@@ -36,6 +37,7 @@ public class HistoryFragment extends Fragment {
 
     Button job, course,event;
     RecyclerView recyclerView;
+    private ImageView back;
 
     int screenwidth;
     int screenheight;
@@ -54,6 +56,16 @@ public class HistoryFragment extends Fragment {
         event=view.findViewById(R.id.EventHistory);
 
         recyclerView = view.findViewById(R.id.courcerecycle);
+        back = view.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
+
 
 
         JobDashboard jobDashboard = new JobDashboard();

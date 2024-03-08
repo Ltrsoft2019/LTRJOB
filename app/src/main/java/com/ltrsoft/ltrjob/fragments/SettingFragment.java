@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -40,12 +41,22 @@ public class SettingFragment extends Fragment {
     String lang;
     String translatedText, translatedText1;
     private static final int NOTIFICATION_ID = 1;
+    private ImageView back;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.setting, container, false);
+        back=view.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavigationDrawerFragment navigationDrawerFragment = new NavigationDrawerFragment();
+                getFragmentManager().beginTransaction().replace(R.id.constraint,navigationDrawerFragment).commit();
+            }
+        });
         loadlocale();
         notification_switch = view.findViewById(R.id.notification_switch);
 

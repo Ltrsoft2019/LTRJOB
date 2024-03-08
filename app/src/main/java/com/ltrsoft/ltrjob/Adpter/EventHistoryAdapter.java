@@ -44,7 +44,7 @@ public class EventHistoryAdapter extends RecyclerView.Adapter<EventHistoryAdapte
         Event_class model = eventList.get(position);
 
         holder.name.setText(model.getEvent_name());
-        holder.venue.setText(model.getEvent_venue());
+//        holder.venue.setText(model.getEvent_venue());
         holder.date.setText(model.getEvent_date_time());
         holder.duration.setText(model.getEvent_duration());
 
@@ -87,14 +87,13 @@ public class EventHistoryAdapter extends RecyclerView.Adapter<EventHistoryAdapte
 
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name, venue, date, duration;
+        TextView name, date, duration;
         CardView cardView;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.img);
+            imageView = itemView.findViewById(R.id.AI);
             name = itemView.findViewById(R.id.txt1);
-            venue = itemView.findViewById(R.id.txt2);
             cardView = itemView.findViewById(R.id.c);
             date = itemView.findViewById(R.id.txt4);
             duration = itemView.findViewById(R.id.txt5);

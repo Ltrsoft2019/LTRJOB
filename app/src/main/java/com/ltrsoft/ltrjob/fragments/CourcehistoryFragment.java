@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class CourcehistoryFragment extends Fragment {
     TextView fullcourse,java,start,end,fees,about,discryption,include,details,mode,duration;
     Button apply_now;
-    ImageView imageView;
+    ImageView imageView,back;
     ArrayList<Batch>list;
     ArrayList<Course_Class>list1;
     Batch batch;
@@ -53,11 +53,18 @@ public class CourcehistoryFragment extends Fragment {
         include=view.findViewById(R.id.includes);
         details=view.findViewById(R.id.include_details);
         mode=view.findViewById(R.id.mode);
-        apply_now=view.findViewById(R.id.join);
         imageView=view.findViewById(R.id.logo );
         duration = view.findViewById(R.id.duration);
 
+        back = view.findViewById(R.id.back);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
         Bundle args = getArguments();
 
         if (args!=null) {

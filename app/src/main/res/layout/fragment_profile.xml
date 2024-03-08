@@ -12,12 +12,20 @@ tools:context=".fragments.ProfileFragment">
         android:layout_height="wrap_content">
         <!-- Your existing views here -->
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_150dp"
             android:id="@+id/layout"
             android:background="#C0EBFF"
             android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/back"
+                android:layout_margin="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -291,7 +299,7 @@ tools:context=".fragments.ProfileFragment">
             android:textSize="@dimen/dimen_20dp"
             android:fontFamily="@font/aclonica"
             android:background="@drawable/border"
-            android:text="Recognization"
+            android:text="recognition"
             android:layout_below="@+id/certification"/>
 
         <ImageView
@@ -330,7 +338,7 @@ tools:context=".fragments.ProfileFragment">
             android:background="@drawable/border"
             android:textSize="@dimen/dimen_20dp"
             android:fontFamily="@font/aclonica"
-            android:text="Rearsch paper"
+            android:text="Research paper"
             android:layout_below="@+id/recognization"/>
 
         <ImageView

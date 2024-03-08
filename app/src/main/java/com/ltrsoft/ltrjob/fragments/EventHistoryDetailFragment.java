@@ -19,7 +19,7 @@ public class EventHistoryDetailFragment extends Fragment {
     private TextView duration1, eventname1, guest1, vanue1, date1, time1;
     private TextView description1;
 
-    private ImageView imageView1;
+    private ImageView imageView1,back;
 
     public EventHistoryDetailFragment() {
 
@@ -43,6 +43,16 @@ public class EventHistoryDetailFragment extends Fragment {
 
 
         imageView1 = v.findViewById(R.id.img);
+        back = v.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
+
 
 
         Bundle bundle = getArguments();

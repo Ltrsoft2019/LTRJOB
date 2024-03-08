@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,12 +39,12 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NewsClass jobClass = listDasJob.get(position);
-        holder.dashCompanyName.setText(jobClass.getNews_title());
+        holder.dashName.setText(jobClass.getNews_title());
         holder.dashJobDesc.setText(jobClass.getNews_description());
-        holder.dashJobPosition.setText(jobClass.getNews_resource());
+//        holder.dashJobPosition.setText(jobClass.getNews_resource());
 
         String imgUrl = "https://institute.ltr-soft.com/company_details/" + jobClass.getNews_photo_path();
-        Picasso.get().load(imgUrl).into(holder.dashCompanyLogo);
+        Picasso.get().load(imgUrl).into(holder.news_logo);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,17 +77,17 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView dashCompanyLogo;
-        public TextView dashJobDesc, dashCompanyName, dashJobPosition;
+        public ImageView news_logo;
+        public TextView dashName, applied_date,dashJobDesc;
 
-        public ConstraintLayout layout;
+        public RelativeLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dashCompanyLogo = itemView.findViewById(R.id.image1);
+            news_logo = itemView.findViewById(R.id.image1);
             dashJobDesc=itemView.findViewById(R.id.newsposition);
-            dashCompanyName=itemView.findViewById(R.id.news_description);
-            dashJobPosition=itemView.findViewById(R.id.news_applied_date);
+            dashName=itemView.findViewById(R.id.news_description);
+            applied_date=itemView.findViewById(R.id.news_applied_date);
 
             layout=itemView.findViewById(R.id.dasboard_layout);
         }

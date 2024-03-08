@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -65,7 +66,7 @@ public class JobHistoryAdapter extends RecyclerView.Adapter<JobHistoryAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView companyLogoImageView;
         public TextView dash_job_desc, dash_company_name, dash_job_position, dash_post_date;
-        public ConstraintLayout layout;
+        public RelativeLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

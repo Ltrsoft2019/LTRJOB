@@ -40,9 +40,9 @@ public class ResumeAwardAdapter extends RecyclerView.Adapter<ResumeAwardAdapter.
         return awards.size();
     }
 
-    public void setAwards(ArrayList<Award> awards) {
-        this.awards=awards;
-    }
+//    public void setAwards(ArrayList<Award> awards) {
+//        this.awards=awards;
+//    }
 
     static class AwardViewHolder extends RecyclerView.ViewHolder {
         TextView text_award_title;

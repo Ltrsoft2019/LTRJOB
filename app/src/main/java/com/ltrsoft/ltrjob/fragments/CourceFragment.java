@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ltrsoft.ltrjob.Adpter.CourseCardAdapter;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 
 public class CourceFragment extends Fragment {
 
+    private ImageView back;
+
     public CourceFragment() {
 
     }
@@ -37,6 +40,15 @@ public class CourceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cource, container, false);
 
         recyclerView = view.findViewById(R.id.fragment_recycler_courses);
+        back = view.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
 
         Cources_Deo  eventCard = new Cources_Deo();
         eventCard.fetchCources(requireContext(), recyclerView, new UserCallBack() {

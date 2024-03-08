@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView reasearchpaperrecycle;
     private RecyclerView workshop;
     private ArrayList<HashMap<Integer,String >> maplist1;
+    private ImageView back;
     TableLayout table;
     private TextView skill_txt,education_txt,project_txt,
             certification_txt,recognization_txt,rearchpapperreycle_txt,workshop_txt;
@@ -88,6 +89,15 @@ public class ProfileFragment extends Fragment {
         rearchpapperreycle_txt = view.findViewById(R.id.rearchpapperreycle_txt);
         workshop_txt = view.findViewById(R.id.workshop_txt);
         table= view.findViewById(R.id.table);
+        back = view.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavigationDrawerFragment navigationDrawerFragment = new NavigationDrawerFragment();
+                getFragmentManager().beginTransaction().replace(R.id.constraint,navigationDrawerFragment).commit();
+            }
+        });
 
         TextView name = view.findViewById(R.id.name);
         ImageView profile = view.findViewById(R.id.profile);

@@ -45,6 +45,7 @@ public class Resume {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        System.out.println("response"+response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String user_id = jsonObject.getString("user_id");
@@ -84,7 +85,7 @@ public class Resume {
                                 Award award = new Award(award_name,award_given_by,award_id,award_category_name);
 
 
-                                Toast.makeText(context, ""+award_name.toString(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context, ""+award_name.toString(), Toast.LENGTH_SHORT).show();
 
                                 awards.add(award);
                                 objects[1] = awards;

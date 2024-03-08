@@ -1,8 +1,10 @@
 package com.ltrsoft.ltrjob.fragments;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -35,6 +37,7 @@ import com.ltrsoft.ltrjob.Adpter.ResumePatentAdapter;
 import com.ltrsoft.ltrjob.Adpter.ResumeResearch_Paper_Adapter;
 import com.ltrsoft.ltrjob.Adpter.ResumeWorkshop_Adapter;
 import com.ltrsoft.ltrjob.Adpter.TechnicalSkillAdapter;
+import com.ltrsoft.ltrjob.PdfGenerator;
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Resume;
 import com.ltrsoft.ltrjob.daoclasses.qualificationDeo;
@@ -59,13 +62,13 @@ import java.util.HashMap;
 public class ResumeFragment extends Fragment {
 
     private TextView education, work_exp, resumedetails, address, email, number, profession, name, git_hub, link_id;
-    private ImageView download, profileimg;
-    private RecyclerView recyclerViewCertifications, award_title,patents_recycler,Research_paper_recycler,workshop_recycler,skill_recycler,qualificationRecyclerView;
+    private ImageView download, profileimg, back;
+    private RecyclerView recyclerViewCertifications, award_title, patents_recycler, Research_paper_recycler, workshop_recycler, skill_recycler, qualificationRecyclerView;
     private ArrayList<Certification> certifications;
     private ArrayList<Award> awards;
     private ArrayList<Patent> patents;
     private ArrayList<Research_Paper> research_paper;
-    private ArrayList<HashMap<Integer,String >> maplist;
+    private ArrayList<HashMap<Integer, String>> maplist;
     private ArrayList<Workshop> workshops;
     private ArrayList<Technical_Skill> skills;
     private Resume resume;
@@ -74,6 +77,8 @@ public class ResumeFragment extends Fragment {
     private static final int NOTIFICATION_ID = 100;
     private static final String TAG = "ResumeFragment";
     Object[] objects2;
+    private static final int PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+    String nametxt;
 
     @Nullable
     @Override
@@ -98,6 +103,16 @@ public class ResumeFragment extends Fragment {
         workshop_recycler = view.findViewById(R.id.workshop_recycler);
         skill_recycler = view.findViewById(R.id.skill_recycler);
         qualificationRecyclerView = view.findViewById(R.id.qualificationRecyclerView);
+        back = view.findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).commit();
+            }
+        });
+
 
         certifications = new ArrayList<>();
         awards = new ArrayList<>();
@@ -128,6 +143,8 @@ public class ResumeFragment extends Fragment {
                 link_id.setText(user.getUser_linkedin_id());
                 resumedetails.setText(user.getUser_carier_objective());
 
+                 nametxt=user.getUser_fname();
+
                 String imgUrl = "https://institute.ltr-soft.com/company_details/" + user.getUser_photo();
                 Picasso.get().load(imgUrl).into(profileimg);
 
@@ -135,9 +152,18 @@ public class ResumeFragment extends Fragment {
                 ResumeCertificationAdapter certificationAdapter = new ResumeCertificationAdapter(getContext(), certifications);
                 recyclerViewCertifications.setAdapter(certificationAdapter);
 
+
                 awards = (ArrayList<Award>) objects[1];
-                ResumeAwardAdapter awardAdapter = new ResumeAwardAdapter(getContext(), awards);
-                award_title.setAdapter(awardAdapter);
+                if (awards != null) {
+                    if (awards.size() != 0) {
+                        Log.d("type", String.valueOf(objects[1].getClass()));
+                        ResumeAwardAdapter awardAdapter = new ResumeAwardAdapter(getContext(), awards);
+                        award_title.setAdapter(awardAdapter);
+                    }
+                } else {
+                    // Handle the case where awards is null
+                    Log.e("Error", "ArrayList<Award> is null");
+                }
 
                 patents = (ArrayList<Patent>) objects[3];
                 ResumePatentAdapter patentAdapter = new ResumePatentAdapter(getContext(), patents);
@@ -157,7 +183,7 @@ public class ResumeFragment extends Fragment {
             public void userSuccess(Object object) {
                 ArrayList<Research_Paper> list = (ArrayList<Research_Paper>) object;
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                ResearchPaperAdapter adapter = new ResearchPaperAdapter(list);
+                ResumeResearch_Paper_Adapter adapter = new ResumeResearch_Paper_Adapter(list);
                 Research_paper_recycler.setLayoutManager(layoutManager);
                 Research_paper_recycler.setAdapter(adapter);
             }
@@ -173,8 +199,8 @@ public class ResumeFragment extends Fragment {
             public void userSuccess(Object object) {
                 Object[] objects = (Object[]) object;
                 workshops = (ArrayList<Workshop>) objects[1];
-                Toast.makeText(getContext(), "size "+workshops.size(), Toast.LENGTH_SHORT).show();
-                ResumeWorkshop_Adapter workshopAdapter = new ResumeWorkshop_Adapter(getContext(),workshops);
+                Toast.makeText(getContext(), "size " + workshops.size(), Toast.LENGTH_SHORT).show();
+                ResumeWorkshop_Adapter workshopAdapter = new ResumeWorkshop_Adapter(getContext(), workshops);
                 workshop_recycler.setAdapter(workshopAdapter);
 
 //                 skills= (ArrayList<Technical_Skill>) objects[2];
@@ -184,7 +210,7 @@ public class ResumeFragment extends Fragment {
 
             @Override
             public void userError(String error) {
-                Toast.makeText(getContext(), "error2"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "error2" + error, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -221,80 +247,74 @@ public class ResumeFragment extends Fragment {
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
             }
         });
+
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                captureLayoutAndDownload();
+                if (checkPermission(getContext())) {
+                    generatePdf();
+                }
             }
         });
 
         return view;
     }
 
-    private void captureLayoutAndDownload() {
-        View rootView = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
-        Bitmap bitmap = Bitmap.createBitmap(rootView.getWidth(), rootView.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        rootView.draw(canvas);
-        saveBitmapAsPng(bitmap);
-        showDownloadNotification();
-    }
-
-    private void saveBitmapAsPng(Bitmap bitmap) {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FILE_NAME);
-            try {
-                FileOutputStream outputStream = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                outputStream.flush();
-                outputStream.close();
-                Log.d(TAG, "File saved successfully: " + file.getAbsolutePath());
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.e(TAG, "Error saving file: " + e.getMessage());
-            }
+    private boolean checkPermission(Context context) {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE);
+            return false;
         } else {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
-        }
-    }
-
-    private void showDownloadNotification() {
-        createNotificationChannel();
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), "resume_download_channel")
-                .setSmallIcon(R.drawable.download)
-                .setContentTitle("Resume Download")
-                .setContentText("Resume downloaded successfully")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Resume Download Channel";
-            String description = "Channel for resume download notifications";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("resume_download_channel", name, importance);
-            channel.setDescription(description);
-            NotificationManager notificationManager = requireContext().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
+            return true;
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE) {
+        if (requestCode == PERMISSION_REQUEST_WRITE_EXTERNAL_STORAGE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                captureLayoutAndDownload();
+                generatePdf();
             } else {
-                Toast.makeText(getContext(), "Permission denied. Cannot download resume.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Permission denied, cannot generate PDF.", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
+    private void generatePdf() {
+        // Your PDF generation code here
+//        PdfGenerator.generatePdf(this, R.id.layout); // Example call to the PdfGenerator class
+        PdfGenerator.generatePdf(getContext(), R.id.resume_layout2,nametxt);
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            NotificationChannel channel = new NotificationChannel("pdf_download_channel", "PDF Download", NotificationManager.IMPORTANCE_DEFAULT);
+//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+//            notificationManager.createNotificationChannel(channel);
+//        }
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "pdf_download_channel")
+//                .setSmallIcon(R.drawable.download)
+//                .setContentTitle("Resume PDF Download")
+//                .setContentText("Resume PDF has been generated")
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+//        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
+
 }
+
+

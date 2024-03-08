@@ -81,10 +81,9 @@ public class NavigationDrawerFragment extends Fragment {
 
             @Override
             public void userError(String error) {
-                Toast.makeText(getContext(), "errr"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "errr" + error, Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -122,53 +121,51 @@ public class NavigationDrawerFragment extends Fragment {
                     getFragmentManager().beginTransaction().add(R.id.constraint, new SettingFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
-                }
-                else if (id == R.id.sidenav_setting) {
+                } else if (id == R.id.sidenav_setting) {
                     getFragmentManager().beginTransaction().add(R.id.constraint, new SettingFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
-                }
-
-                else if (id==R.id.Profile) {
+                } else if (id == R.id.Profile) {
                     getFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).addToBackStack(null).commit();
 
 
-                }
-                else if (id==R.id.news) {
+                } else if (id == R.id.news) {
                     getFragmentManager().beginTransaction().replace(R.id.container, new NewsFragment()).addToBackStack(null).commit();
 
 
-                }
-
-                else if (id == R.id.nav_logout) {
+                } else if (id == R.id.nav_logout) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle("Logout Dailoge");
+                    builder.setTitle("Logout Dialogue");
                     builder.setMessage("Do You Want To Logout?");
                     builder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-//                            logout();
-                            LoginFragment loginFragment=new LoginFragment();
-                            getChildFragmentManager().beginTransaction().replace(R.id.container,loginFragment).commit();
-
+                            logout(); // Perform logout actions
+//                            LoginFragment loginFragment = new LoginFragment();
+//                            getChildFragmentManager().beginTransaction().replace(R.id.container, loginFragment).commit();
                         }
+
+                        private void logout() {
+
+                                LoginFragment loginFragment = new LoginFragment();
+                                getChildFragmentManager().beginTransaction().replace(R.id.container, loginFragment).commit();
+
+                            }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
-
                         }
                     });
                     builder.show();
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
-
                 return true;
+
+
             }
         });
-
-
         return v;
     }
 }

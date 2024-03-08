@@ -28,7 +28,7 @@ public class  JobDetail extends Fragment {
     private TextView company_name,job_type,job_role;
     private TextView location,eligible,skill,desc;
     private TextView contact_email,contact,com_location,com_desc;
-    private ImageView company_logo;
+    private ImageView company_logo,back;
     private job job;
     private String companyId;
     ArrayList<job>list;
@@ -60,11 +60,15 @@ public class  JobDetail extends Fragment {
         contact_email = view.findViewById(R.id.contact_email);
         contact = view.findViewById(R.id.contact);
         com_location = view.findViewById(R.id.com_location);
+        back = view.findViewById(R.id.img1);
 
-
-
-
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DashboardFragment dashboardFragment = new DashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+            }
+        });
 
 //        getFragmentManager().beginTransaction().add(R.id.frag, new Job_desc()).commit();
 
@@ -183,10 +187,7 @@ public class  JobDetail extends Fragment {
                         @Override
                         public void userSuccess(Object object) {
                             Toast.makeText(getContext(), "job applied  Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
-
-
                         }
-
                         @Override
                         public void userError(String error) {
                             userError(error.toString());

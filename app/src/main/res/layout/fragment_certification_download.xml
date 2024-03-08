@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:cardMaxElevation="10dp"
+    android:background="#F2F2F2"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/certification_layout"
+        android:layout_width="match_parent"
+        android:layout_height="320dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_300dp"
+        android:layout_marginStart="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:src="@drawable/certification" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/download"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="@dimen/dimen_30dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_marginStart="@dimen/dimen_20dp"-->
+<!--        android:layout_marginTop="@dimen/dimen_50dp"-->
+<!--        android:layout_marginEnd="@dimen/dimen_20dp"-->
+<!--        android:layout_marginBottom="@dimen/dimen_20dp"-->
+<!--        android:background="@drawable/border"-->
+<!--        android:src="@drawable/download" />-->
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12-02-2024"
+        android:textSize="5dp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:layout_marginLeft="@dimen/dimen_45dp"
+        android:layout_marginTop="@dimen/dimen_267dp"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="@dimen/dimen_220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_162dp"
+        android:layout_marginLeft="@dimen/dimen_75dp"
+        android:textSize="18dp"
+        android:text="Sahil Netaji kshirsagar"
+        android:fontFamily="@font/amethysta"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Java Programing"
+        android:layout_marginTop="196dp"
+        android:textSize="5dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/dimen_246dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:layout_marginTop="202dp"
+        android:textSize="5dp"
+        android:fontFamily="@font/adamina"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingLeft="1dp"
+        android:paddingTop="2dp"
+        android:layout_marginLeft="@dimen/dimen_190dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/download"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="350dp"
+        android:layout_centerHorizontal="true"
+        android:text="Download"
+        android:textSize="20dp"
+        android:backgroundTint="#EA3030"/>
+
+
+
+</RelativeLayout>

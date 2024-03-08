@@ -1,6 +1,7 @@
 package com.ltrsoft.ltrjob.pojoclass;
 
 public class Certification {
+String img;
 
     private String createdat,certification_title,certification_year,certification_from,certification_number;
 
@@ -13,7 +14,8 @@ public class Certification {
         this.certification_number = certification_number;
     }
 
-    public Certification(String imageurl) {
+    public Certification(String img) {
+        this.img = img;
     }
 
     public String getCreatedat() {
@@ -54,5 +56,13 @@ public class Certification {
 
     public void setCertification_number(String certification_number) {
         this.certification_number = certification_number;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

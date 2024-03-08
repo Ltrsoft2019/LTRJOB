@@ -42,6 +42,7 @@ public class ResearchPaperAdapter extends RecyclerView.Adapter<ResearchPaperAdap
         holder.t2.setText(model.getResearch_author_1());
         holder.t3.setText(model.getResearch_paper_published_in_journal());
         holder.t4.setText(model.getResearch_citation());
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
