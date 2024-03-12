@@ -120,6 +120,7 @@ public class DashboardFragment extends Fragment {
 //
 
 
+
         JobDashboard jobDashboard = new JobDashboard();
         jobDashboard.getall(requireContext(), recyclerView2, new UserCallBack() {
             @Override

@@ -181,19 +181,23 @@ public class  JobDetail extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+                    profile_1 profile_1=new profile_1();
 
-                    JobDashboard awardDeo=new JobDashboard();
-                    awardDeo.create( requireContext(), new UserCallBack() {
-                        @Override
-                        public void userSuccess(Object object) {
-                            Toast.makeText(getContext(), "job applied  Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                        @Override
-                        public void userError(String error) {
-                            userError(error.toString());
+                    getFragmentManager().beginTransaction().replace(R.id.constraint,profile_1).commit();
 
-                        }
-                    });
+
+//                    JobDashboard awardDeo=new JobDashboard();
+//                    awardDeo.create( requireContext(), new UserCallBack() {
+//                        @Override
+//                        public void userSuccess(Object object) {
+//                            Toast.makeText(getContext(), "job applied  Successfully"+object.toString(), Toast.LENGTH_SHORT).show();
+//                        }
+//                        @Override
+//                        public void userError(String error) {
+//                            userError(error.toString());
+//
+//                        }
+//                    });
 
                 }
             });

@@ -1,6 +1,8 @@
 package com.ltrsoft.ltrjob.fragments;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -44,7 +46,7 @@ public class profile_1 extends Fragment {
     private EditText name,email,phone,address,dob,adhar,link_id,git_id;
     private TextView protxt;
     private Spinner country,state,district,city,maritalS;
-    private Button save;
+    private Button submit;
     private RadioGroup gender;
     private RadioButton male,female;
     private Calendar calendar;
@@ -62,6 +64,26 @@ public class profile_1 extends Fragment {
     String[] maritalStatusOptions = {"Single", "Married", "Divorced", "Widowed"};
 
     String selectedMaritalStatus;
+    private String storedName, storedEmail, storedPhone, storedAddress, storedDob,
+            storedAdhar, storedLinkId, storedGitId, selectedGender, selectedCountry,
+            selectedState, selectedDistrict, selectedCity;
+
+    private static final String PREF_NAME = "MyPrefs";
+    private static final String PREF_SELECTED_MARITAL_STATUS = "selectedMaritalStatus";
+    private static final String PREF_NAME_FIELD = "nameField";
+    private static final String PREF_EMAIL_FIELD = "emailField";
+    private static final String PREF_PHONE_FIELD = "phoneField";
+    private static final String PREF_ADDRESS_FIELD = "addressField";
+    private static final String PREF_DOB_FIELD = "dobField";
+    private static final String PREF_ADHAR_FIELD = "adharField";
+    private static final String PREF_LINK_ID_FIELD = "linkIdField";
+    private static final String PREF_GIT_ID_FIELD = "gitIdField";
+    private static final String PREF_SELECTED_GENDER = "selectedGender";
+    private static final String PREF_SELECTED_COUNTRY = "selectedCountry";
+    private static final String PREF_SELECTED_STATE = "selectedState";
+    private static final String PREF_SELECTED_DISTRICT = "selectedDistrict";
+    private static final String PREF_SELECTED_CITY = "selectedCity";
+
 
     public profile_1() {
         // Required empty public constructor
@@ -82,7 +104,7 @@ public class profile_1 extends Fragment {
         state = view.findViewById(R.id.state);
         district = view.findViewById(R.id.district);
         city = view.findViewById(R.id.city);
-        save = view.findViewById(R.id.save);
+        submit = view.findViewById(R.id.save);
         calendar = Calendar.getInstance();
         gender = view.findViewById(R.id.gender);
         male = view.findViewById(R.id.male);
@@ -92,6 +114,51 @@ public class profile_1 extends Fragment {
         maritalS = view.findViewById(R.id.ms);
         probar = view.findViewById(R.id.probar);
         protxt = view.findViewById(R.id.protxt);
+
+
+
+
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        storedName = prefs.getString(PREF_NAME_FIELD, "");
+        storedEmail = prefs.getString(PREF_EMAIL_FIELD, "");
+        storedPhone = prefs.getString(PREF_PHONE_FIELD, "");
+        storedAddress = prefs.getString(PREF_ADDRESS_FIELD, "");
+        storedDob = prefs.getString(PREF_DOB_FIELD, "");
+        storedAdhar = prefs.getString(PREF_ADHAR_FIELD, "");
+        storedLinkId = prefs.getString(PREF_LINK_ID_FIELD, "");
+        storedGitId = prefs.getString(PREF_GIT_ID_FIELD, "");
+        selectedGender = prefs.getString(PREF_SELECTED_GENDER, "");
+        selectedMaritalStatus = prefs.getString(PREF_SELECTED_MARITAL_STATUS, "");
+        selectedCountry = prefs.getString(PREF_SELECTED_COUNTRY, "");
+        selectedState = prefs.getString(PREF_SELECTED_STATE, "");
+        selectedDistrict = prefs.getString(PREF_SELECTED_DISTRICT, "");
+        selectedCity = prefs.getString(PREF_SELECTED_CITY, "");
+
+        // Set the retrieved data to the corresponding fields
+        name.setText(storedName);
+        email.setText(storedEmail);
+        phone.setText(storedPhone);
+        address.setText(storedAddress);
+        dob.setText(storedDob);
+        adhar.setText(storedAdhar);
+        link_id.setText(storedLinkId);
+        git_id.setText(storedGitId);
+
+        // Set the retrieved data to the corresponding spinners
+        setSpinnerSelection(maritalS, maritalStatusOptions, selectedMaritalStatus);
+        setSpinnerSelection(country, countrylist.toArray(new String[0]), selectedCountry);
+        setSpinnerSelection(state, statelist.toArray(new String[0]), selectedState);
+        setSpinnerSelection(district, districtlist.toArray(new String[0]), selectedDistrict);
+        setSpinnerSelection(city, citylist.toArray(new String[0]), selectedCity);
+
+        // Set the retrieved data to the corresponding radio buttons
+        if (selectedGender.equals("Male")) {
+            male.setChecked(true);
+        } else if (selectedGender.equals("Female")) {
+            female.setChecked(true);
+        }
+
 
         setFieldListeners();
 
@@ -175,7 +242,8 @@ public class profile_1 extends Fragment {
                 datePickerDialog.show();
             }
         });
-        save.setOnClickListener(new View.OnClickListener() {
+
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String selectedGender = "";
@@ -185,11 +253,14 @@ public class profile_1 extends Fragment {
                 } else if (selectedId == female.getId()) {
                     selectedGender = "Female";
                 }
+               User user =new User("",name.toString(),name.toString(),name.toString(),email.toString(),phone.toString(),"",gender.toString(),dob.toString(),"",address.toString(),selectedCity.toString(),selectedDistrict.toString(),selectedState.toString(),selectedCountry.toString(),"",adhar.toString(),"",link_id.toString(),git_id.toString(),"","","",selectedMaritalStatus);
 
-                User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
-                        phone.getText().toString(), "", "", dob.getText().toString(), "", address.getText().toString(),
-                        "", "", "", "", "", adhar.getText().toString(), "",
-                        "", "", "", "", "");
+
+             //   User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
+//                        phone.getText().toString(), phone.toString(), gender.toString(), dob.getText().toString(), "", address.getText().toString(),
+//                        selectedCity.toString(), selectedDistrict.toString(), selectedState, selectedCountry, "", adhar.getText().toString(), "",
+//                        link_id.toString(), "", "", "", "",selectedMaritalStatus);
+
 
                 Toast.makeText(getContext(), ""+selectedMaritalStatus, Toast.LENGTH_SHORT).show();
                 userDeo.createUser(user, getContext(), new UserCallBack() {
@@ -203,14 +274,56 @@ public class profile_1 extends Fragment {
                         Toast.makeText(getActivity(), "" + error, Toast.LENGTH_SHORT).show();
                     }
                 });
-                getFragmentManager().beginTransaction().replace(R.id.container, new Profile_Edu_2()).addToBackStack(null).commit();
 
+
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+                editor.putString(PREF_NAME_FIELD, name.getText().toString());
+                editor.putString(PREF_EMAIL_FIELD, email.getText().toString());
+                editor.putString(PREF_PHONE_FIELD, phone.getText().toString());
+                editor.putString(PREF_ADDRESS_FIELD, address.getText().toString());
+                editor.putString(PREF_DOB_FIELD, dob.getText().toString());
+                editor.putString(PREF_ADHAR_FIELD, adhar.getText().toString());
+                editor.putString(PREF_LINK_ID_FIELD, link_id.getText().toString());
+                editor.putString(PREF_GIT_ID_FIELD, git_id.getText().toString());
+
+
+                editor.putString(PREF_SELECTED_MARITAL_STATUS, selectedMaritalStatus);
+                editor.putString(PREF_SELECTED_GENDER, selectedGender);
+                editor.putString(PREF_SELECTED_COUNTRY, selectedCountry);
+                editor.putString(PREF_SELECTED_STATE, selectedState);
+                editor.putString(PREF_SELECTED_DISTRICT, selectedDistrict);
+                editor.putString(PREF_SELECTED_CITY, selectedCity);
+
+                editor.apply();
+
+
+                // Navigate to the next fragment
+                getFragmentManager().beginTransaction().replace(R.id.constraint, new Profile_Edu_2()).addToBackStack(null).commit();
 
             }
         });
 
         return view;
     }
+
+    private void setSpinnerSelection(Spinner spinner, String[] options, String selectedValue) {
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinner.getAdapter();
+        if (adapter != null) {
+            int position = adapter.getPosition(selectedValue);
+            if (position >= 0) {
+                spinner.setSelection(position);
+            } else {
+
+                // You can set a default selection or handle it based on your requirements
+                spinner.setSelection(0);  // Set the default selection to the first item
+            }
+        }
+
+
+}
+
+
+
 
     private void setFieldListeners() {
 

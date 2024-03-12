@@ -1,18 +1,18 @@
 package com.ltrsoft.ltrjob.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.qualificationDeo;
@@ -21,12 +21,13 @@ import com.ltrsoft.ltrjob.pojoclass.Qualification;
 
 public class Profile_Edu_2 extends Fragment {
 
-    private EditText school_name, percentage10th,degree_percentage;
-    private EditText college_name,percentage12th,Institude_name;
-    private NumberPicker select_10th_pass,passing_year_12th,passing_year_degree;
-    private TextView passing_txt_10th,passing_txt_12th,passing_txt_degree,add1,add2;
+    private EditText school_name, percentage10th, degree_percentage;
+    private EditText college_name, percentage12th, Institute_name;
+    private NumberPicker select_10th_pass, passing_year_12th, passing_year_degree;
+    private TextView passing_txt_10th, passing_txt_12th, passing_txt_degree, add1, add2;
     private Button save;
 
+    private SharedPreferences sharedPreferences;
 
     public Profile_Edu_2() {
         // Required empty public constructor
@@ -37,10 +38,15 @@ public class Profile_Edu_2 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile__edu_2, container, false);
 
+        // Initialize SharedPreferences
+        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE);
+
         school_name = view.findViewById(R.id.school_name);
         percentage10th = view.findViewById(R.id.percentage10th);
         select_10th_pass = view.findViewById(R.id.passing_year);
         passing_txt_10th = view.findViewById(R.id.passing_txt);
+
+        loadSavedData();
 
         save = view.findViewById(R.id.save);
         add1 = view.findViewById(R.id.add1);
@@ -53,11 +59,10 @@ public class Profile_Edu_2 extends Fragment {
         passing_txt_12th = view.findViewById(R.id.passing_txt_12th);
 
         // Degree qualifications fields
-        Institude_name = view.findViewById(R.id.Institude_name);
+        Institute_name = view.findViewById(R.id.Institude_name);
         degree_percentage = view.findViewById(R.id.degree_percentage);
         passing_year_degree = view.findViewById(R.id.passing_year_degree);
         passing_txt_degree = view.findViewById(R.id.passing_txt_degree);
-
 
         int startYear = 2000;
         int endYear = 2024;
@@ -84,8 +89,7 @@ public class Profile_Edu_2 extends Fragment {
             String selectedYear = years[newVal];
             // Use the selected year as needed
             passing_txt_10th.setText(selectedYear);
-
-            });
+        });
 
         passing_year_12th.setOnValueChangedListener((picker1, oldVal1, newVal1) -> {
             String selectedYear1 = years[newVal1];
@@ -99,70 +103,58 @@ public class Profile_Edu_2 extends Fragment {
             passing_txt_degree.setText(selectedYear2);
         });
 
-            save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    getFragmentManager().beginTransaction().replace(R.id.container, new Profile_3()).addToBackStack(null).commit();
-
-                    qualificationDeo q = new qualificationDeo();
-                    qualificationDeo q1 = new qualificationDeo();
-                    qualificationDeo q2 = new qualificationDeo();
-
-                    Qualification qualification = new Qualification("", "", "qua_level-3",
-                            school_name.getText().toString(), passing_txt_10th.getText().toString(), percentage10th.getText().toString());
-
-                    Qualification qualification1 = new Qualification("","","qua_level-4",
-                            college_name.getText().toString(),passing_txt_12th.getText().toString(),percentage12th.getText().toString());
-
-                    Qualification qualification2 = new Qualification("","","qua_level-5",
-                            Institude_name.getText().toString(), passing_txt_degree.getText().toString(),degree_percentage.getText().toString());
-
-                    q.create(qualification, requireContext(), "user-17", new UserCallBack() {
-                        @Override
-                        public void userSuccess(Object object) {
-                            Toast.makeText(getContext(), "10th" + object, Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void userError(String error) {
-                            Toast.makeText(getContext(), "10th" + error, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    q1.create(qualification1, requireContext(), "user-17", new UserCallBack() {
-                        @Override
-                        public void userSuccess(Object object) {
-                            Toast.makeText(getContext(), "12th" + object, Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void userError(String error) {
-                            Toast.makeText(getContext(), "12th" + error, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    q2.create(qualification2, requireContext(), "user-17", new UserCallBack() {
-                        @Override
-                        public void userSuccess(Object object) {
-                            Toast.makeText(getContext(), "Degree" + object, Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void userError(String error) {
-                            Toast.makeText(getContext(), "Degree" + error, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-
-                }
-            });
-
-
-
-
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.constraint, new Profile_3()).addToBackStack(null).commit();
+                saveData();
+            }
+        });
 
         return view;
     }
 
+    private void saveData() {
+        // Save user-related data to SharedPreferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user_id", "user-17"); // Replace with the actual user ID
+        editor.putString("school_name", school_name.getText().toString());
+        editor.putString("percentage10th", percentage10th.getText().toString());
+        editor.putInt("select_10th_pass", select_10th_pass.getValue());
+        editor.putString("passing_txt_10th", passing_txt_10th.getText().toString());
+        // ... (save other data)
+        editor.putString("college_name", college_name.getText().toString());
+        editor.putString("percentage12th", percentage12th.getText().toString());
+        editor.putInt("passing_year_12th", passing_year_12th.getValue());
+        editor.putString("passing_txt_12th", passing_txt_12th.getText().toString());
+
+        // Save Degree qualifications data
+        editor.putString("Institute_name", Institute_name.getText().toString());
+        editor.putString("degree_percentage", degree_percentage.getText().toString());
+        editor.putInt("passing_year_degree", passing_year_degree.getValue());
+        editor.putString("passing_txt_degree", passing_txt_degree.getText().toString());
+
+        editor.apply();
+    }
+
+    private void loadSavedData() {
+        // Load data from SharedPreferences and set it to corresponding fields
+        school_name.setText(sharedPreferences.getString("school_name", ""));
+        percentage10th.setText(sharedPreferences.getString("percentage10th", ""));
+        select_10th_pass.setValue(sharedPreferences.getInt("select_10th_pass", 0));
+        passing_txt_10th.setText(sharedPreferences.getString("passing_txt_10th", ""));
+
+
+        // Load 12th standard qualifications data
+//        college_name.setText(sharedPreferences.getString("college_name", ""));
+//        percentage12th.setText(sharedPreferences.getString("percentage12th", ""));
+//        passing_year_12th.setValue(sharedPreferences.getInt("passing_year_12th",0));
+//        passing_txt_12th.setText(sharedPreferences.getString("passing_txt_12th", ""));
+////
+//        // Load Degree qualifications data
+//        Institute_name.setText(sharedPreferences.getString("Institute_name", ""));
+//        degree_percentage.setText(sharedPreferences.getString("degree_percentage", ""));
+//        passing_year_degree.setValue(sharedPreferences.getInt("passing_year_degree", 0));
+//        passing_txt_degree.setText(sharedPreferences.getString("passing_txt_degree", ""));
+    }
 }

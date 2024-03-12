@@ -129,6 +129,7 @@ params.put("user_id",userid.toString());
                     JSONArray json = new JSONArray(response);
 
                     for (int i = 0; i < json.length(); i++) {
+
                         JSONObject jsonObject = json.getJSONObject(i);
                         String certification_id = jsonObject.getString("created_at");
                         String certification_title = jsonObject.getString("certification_title");
@@ -137,6 +138,7 @@ params.put("user_id",userid.toString());
                         String certification_number = jsonObject.getString("certification_number");
                         Certification certification1 = new Certification(certification_id, certification_title, certification_year, certification_from, certification_number);
                         certifications.add(certification1);
+
                     }
 
                 } catch (JSONException e) {

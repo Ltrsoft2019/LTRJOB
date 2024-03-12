@@ -18,10 +18,11 @@ import androidx.fragment.app.Fragment;
 
 import com.ltrsoft.ltrjob.daoclasses.Login;
 import com.ltrsoft.ltrjob.R;
+import com.ltrsoft.ltrjob.daoclasses.Registration;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 
 
-public class LoginFragment extends Fragment {
+public class    LoginFragment extends Fragment {
     public LoginFragment() {
 
     }
@@ -79,7 +80,27 @@ public class LoginFragment extends Fragment {
                     loginEmail.setError("Please Enter Email");
                     loginPassword.setError("Please Enter Password");
                 }
+
+
+                Registration registration=new Registration();
+                registration.geteuser(getContext(), "", new UserCallBack() {
+                    @Override
+                    public void userSuccess(Object object) {
+
+
+
+                    }
+
+                    @Override
+                    public void userError(String error) {
+
+                    }
+                });
             }
+
+
+
+
         });
 
 
@@ -88,20 +109,21 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
 
                 RegistrationFragment registrationFragment =new RegistrationFragment();
-                getFragmentManager().beginTransaction().replace(R.id.constraint,registrationFragment).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container,registrationFragment).addToBackStack(null).commit();
 
 
             }
         });
 
-        forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ForgetPassword otpsend=new ForgetPassword();
-                getFragmentManager().beginTransaction().replace(R.id.constraint, otpsend).addToBackStack(null).commit();
 
-            }
-        });
+//        forgot.stOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ForgetPassword otpsend=new ForgetPassword();
+//                getFragmentManager().beginTransaction().replace(R.id.constraint, otpsend).addToBackStack(null).commit();
+//
+//            }
+//        });
 
 
         return v;

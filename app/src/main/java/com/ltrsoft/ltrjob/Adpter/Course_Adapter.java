@@ -62,7 +62,6 @@ public class Course_Adapter extends RecyclerView.Adapter<Course_Adapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             javaimg=itemView.findViewById(R.id.javaimg);
             course = itemView.findViewById(R.id.course);
             java = itemView.findViewById(R.id.java);

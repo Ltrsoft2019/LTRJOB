@@ -5,18 +5,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +24,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.User_Deo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.User;
-
 import java.io.ByteArrayOutputStream;
 
 public class Profile_3 extends Fragment {
@@ -42,9 +39,8 @@ public class Profile_3 extends Fragment {
     private TextView filetxt;
     private ImageView imageView;
     private Uri selectedImageUri;
-     Uri selectedFileUri;
+    private Uri selectedFileUri;
 
-    private Uri fileUri;
     public Profile_3() {
         // Required empty public constructor
     }
@@ -58,6 +54,10 @@ public class Profile_3 extends Fragment {
         save = view.findViewById(R.id.save);
         imageView = view.findViewById(R.id.imageView);
         filetxt = view.findViewById(R.id.fileurl);
+
+        // Retrieve saved URIs from shared preferences
+        selectedImageUri = Uri.parse(getFromSharedPreferences("selectedImageUri"));
+        selectedFileUri = Uri.parse(getFromSharedPreferences("selectedFileUri"));
 
         filetxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,29 +83,40 @@ public class Profile_3 extends Fragment {
             @Override
             public void onClick(View v) {
                 if (selectedImageUri != null) {
-                    User_Deo userDeo = new User_Deo();
-                    User user =new User("10","","","","","","",
-                            "","",selectedImageUri.toString(),"","","","","",
-                            "","","","","","","",
-                            "");
+                    // Save URIs to shared preferences
+                    saveToSharedPreferences("selectedImageUri", selectedImageUri.toString());
+                    saveToSharedPreferences("selectedFileUri", selectedFileUri.toString());
 
-                    userDeo.createUser(user,getContext(), new UserCallBack() {
+                    User_Deo userDeo = new User_Deo();
+                    User user = new User("10", "", "", "", "", "", "",
+                            "", "", selectedImageUri.toString(), "", "", "", "", "",
+                            "", "", "", "", "", "", "",
+                            "","");
+
+                    userDeo.createUser(user, getContext(), new UserCallBack() {
                         @Override
                         public void userSuccess(Object object) {
-                            Toast.makeText(getContext(), ""+object.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "" + object.toString(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void userError(String error) {
-                            Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "" + error, Toast.LENGTH_SHORT).show();
                         }
                     });
 
                 } else {
                     Toast.makeText(getContext(), "Please select a photo", Toast.LENGTH_SHORT).show();
                 }
+                Course_Apply jobDetail = new Course_Apply();
+                getFragmentManager().beginTransaction().replace(R.id.constraint, jobDetail).addToBackStack(null).commit();
             }
         });
+
+        // Set the image view with the retrieved image URI
+        if (selectedImageUri != null) {
+            imageView.setImageURI(selectedImageUri);
+        }
 
         return view;
     }
@@ -119,7 +130,6 @@ public class Profile_3 extends Fragment {
         } else {
             // Handle the case where fileUri is null
             Toast.makeText(getContext(), "File URI is null", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -127,7 +137,7 @@ public class Profile_3 extends Fragment {
         Intent fileIntent = new Intent(Intent.ACTION_GET_CONTENT);
         fileIntent.setType("*/*");
         fileIntent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(fileIntent,REQUEST_FILE);
+        startActivityForResult(fileIntent, REQUEST_FILE);
     }
 
     private void showImagePickerDialog() {
@@ -219,5 +229,17 @@ public class Profile_3 extends Fragment {
         return Uri.parse(path);
     }
 
+    // Save data to shared preferences
+    private void saveToSharedPreferences(String key, String value) {
+        SharedPreferences preferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
 
+    // Retrieve data from shared preferences
+    private String getFromSharedPreferences(String key) {
+        SharedPreferences preferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        return preferences.getString(key, "");
+    }
 }

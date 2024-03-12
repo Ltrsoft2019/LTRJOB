@@ -94,12 +94,12 @@
         android:id="@+id/create_new_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
         android:text="Create Account"
         android:textColor=" #F45D2E"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progressBar"

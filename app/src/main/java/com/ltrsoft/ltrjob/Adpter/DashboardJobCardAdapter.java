@@ -86,7 +86,6 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
         });
 
     }
-
     @Override
     public int getItemCount() {
         return list_das_job.size();
