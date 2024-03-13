@@ -34,7 +34,7 @@ public class Award_Deo {
 
     private static String fatchuser = "http://job.ltr-soft.com/Awards_Recognization/award_Recog_read.php";
 
-
+    String userId;
     Award award;
 
     ArrayList<Award> list = new ArrayList<>();
@@ -120,7 +120,7 @@ public class Award_Deo {
         }) {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("user_id", "user-17");
+                map.put("user_id", userId);
                 return map;
             }
         };
@@ -280,5 +280,21 @@ public class Award_Deo {
 
                 }
             };
+        Registration registration=new Registration();
+        registration.geteuserid(context, "", new UserCallBack() {
+            @Override
+            public void userSuccess(Object object) {
+
+                userId = (String) object;
+
+
+            }
+
+            @Override
+            public void userError(String error) {
+
+            }
+        });
+
         }
 }

@@ -31,7 +31,7 @@ public class    LoginFragment extends Fragment {
     private Button loginButton;
     private EditText loginEmail, loginPassword;
     private ProgressBar bar;
-
+    String userId;
 
 
     @Nullable
@@ -83,11 +83,10 @@ public class    LoginFragment extends Fragment {
 
 
                 Registration registration=new Registration();
-                registration.geteuser(getContext(), "", new UserCallBack() {
+                registration.geteuserid(getContext(), "", new UserCallBack() {
                     @Override
                     public void userSuccess(Object object) {
-
-
+                         userId = (String) object;
 
                     }
 

@@ -83,7 +83,7 @@ public class Registration {
                 .commit();
     }
 
-    public void geteuser(Context context, String company_id, UserCallBack callBack) {
+    public void geteuserid(Context context, String company_id, UserCallBack callBack) {
         final ArrayList<User> experiences1 = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {

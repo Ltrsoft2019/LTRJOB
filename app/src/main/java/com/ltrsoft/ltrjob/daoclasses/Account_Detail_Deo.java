@@ -29,6 +29,8 @@ public class Account_Detail_Deo {
     private static String Update_URL="";
     private static String Delete_URL="";
     private static String ReadAll_URL="";
+
+    String userId;
     Account_Detail accountDetail;
 
     ArrayList<Account_Detail>list=new ArrayList<>();
@@ -228,5 +230,20 @@ public class Account_Detail_Deo {
                 return map;
             }
         };
+
+        Registration registration=new Registration();
+        registration.geteuserid(context, "", new UserCallBack() {
+            @Override
+            public void userSuccess(Object object) {
+
+                 userId = (String) object;
+
+            }
+
+            @Override
+            public void userError(String error) {
+
+            }
+        });
     }
 }

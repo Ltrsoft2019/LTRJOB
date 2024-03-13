@@ -19,6 +19,7 @@ import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 public class RegistrationFragment extends Fragment {
 
     private EditText createfname, createlmname, createemail, usermobile, password1, conform_password1;
+    String userId;
 
     @Nullable
     @Override
@@ -49,6 +50,22 @@ public class RegistrationFragment extends Fragment {
                                     .replace(R.id.constraint, new NavigationDrawerFragment())
                                     .addToBackStack(null)
                                     .commit();
+
+                            Registration registration1=new Registration();
+                            registration1.geteuserid(getContext(), "", new UserCallBack() {
+                                @Override
+                                public void userSuccess(Object object) {
+                                    userId = (String) object;
+
+                                }
+
+                                @Override
+                                public void userError(String error) {
+                                    Toast.makeText(getContext(), "Error="+error, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
                         }
 
                         @Override
