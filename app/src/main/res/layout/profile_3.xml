@@ -25,15 +25,15 @@
             android:layout_height="60dp"
             android:layout_marginLeft="22dp"
             android:layout_marginTop="22dp"
-            android:layout_marginRight="49dp"
-            />
+            android:layout_marginRight="49dp"/>
 
         <TextView
             android:id="@+id/textView14"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="28dp"
+            android:paddingLeft="10dp"
             android:text="COMPLETE YOUR PROFILE"
             android:textColor="#ECE7E7"
             android:textSize="20dp"

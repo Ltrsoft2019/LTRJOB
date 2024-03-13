@@ -16,7 +16,8 @@
     <RelativeLayout
         android:id="@+id/dasboard_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="@dimen/dimen_50dp"
@@ -35,7 +36,7 @@
         <TextView
             android:id="@+id/dash_job_position"
             android:layout_width="@dimen/dimen_66dp"
-            android:layout_height="@dimen/dimen_19dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_70dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:text="FULL TIME"
@@ -51,14 +52,15 @@
             android:layout_marginTop="@dimen/dimen_10dp"
             android:text="Wipro"
             android:textColor="#000000"
-            android:textSize="@dimen/dimen_16sp" />
+            android:fontFamily="@font/aclonica"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/dash_job_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dash_company_name"
-            android:layout_marginLeft="@dimen/dimen_70dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
             android:layout_marginTop="@dimen/dimen_10dp"
             android:text="Development Role"
             android:textColor="#000000"
@@ -69,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dash_job_description"
-            android:layout_marginLeft="@dimen/dimen_70dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
             android:text="Apply on 18 sept 2023"
             android:textColor="#000000"

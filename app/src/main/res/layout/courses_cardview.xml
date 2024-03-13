@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layout_CardView">
+    android:id="@+id/layout_CardView"
+    android:layout_weight="1">
 
 
 
@@ -15,6 +16,7 @@
         app:cardCornerRadius="@dimen/dimen_8dp"
         app:cardElevation="@dimen/dimen_8dp"
         app:cardMaxElevation="@dimen/dimen_10dp"
+        android:layout_weight="1"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
 
@@ -23,7 +25,7 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="@dimen/dimen_70dp"
@@ -43,14 +45,13 @@
             <TextView
                 android:id="@+id/coursename"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginStart="120dp"
-                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_marginTop="13dp"
                 android:layout_toEndOf="@id/image"
                 android:layout_toRightOf="@id/image"
                 android:textColor="@color/black"
-                android:textSize="@dimen/dimen_18sp"
-                android:textStyle="bold" />
+                android:textSize="15dp"/>
 
             <TextView
                 android:id="@+id/duration"
@@ -60,9 +61,10 @@
                 android:layout_marginTop="@dimen/dimen_45dp"
                 android:layout_toEndOf="@id/image"
                 android:layout_toRightOf="@id/image"
+                android:textFontWeight="1"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/dimen_18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <!--            <ImageView-->
@@ -84,7 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name :"
-                android:textSize="@dimen/dimen_18sp"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
                 android:layout_marginStart="@dimen/dimen_100dp"
                 android:layout_marginTop="@dimen/dimen_10dp"/>
 
@@ -93,8 +96,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Duretion :"
-                android:textSize="@dimen/dimen_18sp"
-                android:layout_marginStart="@dimen/dimen_100dp"
+                android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:layout_marginStart="@dimen/dimen_100dp"
                 android:layout_marginTop="@dimen/dimen_45dp"/>
 
 
@@ -102,8 +106,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date :"
-                android:textSize="@dimen/dimen_18sp"
-                android:layout_marginStart="@dimen/dimen_100dp"
+                android:textSize="16sp"
+            android:textStyle="bold|italic"
+            android:layout_marginStart="@dimen/dimen_100dp"
                 android:layout_marginTop="@dimen/dimen_80dp"/>
 
 
@@ -113,8 +118,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
                 android:layout_marginTop="@dimen/dimen_80dp"
+                android:textFontWeight="1"
                 android:layout_toEndOf="@id/image"
                 android:layout_toRightOf="@id/image"
+                android:textSize="15dp"
                 android:drawablePadding="@dimen/dimen_2dp">
 
 

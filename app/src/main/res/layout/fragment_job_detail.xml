@@ -15,7 +15,7 @@
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        app:cardBackgroundColor="#08914F">
+        app:cardBackgroundColor="#79D4FE">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/img1"
                 android:text="Full Time"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="14dp" />
 
             <TextView
@@ -46,19 +46,23 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/job_type"
                 android:layout_marginLeft="50dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/adamina"
                 android:text="Wipro"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/job_role"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/company_name"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="130dp"
                 android:text="Devlopment Role"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
+                android:fontFamily="@font/amethysta"
+                android:textColor="@color/black"
+               android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/company_logo"
@@ -67,7 +71,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/wiprologo" />/
+                android:src="@drawable/wiprologo"
+                android:background="@drawable/cr"
+                android:padding="10dp"/>
         </RelativeLayout>
 
 
@@ -121,13 +127,16 @@
 
                     <TextView
                         android:id="@+id/ttt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:textSize="18dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
-                        android:text="Job Detail :"/>
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/aclonica"
+                        android:text="Job Detail "/>
 
                 <TextView
                     android:id="@+id/desc"
@@ -136,6 +145,7 @@
                     android:layout_below="@+id/ttt"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:text="aaaaaaa"
                     android:textSize="14dp"/>
 
                 <TextView
@@ -144,8 +154,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/desc"
                     android:textSize="18dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
                     android:text="Requirements"/>
 
                 <TextView
@@ -155,6 +166,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="10dp"
                     android:layout_below="@+id/txt2"
+                    android:textStyle="bold"
                     android:textSize="16dp"
                     android:text="Skill's:"/>
 
@@ -175,6 +187,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_below="@+id/skill"
                     android:textSize="16dp"
+                    android:textStyle="bold"
                     android:text="Eligible:"/>
 
                 <TextView
@@ -194,6 +207,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_below="@+id/eligible"
                     android:textSize="16dp"
+                    android:textStyle="bold"
                     android:text="Location:"/>
 
                 <TextView
@@ -212,9 +226,12 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="10dp"
                         android:layout_below="@+id/location"
-                        android:text="Company Detail :"
+                        android:text="Company Detail "
                         android:textStyle="bold"
-                        android:textSize="16dp"/>
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/aclonica"
+                        android:textSize="18dp"/>
 
                     <TextView
                         android:id="@+id/com_desc"
@@ -223,6 +240,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="10dp"
                         android:layout_below="@+id/d"
+                        android:text="bbbbb"
                         android:textSize="14dp"/>
 
                     <TextView
@@ -233,6 +251,7 @@
                         android:textSize="16dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
+                        android:textStyle="bold"
                         android:text="Location:"/>
 
 
@@ -253,6 +272,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_below="@+id/com_location"
                         android:textSize="16dp"
+                        android:textStyle="bold"
                         android:text="Contact:"/>
 
                     <TextView

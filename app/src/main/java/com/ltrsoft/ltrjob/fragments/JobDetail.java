@@ -157,16 +157,16 @@ public class  JobDetail extends Fragment {
                     experiences1= (ArrayList<job>) obj;
                     Toast.makeText(getContext(), "size = "+experiences1.size(), Toast.LENGTH_SHORT).show();
                     for (int i = 0; i <experiences1.size() ; i++) {
-                        job job1 = experiences1.get(i);
-                        desc.setText(job1.getJob_description());
-                        eligible.setText(job1.getJob_category_name());
-                        location.setText(job1.getCompany_hoaddress());
-                        skill.setText(job1.getJob_position());
+                         job = experiences1.get(i);
+                        desc.setText(job.getJob_description());
+                        eligible.setText(job.getJob_category_name());
+                        location.setText(job.getCompany_hoaddress());
+                        skill.setText(job.getJob_position());
 
-                        com_desc.setText(job1.getJob_description());
-                        contact.setText(job1.getCompany_phone());
-                        com_location.setText(job1.getCompany_hoaddress());
-                        contact_email.setText(job1.getCompany_email());
+                        com_desc.setText(job.getJob_description());
+                        contact.setText(job.getCompany_phone());
+                        com_location.setText(job.getCompany_hoaddress());
+                        contact_email.setText(job.getCompany_email());
 
                     }
                 }

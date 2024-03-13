@@ -30,35 +30,41 @@
 
         <Button
             android:id="@+id/jobheostry"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:text="Job"
             android:textSize="20dp"
             android:textStyle="bold"
             android:backgroundTint="#F45D2E"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:layout_marginTop="20dp"/>
 
         <Button
             android:id="@+id/corceheostry"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:text="Course"
             android:textSize="20dp"
             android:backgroundTint="#F45D2E"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:layout_marginTop="20dp"/>
 
         <Button
             android:id="@+id/EventHistory"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_weight="1"
             android:text="Event"
             android:textSize="20dp"
             android:textStyle="bold"
             android:backgroundTint="#F45D2E"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
             android:layout_marginTop="20dp"/>
 
 
@@ -67,7 +73,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courcerecycle"
-        android:layout_width="400dp"
-        android:layout_height="730dp"/>
+        android:layout_weight="1"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

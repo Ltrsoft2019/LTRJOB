@@ -33,8 +33,8 @@ public class JobDashboard {
     String url = "https://job.ltr-soft.com/job/read_job.php";
     String Deleteurl="https://job.ltr-soft.com/Event/delete_event.php";
     String updateurl="https://job.ltr-soft.com/Event/event_update.php";
-    String redid="https://job.ltr-soft.com/user_job_history_read.php";
-    String create ="http://job.ltr-soft.com/user_job_history_insert.php";
+    String redid="https://job.ltr-soft.com/job/read_job.php";
+    String create ="http://job.ltr-soft.com/company_detail.php";
     final ArrayList<job> experiences = new ArrayList<>();
 
     public void getall(final Context context , RecyclerView recyclerView, UserCallBack
@@ -55,9 +55,10 @@ public class JobDashboard {
                         String job_salary=jsonObject.getString("job_salary");
                         String job_position=jsonObject.getString("job_position");
                         String company_id=jsonObject.getString("company_id");
+                        String job_id = jsonObject.getString("job_id");
                         String company_logo = jsonObject.getString("company_logo");
 
-                      job j=new job(company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
+                      job j=new job(company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo,job_id);
 
                       //  Job experience  = new Job(imageurl,experience_company_name,experiance_start_date,experiance_end_date,experiance_payment,experiance_technology,experiance_project_name,experiance_position);
 
@@ -101,16 +102,16 @@ public class JobDashboard {
                         String job_description = jsonObject.getString("job_description");
                         String company_phone = jsonObject.getString("company_phone");
                         String company_hoaddress=jsonObject.getString("company_hoaddress");
-//                        String job_category_name=jsonObject.getString("job_category_name");
-                        String job_category_name="jo";
+                        String job_category_name=jsonObject.getString("job_category_name");
                         String job_salary=jsonObject.getString("job_salary");
                         String job_position=jsonObject.getString("job_position");
                         String company_id=jsonObject.getString("company_id");
+                        String job_id = jsonObject.getString("job_id");
                         String company_logo = jsonObject.getString("company_logo");
 
 
                         job certification1 = new job(company_name,company_email,job_description,company_phone,
-                                job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo);
+                                job_position,company_hoaddress,job_category_name,job_salary,company_id,company_logo,job_id);
 
                         experiences1.add(certification1);
                     }

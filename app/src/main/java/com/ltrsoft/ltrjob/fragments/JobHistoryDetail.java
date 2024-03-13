@@ -58,8 +58,6 @@ public class JobHistoryDetail extends Fragment {
         com_location = view.findViewById(R.id.com_location);
 
 
-
-
         Bundle args = getArguments();
         if (args != null) {
             String companyName = args.getString("company_name", "");

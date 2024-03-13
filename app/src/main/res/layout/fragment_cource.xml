@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#18613E"
+    android:background="#9BDEFC"
     android:orientation="vertical">
 
     <ImageView
@@ -16,33 +16,42 @@
         android:layout_marginTop="@dimen/dimen_10dp"/>
 
     <TextView
-        android:layout_width="182dp"
-        android:layout_height="95dp"
-        android:text="Course "
-        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Courses "
+        android:textStyle="bold|italic"
         android:fontFamily="@font/adamina"
-        android:textColor="@color/white"
+        android:textColor="#016505"
         android:textSize="50dp"
         android:gravity="center"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center"/>
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="match_parent"
         android:background="@drawable/addresume"
         app:cardCornerRadius="20dp"
-        android:layout_marginTop="50dp">
+        android:layout_weight="1"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="30dp">
 
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
 
             android:id="@+id/fragment_recycler_courses"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

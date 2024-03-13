@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class Profile_Edu_2 extends Fragment {
 
     private EditText school_name, percentage10th, degree_percentage;
     private EditText college_name, percentage12th, Institute_name;
+    private Spinner select_degree;
     private NumberPicker select_10th_pass, passing_year_12th, passing_year_degree;
     private TextView passing_txt_10th, passing_txt_12th, passing_txt_degree, add1, add2;
     private Button save;
@@ -46,8 +50,6 @@ public class Profile_Edu_2 extends Fragment {
         select_10th_pass = view.findViewById(R.id.passing_year);
         passing_txt_10th = view.findViewById(R.id.passing_txt);
 
-        loadSavedData();
-
         save = view.findViewById(R.id.save);
         add1 = view.findViewById(R.id.add1);
         add2 = view.findViewById(R.id.add2);
@@ -63,9 +65,24 @@ public class Profile_Edu_2 extends Fragment {
         degree_percentage = view.findViewById(R.id.degree_percentage);
         passing_year_degree = view.findViewById(R.id.passing_year_degree);
         passing_txt_degree = view.findViewById(R.id.passing_txt_degree);
+        select_degree = view.findViewById(R.id.select_degree);
+
+        String[] degrees = {"BCA", "BCS", "BCom", "BSE"};
+
+        // Create ArrayAdapter using the string array and default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, degrees);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apply the adapter to the spinner
+        select_degree.setAdapter(adapter);
+
+
+        loadSavedData();
 
         int startYear = 2000;
-        int endYear = 2024;
+        int endYear = 2050;
 
         // Populate NumberPicker with years
         String[] years = new String[endYear - startYear + 1];
@@ -111,6 +128,20 @@ public class Profile_Edu_2 extends Fragment {
             }
         });
 
+        select_degree.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedDegree = (String) parent.getItemAtPosition(position);
+                // Display a toast message with the selected degree name
+                Toast.makeText(getContext(), "Selected Degree: " + selectedDegree, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return view;
     }
 
@@ -146,15 +177,15 @@ public class Profile_Edu_2 extends Fragment {
 
 
         // Load 12th standard qualifications data
-//        college_name.setText(sharedPreferences.getString("college_name", ""));
-//        percentage12th.setText(sharedPreferences.getString("percentage12th", ""));
-//        passing_year_12th.setValue(sharedPreferences.getInt("passing_year_12th",0));
-//        passing_txt_12th.setText(sharedPreferences.getString("passing_txt_12th", ""));
-////
-//        // Load Degree qualifications data
-//        Institute_name.setText(sharedPreferences.getString("Institute_name", ""));
-//        degree_percentage.setText(sharedPreferences.getString("degree_percentage", ""));
-//        passing_year_degree.setValue(sharedPreferences.getInt("passing_year_degree", 0));
-//        passing_txt_degree.setText(sharedPreferences.getString("passing_txt_degree", ""));
+        college_name.setText(sharedPreferences.getString("college_name", ""));
+        percentage12th.setText(sharedPreferences.getString("percentage12th", ""));
+        passing_year_12th.setValue(sharedPreferences.getInt("passing_year_12th",0));
+        passing_txt_12th.setText(sharedPreferences.getString("passing_txt_12th", ""));
+
+        // Load Degree qualifications data
+        Institute_name.setText(sharedPreferences.getString("Institute_name", ""));
+        degree_percentage.setText(sharedPreferences.getString("degree_percentage", ""));
+        passing_year_degree.setValue(sharedPreferences.getInt("passing_year_degree", 0));
+        passing_txt_degree.setText(sharedPreferences.getString("passing_txt_degree", ""));
     }
 }

@@ -2,9 +2,11 @@ package com.ltrsoft.ltrjob.pojoclass;
 
 public class job {
 
-    private String  company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,imageurl;
+    private String  company_name,company_email,job_description,company_phone,job_position,company_hoaddress,job_category_name,job_salary,company_id,imageurl,job_id;
 
-    public job(String company_name, String company_email, String job_description, String company_phone, String job_position, String company_hoaddress, String job_category_name, String job_salary, String company_id, String imageurl) {
+    public job(String company_name, String company_email, String job_description, String company_phone,
+               String job_position, String company_hoaddress, String job_category_name, String job_salary,
+               String company_id, String imageurl,String job_id) {
 
         this.company_hoaddress = company_hoaddress;
         this.job_category_name = job_category_name;
@@ -16,9 +18,11 @@ public class job {
         this.job_description = job_description;
         this.company_phone = company_phone;
         this.job_position = job_position;
+        this.job_id = job_id;
     }
 
-    public job(String companyName, String companyEmail, String jobDescription, String companyPhone, String jobPosition) {
+    public job(String companyName, String companyEmail, String jobDescription, String companyPhone,
+               String jobPosition) {
         this.company_name = companyName;
         this.company_email = companyEmail;
         this.job_description = jobDescription;
@@ -104,5 +108,13 @@ public class job {
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public String getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
     }
 }

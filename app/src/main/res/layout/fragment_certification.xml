@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#F2F2F2"
+    android:background="#ECF9FF"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
@@ -17,7 +17,7 @@
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginTop="30dp"
+       android:layout_marginTop="10dp"
        android:fontFamily="@font/adamina"
        android:text="Certifications"
        android:textColor="#18613E"
@@ -29,9 +29,10 @@
        android:id="@+id/recycleview"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:layout_marginTop="20dp"
-       >
+       android:layout_weight="1"
+       android:layout_marginLeft="2dp"
+       android:layout_marginRight="2dp"
+       android:layout_marginTop="10dp">
 
    </androidx.recyclerview.widget.RecyclerView>
 
