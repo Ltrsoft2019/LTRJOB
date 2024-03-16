@@ -89,7 +89,7 @@ public class CertificationAdapter extends RecyclerView.Adapter<CertificationAdap
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Certification_download nextFragment = new Certification_download(); // Replace YourNextFragment with the appropriate fragment
                 nextFragment.setArguments(bundle);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, nextFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.constraint, nextFragment).addToBackStack(null).commit();
             }
         });
     }

@@ -26,7 +26,7 @@ public class User_Deo {
     public String LOGINURL = "https://rj.ltr-soft.com/public/police_api/login/user_login.php";
     public String response = "";
     public String USER_PROFILE_READ_URL = "";
-    public String URL = "";
+    public String Deleteurl = "http://job.ltr-soft.com/user_detail_delete.php";
     public String UpdateUrl="https://job.ltr-soft.com/User_Detail/user_update.php";
     private static String USERCREATEURL = "https://job.ltr-soft.com/User_Detail/user_insert.php";
     public StringBuilder success = new StringBuilder();
@@ -177,6 +177,7 @@ public void getUser(String userid,Context context,UserCallBack callBack){
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> hashMap=new HashMap<>();
                 hashMap.put("user_fname",user.getUser_fname());
+                hashMap.put("user_id","");
             hashMap.put("user_mname",user.getUser_mname());
             hashMap.put("user_lname",user.getUser_lname());
                 hashMap.put("user_email",user.getUser_email());
@@ -231,7 +232,7 @@ public void updateUser(User user,String userid,Context context,UserCallBack call
         @Override
         protected Map<String, String> getParams() throws AuthFailureError {
             HashMap<String,String> hashMap=new HashMap<>();
-//            hashMap.put("user_id",userid);
+            hashMap.put("user_id","user-17");
             hashMap.put("user_fname",user.getUser_lname());
             hashMap.put("user_mname",user.getUser_mname());
             hashMap.put("user_lname",user.getUser_lname());
@@ -263,10 +264,10 @@ public void updateUser(User user,String userid,Context context,UserCallBack call
     requestQueue.add(stringRequest);
 }
 
-public void deleteUser(User user,String userid,Context context,UserCallBack callBack){
+public void deleteUser(String user, String userid, Context context, UserCallBack callBack){
 
 
-        StringRequest stringRequest= new StringRequest(Request.Method.POST, URL,
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, Deleteurl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -282,7 +283,8 @@ public void deleteUser(User user,String userid,Context context,UserCallBack call
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String>map=new HashMap<>();
-                map.put("User_id",user.getUser_id());
+                map.put("User_id",userid);
+
                 return map;
             }
         };

@@ -53,7 +53,7 @@ public class CourseCardAdapter extends RecyclerView.Adapter <CourseCardAdapter.V
                 args.putString("course_id", id);
 
                 courseDetailFragment.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,courseDetailFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.constraint,courseDetailFragment).addToBackStack(null).commit();
 
             }
         });

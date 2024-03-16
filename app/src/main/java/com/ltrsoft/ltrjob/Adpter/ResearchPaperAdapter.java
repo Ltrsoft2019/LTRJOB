@@ -57,7 +57,7 @@ public class ResearchPaperAdapter extends RecyclerView.Adapter<ResearchPaperAdap
                 args.putString("course_id", id);
 
                 awardUpdate.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container1,awardUpdate).addToBackStack(null).commit();
 
 
             }

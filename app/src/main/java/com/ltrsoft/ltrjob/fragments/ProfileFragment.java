@@ -212,6 +212,8 @@ public class ProfileFragment extends Fragment {
             public void userError(String error) {
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
             }
+
+
         });
         Certificationdeo certificationdeo = new Certificationdeo();
         certificationdeo.getuser(requireContext(), certification, new UserCallBack() {
@@ -287,8 +289,6 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
             }
         });
-
-
         Workshop_Deo workshop_deo = new Workshop_Deo();
         workshop_deo.getalluserAward(requireContext(), workshop,new UserCallBack() {
             @Override

@@ -53,7 +53,7 @@ public class CourseCardHistoryAdapter extends RecyclerView.Adapter<CourseCardHis
                 cd.setArguments(args);
 
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, cd)
+                        .replace(R.id.constraint, cd)
                         .addToBackStack(null)
                         .commit();
             }

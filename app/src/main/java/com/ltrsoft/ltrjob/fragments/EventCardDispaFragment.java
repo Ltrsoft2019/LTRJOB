@@ -55,7 +55,7 @@ public class EventCardDispaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DashboardFragment dashboardFragment = new DashboardFragment();
-                getFragmentManager().beginTransaction().replace(R.id.container,dashboardFragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container1,dashboardFragment).commit();
             }
         });
 

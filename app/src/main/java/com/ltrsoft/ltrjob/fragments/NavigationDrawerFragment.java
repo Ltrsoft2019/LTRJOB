@@ -25,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.Resume;
+import com.ltrsoft.ltrjob.daoclasses.User_Deo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
 import com.ltrsoft.ltrjob.pojoclass.User;
 import com.ltrsoft.ltrjob.pojoclass.Userclass;
@@ -58,7 +59,7 @@ public class NavigationDrawerFragment extends Fragment {
         toggle.syncState();
 
         DashboardFragment dashboardFragment = new DashboardFragment();
-        getFragmentManager().beginTransaction().add(R.id.container, dashboardFragment).commit();
+        getFragmentManager().beginTransaction().add(R.id.container1, dashboardFragment).commit();
 
         name = navigationView.getHeaderView(0).findViewById(R.id.name);
         profile = navigationView.getHeaderView(0).findViewById(R.id.profile);
@@ -95,27 +96,27 @@ public class NavigationDrawerFragment extends Fragment {
 
                 if (id == R.id.sidenav_home) {
                     DashboardFragment dashboardFragment = new DashboardFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, dashboardFragment).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_exam) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new ExamCardDispalyFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_event) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new EventCardDispaFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new EventCardDispaFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_certification) {
-                    getFragmentManager().beginTransaction().add(R.id.container, new CertificationFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().add(R.id.container1, new CertificationFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_course) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new CourceFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new CourceFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_history) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new HistoryFragment()).addToBackStack(null).commit();
                 } else if (id == R.id.sidenav_plans) {
 //                    getFragmentManager().beginTransaction().replace(R.id.constraint, new ExamCardDispalyFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.sidenav_feedback) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new FeedbacFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new FeedbacFragment()).addToBackStack(null).commit();
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.sidenav_resume) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new ResumeFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new ResumeFragment()).addToBackStack(null).commit();
 
                 } else if (id == R.id.sidenav_setting) {
                     getFragmentManager().beginTransaction().add(R.id.constraint, new SettingFragment()).addToBackStack(null).commit();
@@ -126,11 +127,11 @@ public class NavigationDrawerFragment extends Fragment {
                     Toast.makeText(getActivity(), "Not create Fragment", Toast.LENGTH_SHORT).show();
 
                 } else if (id == R.id.Profile) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new ProfileFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new ProfileFragment()).addToBackStack(null).commit();
 
 
                 } else if (id == R.id.news) {
-                    getFragmentManager().beginTransaction().replace(R.id.container, new NewsFragment()).addToBackStack(null).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container1, new NewsFragment()).addToBackStack(null).commit();
 
 
                 } else if (id == R.id.nav_logout) {
@@ -141,14 +142,31 @@ public class NavigationDrawerFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             logout(); // Perform logout actions
-//                            LoginFragment loginFragment = new LoginFragment();
-//                            getChildFragmentManager().beginTransaction().replace(R.id.container, loginFragment).commit();
+                            LoginFragment loginFragment = new LoginFragment();
+                            getChildFragmentManager().beginTransaction().replace(R.id.container1, loginFragment).commit();
                         }
+
 
                         private void logout() {
 
-                                LoginFragment loginFragment = new LoginFragment();
-                                getChildFragmentManager().beginTransaction().replace(R.id.container, loginFragment).commit();
+                            Toast.makeText(getContext(), "go to login", Toast.LENGTH_SHORT).show();
+                            User_Deo  userDeo=new User_Deo();
+                            userDeo.deleteUser("", "user-17", getContext(), new UserCallBack() {
+                                @Override
+                                public void userSuccess(Object object) {
+
+                                    Toast.makeText(getContext(), "logought sucsefully", Toast.LENGTH_SHORT).show();
+
+//                                    LoginFragment loginFragment = new LoginFragment();
+//                                    getChildFragmentManager().beginTransaction().replace(R.id.container1, loginFragment).commit();
+
+                                }
+
+                                @Override
+                                public void userError(String error) {
+
+                                }
+                            });
 
                             }
                     });

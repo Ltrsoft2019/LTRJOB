@@ -148,7 +148,7 @@ public class CourseDetailFragment extends Fragment {
                 args.putString("course_id", course_id);
 
                 batchDetail.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, batchDetail).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container1, batchDetail).addToBackStack(null).commit();
 
             }
         });

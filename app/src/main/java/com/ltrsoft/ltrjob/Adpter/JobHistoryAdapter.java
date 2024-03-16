@@ -53,7 +53,7 @@ public class JobHistoryAdapter extends RecyclerView.Adapter<JobHistoryAdapter.Vi
 
                 JobHistoryDetail updateTechnicalSkill = new JobHistoryDetail();
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container1,updateTechnicalSkill).addToBackStack(null).commit();
             }
         });
     }

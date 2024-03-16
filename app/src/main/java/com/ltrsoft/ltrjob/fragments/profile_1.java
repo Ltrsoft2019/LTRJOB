@@ -28,6 +28,7 @@ import com.ltrsoft.ltrjob.R;
 import com.ltrsoft.ltrjob.daoclasses.City_Deo;
 import com.ltrsoft.ltrjob.daoclasses.Country_Deo;
 import com.ltrsoft.ltrjob.daoclasses.District_Deo;
+import com.ltrsoft.ltrjob.daoclasses.Registration;
 import com.ltrsoft.ltrjob.daoclasses.Satedeo;
 import com.ltrsoft.ltrjob.daoclasses.User_Deo;
 import com.ltrsoft.ltrjob.interfaces.UserCallBack;
@@ -256,6 +257,26 @@ public class profile_1 extends Fragment {
                User user =new User("",name.toString(),name.toString(),name.toString(),email.toString(),phone.toString(),"",gender.toString(),dob.toString(),"",address.toString(),selectedCity.toString(),selectedDistrict.toString(),selectedState.toString(),selectedCountry.toString(),"",adhar.toString(),"",link_id.toString(),git_id.toString(),"","","",selectedMaritalStatus);
 
 
+                Registration registration = new Registration();
+                registration.geteuserid(getContext(), "", new UserCallBack() {
+                    @Override
+                    public void userSuccess(Object object) {
+                        if (object instanceof String) {
+                            String userId = (String) object;
+                            Toast.makeText(getContext(), "User ID: " + userId, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Failed to fetch user ID", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    
+
+                    @Override
+                    public void userError(String error) {
+                        // Handle error
+                        Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
              //   User user = new User("", name.getText().toString(), selectedGender, "", email.getText().toString(),
 //                        phone.getText().toString(), phone.toString(), gender.toString(), dob.getText().toString(), "", address.getText().toString(),
 //                        selectedCity.toString(), selectedDistrict.toString(), selectedState, selectedCountry, "", adhar.getText().toString(), "",
@@ -297,7 +318,7 @@ public class profile_1 extends Fragment {
                 editor.apply();
 
 
-                // Navigate to the next fragment
+
                 getFragmentManager().beginTransaction().replace(R.id.constraint, new Profile_Edu_2()).addToBackStack(null).commit();
 
             }
@@ -393,7 +414,7 @@ public class profile_1 extends Fragment {
         private int countEditableFields() {
             int count = 0;
 
-            // Iterate over all EditText fields and count editable fields
+
             if (name.isEnabled()) count++;
             if (email.isEnabled()) count++;
             if (phone.isEnabled()) count++;
@@ -508,7 +529,9 @@ public class profile_1 extends Fragment {
             }
             @Override
             public void userError(String error) {
+
                 Toast.makeText(getActivity(), "error "+error.toString(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

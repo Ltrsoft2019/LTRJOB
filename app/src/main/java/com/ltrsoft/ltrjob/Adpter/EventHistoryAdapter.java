@@ -69,7 +69,7 @@ public class EventHistoryAdapter extends RecyclerView.Adapter<EventHistoryAdapte
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 EventHistoryDetailFragment w = new EventHistoryDetailFragment();
                 activity. getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, w)
+                        .replace(R.id.container1, w)
                         .addToBackStack(null)
                         .commit();
 

@@ -100,7 +100,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardAdapter.Imag
 
 
                activity. getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, w1)
+                        .replace(R.id.container1, w1)
                         .addToBackStack(null)
                         .commit();
 

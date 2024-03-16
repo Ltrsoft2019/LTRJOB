@@ -63,7 +63,7 @@ public class NewAdpter extends RecyclerView.Adapter<NewAdpter.ViewHolder> {
 
                 AppCompatActivity activity = (AppCompatActivity) context;
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, jobDetailFragment)
+                        .replace(R.id.container1, jobDetailFragment)
                         .addToBackStack(null)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();

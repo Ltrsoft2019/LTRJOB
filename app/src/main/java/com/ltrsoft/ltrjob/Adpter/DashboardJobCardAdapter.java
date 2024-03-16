@@ -75,7 +75,7 @@ public class DashboardJobCardAdapter extends RecyclerView.Adapter<DashboardJobCa
                 AppCompatActivity activity1 = (AppCompatActivity) view.getContext();
                 JobDetail jobDetailFragment = new JobDetail();
                 jobDetailFragment.setArguments(args);
-                activity1.getSupportFragmentManager().beginTransaction().replace(R.id.container, jobDetailFragment).addToBackStack(null).commit();
+                activity1.getSupportFragmentManager().beginTransaction().replace(R.id.container1, jobDetailFragment).addToBackStack(null).commit();
 
 
             }

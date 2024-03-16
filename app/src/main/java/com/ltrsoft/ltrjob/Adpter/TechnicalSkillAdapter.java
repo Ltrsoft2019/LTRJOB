@@ -59,7 +59,7 @@ public class TechnicalSkillAdapter extends RecyclerView.Adapter<TechnicalSkillAd
                 args.putString("course_id", id);
 
                 updateTechnicalSkill.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,updateTechnicalSkill).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container1,updateTechnicalSkill).addToBackStack(null).commit();
 
 
             }

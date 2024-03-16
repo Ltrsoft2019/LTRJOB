@@ -80,9 +80,6 @@ public class Award_Deo {
         };
     }
 
-
-
-
     public void getalluserAward(final Context context, RecyclerView recyclerView, UserCallBack callBack) {
         StringRequest request = new StringRequest(Request.Method.POST, fatchuser, new Response.Listener<String>() {
             final ArrayList<Award> awardArrayList = new ArrayList<>();

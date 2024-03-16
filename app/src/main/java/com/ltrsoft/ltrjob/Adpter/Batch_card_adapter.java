@@ -59,7 +59,7 @@ public class Batch_card_adapter extends RecyclerView.Adapter<Batch_card_adapter.
 
                 courseApply.setArguments(args);
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,courseApply).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.constraint,courseApply).addToBackStack(null).commit();
 
             }
         });

@@ -54,7 +54,7 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
         args.putString("award_id", id);
 
         awardUpdate.setArguments(args);
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,awardUpdate).addToBackStack(null).commit();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.constraint,awardUpdate).addToBackStack(null).commit();
 
 
     }

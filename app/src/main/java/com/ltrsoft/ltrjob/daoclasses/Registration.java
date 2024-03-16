@@ -83,46 +83,39 @@ public class Registration {
                 .commit();
     }
 
-    public void geteuserid(Context context, String company_id, UserCallBack callBack) {
+
+
+
+
+    public void geteuserid(Context context, String User_id, UserCallBack callBack) {
         final ArrayList<User> experiences1 = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.POST, redid, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonResponse = new JSONObject(response);
+                    String userId = jsonResponse.getString("user_id");
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        // Fetch user ID from the response
-                        String userId = jsonObject.getString("user_id");
-                        Toast.makeText(context, "your user id="+userId.toString(), Toast.LENGTH_SHORT).show();
+                    User user = new User(userId,"","","","","","","","","","","","","","","","","","","","","","","");
 
-                        // Create a job object with only user ID
-                        User user = new User("","","","","","","" +
-                                "","","","","","","","",""
-                        ,"","","","","","","","","");
-                        user.setId(Integer.parseInt(userId));
+                    Toast.makeText(context, ""+userId.toString(), Toast.LENGTH_SHORT).show();
 
-                        // Add the user job to the list
-                        experiences1.add(user);
-                    }
-
+                    experiences1.add(user);
+                   // callBack.userSuccess(experiences1);
                 } catch (JSONException e) {
+                    // Notify callback about the error
                     callBack.userError(e.toString());
                     e.printStackTrace();
                 }
-                callBack.userSuccess(experiences1);
-
             }
-
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // Notify callback about the error
                 callBack.userError(error.toString());
             }
-        }) ;
-
+        });
 
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);

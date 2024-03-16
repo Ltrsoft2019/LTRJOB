@@ -56,7 +56,7 @@ holder.cardView.setOnClickListener(new View.OnClickListener() {
         args.putString("project_id", id);
 
         update.setArguments(args);
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, update).addToBackStack(null).commit();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container1, update).addToBackStack(null).commit();
 
 
     }
